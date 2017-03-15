@@ -47,7 +47,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
-                        <a href="#page-top">hellooooooo</a>
+                        <a href="#page-top"></a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#services">Services</a>
@@ -65,20 +65,8 @@
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                     <li>
-                        @*@Html.ActionLink("Abt", "Contact", "Home", new { @class = "page-scroll", @href = "#lolcon" }, null)*@
-                    </li>
-                    <li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                        <a href="javascript:document.getElementById('logoutForm').submit()">Log Off</a>
-                        }
-                        else
-                        {
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>@Html.ActionLink("Log In", "Login", "Account")</li>
-                                <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                            </ul>                  
-                        }
+                        @Html.ActionLink("Abt", "About", "Home", new { @class = "page-scroll" }, null)
+
                     </li>
                 </ul>
             </div>
@@ -86,17 +74,8 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in">Welcome To TSAR Business Solutions</div>
-                <div class="intro-heading">How can we help?</div>
-                <a href="#services" class="page-scroll btn btn-xl">WHAT WE DO</a>
-            </div>
-        </div>
-    </header>
-    <section>
+
+    <section id="consult">
         @RenderBody()
     </section>
 
@@ -106,7 +85,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Send us a message</h3>
+                    <h3 class="section-subheading text-muted">Find our details here</h3>
                 </div>
             </div>
             <div class="row">
@@ -352,7 +331,6 @@
             </div>
         </div>
     </div>
-
     <!-- jQuery -->
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
