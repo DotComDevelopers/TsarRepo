@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "" }))
+ 
 {
     @Html.AntiForgeryToken()
 
@@ -49,35 +50,41 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
+                    <li>                       
+                        @Html.ActionLink("Services", "Index", "Home", new { @class = "page-scroll", href = "#about" }, null)
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    <li>                        
+                        @Html.ActionLink("Portfolio", "Index", "Home", new { @class = "page-scroll", href = "#about" }, null)
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
+                    <li>                      
+                        @Html.ActionLink("About", "Index", "Home", new { @class = "page-scroll", href = "#about" }, null)
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#team">Team</a>
+                    <li>                      
+                        @Html.ActionLink("Team", "Index", "Home", new { @class = "page-scroll", href = "#about" }, null)
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                    <li>                       
+                        @Html.ActionLink("Contact", "Index", "Home", new { @class = "page-scroll", href = "#about" }, null)
                     </li>
-                    <li>
-                        @Html.ActionLink("Abt", "About", "Home", new { @class = "page-scroll" }, null)
-
-                    </li>
+                 
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <section id="consult">
+                @RenderBody()
+            </section>    
+        </div>
+    </div>
+</header>
 
-    <section id="consult">
+    @*<section id="consult">
         @RenderBody()
-    </section>
+    </section>*@
 
     <!-- Contact Section -->
     <section id="contact">
