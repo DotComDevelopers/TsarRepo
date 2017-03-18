@@ -1,0 +1,14 @@
+﻿@*This view has been created to display email confirmation*@
+
+
+@using System.Web.Razor.Parser
+
+@{
+    ViewBag.Title = "DisplayEmail";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2 class="col-lg-12 text-center">Please check your email for a confirmation link</h2>
+
+<h2 class="col-lg-12 text-center">@Html.ActionLink("Click to go back to home page","Index","Home")</h2>
+
