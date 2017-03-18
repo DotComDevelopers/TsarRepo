@@ -211,6 +211,7 @@
     <Content Include="img\logos\envato.jpg" />
     <Content Include="img\logos\themeforest.jpg" />
     <Content Include="img\map-image.png" />
+    <Content Include="img\portfolio\accounts-payable.png" />
     <Content Include="img\portfolio\dreams-preview.png" />
     <Content Include="img\portfolio\dreams.png" />
     <Content Include="img\portfolio\escape-preview.png" />
