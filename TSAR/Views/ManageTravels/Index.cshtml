@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TSAR.Models.ManageTravel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @using(Html.BeginForm("Index","ManageTravels",FormMethod.Get))
+    {
+    <b>Search by:</b> @Html.TextBox("Search")<input type="submit" value="Search"/>}
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.travelCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.distance)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.travelCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.distance)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.tcode }) |
+                @Html.ActionLink("Details", "Details", new { id = item.tcode }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.tcode })
+            </td>
+        </tr>
+    }
+
+</table></b>

@@ -1,0 +1,43 @@
+﻿@model TSAR.Models.ManageTravel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ManageTravel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.travelCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.travelCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.distance)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.tcode }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
