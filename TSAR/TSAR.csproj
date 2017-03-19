@@ -232,6 +232,9 @@
     <Content Include="img\team\1.jpg" />
     <Content Include="img\team\2.jpg" />
     <Content Include="img\team\3.jpg" />
+    <Content Include="img\team\Anoop.jpg" />
+    <Content Include="img\team\devashen.jpg" />
+    <Content Include="img\team\Ivan.jpg" />
     <Content Include="js\agency.js" />
     <Content Include="js\agency.min.js" />
     <Content Include="js\contact_me.js" />
