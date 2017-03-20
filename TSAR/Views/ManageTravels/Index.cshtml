@@ -18,14 +18,14 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.travelCode)
+            <font color="white"> @Html.DisplayNameFor(model => model.travelCode)</font>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.rate)
-        </th>
+            <font color="white">  @Html.DisplayNameFor(model => model.rate)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.distance)
-        </th>
+            <font color="white">   @Html.DisplayNameFor(model => model.distance)</font>
+</th>
         <th></th>
     </tr>
 
@@ -33,14 +33,14 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.travelCode)
-            </td>
+                <font color="gold">        @Html.DisplayFor(modelItem => item.travelCode)</font>
+</td>
             <td>
-                @Html.DisplayFor(modelItem => item.rate)
-            </td>
+                <font color="gold">   @Html.DisplayFor(modelItem => item.rate)</font>
+</td>
             <td>
-                @Html.DisplayFor(modelItem => item.distance)
-            </td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.distance)</font>
+</td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.tcode }) |
                 @Html.ActionLink("Details", "Details", new { id = item.tcode }) |
@@ -49,4 +49,4 @@
         </tr>
     }
 
-</table></b>
+</table><br/>
