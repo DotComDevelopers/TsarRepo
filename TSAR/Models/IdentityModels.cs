@@ -29,7 +29,5 @@ namespace TSAR.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<TSAR.Models.ManageTravel> ManageTravels { get; set; }
     }
 }
