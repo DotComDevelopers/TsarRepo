@@ -183,9 +183,11 @@
     <Compile Include="Controllers\ConsultantsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManageTravelsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\201703191137143_Client.cs.cs" />
     <EmbeddedResource Include="Migrations\201703191137143_Client.cs.Designer.cs">
       <DependentUpon>201703191137143_Client.cs.cs</DependentUpon>
@@ -194,11 +196,18 @@
     <EmbeddedResource Include="Migrations\201703191824047_Consultant.cs.Designer.cs">
       <DependentUpon>201703191824047_Consultant.cs.cs</DependentUpon>
     </EmbeddedResource>
+=======
+    <Compile Include="Migrations\201703191647382_ManageTravel.cs" />
+    <Compile Include="Migrations\201703191647382_ManageTravel.Designer.cs">
+      <DependentUpon>201703191647382_ManageTravel.cs</DependentUpon>
+    </Compile>
+>>>>>>> origin/master
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Consultant.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageTravel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -245,6 +254,9 @@
     <Content Include="img\team\1.jpg" />
     <Content Include="img\team\2.jpg" />
     <Content Include="img\team\3.jpg" />
+    <Content Include="img\team\Anoop.jpg" />
+    <Content Include="img\team\devashen.jpg" />
+    <Content Include="img\team\Ivan.jpg" />
     <Content Include="js\agency.js" />
     <Content Include="js\agency.min.js" />
     <Content Include="js\contact_me.js" />
@@ -372,6 +384,7 @@
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+<<<<<<< HEAD
     <Content Include="Views\Clients\Create.cshtml" />
     <Content Include="Views\Clients\Delete.cshtml" />
     <Content Include="Views\Clients\Details.cshtml" />
@@ -382,6 +395,13 @@
     <Content Include="Views\Consultants\Details.cshtml" />
     <Content Include="Views\Consultants\Edit.cshtml" />
     <Content Include="Views\Consultants\Index.cshtml" />
+=======
+    <Content Include="Views\ManageTravels\Create.cshtml" />
+    <Content Include="Views\ManageTravels\Delete.cshtml" />
+    <Content Include="Views\ManageTravels\Details.cshtml" />
+    <Content Include="Views\ManageTravels\Edit.cshtml" />
+    <Content Include="Views\ManageTravels\Index.cshtml" />
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -391,8 +411,14 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\201703191137143_Client.cs.resx" />
     <EmbeddedResource Include="Migrations\201703191824047_Consultant.cs.resx" />
+=======
+    <EmbeddedResource Include="Migrations\201703191647382_ManageTravel.resx">
+      <DependentUpon>201703191647382_ManageTravel.cs</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> origin/master
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -30,8 +30,12 @@ namespace TSAR.Models
             return new ApplicationDbContext();
         }
 
+<<<<<<< HEAD
         public System.Data.Entity.DbSet<TSAR.Models.Client> Clients { get; set; }
 
         public System.Data.Entity.DbSet<TSAR.Models.Consultant> Consultants { get; set; }
+=======
+        public System.Data.Entity.DbSet<TSAR.Models.ManageTravel> ManageTravels { get; set; }
+>>>>>>> origin/master
     }
 }
