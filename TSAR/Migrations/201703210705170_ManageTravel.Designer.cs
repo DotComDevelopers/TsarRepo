@@ -7,18 +7,18 @@ namespace TSAR.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Consultantcs : IMigrationMetadata
+    public sealed partial class ManageTravel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Consultantcs));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ManageTravel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703191824047_Consultant.cs"; }
+            get { return "201703210705170_ManageTravel"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target
