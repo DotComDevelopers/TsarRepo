@@ -1,0 +1,60 @@
+﻿@model TSAR.Models.MailModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        if ('@ViewBag.Message' == 'Sent') {
+            alert('Mail has been sent successfully');
+        }
+    });
+</script>
+<h2>Send Email </h2>
+<fieldset>
+
+    @using (@Html.BeginForm("Index", "SendMailer", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary()
+        <input type="submit" value="Send" style="background-color: black" />
+
+        <table>
+            <tr>
+                <td>
+                    <font color="white">To:</font>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.To)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font color="white">Subject:</font>
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Subject)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font color="white">Attachment:</font>
+                </td>
+                <td>
+                    <input type="file" name="fileUploader" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font color="white">Body:</font>
+                </td>
+                <td>
+                    @Html.TextAreaFor(m => m.Body)
+                </td>
+            </tr>
+        </table>
+    }
+</fieldset>
+
