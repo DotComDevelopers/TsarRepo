@@ -10,67 +10,71 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
+<p>
+    @using (Html.BeginForm("Index", "Clients", FormMethod.Get))
+    {
+        <b>Search by:</b><font color="Black"> @Html.TextBox("Search")<input type="submit" value="Search" style="color: black" /></font>}
+</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ClientName)
-        </th>
+            <font color="white">  @Html.DisplayNameFor(model => model.ClientName)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.Branch)
-        </th>
+            <font color="white">  @Html.DisplayNameFor(model => model.Branch)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientAddress)
-        </th>
+            <font color="white"> @Html.DisplayNameFor(model => model.ClientAddress)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.ContactNumber)
-        </th>
+            <font color="white">  @Html.DisplayNameFor(model => model.ContactNumber)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
+            <font color="white"> @Html.DisplayNameFor(model => model.Email)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.ClientType)
-        </th>
+            <font color="white"> @Html.DisplayNameFor(model => model.ClientType)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectLeader)
-        </th>
+            <font color="white">  @Html.DisplayNameFor(model => model.ProjectLeader)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.TravelCode)
-        </th>
+            <font color="white">  @Html.DisplayNameFor(model => model.TravelCode)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.RoleType)
-        </th>
+            <font color="white">  @Html.DisplayNameFor(model => model.RoleType)</font>
+</th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ClientName)
+            <font color="gold">   @Html.DisplayFor(modelItem => item.ClientName)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Branch)
+            <font color="gold">   @Html.DisplayFor(modelItem => item.Branch)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ClientAddress)
+            <font color="gold">  @Html.DisplayFor(modelItem => item.ClientAddress)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ContactNumber)
+            <font color="gold">  @Html.DisplayFor(modelItem => item.ContactNumber)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
+            <font color="gold">  @Html.DisplayFor(modelItem => item.Email)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ClientType)
+            <font color="gold">   @Html.DisplayFor(modelItem => item.ClientType)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProjectLeader)
+            <font color="gold">  @Html.DisplayFor(modelItem => item.ProjectLeader)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TravelCode)
+            <font color="gold"> @Html.DisplayFor(modelItem => item.TravelCode)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RoleType)
+            <font color="gold">  @Html.DisplayFor(modelItem => item.RoleType)</font>
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

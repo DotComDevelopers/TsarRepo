@@ -10,67 +10,72 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<p>
+    @using (Html.BeginForm("Index", "Consultants", FormMethod.Get))
+    {
+        <b>Search by:</b><font color="Black"> @Html.TextBox("Search")<input type="submit" value="Search" style="color: black" /></font>}
+</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
+            <font color="white">    @Html.DisplayNameFor(model => model.FirstName) </font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
+            <font color="white">    @Html.DisplayNameFor(model => model.LastName) </font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.ContactNumber)
-        </th>
+            <font color="white">   @Html.DisplayNameFor(model => model.ContactNumber)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.ConsultantAddress)
-        </th>
+            <font color="white">    @Html.DisplayNameFor(model => model.ConsultantAddress)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
+            <font color="white">    @Html.DisplayNameFor(model => model.Email)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.ConsultantType)
-        </th>
+            <font color="white">   @Html.DisplayNameFor(model => model.ConsultantType)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.ComissionCode)
-        </th>
+            <font color="white">   @Html.DisplayNameFor(model => model.ComissionCode)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
+            <font color="white">  @Html.DisplayNameFor(model => model.Password)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.RoleType)
-        </th>
+            <font color="white">   @Html.DisplayNameFor(model => model.RoleType)</font>
+</th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
+            <font color="gold">  @Html.DisplayFor(modelItem => item.FirstName)</font>
+</td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
+            <font color="gold">    @Html.DisplayFor(modelItem => item.LastName)</font>
+</td>
         <td>
-            @Html.DisplayFor(modelItem => item.ContactNumber)
-        </td>
+            <font color="gold">   @Html.DisplayFor(modelItem => item.ContactNumber)</font>
+</td>
         <td>
-            @Html.DisplayFor(modelItem => item.ConsultantAddress)
-        </td>
+            <font color="gold">   @Html.DisplayFor(modelItem => item.ConsultantAddress)</font>
+</td>
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
+            <font color="gold">  @Html.DisplayFor(modelItem => item.Email)</font>
+</td>
         <td>
-            @Html.DisplayFor(modelItem => item.ConsultantType)
-        </td>
+            <font color="gold">   @Html.DisplayFor(modelItem => item.ConsultantType)</font>
+</td>
         <td>
-            @Html.DisplayFor(modelItem => item.ComissionCode)
-        </td>
+            <font color="gold">   @Html.DisplayFor(modelItem => item.ComissionCode)</font>
+</td>
         <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
+            <font color="gold">  @Html.DisplayFor(modelItem => item.Password)</font>
+</td>
         <td>
-            @Html.DisplayFor(modelItem => item.RoleType)
-        </td>
+            <font color="gold"> @Html.DisplayFor(modelItem => item.RoleType)</font>
+</td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ConsultantNum }) |
             @Html.ActionLink("Details", "Details", new { id=item.ConsultantNum }) |

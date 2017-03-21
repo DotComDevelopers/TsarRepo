@@ -16,14 +16,14 @@ namespace TSAR.Models
         public string FirstName { get; set; }
         [Required]
         [Display(Name = "Last Name")]
-        public  string LastName { get; set; }
+        public string LastName { get; set; }
         [Required]
         [Display(Name = "Contact Number")]
         public int ContactNumber { get; set; }
         [Required]
         [Display(Name = "Consultant Address")]
         public string ConsultantAddress { get; set; }
-         [Required]
+        [Required]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
@@ -40,6 +40,5 @@ namespace TSAR.Models
         [Required]
         [Display(Name = "Role Type")]
         public string RoleType { get; set; }
-
     }
 }

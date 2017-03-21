@@ -15,11 +15,16 @@ namespace TSAR.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Clients
-        public ActionResult Index()
-        {
-            return View(db.Clients.ToList());
-        }
+        public ActionResult Index(string Search)
 
+        {
+            if (Search == null)
+            {
+                return View(db.Clients.ToList());
+            }
+            else
+                return View(db.Clients.Where(p => p.ClientName == Search).ToList());
+        }
 
         // GET: Clients/Details/5
         public ActionResult Details(int? id)

@@ -53,8 +53,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -179,6 +179,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\ConsultantsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManageTravelController.cs" />
@@ -189,8 +191,18 @@
     <Compile Include="Migrations\201703210705170_ManageTravel.Designer.cs">
       <DependentUpon>201703210705170_ManageTravel.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Migrations\201703210940041_Client.cs.cs" />
+    <EmbeddedResource Include="Migrations\201703210940041_Client.cs.Designer.cs">
+      <DependentUpon>201703210940041_Client.cs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703210942310_Consultant.cs.cs" />
+    <Compile Include="Migrations\201703210942310_Consultant.cs.Designer.cs">
+      <DependentUpon>201703210942310_Consultant.cs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Consultant.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageTravel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -371,6 +383,16 @@
     <Content Include="Views\ManageTravel\Details.cshtml" />
     <Content Include="Views\ManageTravel\Edit.cshtml" />
     <Content Include="Views\ManageTravel\Index.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\Consultants\Create.cshtml" />
+    <Content Include="Views\Consultants\Delete.cshtml" />
+    <Content Include="Views\Consultants\Details.cshtml" />
+    <Content Include="Views\Consultants\Edit.cshtml" />
+    <Content Include="Views\Consultants\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -383,6 +405,8 @@
     <EmbeddedResource Include="Migrations\201703210705170_ManageTravel.resx">
       <DependentUpon>201703210705170_ManageTravel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703210940041_Client.cs.resx" />
+    <EmbeddedResource Include="Migrations\201703210942310_Consultant.cs.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
