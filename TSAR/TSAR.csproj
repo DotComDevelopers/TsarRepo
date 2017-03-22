@@ -259,6 +259,9 @@
     <Content Include="img\team\1.jpg" />
     <Content Include="img\team\2.jpg" />
     <Content Include="img\team\3.jpg" />
+    <Content Include="img\team\Anoop.jpg" />
+    <Content Include="img\team\devashen.jpg" />
+    <Content Include="img\team\Ivan.jpg" />
     <Content Include="js\agency.js" />
     <Content Include="js\agency.min.js" />
     <Content Include="js\contact_me.js" />
@@ -277,6 +280,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
