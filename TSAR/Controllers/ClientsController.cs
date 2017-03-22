@@ -10,6 +10,7 @@ using TSAR.Models;
 
 namespace TSAR.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ClientsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

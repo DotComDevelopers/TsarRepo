@@ -385,5 +385,10 @@ namespace TSAR.Controllers
         }
 
 #endregion
+        [Authorize(Roles="Admin")]
+        public ActionResult ManagerMenu()
+        {
+            return View();
+        }
     }
 }

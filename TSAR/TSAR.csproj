@@ -411,6 +411,7 @@
     <Content Include="Views\Newsletter\Edit.cshtml" />
     <Content Include="Views\Newsletter\Index.cshtml" />
     <Content Include="Views\SendMailer\Index.cshtml" />
+    <Content Include="Views\Manage\ManagerMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

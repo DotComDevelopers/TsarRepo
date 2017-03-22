@@ -10,6 +10,7 @@ using TSAR.Models;
 
 namespace TSAR.Controllers
 {
+   
     public class NewsletterController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

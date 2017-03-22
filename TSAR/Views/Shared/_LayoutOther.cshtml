@@ -50,6 +50,9 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Home")
+                    </li>
                     <li>                       
                         @Html.ActionLink("Services", "Index", "Home", new { @class = "page-scroll", href = "#about" }, null)
                     </li>
@@ -65,6 +68,30 @@
                     <li>                       
                         @Html.ActionLink("Contact", "Index", "Home", new { @class = "page-scroll", href = "#about" }, null)
                     </li>
+                    <li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Log Off</a>
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Log In", "Login", "Account")</li>
+                                <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                            </ul>
+                        }
+                    </li>
+                    <li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Manager Menu", "ManagerMenu", "Manage")</li>
+
+                            </ul>
+                        }
+                    </li>
+
+
                  
                 </ul>
             </div>

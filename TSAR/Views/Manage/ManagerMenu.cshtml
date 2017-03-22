@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "ManagerMenu";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Manager Menu</h2>
+
+<ul class="table">
+    <li class="h2">
+        @Html.ActionLink("View Consultants", "Index", "Consultants")
+    </li>
+    <li class="h2">
+        @Html.ActionLink("View Travel Codes", "Index", "ManageTravel")
+    </li>
+    <li class="h2">
+        @Html.ActionLink("View Clients", "Index", "Clients")
+    </li>
+    <li class="h2">
+        @Html.ActionLink("Manage Newsletter", "Index", "Newsletter")
+    </li>
+</ul>
+
+
+
