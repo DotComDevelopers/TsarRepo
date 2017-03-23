@@ -16,6 +16,7 @@ namespace TSAR.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Newsletter
+        [Authorize(Roles="Admin")]
         public ActionResult Index(string search)
         {
             if (search == null)
