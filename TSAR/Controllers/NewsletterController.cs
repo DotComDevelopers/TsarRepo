@@ -118,6 +118,7 @@ namespace TSAR.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Subscription subscription = db.Subscriptions.Find(id);
+            if (subscription == null) throw new ArgumentNullException(nameof(subscription));
             db.Subscriptions.Remove(subscription);
             db.SaveChanges();
             return RedirectToAction("Index");
