@@ -226,7 +226,7 @@ fieldset[disabled] .btn-xl.active {
   }
 }
 header {
-  background-image: url('../img/header-bg.jpg');
+  background-image: url('../img/Elephant3.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -236,6 +236,24 @@ header {
   -o-background-size: cover;
   text-align: center;
   color: white;
+     max-width: 100%;
+    height: auto;
+    width: auto\9;
+}
+header .Other {
+  background-image: url('../img/Elephant1.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  text-align: center;
+  color: white;
+     max-width: 100%;
+    height: auto;
+    width: auto\9;
 }
 header .intro-text {
   padding-top: 100px;
@@ -247,6 +265,7 @@ header .intro-text .intro-lead-in {
   font-size: 22px;
   line-height: 22px;
   margin-bottom: 25px;
+  color: Yellow;
 }
 header .intro-text .intro-heading {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -255,6 +274,7 @@ header .intro-text .intro-heading {
   font-size: 50px;
   line-height: 50px;
   margin-bottom: 25px;
+    color: yellow;
 }
 @media (min-width: 768px) {
   header .intro-text {
