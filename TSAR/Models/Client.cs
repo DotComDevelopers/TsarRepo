@@ -28,9 +28,7 @@ namespace TSAR.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        [Required]
-        [Display(Name = "Client Type")]
-        public string ClientType { get; set; }
+       
         [Required]
         [Display(Name = "Project Leader")]
         public string ProjectLeader { get; set; }
@@ -44,8 +42,6 @@ namespace TSAR.Models
         
 
 
-        [Required]
-        [Display(Name = "Role Type")]
-        public string RoleType { get; set; }
+        
     }
 }

@@ -35,8 +35,24 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ClientAddress, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ClientAddress, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ClientAddress, "", new { @class = "text-danger" })
+                @*<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDYt9as2cjmqUnGKD5POvx0xegcT_z40tw&libraries=places"></script>
+                <script type="text/javascript">
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('ClientAddress'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+                var place = places.getPlace();
+                var address = place.formatted_address;
+                var latitude = place.geometry.location.lat();
+                var longitude = place.geometry.location.lng();
+                var mesg = "Address: " + address;
+                mesg += "\nLatitude: " + latitude;
+                mesg += "\nLongitude: " + longitude;
+                
+            });
+        });
+                </script>*@
+                @Html.EditorFor(model => model.ClientAddress, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.ClientAddress, "", new {@class = "text-danger"})
             </div>
         </div>
 
@@ -56,13 +72,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ClientType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ClientType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ClientType, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
 
         <div class="form-group">
             @Html.LabelFor(model => model.ProjectLeader, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -77,14 +87,6 @@
             <div class="col-md-10">
                 @Html.DropDownList("TravelCode", null, htmlAttributes: new { @class = "form-control", style = "text-transform:uppercase;" } )
                 @Html.ValidationMessageFor(model => model.TravelCode, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RoleType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RoleType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RoleType, "", new { @class = "text-danger" })
             </div>
         </div>
 
