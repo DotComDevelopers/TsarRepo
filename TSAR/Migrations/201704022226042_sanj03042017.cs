@@ -3,7 +3,7 @@ namespace TSAR.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class sanj03042017 : DbMigration
     {
         public override void Up()
         {
@@ -17,10 +17,8 @@ namespace TSAR.Migrations
                         ClientAddress = c.String(nullable: false),
                         ContactNumber = c.Long(nullable: false),
                         Email = c.String(nullable: false),
-                        ClientType = c.String(nullable: false),
                         ProjectLeader = c.String(nullable: false),
                         TravelCode = c.String(nullable: false, maxLength: 128),
-                        RoleType = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.ManageTravels", t => t.TravelCode, cascadeDelete: true)
