@@ -27,6 +27,8 @@ namespace TSAR.Controllers
                 return View(db.Consultants.Where(p => p.FirstName == Search).ToList());
         }
 
+        //test 
+
         // GET: Consultants/Details/5
         public ActionResult Details(int? id)
         {
