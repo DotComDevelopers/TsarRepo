@@ -10,25 +10,24 @@ using TSAR.Models;
 
 namespace TSAR.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class ManageTravelController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        // GET: ManageTravel
         public ActionResult Index(string Search)
-
         {
             if (Search == null)
             {
                 return View(db.ManageTravels.ToList());
             }
             else
-                return View(db.ManageTravels.Where(p => p.travelCode == Search).ToList());
-
+                return View(db.ManageTravels.Where(p => p.TravelCode == Search).ToList());
+           
         }
 
         // GET: ManageTravel/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -53,7 +52,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "tcode,travelCode,rate,distance")] ManageTravel manageTravel)
+        public ActionResult Create([Bind(Include = "TravelCode,rate,distance,TravelFee")] ManageTravel manageTravel)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +65,7 @@ namespace TSAR.Controllers
         }
 
         // GET: ManageTravel/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -85,7 +84,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "tcode,travelCode,rate,distance")] ManageTravel manageTravel)
+        public ActionResult Edit([Bind(Include = "TravelCode,rate,distance,TravelFee")] ManageTravel manageTravel)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +96,7 @@ namespace TSAR.Controllers
         }
 
         // GET: ManageTravel/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -114,7 +113,7 @@ namespace TSAR.Controllers
         // POST: ManageTravel/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             ManageTravel manageTravel = db.ManageTravels.Find(id);
             db.ManageTravels.Remove(manageTravel);

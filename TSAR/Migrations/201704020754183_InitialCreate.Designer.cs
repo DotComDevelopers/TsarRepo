@@ -7,13 +7,13 @@ namespace TSAR.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Clientcs : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Clientcs));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201703210940041_Client.cs"; }
+            get { return "201704020754183_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

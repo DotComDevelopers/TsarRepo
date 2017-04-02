@@ -4,45 +4,55 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
+
 <h2>Index</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <p>
     @using (Html.BeginForm("Index", "ManageTravel", FormMethod.Get))
     {
         <b>Search by:</b><font color="Black"> @Html.TextBox("Search")<input type="submit" value="Search" style="color: black" /></font>}
 </p>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
+        
         <th>
-            <font color="white"> @Html.DisplayNameFor(model => model.travelCode)</font>
+            <font color="white"    @Html.DisplayNameFor(model => model.TravelCode)</font>
         </th>
         <th>
-            <font color="white">  @Html.DisplayNameFor(model => model.rate)</font>
+            <font color="white"> @Html.DisplayNameFor(model => model.rate)</font>
         </th>
         <th>
-            <font color="white">   @Html.DisplayNameFor(model => model.distance)</font>
+            <font color="white"> @Html.DisplayNameFor(model => model.distance)</font>
+        </th>
+        <th>
+            <font color="white">@Html.DisplayNameFor(model => model.TravelFee)</font>
         </th>
         <th></th>
     </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                <font color="gold">        @Html.DisplayFor(modelItem => item.travelCode)</font>
-            </td>
-            <td>
-                <font color="gold">   @Html.DisplayFor(modelItem => item.rate)</font>
-            </td>
-            <td>
-                <font color="gold"> @Html.DisplayFor(modelItem => item.distance)</font>
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.tcode }) |
-                @Html.ActionLink("Details", "Details", new { id = item.tcode }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.tcode })
-            </td>
-        </tr>
-    }
-</table><br />
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <font color="gold" style = "text-transform:uppercase;">       @Html.DisplayFor(modelItem => item.TravelCode)</font>
+        </td>
+        <td>
+            <font color="gold"> @Html.DisplayFor(modelItem => item.rate)</font>
+        </td>
+        <td>
+            <font color="gold"> @Html.DisplayFor(modelItem => item.distance)</font>
+        </td>
+        <td>
+            <font color="gold"> @Html.DisplayFor(modelItem => item.TravelFee)</font>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id = item.TravelCode}) |
+            @Html.ActionLink("Details", "Details", new {id = item.TravelCode}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.TravelCode})
+        </td>
+    </tr>
+}
+
+</table>

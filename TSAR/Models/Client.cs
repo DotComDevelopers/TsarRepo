@@ -34,9 +34,16 @@ namespace TSAR.Models
         [Required]
         [Display(Name = "Project Leader")]
         public string ProjectLeader { get; set; }
+
+        public virtual ManageTravel ManageTravel { get; set; }
+
+
+        [Display(Name="Travel Code")]
         [Required]
-        [Display(Name = "Travel Code")]
-        public int TravelCode { get; set; }
+        public string TravelCode { get; set; }
+        
+
+
         [Required]
         [Display(Name = "Role Type")]
         public string RoleType { get; set; }

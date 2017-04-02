@@ -12,14 +12,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.travelCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.travelCode)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.rate)
         </dt>
 
@@ -35,9 +27,17 @@
             @Html.DisplayFor(model => model.distance)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.TravelFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TravelFee)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.tcode }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TravelCode }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

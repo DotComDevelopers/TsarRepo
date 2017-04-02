@@ -189,21 +189,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703210705170_ManageTravel.cs" />
-    <Compile Include="Migrations\201703210705170_ManageTravel.Designer.cs">
-      <DependentUpon>201703210705170_ManageTravel.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Migrations\201703210940041_Client.cs.cs" />
-    <EmbeddedResource Include="Migrations\201703210940041_Client.cs.Designer.cs">
-      <DependentUpon>201703210940041_Client.cs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703210942310_Consultant.cs.cs" />
-    <Compile Include="Migrations\201703210942310_Consultant.cs.Designer.cs">
-      <DependentUpon>201703210942310_Consultant.cs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703211118438_Subscription.cs" />
-    <Compile Include="Migrations\201703211118438_Subscription.Designer.cs">
-      <DependentUpon>201703211118438_Subscription.cs</DependentUpon>
+    <Compile Include="Migrations\201704020754183_InitialCreate.cs" />
+    <Compile Include="Migrations\201704020754183_InitialCreate.Designer.cs">
+      <DependentUpon>201704020754183_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -395,16 +383,6 @@
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="Views\ManageTravel\Create.cshtml" />
-    <Content Include="Views\ManageTravel\Delete.cshtml" />
-    <Content Include="Views\ManageTravel\Details.cshtml" />
-    <Content Include="Views\ManageTravel\Edit.cshtml" />
-    <Content Include="Views\ManageTravel\Index.cshtml" />
-    <Content Include="Views\Clients\Create.cshtml" />
-    <Content Include="Views\Clients\Delete.cshtml" />
-    <Content Include="Views\Clients\Details.cshtml" />
-    <Content Include="Views\Clients\Edit.cshtml" />
-    <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Consultants\Create.cshtml" />
     <Content Include="Views\Consultants\Delete.cshtml" />
     <Content Include="Views\Consultants\Details.cshtml" />
@@ -417,6 +395,16 @@
     <Content Include="Views\Newsletter\Index.cshtml" />
     <Content Include="Views\SendMailer\Index.cshtml" />
     <Content Include="Views\Manage\ManagerMenu.cshtml" />
+    <Content Include="Views\Clients\Create.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Clients\Details.cshtml" />
+    <Content Include="Views\Clients\Edit.cshtml" />
+    <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\ManageTravel\Create.cshtml" />
+    <Content Include="Views\ManageTravel\Delete.cshtml" />
+    <Content Include="Views\ManageTravel\Details.cshtml" />
+    <Content Include="Views\ManageTravel\Edit.cshtml" />
+    <Content Include="Views\ManageTravel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -426,13 +414,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703210705170_ManageTravel.resx">
-      <DependentUpon>201703210705170_ManageTravel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703210940041_Client.cs.resx" />
-    <EmbeddedResource Include="Migrations\201703210942310_Consultant.cs.resx" />
-    <EmbeddedResource Include="Migrations\201703211118438_Subscription.resx">
-      <DependentUpon>201703211118438_Subscription.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704020754183_InitialCreate.resx">
+      <DependentUpon>201704020754183_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

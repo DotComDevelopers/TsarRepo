@@ -15,10 +15,10 @@ namespace TSAR.Models
     {
         [Key]
         //works
-        public int tcode { get; set; }
-
+      
+        
         [Display(Name = "Travel code")]
-        public string travelCode { get; set; }
+        public string TravelCode { get; set; }
 
         [Required]
         [Display(Name = "Rate")]
@@ -27,6 +27,14 @@ namespace TSAR.Models
 
         [Required]
         [Display(Name = "Distance")]
+
         public double distance { get; set; }
+
+        [Required]
+        [Display(Name = "TravelFee")]
+        public double TravelFee { get; set; }
+        public virtual ICollection<Client> Clients { get; set; }
+
+      
     }
 }

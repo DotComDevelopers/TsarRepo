@@ -10,14 +10,12 @@ using TSAR.Models;
 
 namespace TSAR.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class ClientsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Clients
         public ActionResult Index(string Search)
-
         {
             if (Search == null)
             {
@@ -25,6 +23,7 @@ namespace TSAR.Controllers
             }
             else
                 return View(db.Clients.Where(p => p.ClientName == Search).ToList());
+
         }
 
         // GET: Clients/Details/5
@@ -45,6 +44,7 @@ namespace TSAR.Controllers
         // GET: Clients/Create
         public ActionResult Create()
         {
+            ViewBag.TravelCode = new SelectList(db.ManageTravels, "TravelCode", "TravelCode");
             return View();
         }
 
@@ -62,6 +62,7 @@ namespace TSAR.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.TravelCode = new SelectList(db.ManageTravels, "TravelCode", "TravelCode", client.TravelCode);
             return View(client);
         }
 
@@ -77,6 +78,7 @@ namespace TSAR.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.TravelCode = new SelectList(db.ManageTravels, "TravelCode", "TravelCode", client.TravelCode);
             return View(client);
         }
 
@@ -93,6 +95,7 @@ namespace TSAR.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.TravelCode = new SelectList(db.ManageTravels, "TravelCode", "TravelCode", client.TravelCode);
             return View(client);
         }
 
