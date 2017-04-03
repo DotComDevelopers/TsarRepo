@@ -180,6 +180,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\CommissionsController.cs" />
     <Compile Include="Controllers\ConsultantsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -197,9 +198,14 @@
     <Compile Include="Migrations\201704030742119_ShriyaInitialCreate.Designer.cs">
       <DependentUpon>201704030742119_ShriyaInitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704032000459_AddedCommissionSanj.cs" />
+    <Compile Include="Migrations\201704032000459_AddedCommissionSanj.Designer.cs">
+      <DependentUpon>201704032000459_AddedCommissionSanj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Commission.cs" />
     <Compile Include="Models\Consultant.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MailModel.cs" />
@@ -409,6 +415,11 @@
     <Content Include="Views\ManageTravel\Details.cshtml" />
     <Content Include="Views\ManageTravel\Edit.cshtml" />
     <Content Include="Views\ManageTravel\Index.cshtml" />
+    <Content Include="Views\Commissions\Create.cshtml" />
+    <Content Include="Views\Commissions\Delete.cshtml" />
+    <Content Include="Views\Commissions\Details.cshtml" />
+    <Content Include="Views\Commissions\Edit.cshtml" />
+    <Content Include="Views\Commissions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -423,6 +434,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704030742119_ShriyaInitialCreate.resx">
       <DependentUpon>201704030742119_ShriyaInitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704032000459_AddedCommissionSanj.resx">
+      <DependentUpon>201704032000459_AddedCommissionSanj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

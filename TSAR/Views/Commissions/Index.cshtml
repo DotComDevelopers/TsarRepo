@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TSAR.Models.Commission>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <font color="white"> @Html.DisplayNameFor(model => model.CommissionName)</font>
+</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <font color="gold"> @Html.DisplayFor(modelItem => item.CommissionName)</font>
+</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CommissionId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CommissionId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CommissionId })
+        </td>
+    </tr>
+}
+
+</table>

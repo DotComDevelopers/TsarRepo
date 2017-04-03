@@ -37,5 +37,7 @@ namespace TSAR.Models
         public System.Data.Entity.DbSet<TSAR.Models.Consultant> Consultants { get; set; }
 
         public System.Data.Entity.DbSet<TSAR.Models.Subscription> Subscriptions { get; set; }
+
+        public System.Data.Entity.DbSet<TSAR.Models.Commission> Commissions { get; set; }
     }
 }
