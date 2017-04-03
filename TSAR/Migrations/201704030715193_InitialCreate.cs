@@ -3,7 +3,7 @@ namespace TSAR.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class sanj03042017 : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {

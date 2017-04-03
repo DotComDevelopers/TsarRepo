@@ -32,20 +32,20 @@ namespace TSAR.Migrations
                 manager.Create(role);
             }
             //Create default User and assign role
-            if (!(context.Users.Any(u => u.UserName == "Admin")))
+            if (!(context.Users.Any(u => u.UserName == "dotcomdevelopers19@gmail.com")))
             {
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
                 var userToInsert = new ApplicationUser
                 {
-                    UserName = "Admin",
+                    UserName = "dotcomdevelopers19@gmail.com",
                     PhoneNumber = "0797697898",
                     //Id = "34594e90-6b49-4c14-a858-deb018c5ad29",
                     Email = "dotcomdevelopers19@gmail.com",
                     EmailConfirmed = true,
                 };
                 userManager.Create(userToInsert, "Green1!");
-                userManager.AddToRole(userToInsert.Id, "Admin");
+                userManager.AddToRole(userToInsert.Id,"Admin");
             }
 
             //Create default Travel
