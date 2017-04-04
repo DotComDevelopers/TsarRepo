@@ -1,17 +1,64 @@
-﻿@{
+﻿@model TSAR.Models.EmailFormModel
+@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+    <!-- Contact Section -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Contact Us</h2>
+                <h3 class="section-subheading text-muted">Send us a message</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <form name="sentMessage" id="contactForm" novalidate>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @*<input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">*@
+                                @Html.TextBoxFor(m => m.FromName, new {@class = "form-control", placeholder = "Your Name *"})
+                                <p class="help-block text-danger">@Html.ValidationMessageFor(m => m.FromName)</p>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                @*<input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">*@
+                                @Html.TextBoxFor(m => m.FromEmail, new {@class = "form-control", placeholder = "Your Email *"})
+                                <p class="help-block text-danger">@Html.ValidationMessageFor(m => m.FromEmail)</p>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                @*<input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">*@
+                                @Html.TextBoxFor(m => m.Phone, new {@class = "form-control", placeholder = "Your Phone *"})
+                                <p class="help-block text-danger">@Html.ValidationMessageFor(m => m.Phone)</p>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @*  <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>*@
+                                @Html.TextAreaFor(m => m.Message, new {@class = "form-control", placeholder = "Your Message *"})
+                                <p class="help-block text-danger">@Html.ValidationMessageFor(m => m.Message)</p>
+                                @*<p class="help-block text-danger"></p>*@
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-xl" value="Send">Send Message</button>
+                                @*<input type="submit" class="btn btn-default" value="Send" />*@
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
