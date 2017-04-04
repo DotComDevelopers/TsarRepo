@@ -54,7 +54,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -180,6 +180,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\CommissionsController.cs" />
     <Compile Include="Controllers\ConsultantsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -193,9 +194,18 @@
     <Compile Include="Migrations\201704030715193_InitialCreate.Designer.cs">
       <DependentUpon>201704030715193_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704030742119_ShriyaInitialCreate.cs" />
+    <Compile Include="Migrations\201704030742119_ShriyaInitialCreate.Designer.cs">
+      <DependentUpon>201704030742119_ShriyaInitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704032000459_AddedCommissionSanj.cs" />
+    <Compile Include="Migrations\201704032000459_AddedCommissionSanj.Designer.cs">
+      <DependentUpon>201704032000459_AddedCommissionSanj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Commission.cs" />
     <Compile Include="Models\Consultant.cs" />
     <Compile Include="Models\ContactEmailFormModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -407,6 +417,11 @@
     <Content Include="Views\ManageTravel\Edit.cshtml" />
     <Content Include="Views\ManageTravel\Index.cshtml" />
     <Content Include="Views\Home\Sent.cshtml" />
+    <Content Include="Views\Commissions\Create.cshtml" />
+    <Content Include="Views\Commissions\Delete.cshtml" />
+    <Content Include="Views\Commissions\Details.cshtml" />
+    <Content Include="Views\Commissions\Edit.cshtml" />
+    <Content Include="Views\Commissions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -418,6 +433,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201704030715193_InitialCreate.resx">
       <DependentUpon>201704030715193_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704030742119_ShriyaInitialCreate.resx">
+      <DependentUpon>201704030742119_ShriyaInitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704032000459_AddedCommissionSanj.resx">
+      <DependentUpon>201704032000459_AddedCommissionSanj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

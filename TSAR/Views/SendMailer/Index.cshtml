@@ -13,48 +13,64 @@
         }
     });
 </script>
-<h2>Send Email </h2>
 <fieldset>
 
-    @using (@Html.BeginForm("Index", "SendMailer", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data" }))
+    @using (@Html.BeginForm("Index", "SendMailer", "EmailTo", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data" }))
     {
-        @Html.ValidationSummary()
-        <input type="submit" value="Send" style="background-color: black" />
 
-        <table>
-            <tr>
-                <td>
+
+        <form>
+            <div class="col-md-11" align="center"><h2>Send Email </h2></div>
+            <div class="form-group">
+                <div class="col-md-11">
                     <font color="white">To:</font>
-                </td>
-                <td>
-                    @Html.TextBoxFor(m => m.To)
-                </td>
-            </tr>
-            <tr>
-                <td>
+                    <font color="black">@Html.TextBoxFor(m => m.To, new { @class = "form-control" })</font>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-11">
                     <font color="white">Subject:</font>
-                </td>
-                <td>
-                    @Html.TextBoxFor(m => m.Subject)
-                </td>
-            </tr>
-            <tr>
-                <td>
+
+                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
+                </div>
+
+            </div>
+
+
+            <div class="form-group" align="center">
+                <div class="col-md-11">
+
                     <font color="white">Attachment:</font>
-                </td>
-                <td>
-                    <input type="file" name="fileUploader" />
-                </td>
-            </tr>
-            <tr>
-                <td>
+
+                    <p>
+                        <input class="btn btn-primary " type="file" name="fileUploader" />
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-11">
                     <font color="white">Body:</font>
-                </td>
-                <td>
-                    @Html.TextAreaFor(m => m.Body)
-                </td>
-            </tr>
-        </table>
+                    @Html.TextAreaFor(m => m.Body, new { @height = "236px", @class = "form-control" })
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-11">
+                    @Html.ValidationSummary()
+                    <input class="btn btn-primary" type="submit" value="Send" />
+                </div>
+
+            </div>
+
+
+
+        </form>
+
     }
 </fieldset>
 

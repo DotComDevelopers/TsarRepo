@@ -96,7 +96,16 @@ namespace TSAR.Migrations
                     Email = "test@test.com"  
                 }
                 );
-              
+
+            //Create default commission
+            context.Commissions.AddOrUpdate(
+              c => c.CommissionId,
+              new Commission()
+              {
+                  CommissionId = 01,
+                  CommissionName = "Test"
+              }
+              );
         }
     }
 }
