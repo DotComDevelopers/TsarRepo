@@ -202,6 +202,10 @@
     <Compile Include="Migrations\201704032000459_AddedCommissionSanj.Designer.cs">
       <DependentUpon>201704032000459_AddedCommissionSanj.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704041529485_SeedUsers.cs" />
+    <Compile Include="Migrations\201704041529485_SeedUsers.Designer.cs">
+      <DependentUpon>201704041529485_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Client.cs" />
@@ -439,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704032000459_AddedCommissionSanj.resx">
       <DependentUpon>201704032000459_AddedCommissionSanj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704041529485_SeedUsers.resx">
+      <DependentUpon>201704041529485_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

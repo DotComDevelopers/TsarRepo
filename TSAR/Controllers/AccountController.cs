@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TSAR.Models;
@@ -157,6 +158,12 @@ namespace TSAR.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //Temp Code
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("Conultant"));
+                    //await UserManager.AddToRoleAsync(user.Id, "Consultant");
+
 
                     // This code has been added to the action for email confirmation
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace TSAR.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
