@@ -97,15 +97,16 @@ namespace TSAR.Migrations
                 }
                 );
 
-            //Create default commission
-            context.Commissions.AddOrUpdate(
-              c => c.CommissionId,
-              new Commission()
-              {
-                  CommissionId = 01,
-                  CommissionName = "Test"
-              }
-              );
+
+            context.Commissions.AddOrUpdate(                
+                c=> c.CommissionId,
+                new Commission()
+                {
+                    CommissionId = 1,
+                     CommissionName = "Test"
+                }
+                );
+
         }
     }
 }

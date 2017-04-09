@@ -36,6 +36,15 @@ namespace TSAR.Migrations
                 .PrimaryKey(t => t.TravelCode);
             
             CreateTable(
+                "dbo.Commissions",
+                c => new
+                    {
+                        CommissionId = c.Int(nullable: false, identity: true),
+                        CommissionName = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.CommissionId);
+            
+            CreateTable(
                 "dbo.Consultants",
                 c => new
                     {
@@ -152,6 +161,7 @@ namespace TSAR.Migrations
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Consultants");
+            DropTable("dbo.Commissions");
             DropTable("dbo.ManageTravels");
             DropTable("dbo.Clients");
         }
