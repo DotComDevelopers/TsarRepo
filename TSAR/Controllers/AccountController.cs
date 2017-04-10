@@ -16,6 +16,7 @@ namespace TSAR.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -158,11 +159,8 @@ namespace TSAR.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //Temp Code
-                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    //await roleManager.CreateAsync(new IdentityRole("Conultant"));
-                    //await UserManager.AddToRoleAsync(user.Id, "Consultant");
+                    
+
 
 
                     // This code has been added to the action for email confirmation
