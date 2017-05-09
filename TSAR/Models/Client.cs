@@ -10,7 +10,7 @@ namespace TSAR.Models
     public class Client
     {
         [Key]
-     
+        [Required]
         public int Id { get; set; }
         [Required]
         [Display(Name = "Client Name")]
@@ -37,10 +37,11 @@ namespace TSAR.Models
 
 
         [Display(Name="Travel Code")]
-        //[Required]
+        [Required]
         public string TravelCode { get; set; }
-
         
 
+
+        
     }
 }

@@ -19,18 +19,18 @@
         @Html.HiddenFor(model => model.TravelCode)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Rate, htmlAttributes: new { @class = "col-md-offset-5 col-md-2" })
+            @Html.LabelFor(model => model.rate, htmlAttributes: new { @class = "col-md-offset-5 col-md-2" })
             <div class="col-md-offset-5 col-md-2">
-                @Html.EditorFor(model => model.Rate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Rate, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.rate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Distance, htmlAttributes: new { @class = "col-md-offset-5 col-md-2" })
+            @Html.LabelFor(model => model.distance, htmlAttributes: new { @class = "col-md-offset-5 col-md-2" })
             <div class="col-md-offset-5 col-md-2">
-                @Html.EditorFor(model => model.Distance, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Distance, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.distance, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.distance, "", new { @class = "text-danger" })
             </div>
         </div>
 

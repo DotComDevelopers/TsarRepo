@@ -41,8 +41,6 @@
             <font color="white">  @Html.DisplayNameFor(model => model.ProjectLeader)</font>
         </th>
         
-       
-        
         <th></th>
     </tr>
 
@@ -63,18 +61,16 @@
 </td>
         <td>
             <font color="gold">   @Html.DisplayFor(modelItem => item.Email)</font>
-        </td>
-        
+</td>
        
         <td>
             <font color="gold" style = "text-transform:uppercase;"> @Html.DisplayFor(modelItem => item.ManageTravel.TravelCode)</font>
 
         </td>
-       
+
         <td>
             <font color="gold"> @Html.DisplayFor(modelItem => item.ProjectLeader)</font>
-        </td>
-        
+</td>
      
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

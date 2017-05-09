@@ -39,7 +39,5 @@ namespace TSAR.Models
         public System.Data.Entity.DbSet<TSAR.Models.Subscription> Subscriptions { get; set; }
 
         public System.Data.Entity.DbSet<TSAR.Models.Commission> Commissions { get; set; }
-
-        public System.Data.Entity.DbSet<TSAR.Models.Budget> Budgets { get; set; }
     }
 }

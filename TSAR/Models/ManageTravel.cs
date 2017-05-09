@@ -20,17 +20,17 @@ namespace TSAR.Models
         [Display(Name = "Travel code")]
         public string TravelCode { get; set; }
 
-       // [Required]
+        [Required]
         [Display(Name = "Rate")]
-        public double Rate { get; set; }
+        public double rate { get; set; }
 
 
-       // [Required]
+        [Required]
         [Display(Name = "Distance")]
 
-        public string Distance { get; set; }
+        public double distance { get; set; }
 
-        //[Required]
+        [Required]
         [Display(Name = "TravelFee")]
         public double TravelFee { get; set; }
         public virtual ICollection<Client> Clients { get; set; }
