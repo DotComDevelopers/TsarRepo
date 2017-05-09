@@ -1,4 +1,4 @@
-﻿@model TSAR.Models.Client
+﻿@model TSAR.ViewModels.TravelViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -69,8 +69,12 @@
         <dd>
             @Html.DisplayFor(model => model.ProjectLeader)
         </dd>
-
-       
+        <dt>
+            @Html.DisplayNameFor(model => model.Rate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rate)
+        </dd>
 
     </dl>
 
