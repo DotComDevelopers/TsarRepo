@@ -8,6 +8,19 @@ namespace TSAR.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Budgets",
+                c => new
+                    {
+                        BudgetCode = c.Int(nullable: false, identity: true),
+                        ClientName = c.String(nullable: false),
+                        Balance = c.Single(nullable: false),
+                         Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.BudgetCode)
+                .ForeignKey("dbo.Clients", t => t.Id)
+                .Index(t => t.Id);
+            
+            CreateTable(
                 "dbo.Clients",
                 c => new
                     {
@@ -30,7 +43,7 @@ namespace TSAR.Migrations
                     {
                         TravelCode = c.String(nullable: false, maxLength: 128),
                         rate = c.Double(nullable: false),
-                        distance = c.Double(nullable: false),
+                        distance = c.String(nullable: false),
                         TravelFee = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.TravelCode);
@@ -147,6 +160,7 @@ namespace TSAR.Migrations
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Clients", "TravelCode", "dbo.ManageTravels");
+            DropForeignKey("dbo.Budgets", "Client_Id", "dbo.Clients");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
@@ -154,6 +168,7 @@ namespace TSAR.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Clients", new[] { "TravelCode" });
+            DropIndex("dbo.Budgets", new[] { "Client_Id" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
@@ -164,6 +179,7 @@ namespace TSAR.Migrations
             DropTable("dbo.Commissions");
             DropTable("dbo.ManageTravels");
             DropTable("dbo.Clients");
+            DropTable("dbo.Budgets");
         }
     }
 }

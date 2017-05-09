@@ -51,7 +51,7 @@ namespace TSAR.Migrations
             //Create default Travel
             context.ManageTravels.AddOrUpdate(
               t => t.TravelCode,
-              new ManageTravel() { TravelCode = "DUR", distance = 10, rate = 2, TravelFee = 20 }
+              new ManageTravel() { TravelCode = "DUR", Distance = "10 km", Rate = 2, TravelFee = 20 }
              //new ManageTravel() { TravelCode = "CPT",distance = 20, rate =2 , TravelFee =40 },
                  );
             //Create default Client

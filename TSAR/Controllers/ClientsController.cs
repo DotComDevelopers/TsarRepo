@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.Mvc;
+using System.Web.UI;
 using TSAR.Models;
+using TSAR.ViewModels;
 
 namespace TSAR.Controllers
 
@@ -21,13 +26,15 @@ namespace TSAR.Controllers
         {
             if (Search == null)
             {
+               
+               
                 return View(db.Clients.ToList());
             }
             else
                 return View(db.Clients.Where(p => p.ClientName == Search).ToList());
 
         }
-
+        
         // GET: Clients/Details/5
         public ActionResult Details(int? id)
         {
@@ -55,19 +62,87 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ClientName,Branch,ClientAddress,ContactNumber,Email,ClientType,ProjectLeader,TravelCode,RoleType")] Client client)
+        public ActionResult Create(TravelViewModel model)
         {
-            if (ModelState.IsValid)
+            Client client = new Client();
+
+           ManageTravel mt= new ManageTravel();
+       
+
+            if (model.ClientAddress!=null)
             {
+              
+                client.ClientName = model.ClientName;
+                client.Branch = model.Branch;
+                client.ClientAddress = model.ClientAddress;
+                client.ContactNumber = model.ContactNumber;
+                client.Email = model.Email;
+                client.ProjectLeader = model.ProjectLeader;
+            
+                    mt.TravelCode = model.ClientName.Substring(0, 4);
+                    mt.Rate = model.Rate;
+
+                    mt.Distance = model.Distance;
+                    double p;
+                    int count = 0;
+                foreach (char item in model.Distance)
+                {
+                    if (item != null)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            p = Convert.ToDouble(model.Distance.Substring(0, 1));
+                            mt.TravelFee = ((mt.Rate * p) * 2);
+                        }
+                        else if (count == 4)
+                        {
+                            p = Convert.ToDouble(model.Distance.Substring(0, 2));
+                            mt.TravelFee = ((mt.Rate * p) * 2);
+                        }
+                        else if (count == 5)
+                        {
+                            p = Convert.ToDouble(model.Distance.Substring(0, 3));
+                            mt.TravelFee = ((mt.Rate * p) * 2);
+                        }
+                        else if (count == 6)
+
+                        {
+                            p = Convert.ToDouble(model.Distance.Substring(0, 4));
+                            mt.TravelFee = ((mt.Rate * p) * 2);
+                        }
+                        else
+                        {
+                            p = Convert.ToDouble(model.Distance.Substring(0, 2));
+                            mt.TravelFee = ((mt.Rate * p) * 2);
+
+                        }
+
+                    }
+                }
+
+
+
+
+
+                db.ManageTravels.Add(mt);
+                
+                client.TravelCode = model.ClientName.Substring(0, 4);
+
+
+                
                 db.Clients.Add(client);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TravelCode = new SelectList(db.ManageTravels, "TravelCode", "TravelCode", client.TravelCode);
-            return View(client);
-        }
 
+
+        
+        return View(model);
+        }
+     
         // GET: Clients/Edit/5
         public ActionResult Edit(int? id)
         {
