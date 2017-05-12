@@ -179,6 +179,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CommissionsController.cs" />
     <Compile Include="Controllers\ConsultantsController.cs" />
@@ -197,6 +198,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Budget.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Commission.cs" />
     <Compile Include="Models\Consultant.cs" />
@@ -213,6 +215,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\TravelViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -419,6 +422,11 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\ManageUserRoles.cshtml" />
+    <Content Include="Views\Budget\Create.cshtml" />
+    <Content Include="Views\Budget\Delete.cshtml" />
+    <Content Include="Views\Budget\Details.cshtml" />
+    <Content Include="Views\Budget\Edit.cshtml" />
+    <Content Include="Views\Budget\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

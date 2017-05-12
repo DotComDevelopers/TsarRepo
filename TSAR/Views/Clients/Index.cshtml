@@ -16,7 +16,7 @@
 </p>
 <table class="table">
     <tr>
-        
+
         <th>
             <font color="white">   @Html.DisplayNameFor(model => model.ClientName)</font>
         </th>
@@ -40,44 +40,49 @@
         <th>
             <font color="white">  @Html.DisplayNameFor(model => model.ProjectLeader)</font>
         </th>
-        
+
+
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-      
-        <td>
-            <font color="gold">  @Html.DisplayFor(modelItem => item.ClientName)</font>
-</td>
-        <td>
-            <font color="gold">   @Html.DisplayFor(modelItem => item.Branch)</font>
-</td>
-        <td>
-            <font color="gold">   @Html.DisplayFor(modelItem => item.ClientAddress)</font>
-</td>
-        <td>
-            <font color="gold">  @Html.DisplayFor(modelItem => item.ContactNumber)</font>
-</td>
-        <td>
-            <font color="gold">   @Html.DisplayFor(modelItem => item.Email)</font>
-</td>
-       
-        <td>
-            <font color="gold" style = "text-transform:uppercase;"> @Html.DisplayFor(modelItem => item.ManageTravel.TravelCode)</font>
+    @foreach (var item in Model)
+    {
+        <tr>
 
-        </td>
+            <td>
+                <font color="gold">  @Html.DisplayFor(modelItem => item.ClientName)</font>
+            </td>
+            <td>
+                <font color="gold">   @Html.DisplayFor(modelItem => item.Branch)</font>
+            </td>
+            <td>
+                <font color="gold">   @Html.DisplayFor(modelItem => item.ClientAddress)</font>
+            </td>
+            <td>
+                <font color="gold">  @Html.DisplayFor(modelItem => item.ContactNumber)</font>
+            </td>
+            <td>
+                <font color="gold">   @Html.DisplayFor(modelItem => item.Email)</font>
+            </td>
 
-        <td>
-            <font color="gold"> @Html.DisplayFor(modelItem => item.ProjectLeader)</font>
-</td>
-     
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+
+            <td>
+                <font color="gold" style="text-transform:uppercase;"> @Html.DisplayFor(modelItem => item.ManageTravel.TravelCode)</font>
+
+            </td>
+
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.ProjectLeader)</font>
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

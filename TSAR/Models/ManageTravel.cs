@@ -22,13 +22,13 @@ namespace TSAR.Models
 
         [Required]
         [Display(Name = "Rate")]
-        public double rate { get; set; }
+        public double Rate { get; set; }
 
 
         [Required]
         [Display(Name = "Distance")]
 
-        public double distance { get; set; }
+        public string Distance { get; set; }
 
         [Required]
         [Display(Name = "TravelFee")]
