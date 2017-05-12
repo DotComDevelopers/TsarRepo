@@ -60,13 +60,15 @@ namespace TSAR.Migrations
                 new Client()
                 {
                     Id = 1,
-                    Branch = "Test",
                     ClientAddress = "Test",
                     ClientName = "Test",
                     ContactNumber = 0765054589,
                     Email = "test@test.com",
                     ProjectLeader = "Test",
-                    TravelCode = "DUR"
+                    Distance = "1 km",
+                    Rate = 2,
+                    TravelCode = "Test "
+
                 }
                 );
 
@@ -107,6 +109,15 @@ namespace TSAR.Migrations
                 }
                 );
 
+            context.Budgets.AddOrUpdate(
+                c => c.BudgetCode,
+                new Budget()
+                {
+                    BudgetCode = 1,
+                    Id = 1,
+                    Balance = 100000
+                }
+                );
         }
     }
 }

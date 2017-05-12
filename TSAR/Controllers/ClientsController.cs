@@ -26,8 +26,9 @@ namespace TSAR.Controllers
         {
             if (Search == null)
             {
-
+               
                 
+
                 return View(db.Clients.ToList());
             }
             else
@@ -73,7 +74,8 @@ namespace TSAR.Controllers
             {
 
                 client.ClientName = model.ClientName;
-                client.Branch = model.Branch;
+                client.Distance = model.Distance;
+                client.Rate = model.Rate;
                 client.ClientAddress = model.ClientAddress;
                 client.ContactNumber = model.ContactNumber;
                 client.Email = model.Email;

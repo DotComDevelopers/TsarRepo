@@ -15,9 +15,7 @@ namespace TSAR.Models
         [Required]
         [Display(Name = "Client Name")]
         public string ClientName { get; set; }
-        [Required]
-        [Display(Name = "Company Branch")]
-        public string Branch { get; set; }
+        
         [Required]
         [Display(Name = "Client Address")]
         public string ClientAddress { get; set; }
@@ -36,12 +34,18 @@ namespace TSAR.Models
         public virtual ManageTravel ManageTravel { get; set; }
 
 
-        [Display(Name="Travel Code")]
+        [Display(Name = "Rate")]
+    
+        public double Rate { get; set; }
+
+
+        [Display(Name = "Distance")]
+  
+        public string Distance  { get; set; }
+
+
+        [Display(Name = "Rate")]
         [Required]
         public string TravelCode { get; set; }
-        
-
-
-        
     }
 }
