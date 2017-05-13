@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.EnterpriseServices;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -96,28 +97,33 @@ namespace TSAR.Controllers
 
                         if (count == 3)
                         {
-                            p = Convert.ToDouble(model.Distance.Substring(0, 1));
+                            //p = Convert.ToDouble(model.Distance.Substring(0, 1));
+                            p = double.Parse(model.Distance.Substring(0, 1), CultureInfo.InvariantCulture);
                             mt.TravelFee = ((mt.Rate * p) * 2);
                         }
                         else if (count == 4)
                         {
-                            p = Convert.ToDouble(model.Distance.Substring(0, 2));
+                            //p = Convert.ToDouble(model.Distance.Substring(0, 2));
+                            p = double.Parse(model.Distance.Substring(0, 2), CultureInfo.InvariantCulture);
                             mt.TravelFee = ((mt.Rate * p) * 2);
                         }
                         else if (count == 5)
                         {
-                            p = Convert.ToDouble(model.Distance.Substring(0, 3));
+                            //p = Convert.ToDouble(model.Distance.Substring(0, 3));
+                            p = double.Parse(model.Distance.Substring(0, 3), CultureInfo.InvariantCulture);
                             mt.TravelFee = ((mt.Rate * p) * 2);
                         }
                         else if (count == 6)
 
                         {
-                            p = Convert.ToDouble(model.Distance.Substring(0, 4));
+                            //p = Convert.ToDouble(model.Distance.Substring(0, 4));
+                            p = double.Parse(model.Distance.Substring(0, 4), CultureInfo.InvariantCulture);
                             mt.TravelFee = ((mt.Rate * p) * 2);
                         }
                         else
                         {
-                            p = Convert.ToDouble(model.Distance.Substring(0, 2));
+                            //p = Convert.ToDouble(model.Distance.Substring(0, 2));
+                            p = double.Parse(model.Distance.Substring(0, 2), CultureInfo.InvariantCulture);
                             mt.TravelFee = ((mt.Rate * p) * 2);
 
                         }
