@@ -100,6 +100,34 @@
                             </ul>
                         }
                     </li>
+                    <li>
+                        @if (User.IsInRole("Consultant"))
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Consultant Menu", "ConsultantMenu", "Manage")</li>
+
+                            </ul>
+                        }
+                    </li>
+                    <li>
+                        @if (User.IsInRole("Client"))
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Client Menu", "ClientMenu", "Manage")</li>
+
+                            </ul>
+                        }
+                    </li>
+                    <li>
+                        @if (User.IsInRole("Secretary"))
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Secretary Menu", "SecretaryMenu", "Manage")</li>
+
+                            </ul>
+                        }
+                    </li>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -281,7 +309,7 @@ Produce 1099 documents</p>
                                 <h2>Accounts Receivable</h2>
                                 <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
                                 <img class="img-responsive img-centered" src="https://cdn.gatewaycfs.com/business-financing/wp-content/uploads/2012/06/iStock_000004074257Small.jpg" alt="">
-                                <p>@*<a href="http://designmodo.com/startup/?u=787"*@>Accounts Receivable<@*/a>*@ SYSPRO Accounts Receivable improves cash flow management by accumulating and managing customer activity and ensuring timely revenue collection and effective reporting.
+                                <p>@*<a href="http://designmodo.com/startup/?u=787"*@>Accounts Receivable<@*/a>SYSPRO Accounts Receivable improves cash flow management by accumulating and managing customer activity and ensuring timely revenue collection and effective reporting.
 This system enhances customer servicing by maintaining contact information, creating notes and detailing credit management information.
 The Accounts Receivable system provides users with extensive control of customer information. Analysis and reporting can be performed on an open-item or balance-forward basis using various ageing options. Information for a defined series of related customers may be accumulated into a single master account for consolidated statement printing. In addition, free-format statements and recurring invoices can be designed.
 Receivables can be held in a local or foreign currency and the system complies with European Monetary Union ( EMU) requirements. Extensive cash posting facilities exist, which include post dated check entry and posting, miscellaneous unassigned cash receipts and the facility to post cash received to invoices manually or automatically by invoice of aged date. </p>

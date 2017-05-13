@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using TSAR.Models;
+
 
 namespace TSAR.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -24,7 +23,7 @@ namespace TSAR.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -36,9 +35,9 @@ namespace TSAR.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -122,7 +121,7 @@ namespace TSAR.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -146,8 +145,6 @@ namespace TSAR.Controllers
 
         //
         // POST: /Account/Register
-
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -155,34 +152,23 @@ namespace TSAR.Controllers
         {
             if (ModelState.IsValid)
             {
+                UserLogic obj = new UserLogic();
+                obj.AddNew(model);
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-
-                    // This code has been added to the action for email confirmation
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action(
-                        "ConfirmEmail",
-                        "Account",
-                        new { userId = user.Id, code = code },
-                        protocol: Request.Url.Scheme);
-
-                    await UserManager.SendEmailAsync(
-                        user.Id,
-                        "Confirm your account",
-                        "Please confirm your account by clicking this link: <a href=\""
-                        + callbackUrl + "\">link</a>");
-
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail"); // DisplayEmail View has been created
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
-
-                //end of email confirmation code
             }
 
             // If we got this far, something failed, redisplay form

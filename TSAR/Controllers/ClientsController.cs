@@ -91,7 +91,7 @@ namespace TSAR.Controllers
                 int count = 0;
                 foreach (char item in model.Distance)
                 {
-                    if (item != null)
+                    if (item != '_')
                     {
                         count++;
 

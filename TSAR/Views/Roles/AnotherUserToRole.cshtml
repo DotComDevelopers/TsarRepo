@@ -1,0 +1,35 @@
+﻿@model TSAR.Models.RolesView
+
+@{
+    ViewBag.Title = "Assign role to user";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+@using (Html.BeginForm("AnotherUserToRole", "Roles", FormMethod.Get))
+{
+
+    <table align="center" class="table">
+        <tr>
+            <td>
+                User:
+            </td>
+            <td>
+                @Html.DropDownList("MyUser")
+            </td>
+            <td>
+                Role:
+            </td>
+            <td>
+                @Html.DropDownList("Hey")
+            </td>
+            <td>
+                <input type="submit" value="Add User To Role" class="btn btn-primary btn-sm">
+            </td>
+        </tr>
+    </table>
+}
+
+@ViewBag.Message
+
+
+

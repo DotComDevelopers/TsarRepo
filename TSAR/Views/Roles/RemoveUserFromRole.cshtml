@@ -1,0 +1,31 @@
+﻿@model TSAR.Models.RegisterViewModel
+@{
+    ViewBag.Title = "RemoveUserFromRole";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+@using (Html.BeginForm("RemoveUserFromRole", "Roles", FormMethod.Get))
+{
+
+    <table align="center" class="table">
+        <tr>
+            <td>
+                User:
+            </td>
+            <td>
+                @Html.DropDownList("User")
+            </td>
+            <td>
+                Role:
+            </td>
+            <td>
+                @Html.DropDownList("Role")
+            </td>
+            <td>
+                <input type="submit" value="Remove User From Role" class="btn btn-primary btn-sm">
+            </td>
+        </tr>
+    </table>
+}
+
+@ViewBag.Message
