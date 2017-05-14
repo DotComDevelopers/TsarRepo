@@ -53,12 +53,12 @@ namespace TSAR.Controllers
             if (ModelState.IsValid)
             {
                 //created ticket ID should be returned as a reference
-                int ticketID = 1234;
+               
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
 
                 var twilioSmsClient = new TwilioSmsRestClient();
-                var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticketID}");
+                var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
 
                 if (smsStatusResult.IsCompleted)
                 {
