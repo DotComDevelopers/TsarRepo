@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TSAR.Models;
+using TSAR.SmsHelper;
 
 namespace TSAR.Controllers
 {
@@ -50,11 +51,25 @@ namespace TSAR.Controllers
         public ActionResult Create([Bind(Include = "LeaveId,FirstName,ApprovedBy,IsConfirmed,LeaveDecsription,LeaveDate,ReturnDate")] Leave leave)
         {
             if (ModelState.IsValid)
+
             {
+                int LeaveId = 1234;
                 leave.IsConfirmed = false;
                 db.Leaves.Add(leave);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                var twilioSmsClient = new TwilioSmsRestClient();
+                var smsStatusResult = twilioSmsClient.SendMessage($"Leave Application created Successfully. Leave Application Reference {LeaveId}");
+
+                if (smsStatusResult.IsCompleted)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {//an appropriate message stating sms failed error, either try again it
+                    return View(leave);
+                }
+
             }
 
             return View(leave);
