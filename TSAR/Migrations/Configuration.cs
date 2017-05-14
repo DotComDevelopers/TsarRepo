@@ -135,6 +135,19 @@ namespace TSAR.Migrations
 
                 }
             );
+
+            context.Leaves.AddOrUpdate(
+                c=> c.LeaveId,
+                new Leave()
+                {
+                    LeaveId = 1,
+                    FirstName = "Mary",
+                    ApprovedBy = "John",
+                    IsConfirmed = true,
+                    LeaveDecsription = "Sick Leave",
+                    LeaveDate = DateTime.Now,
+                    ReturnDate = DateTime.Now
+                });
         }
     }
 }
