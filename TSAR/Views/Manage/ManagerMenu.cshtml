@@ -5,45 +5,80 @@
 }
 
 <h2>Manager Menu</h2>
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="View Consultants" value="View Consultant" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Consultants")'" />
+</div>
 
-<ul class="table">
-    <li class="h2">
-        @Html.ActionLink("View Consultants", "Index", "Consultants")
-    </li>
-    <li class="h2">
-        @Html.ActionLink("View Travel Codes", "Index", "ManageTravel")
-    </li>
-    <li class="h2">
-        @Html.ActionLink("View Clients", "Index", "Clients")
-    </li>
-    <li class="h2">
-        @Html.ActionLink("Manage Newsletter", "Index", "Newsletter")
-    </li>
-    <li class="h2">
-        @Html.ActionLink("Send Newsletter", "Index", "SendMailer")
-    </li>
-    <li class="h2">
-        @Html.ActionLink("Commssion", "Index", "Commissions")
-    </li>
-    <li class="h2">
-        @Html.ActionLink("Administer Roles", "Index", "Roles")
-    </li>
-    <li class="h2">
-        @Html.ActionLink("Instant Message DashBoard", "Dashboard", "Dashboard")
-    </li>
-    <li class="h2">
-        @Html.ActionLink("Document Warehouse", "Index", "Files")
-    </li>
-    <li class="h2">
-        @Html.ActionLink("Tickets", "Index", "Tickets")
-    </li>
-    <li class="h2">
-        @Html.ActionLink("Timesheets", "Index", "Timesheets")
-    </li>
-    <li class="h2">
-        @Html.ActionLink("Manage Leave", "Index", "Leaves")
-    </li>
 
-</ul>
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="View Travel Code" value="View Travel Code" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "ManageTravel")'" />
+
+</div>
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="View Clients" value="View Clients" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Clients")'" />
+
+
+</div>
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="Manage Newsletter" value="Manage Newsletter" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Newsletter")'" />
+
+
+</div>
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="Send Newsletter" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "SendMailer")'" />
+
+
+</div>
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="Commission" value="Commission" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Commissions")'" />
+
+
+</div>
+
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="Administer Roles" value="Administer Roles" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Roles")'" />
+
+</div>
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="Budget" value="Budget" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Budget")'" />
+
+</div>
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="Instant Message Dashboard" value="Instant Message Dashboard" class="btn btn-primary" onclick="location.href='@Url.Action("Dashboard", "Dashboard")'" />
+
+</div>
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="Document warehouse" value="Document warehouse" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Files")'" />
+
+</div>
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="Tickets" value="Tickets" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Tickets")'" />
+
+</div>
+
+   <div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="Timesheets" value="Timesheets" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Timesheets")'" />
+
+</div>
+<div>
+    <br />
+    <input type="button" style="height:50px;width:200px" title="Leave" value="Leave" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Leaves")'" />
+
+</div>
+
+
+
 
 
