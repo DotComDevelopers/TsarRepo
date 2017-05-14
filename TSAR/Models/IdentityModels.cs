@@ -45,5 +45,7 @@ namespace TSAR.Models
         public System.Data.Entity.DbSet<TSAR.Models.File> Files { get; set; }
         public System.Data.Entity.DbSet<TSAR.Models.Timesheet> Timesheets { get; set; }
         public System.Data.Entity.DbSet<TSAR.Models.Ticket> Tickets { get; set; }
+
+        public System.Data.Entity.DbSet<TSAR.Models.Leave> Leaves { get; set; }
     }
 }
