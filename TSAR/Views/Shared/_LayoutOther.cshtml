@@ -100,6 +100,35 @@
                         }
                     </li>
 
+                    <li>
+                        @if (User.IsInRole("Consultant"))
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Consultant Menu", "ConsultantMenu", "Manage")</li>
+
+                            </ul>
+                        }
+                    </li>
+                    <li>
+                        @if (User.IsInRole("Client"))
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Client Menu", "ClientMenu", "Manage")</li>
+
+                            </ul>
+                        }
+                    </li>
+                    <li>
+                        @if (User.IsInRole("Secretary"))
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Secretary Menu", "SecretaryMenu", "Manage")</li>
+
+                            </ul>
+                        }
+                    </li>
+
+
 
                  
                 </ul>

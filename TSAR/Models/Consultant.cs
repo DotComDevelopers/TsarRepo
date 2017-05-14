@@ -36,7 +36,7 @@ namespace TSAR.Models
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        public string Password { get; set; }
+        public string Password { get; set; }    
         [Required]
         [Display(Name = "Role Type")]
         public string RoleType { get; set; }

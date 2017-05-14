@@ -51,7 +51,7 @@ namespace TSAR.Migrations
             //Create default Travel
             context.ManageTravels.AddOrUpdate(
               t => t.TravelCode,
-              new ManageTravel() { TravelCode = "Test ", Distance= "1 km", Rate = 2, TravelFee = 20 }
+              new ManageTravel() { TravelCode = "EVER", Distance= "1 km", Rate = 2, TravelFee = 20 }
              //new ManageTravel() { TravelCode = "CPT",distance = 20, rate =2 , TravelFee =40 },
                  );
             //Create default Client
@@ -60,14 +60,14 @@ namespace TSAR.Migrations
                 new Client()
                 {
                     Id = 1,
-                    ClientAddress = "Test",
-                    ClientName = "Test",
+                    ClientAddress = "15 Narbada Road",
+                    ClientName = "Everest",
                     ContactNumber = 0765054589,
-                    Email = "test@test.com",
-                    ProjectLeader = "Test",
+                    Email = "nash@everest.com",
+                    ProjectLeader = "Nash",
                     Distance = "1 km",
                     Rate = 2,
-                    TravelCode = "Test "
+                    TravelCode = "EVER"
 
                 }
                 );
@@ -77,12 +77,12 @@ namespace TSAR.Migrations
                 c =>c.ConsultantNum,
                 new Consultant()
                 {
-                    ComissionCode = "Test",
-                    ConsultantAddress = "Test",
+                    ComissionCode = "1",
+                    ConsultantAddress = "143 Warrangal Road",
                     ConsultantNum = 1,
                     ConsultantType = "Finance",
                     ContactNumber = 0112026584,
-                    Email = "test@test.com",
+                    Email = "jonny@gmail.com",
                     FirstName = "Jonny",
                     LastName = "Bravo",
                     Password = "test",
@@ -95,7 +95,7 @@ namespace TSAR.Migrations
                 new Subscription()
                 {
                     Id = 1,
-                    Email = "test@test.com"  
+                    Email = "john@gmail.com"  
                 }
                 );
 
@@ -105,7 +105,7 @@ namespace TSAR.Migrations
                 new Commission()
                 {
                     CommissionId = 1,
-                     CommissionName = "Test"
+                     CommissionName = "5%"
                 }
                 );
 
@@ -118,6 +118,23 @@ namespace TSAR.Migrations
                     Balance = 100000
                 }
                 );
+
+            context.Timesheets.AddOrUpdate(
+                c => c.TimesheetId,
+                new Timesheet()
+                {
+                    TimesheetId = 1,
+                    ActivityDescription = "Site Audit",
+                    CaptureDate = System.DateTime.Now,
+                    Id = 1,
+                    ConsultantNum = 1,
+                    StartTime = System.TimeSpan.FromHours(12),
+                    EndTime = System.TimeSpan.FromHours(13),
+                    Hours = 1,
+                    Total = 700
+
+                }
+            );
         }
     }
 }
