@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TSAR.Models;
+using TSAR.SmsHelper;
 
 namespace TSAR.Controllers
 {
@@ -51,9 +52,23 @@ namespace TSAR.Controllers
         {
             if (ModelState.IsValid)
             {
+                //created ticket ID should be returned as a reference
+                int ticketID = 1234;
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                var twilioSmsClient = new TwilioSmsRestClient();
+                var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticketID}");
+
+                if (smsStatusResult.IsCompleted)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {//an appropriate message stating sms failed error, either try again it
+                    return View(ticket);
+                }
+                
             }
 
             return View(ticket);

@@ -216,7 +216,6 @@
     <Compile Include="Controllers\NewsletterController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SendMailerController.cs" />
-    <Compile Include="Controllers\SmsController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\TimesheetsController.cs" />
     <Compile Include="Global.asax.cs">
