@@ -10,7 +10,7 @@ using TSAR.Models;
 
 namespace TSAR.Controllers
 {
-    [Authorize(Roles = "Admin,Conultant")]
+    [Authorize(Roles = "Admin,Consultant")]
     public class LeavesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
