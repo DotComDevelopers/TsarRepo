@@ -53,13 +53,13 @@ namespace TSAR.Controllers
             if (ModelState.IsValid)
 
             {
-                int LeaveId = 1234;
+
                 leave.IsConfirmed = false;
                 db.Leaves.Add(leave);
                 db.SaveChanges();
 
                 var twilioSmsClient = new TwilioSmsRestClient();
-                var smsStatusResult = twilioSmsClient.SendMessage($"Leave Application created Successfully. Leave Application Reference {LeaveId}");
+                var smsStatusResult = twilioSmsClient.SendMessage($"Leave Application created Successfully. Leave Application Reference {leave.LeaveId}");
 
                 if (smsStatusResult.IsCompleted)
                 {
