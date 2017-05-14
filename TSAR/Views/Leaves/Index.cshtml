@@ -8,55 +8,63 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div align="center">
+        <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
+    </div>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            <font color="white">   @Html.DisplayNameFor(model => model.FirstName)</font>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApprovedBy)
+            <font color="white">     @Html.DisplayNameFor(model => model.ApprovedBy)</font>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsConfirmed)
+            <font color="white">     @Html.DisplayNameFor(model => model.IsConfirmed)</font>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LeaveDecsription)
+            <font color="white">     @Html.DisplayNameFor(model => model.LeaveDecsription)</font>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LeaveDate)
+            <font color="white">       @Html.DisplayNameFor(model => model.LeaveDate)</font>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReturnDate)
+            <font color="white">       @Html.DisplayNameFor(model => model.ReturnDate)</font>
         </th>
+        <th></th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
+            <font color="gold">    @Html.DisplayFor(modelItem => item.FirstName)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ApprovedBy)
+            <font color="gold">    @Html.DisplayFor(modelItem => item.ApprovedBy)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsConfirmed)
+            <font color="gold">     @Html.DisplayFor(modelItem => item.IsConfirmed)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LeaveDecsription)
+            <font color="gold">      @Html.DisplayFor(modelItem => item.LeaveDecsription)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LeaveDate)
+            <font color="gold">      @Html.DisplayFor(modelItem => item.LeaveDate)</font>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReturnDate)
+            <font color="gold">      @Html.DisplayFor(modelItem => item.ReturnDate)</font>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LeaveId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LeaveId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LeaveId })
+        <td>
+            <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Leaves", new { id = item.LeaveId })'" />
+
+
+            <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Leaves", new { id = item.LeaveId })'" />
+
+            <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Leaves", new { id = item.LeaveId })'" />
+        </td>
         </td>
     </tr>
 }

@@ -8,7 +8,9 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div align="center">
+        <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
+    </div>
 </p>
 <table class="table">
     <tr>
@@ -21,20 +23,26 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <font color="gold"> @Html.DisplayFor(modelItem => item.CommissionId)</font>
-        </td>
-        <td>
-            <font color="gold"> @Html.DisplayFor(modelItem => item.CommissionName)</font>
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {id = item.CommissionId}) |
-            @Html.ActionLink("Details", "Details", new {id = item.CommissionId}) |
-            @Html.ActionLink("Delete", "Delete", new {id = item.CommissionId})
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.CommissionId)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.CommissionName)</font>
+            </td>
+            <td>
+
+                <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Clients", new { id = item.CommissionId })'" />
+
+
+                <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Clients", new { id = item.CommissionId })'" />
+
+                <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Clients", new { id = item.CommissionId })'" />
+
+            </td>
+        </tr>
+    }
 
 </table>

@@ -8,7 +8,9 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div align="center">
+        <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
+    </div>
 </p>
 <table class="table">
     <tr>
@@ -48,9 +50,14 @@
             <font color="gold">  @Html.DisplayFor(modelItem => item.Date)</font>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        <td>
+            <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Tickets", new { id = item.ID })'" />
+
+
+            <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Tickets", new { id = item.ID })'" />
+
+            <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Tickets", new { id = item.ID })'" />
+        </td>
         </td>
     </tr>
 }

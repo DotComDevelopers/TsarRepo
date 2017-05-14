@@ -8,7 +8,9 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div align="center">
+        <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
+    </div>
 </p>
 <p>
     @using (Html.BeginForm("Index", "Consultants", FormMethod.Get))
@@ -45,43 +47,49 @@
             <font color="white">   @Html.DisplayNameFor(model => model.RoleType)</font>
 </th>
         <th></th>
+        <th></th>
+        <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             <font color="gold">  @Html.DisplayFor(modelItem => item.FirstName)</font>
-</td>
+        </td>
         <td>
             <font color="gold">    @Html.DisplayFor(modelItem => item.LastName)</font>
-</td>
+        </td>
         <td>
             <font color="gold">   @Html.DisplayFor(modelItem => item.ContactNumber)</font>
-</td>
+        </td>
         <td>
             <font color="gold">   @Html.DisplayFor(modelItem => item.ConsultantAddress)</font>
-</td>
+        </td>
         <td>
             <font color="gold">  @Html.DisplayFor(modelItem => item.Email)</font>
-</td>
+        </td>
         <td>
             <font color="gold">   @Html.DisplayFor(modelItem => item.ConsultantType)</font>
-</td>
+        </td>
         <td>
             <font color="gold">   @Html.DisplayFor(modelItem => item.ComissionCode)</font>
-</td>
+        </td>
         <td>
             <font color="gold">  @Html.DisplayFor(modelItem => item.Password)</font>
-</td>
+        </td>
         <td>
             <font color="gold"> @Html.DisplayFor(modelItem => item.RoleType)</font>
-</td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ConsultantNum }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ConsultantNum }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ConsultantNum })
         </td>
+        <td>
+            <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Clients", new { id = item.ConsultantNum })'" />
+        </td>
+    <td>
+        <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Clients", new { id = item.ConsultantNum })'" />
+    </td>
+        <td>
+            <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Clients", new { id = item.ConsultantNum })'" />
+        </td>
+        
     </tr>
 }
-
-</table>

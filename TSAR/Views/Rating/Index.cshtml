@@ -1,0 +1,57 @@
+﻿@model IEnumerable<TSAR.Models.Rating>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <div align="center">
+        <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <font color="White">   @Html.DisplayNameFor(model => model.Consultant.FirstName)</font>
+</th>
+        <th>
+            <font color="White">    @Html.DisplayNameFor(model => model.Rate)</font>
+</th>
+        <th>
+            <font color="White">     @Html.DisplayNameFor(model => model.Reason)</font>
+</th>
+        <th>
+            <font color="White">     @Html.DisplayNameFor(model => model.ClientName)</font>
+</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <font color="gold">     @Html.DisplayFor(modelItem => item.Consultant.FirstName)</font>
+</td>
+        <td>
+            <font color="gold">    @Html.DisplayFor(modelItem => item.Rate)</font>
+</td>
+        <td>
+            <font color="gold">      @Html.DisplayFor(modelItem => item.Reason)</font>
+</td>
+        <td>
+            <font color="gold">      @Html.DisplayFor(modelItem => item.ClientName)</font>
+</td>
+        <td>
+            <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Rating", new { id = item.RatingId })'" />
+
+
+            <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Rating", new { id = item.RatingId })'" />
+
+            <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Rating", new { id = item.RatingId })'" />
+        </td>
+    </tr>
+}
+
+</table>

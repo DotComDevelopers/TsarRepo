@@ -8,17 +8,20 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div align="center">
+        <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
+    </div>
 </p>
 <table class="table">
     <tr>
         <th>
-            <font color="White">@Html.DisplayNameFor(model => model.Client.ClientName ) </font>
+            <font color="White">@Html.DisplayNameFor(model => model.Client.ClientName) </font>
         </th>
         <th>
             <font color="White">    @Html.DisplayNameFor(model => model.Balance)</font>
         </th>
         <th></th>
+
     </tr>
 
     @foreach (var item in Model)
@@ -31,9 +34,14 @@
                 <font color="gold">       @Html.DisplayFor(modelItem => item.Balance)</font>
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BudgetCode }) |
-                @Html.ActionLink("Details", "Details", new { id = item.BudgetCode }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.BudgetCode })
+
+                <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Clients", new { id = item.BudgetCode })'" />
+
+
+                <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Clients", new { id = item.BudgetCode })'" />
+
+                <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Clients", new { id = item.BudgetCode })'" />
+
             </td>
         </tr>
     }

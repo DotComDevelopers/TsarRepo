@@ -7,21 +7,23 @@
 
 <h2>Index</h2>
 <p>
-    @using (Html.BeginForm("Index", "Clients", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Client", FormMethod.Get))
     {
         <b>Search by:</b><font color="Black"> @Html.TextBox("Search")<input type="submit" value="Search" style="color: black" /></font>}
 </p>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div align="center">
+        <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
+    </div>
 </p>
 <table class="table">
     <tr>
-      
+
 
         <th>
             <font color="white"> @Html.DisplayNameFor(model => model.ClientName)</font>
         </th>
-        
+
         <th>
             <font color="white"> @Html.DisplayNameFor(model => model.ClientAddress)</font>
         </th>
@@ -47,6 +49,8 @@
 
 
 
+        <th></th>
+        <th></th>
         <th></th>
     </tr>
 
@@ -86,9 +90,13 @@
 
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Clients", new { id = item.Id })'" />
+            </td>
+            <td>
+                <input type="button" title="Delete" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Clients", new { id = item.Id })'" />
+            </td>
+            <td>
+                <input type="button" title="Delete" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Clients", new { id = item.Id })'" />
             </td>
         </tr>
     }

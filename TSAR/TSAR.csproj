@@ -215,6 +215,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManageTravelController.cs" />
     <Compile Include="Controllers\NewsletterController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SendMailerController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
@@ -239,6 +240,7 @@
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\ManageTravel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\RolesLogic.cs" />
     <Compile Include="Models\RolesView.cs" />
     <Compile Include="Models\Subscription.cs" />
@@ -600,6 +602,11 @@
     <Content Include="Views\Leaves\Details.cshtml" />
     <Content Include="Views\Leaves\Edit.cshtml" />
     <Content Include="Views\Leaves\Index.cshtml" />
+    <Content Include="Views\Rating\Create.cshtml" />
+    <Content Include="Views\Rating\Delete.cshtml" />
+    <Content Include="Views\Rating\Details.cshtml" />
+    <Content Include="Views\Rating\Edit.cshtml" />
+    <Content Include="Views\Rating\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

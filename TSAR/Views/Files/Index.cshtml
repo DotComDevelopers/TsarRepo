@@ -3,34 +3,43 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
-}
+
 <h2>Index</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <div align="center">
+        <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
+    </div>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FileName)
-        </th>
+            <font color="white">     @Html.DisplayNameFor(model => model.FileName)</font>
+</th>
         <th>
-            @Html.DisplayNameFor(model => model.FileType)
-        </th>
+            <font color="white">     @Html.DisplayNameFor(model => model.FileType)</font>
+</th>
         <th></th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FileName)
-            </td>
+                <font color="gold">       @Html.DisplayFor(modelItem => item.FileName)</font>
+</td>
             <td>
-                @Html.DisplayFor(modelItem => item.FileType)
-            </td>
+                <font color="gold">      @Html.DisplayFor(modelItem => item.FileType)</font>
+</td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.FileId }) |
-                @Html.ActionLink("Download", "Download", new { id = item.FileId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.FileId })
+            <td>
+            <td>
+                <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Files", new { id = item.FileId })'" />
+
+
+                <input type="button" title="Download" value="Download" class="btn btn-primary" onclick="location.href='@Url.Action("Download", "Files", new { id = item.FileId })'" />
+
+                <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Files", new { id = item.FileId })'" />
+            </td>
+            </td>
             </td>
         </tr>
     }
