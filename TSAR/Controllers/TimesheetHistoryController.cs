@@ -15,40 +15,34 @@ namespace TSAR.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: TimesheetHistory
-        public ActionResult Index(string Search)
+        public ViewResult Index(string sortOrder, string searchString)
         {
-            if (Search == null)
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            var consultants = from s in db.Consultants
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
             {
-                return View(db.Consultants.ToList());
+                consultants = consultants.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstName.Contains(searchString));
             }
-            else
-                return View(db.Consultants.Where(p => p.FirstName == Search).ToList());
-            //ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            //var consultants = from s in db.Consultants
-            //               select s;
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    consultants = consultants.Where(s => s.LastName.Contains(searchString)
-            //                           || s.FirstName.Contains(searchString));
-            //}
-            //switch (sortOrder)
-            //{
-            //    case "name_desc":
-            //        consultants = consultants.OrderByDescending(s => s.LastName);
-            //        break;
-            //    case "Date":
-            //        consultants = consultants.OrderBy(s => s.ConsultantNum);
-            //        break;
-            //    case "date_desc":
-            //        consultants = consultants.OrderByDescending(s => s.ComissionCode);
-            //        break;
-            //    default:
-            //        consultants = consultants.OrderBy(s => s.LastName);
-            //        break;
-            //}
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    consultants = consultants.OrderByDescending(s => s.LastName);
+                    break;
+                case "Date":
+                    consultants = consultants.OrderBy(s => s.ConsultantNum);
+                    break;
+                case "date_desc":
+                    consultants = consultants.OrderByDescending(s => s.ComissionCode);
+                    break;
+                default:
+                    consultants = consultants.OrderBy(s => s.LastName);
+                    break;
+            }
 
-            //return View(consultants.ToList());
+            return View(consultants.ToList());
         }
 
         // GET: TimesheetHistory/Details/5
