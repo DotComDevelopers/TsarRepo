@@ -16,11 +16,21 @@ namespace TSAR.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Timesheets
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var timesheets = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant);
-            return View(timesheets.ToList());
+            {
+                if (searchString == null)
+                {
+                    return View(timesheets.ToList());
+                }
+                else
+                {
+                    return View(db.Timesheets.Where(p => p.Consultant.FirstName == searchString || p.Client.ClientName == searchString).ToList());
+                }
+            }
         }
+
 
         // GET: Timesheets/Details/5
         public ActionResult Details(int? id)

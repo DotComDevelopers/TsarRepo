@@ -44,5 +44,7 @@ namespace TSAR.Models
         [Required]
         [Display(Name = "Role Type")]
         public string RoleType { get; set; }
+        public int TimesheetId { get; set; }
+        public virtual ICollection<Timesheet> Timesheets { get; set; }
     }
 }

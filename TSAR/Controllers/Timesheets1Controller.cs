@@ -10,48 +10,18 @@ using TSAR.Models;
 
 namespace TSAR.Controllers
 {
-    public class TimesheetHistoryController : Controller
+    public class Timesheets1Controller : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: TimesheetHistory
-        public ActionResult Index(string Search)
+        // GET: Timesheets1
+        public ActionResult Index()
         {
-            if (Search == null)
-            {
-                return View(db.Consultants.ToList());
-            }
-            else
-                return View(db.Consultants.Where(p => p.FirstName == Search).ToList());
-            //ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            //var consultants = from s in db.Consultants
-            //               select s;
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    consultants = consultants.Where(s => s.LastName.Contains(searchString)
-            //                           || s.FirstName.Contains(searchString));
-            //}
-            //switch (sortOrder)
-            //{
-            //    case "name_desc":
-            //        consultants = consultants.OrderByDescending(s => s.LastName);
-            //        break;
-            //    case "Date":
-            //        consultants = consultants.OrderBy(s => s.ConsultantNum);
-            //        break;
-            //    case "date_desc":
-            //        consultants = consultants.OrderByDescending(s => s.ComissionCode);
-            //        break;
-            //    default:
-            //        consultants = consultants.OrderBy(s => s.LastName);
-            //        break;
-            //}
-
-            //return View(consultants.ToList());
+            var timesheets = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant);
+            return View(timesheets.ToList());
         }
 
-        // GET: TimesheetHistory/Details/5
+        // GET: Timesheets1/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -66,7 +36,7 @@ namespace TSAR.Controllers
             return View(timesheet);
         }
 
-        // GET: TimesheetHistory/Create
+        // GET: Timesheets1/Create
         public ActionResult Create()
         {
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName");
@@ -74,7 +44,7 @@ namespace TSAR.Controllers
             return View();
         }
 
-        // POST: TimesheetHistory/Create
+        // POST: Timesheets1/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -93,7 +63,7 @@ namespace TSAR.Controllers
             return View(timesheet);
         }
 
-        // GET: TimesheetHistory/Edit/5
+        // GET: Timesheets1/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -110,7 +80,7 @@ namespace TSAR.Controllers
             return View(timesheet);
         }
 
-        // POST: TimesheetHistory/Edit/5
+        // POST: Timesheets1/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -128,7 +98,7 @@ namespace TSAR.Controllers
             return View(timesheet);
         }
 
-        // GET: TimesheetHistory/Delete/5
+        // GET: Timesheets1/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -143,7 +113,7 @@ namespace TSAR.Controllers
             return View(timesheet);
         }
 
-        // POST: TimesheetHistory/Delete/5
+        // POST: Timesheets1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

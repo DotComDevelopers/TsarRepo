@@ -11,6 +11,7 @@ namespace TSAR.Models
     {
         [Key]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         [Display(Name = "Client Name")]
@@ -47,5 +48,8 @@ namespace TSAR.Models
         [Display(Name = "Rate")]
         [Required]
         public string TravelCode { get; set; }
+
+        public int TimesheetId { get; set; }
+        public virtual ICollection<Timesheet> Timesheets { get; set; }
     }
 }
