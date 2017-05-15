@@ -17,6 +17,10 @@ namespace TSAR.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
+
+       
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
         [Required]
         [Display(Name = "Contact Number")]
         public int ContactNumber { get; set; }

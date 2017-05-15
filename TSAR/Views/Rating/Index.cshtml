@@ -15,13 +15,13 @@
 <table class="table">
     <tr>
         <th>
-            <font color="White">   @Html.DisplayNameFor(model => model.Consultant.FirstName)</font>
+            <font color="White">   @Html.DisplayNameFor(model => model.Consultant.FullName)</font>
 </th>
         <th>
             <font color="White">    @Html.DisplayNameFor(model => model.Rate)</font>
 </th>
         <th>
-            <font color="White">     @Html.DisplayNameFor(model => model.Reason)</font>
+            <font color="White">     @Html.DisplayNameFor(model => model.Comment)</font>
 </th>
         <th>
             <font color="White">     @Html.DisplayNameFor(model => model.ClientName)</font>
@@ -32,13 +32,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <font color="gold">     @Html.DisplayFor(modelItem => item.Consultant.FirstName)</font>
+            <font color="gold">     @Html.DisplayFor(modelItem => item.Consultant.FullName)</font>
 </td>
         <td>
             <font color="gold">    @Html.DisplayFor(modelItem => item.Rate)</font>
 </td>
         <td>
-            <font color="gold">      @Html.DisplayFor(modelItem => item.Reason)</font>
+            <font color="gold">      @Html.DisplayFor(modelItem => item.Comment)</font>
 </td>
         <td>
             <font color="gold">      @Html.DisplayFor(modelItem => item.ClientName)</font>

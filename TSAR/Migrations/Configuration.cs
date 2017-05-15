@@ -86,7 +86,8 @@ namespace TSAR.Migrations
                     FirstName = "Jonny",
                     LastName = "Bravo",
                     Password = "test",
-                    RoleType = "Admin"
+                    RoleType = "Admin",
+                    FullName = "Jonny Bravo"
                 }
                 ); 
             //Create default Subscription

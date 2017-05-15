@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using TSAR.Models;
 
 namespace TSAR.Controllers
@@ -40,7 +41,7 @@ namespace TSAR.Controllers
         // GET: Rating/Create
         public ActionResult Create()
         {
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName");
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName");
             return View();
         }
 
@@ -49,16 +50,17 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RatingId,ConsultantNum,Rate,Reason,ClientName")] Rating rating)
+        public ActionResult Create([Bind(Include = "RatingId,ConsultantNum,Rate,Comment,ClientName")] Rating rating)
         {
             if (ModelState.IsValid)
             {
+                rating.ClientName = User.Identity.GetUserName();
                 db.Ratings.Add(rating);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", rating.ConsultantNum);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", rating.ConsultantNum);
             return View(rating);
         }
 
@@ -74,7 +76,7 @@ namespace TSAR.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", rating.ConsultantNum);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", rating.ConsultantNum);
             return View(rating);
         }
 
@@ -83,7 +85,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RatingId,ConsultantNum,Rate,Reason,ClientName")] Rating rating)
+        public ActionResult Edit([Bind(Include = "RatingId,ConsultantNum,Rate,Comment,ClientName")] Rating rating)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +93,7 @@ namespace TSAR.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", rating.ConsultantNum);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", rating.ConsultantNum);
             return View(rating);
         }
 

@@ -55,10 +55,11 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ConsultantNum,FirstName,LastName,ContactNumber,ConsultantAddress,Email,ConsultantType,ComissionCode,Password,RoleType")] Consultant consultant)
+        public ActionResult Create([Bind(Include = "ConsultantNum,FirstName,LastName,FullName,ContactNumber,ConsultantAddress,Email,ConsultantType,ComissionCode,Password,RoleType")] Consultant consultant)
         {
             if (ModelState.IsValid)
             {
+                consultant.FullName = $"{consultant.FirstName} {consultant.LastName}";
                 db.Consultants.Add(consultant);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -87,7 +88,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ConsultantNum,FirstName,LastName,ContactNumber,ConsultantAddress,Email,ConsultantType,ComissionCode,Password,RoleType")] Consultant consultant)
+        public ActionResult Edit([Bind(Include = "ConsultantNum,FirstName,LastName,FullName,ContactNumber,ConsultantAddress,Email,ConsultantType,ComissionCode,Password,RoleType")] Consultant consultant)
         {
             if (ModelState.IsValid)
             {

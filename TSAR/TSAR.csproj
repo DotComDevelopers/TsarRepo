@@ -408,6 +408,8 @@
     <Content Include="img\elephant22.jpg" />
     <Content Include="img\Elephant3.jpg" />
     <Content Include="img\header-bg.jpg" />
+    <Content Include="img\images\star_gold_16.png" />
+    <Content Include="img\images\star_white_16.png" />
     <Content Include="img\logos\creative-market.jpg" />
     <Content Include="img\logos\designmodo.jpg" />
     <Content Include="img\logos\envato.jpg" />

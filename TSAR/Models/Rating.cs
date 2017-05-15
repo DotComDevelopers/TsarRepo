@@ -14,15 +14,16 @@ namespace TSAR.Models
         [Display(Name = "Rating id")]
         public int RatingId { get; set; }
         public virtual Consultant Consultant { get; set; }
+        [Display(Name = "Consultant Name")]
         public int ConsultantNum { get; set; }
         [Required]
         [Display(Name = "Rating")]
         public string Rate { get; set; }
         [Required]
-        [Display(Name = "Reason")]
-        public string Reason { get; set; }
-        [Required]
-        [Display(Name = "Client Name")]
+        [Display(Name = "Comment")]
+        public string Comment { get; set; }
+      
+        [Display(Name = "Client Username")]
         public string ClientName { get; set; }
     }
 }
