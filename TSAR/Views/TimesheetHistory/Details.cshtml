@@ -1,0 +1,83 @@
+﻿@model TSAR.Models.Timesheet
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Timesheet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.ClientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.ClientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Consultant.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consultant.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CaptureDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaptureDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivityDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivityDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hours)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TimesheetId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
