@@ -631,6 +631,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="bin\bin\cs\" />
     <Folder Include="bin\cs\" />
+    <Folder Include="Content\themes\base\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
