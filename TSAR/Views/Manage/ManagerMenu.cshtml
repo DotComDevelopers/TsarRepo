@@ -4,85 +4,45 @@
     Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
-<h2>Manager Menu</h2>
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="View Consultants" value="View Consultant" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Consultants")'" />
-</div>
-
-
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="View Travel Code" value="View Travel Code" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "ManageTravel")'" />
-
-</div>
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="View Clients" value="View Clients" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Clients")'" />
-
-
-</div>
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="Manage Newsletter" value="Manage Newsletter" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Newsletter")'" />
-
-
-</div>
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="Send Newsletter" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "SendMailer")'" />
-
-
-</div>
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="Commission" value="Commission" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Commissions")'" />
-
-
-</div>
-
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="Administer Roles" value="Administer Roles" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Roles")'" />
-
-</div>
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="Budget" value="Budget" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Budget")'" />
-
-</div>
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="Instant Message Dashboard" value="Instant Message Dashboard" class="btn btn-primary" onclick="location.href='@Url.Action("Dashboard", "Dashboard")'" />
-
-</div>
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="Document warehouse" value="Document warehouse" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Files")'" />
-
-</div>
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="Tickets" value="Tickets" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Tickets")'" />
-
-</div>
-
-   <div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="Timesheets" value="Timesheets" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Timesheets")'" />
-
-</div>
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="Leave" value="Leave" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Leaves")'" />
-
-</div>
-
-<div>
-    <br />
-    <input type="button" style="height:50px;width:200px" title="Rating" value="Rating" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Rating")'" />
-
-</div>
+<h2>Administrator Menu</h2>
+<br/>
+<br/>
+<table class="table table-responsive">
+    <thead>
+    <tr>
+        <th class="h4" style="color: white">CONSULTANT ITEMS</th>
+        <th class="h4" style="color: white">CLIENT ITEMS</th>
+        <th class="h4" style="color: white">GENERAL ITEMS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="button" style="height:50px;width:200px" title="Leave" value="Leave" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Leaves")'" /></td>        
+        <td><input type="button" style="height:50px;width:200px" title="View Clients" value="View Clients" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Clients")'" /></td>
+        <td><input type="button" style="height:50px;width:200px" title="Administer Roles" value="Administer Roles" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Roles")'" /></td>
+    </tr>
+    <tr>
+        <td><input type="button" style="height:50px;width:200px" title="Timesheets" value="Timesheets" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Timesheets")'" /></td>
+        <td><input type="button" style="height:50px;width:200px" title="Tickets" value="Tickets" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Tickets")'" /></td>
+        <td><input type="button" style="height:50px;width:200px" title="Document warehouse" value="Document warehouse" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Files")'" /></td>
+    </tr>
+    <tr>
+        <td><input type="button" style="height:50px;width:200px" title="Rating" value="Rating" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Rating")'" /></td>
+        <td><input type="button" style="height:50px;width:200px" title="Budget" value="Budget" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Budget")'" /></td>
+        <td><input type="button" style="height:50px;width:200px" title="Instant Message Dashboard" value="Instant Message Dashboard" class="btn btn-primary" onclick="location.href='@Url.Action("Dashboard", "Dashboard")'" /></td>
+    </tr>
+    <tr>
+        <td><input type="button" style="height:50px;width:200px" title="Commission" value="Commission" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Commissions")'" /></td>
+        <td><input type="button" style="height:50px;width:200px" title="View Travel Code" value="View Travel Code" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "ManageTravel")'" /></td>
+        <td><input type="button" style="height:50px;width:200px" title="Send Newsletter" value="Send Newsletter" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "SendMailer")'" /></td>
+    </tr>
+    <tr>
+        <td><input type="button" style="height:50px;width:200px" title="View Consultants" value="View Consultant" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Consultants")'" /></td>
+        <td></td>
+        <td><input type="button" style="height:50px;width:200px" title="Manage Newsletter" value="Manage Newsletter" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Newsletter")'" /></td>
+    </tr>
+    </tbody>
+</table>
 
 
 

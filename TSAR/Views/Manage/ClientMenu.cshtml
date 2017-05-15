@@ -5,4 +5,15 @@
 }
 
 <h2>Client Menu</h2>
-
+<br />
+<br />
+<table class="table table-responsive">
+    <tbody>
+        <tr>
+            <td><input type="button" style="height:50px;width:200px" title="Create Ticket" value="Create Ticket" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Tickets")'" /></td>            
+        </tr>
+        <tr>            
+            <td><input type="button" style="height:50px;width:200px" title="Rate Consultant" value="Rate Consultant" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Rating")'" /></td>
+        </tr>
+    </tbody>
+</table>
