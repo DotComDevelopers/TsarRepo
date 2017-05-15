@@ -15,44 +15,44 @@
 <p>
     @using (Html.BeginForm("Index", "Consultants", FormMethod.Get))
     {
-        <b>Search by:</b><font color="Black"> @Html.TextBox("Search")<input type="submit" value="Search" style="color: black" /></font>}
+    <b>Search by:</b><font color="Black"> @Html.TextBox("Search")<input type="submit" value="Search" style="color: black" /></font>}
 </p>
 <table class="table">
     <tr>
         <th>
             <font color="white">    @Html.DisplayNameFor(model => model.FirstName) </font>
-</th>
+        </th>
         <th>
             <font color="white">    @Html.DisplayNameFor(model => model.LastName) </font>
-</th>
+        </th>
         <th>
             <font color="white">   @Html.DisplayNameFor(model => model.ContactNumber)</font>
-</th>
+        </th>
         <th>
             <font color="white">    @Html.DisplayNameFor(model => model.ConsultantAddress)</font>
-</th>
+        </th>
         <th>
             <font color="white">    @Html.DisplayNameFor(model => model.Email)</font>
-</th>
+        </th>
         <th>
             <font color="white">   @Html.DisplayNameFor(model => model.ConsultantType)</font>
-</th>
+        </th>
         <th>
             <font color="white">   @Html.DisplayNameFor(model => model.ComissionCode)</font>
-</th>
+        </th>
         <th>
             <font color="white">  @Html.DisplayNameFor(model => model.Password)</font>
-</th>
+        </th>
         <th>
             <font color="white">   @Html.DisplayNameFor(model => model.RoleType)</font>
-</th>
+        </th>
         <th></th>
         <th></th>
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
+    @foreach (var item in Model)
+    {
     <tr>
         <td>
             <font color="gold">  @Html.DisplayFor(modelItem => item.FirstName)</font>
@@ -84,12 +84,12 @@
         <td>
             <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Clients", new { id = item.ConsultantNum })'" />
         </td>
-    <td>
-        <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Clients", new { id = item.ConsultantNum })'" />
-    </td>
+        <td>
+            <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Clients", new { id = item.ConsultantNum })'" />
+        </td>
         <td>
             <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Clients", new { id = item.ConsultantNum })'" />
         </td>
-        
+
     </tr>
-}
+    }

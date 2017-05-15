@@ -219,6 +219,7 @@
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SendMailerController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
+    <Compile Include="Controllers\TimesheetHistoryController.cs" />
     <Compile Include="Controllers\TimesheetsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -626,6 +627,11 @@
     <Content Include="Views\Rating\Details.cshtml" />
     <Content Include="Views\Rating\Edit.cshtml" />
     <Content Include="Views\Rating\Index.cshtml" />
+    <Content Include="Views\TimesheetHistory\Create.cshtml" />
+    <Content Include="Views\TimesheetHistory\Delete.cshtml" />
+    <Content Include="Views\TimesheetHistory\Details.cshtml" />
+    <Content Include="Views\TimesheetHistory\Edit.cshtml" />
+    <Content Include="Views\TimesheetHistory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
