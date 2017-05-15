@@ -391,18 +391,18 @@ namespace TSAR.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Consultant")]
+        [Authorize(Roles = "Admin,Consultant")]        
         public ActionResult ConsultantMenu()
         {
             return View();
         }
 
-        [Authorize(Roles = "Client")]
+        [Authorize(Roles = "Admin,Client")]
         public ActionResult ClientMenu()
         {
             return View();
         }
-        [Authorize(Roles = "Secretary")]
+        [Authorize(Roles = "Admin,Secretary")]
         public ActionResult SecretaryMenu()
         {
             return View();
