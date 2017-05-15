@@ -12,7 +12,20 @@
         <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
     </div>
 </p>
+
+@using (Html.BeginForm("Index", "Timesheets", FormMethod.Get))
+{
+    <p>
+        <b>Search by Client Name / Consultant Name:</b><font color="Black">@Html.TextBox("SearchString")<input type="submit" value="Search" style="color: black" /></font>
+    </p>
+}
+ 
+@*<p>
+        Find by consultant Firstname / Lastname: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>*@
 <table class="table">
+
     <tr>
         <th>
             <font color="white">        @Html.DisplayNameFor(model => model.Client.ClientName)</font>
