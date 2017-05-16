@@ -453,6 +453,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\TSAR1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
