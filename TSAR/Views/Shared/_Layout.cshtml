@@ -451,7 +451,27 @@ Improved forecast accuracy is essential to minimizing inventory holding and obso
     <script src="~/js/contact_me.js"></script>
     <!-- Theme JavaScript -->
     <script src="~/js/agency.min.js"></script>
+<a href="#" class="scrollToTop"></a>
+<script>
+    $(document).ready(function () {
 
+        //Check to see if the window is top if not then display button
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('.scrollToTop').fadeIn();
+            } else {
+                $('.scrollToTop').fadeOut();
+            }
+        });
+
+        //Click event to scroll to top
+        $('.scrollToTop').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 2500);
+            return false;
+        });
+
+    });
+</script>
 
 
 </body>
