@@ -17,9 +17,9 @@
     </thead>
     <tbody>
     <tr>
-        <td><input type="button" style="height:50px;width:200px" title="Leave Requests" value="Leave Requests" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Leaves")'" /></td>        
-        <td><input type="button" style="height:50px;width:200px" title="View Clients" value="View Clients" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Clients")'" /></td>
-        <td><input type="button" style="height:50px;width:200px" title="Administer Roles" value="Administer Roles" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Roles")'" /></td>
+        <td><input type="button" style="height:50px;width:200px" title="View Consultants" value="View Consultant" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Consultants")'" /></td>        
+        <td><input type="button" style="height: 50px; width: 200px" title="View Clients" value="View Clients" class="btn btn-primary" onclick="location.href = '@Url.Action("Index", "Clients")'"/></td>
+        <td><input type="button" style="height: 50px; width: 200px" title="Administer Roles" value="Administer Roles" class="btn btn-primary" onclick="location.href = '@Url.Action("Index", "Roles")'"/></td>
     </tr>
     <tr>
         <td><input type="button" style="height:50px;width:200px" title="View Timesheets" value="View Timesheets" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Timesheets")'" /></td>
@@ -37,12 +37,19 @@
         <td><input type="button" style="height:50px;width:200px" title="Send Newsletter" value="Send Newsletter" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "SendMailer")'" /></td>
     </tr>
     <tr>
-        <td><input type="button" style="height:50px;width:200px" title="View Consultants" value="View Consultant" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Consultants")'" /></td>
+        <td><input type="button" style="height: 50px; width: 200px" title="Leave Requests" value="Leave Requests" class="btn btn-primary" onclick="location.href = '@Url.Action("Index", "Leaves")'"/></td>
         <td></td>
-        <td><input type="button" style="height:50px;width:200px" title="Manage Newsletter" value="Manage Newsletter" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Newsletter")'" /></td>
+        <td><input type="button" style="height:50px;width:200px" title="Manage Newsletter" value="Manage Newsletter" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Newsletter")'" /></td>        
+
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td><input type="button" style="height:50px;width:200px" title="Calendar" value="Calendar" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Calendar")'" /></td>
     </tr>
     </tbody>
 </table>
+
 
 
 
