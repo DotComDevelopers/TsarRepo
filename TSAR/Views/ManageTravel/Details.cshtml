@@ -39,5 +39,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.TravelCode }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a id="button" href="@Url.Action("Index")" class="btn btn-primary">Back To List</a>
+    @*@Html.ActionLink("Back to List", "Index")*@
 </p>

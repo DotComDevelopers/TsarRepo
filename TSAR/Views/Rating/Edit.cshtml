@@ -73,15 +73,18 @@
 
         <div class="form-group">
             <div align="center">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div align="center">
+    <a id="button" href="@Url.Action("Index")" class="btn btn-primary">Back To List</a>
 </div>
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
