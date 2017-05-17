@@ -13,7 +13,10 @@ using DHTMLX.Scheduler.Controls;
 using TSAR.Models;
 namespace TSAR.Controllers
 {
+    [Authorize(Roles = "Admin,Consultant")]
     public class CalendarController : Controller
+
+    
     {
         public ActionResult Index()
         {
