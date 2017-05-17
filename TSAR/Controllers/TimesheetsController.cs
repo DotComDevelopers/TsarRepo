@@ -41,7 +41,7 @@ namespace TSAR.Controllers
         public ActionResult Create()
         {
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName");
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName");
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace TSAR.Controllers
             }
 
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", timesheet.Id);
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", timesheet.ConsultantNum);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", timesheet.ConsultantNum);
             return View(timesheet);
         }
 
@@ -82,7 +82,7 @@ namespace TSAR.Controllers
                 return HttpNotFound();
             }
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", timesheet.Id);
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", timesheet.ConsultantNum);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", timesheet.ConsultantNum);
             return View(timesheet);
         }
 
@@ -100,7 +100,7 @@ namespace TSAR.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", timesheet.Id);
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", timesheet.ConsultantNum);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", timesheet.ConsultantNum);
             return View(timesheet);
         }
 

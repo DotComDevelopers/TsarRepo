@@ -14,7 +14,6 @@ namespace TSAR.Models
 
         [Required]
         [Display(Name = "Date Captured")]
-
         public DateTime CaptureDate { get; set; }
 
         [Required]
@@ -42,7 +41,10 @@ namespace TSAR.Models
         public virtual Consultant Consultant { get; set; }
         public virtual Client Client { get; set; }
 
+        [Display(Name = "Client Name")]
         public int Id { get; set; }
+
+        [Display(Name = "Consultant Name")]
         public int ConsultantNum { get; set; }
 
 
