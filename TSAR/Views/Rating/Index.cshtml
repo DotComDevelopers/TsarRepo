@@ -8,9 +8,12 @@
 <h2>Index</h2>
 
 <p>
-    <div align="center">
-        @*<a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>*@
-    </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <div align="center">
+            <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
+        </div>
+    }
 </p>
 <table class="table">
     <tr>
