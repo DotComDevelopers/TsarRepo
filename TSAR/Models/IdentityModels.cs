@@ -49,5 +49,8 @@ namespace TSAR.Models
         public System.Data.Entity.DbSet<TSAR.Models.Leave> Leaves { get; set; }
 
         public System.Data.Entity.DbSet<TSAR.Models.Rating> Ratings { get; set; }
+
+        public System.Data.Entity.DbSet<TSAR.Models.Event> Events { get; set; }
+
     }
 }
