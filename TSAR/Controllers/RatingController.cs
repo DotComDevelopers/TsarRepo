@@ -57,7 +57,7 @@ namespace TSAR.Controllers
                 rating.ClientName = User.Identity.GetUserName();
                 db.Ratings.Add(rating);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Done");
             }
 
             ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", rating.ConsultantNum);
@@ -130,6 +130,12 @@ namespace TSAR.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ViewResult Done()
+        {
+
+            return View();
         }
     }
 }
