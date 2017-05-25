@@ -18,7 +18,7 @@
 <table class="table">
     <tr>
         <th>
-            <font color="White">   @Html.DisplayNameFor(model => model.Consultant.FullName)</font>
+            <font color="White">   @Html.DisplayNameFor(model => model.ConsultantName)</font>
 </th>
         <th>
             <font color="White">    @Html.DisplayNameFor(model => model.Rate)</font>
@@ -27,7 +27,7 @@
             <font color="White">     @Html.DisplayNameFor(model => model.Comment)</font>
 </th>
         <th>
-            <font color="White">     @Html.DisplayNameFor(model => model.ClientName)</font>
+            <font color="White">     @Html.DisplayNameFor(model => model.ClientUsername)</font>
 </th>
         <th></th>
     </tr>
@@ -35,7 +35,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <font color="gold">     @Html.DisplayFor(modelItem => item.Consultant.FullName)</font>
+            <font color="gold">     @Html.DisplayFor(modelItem => item.ConsultantName)</font>
 </td>
         <td>
             <font color="gold">    @Html.DisplayFor(modelItem => item.Rate)</font>
@@ -44,7 +44,7 @@
             <font color="gold">      @Html.DisplayFor(modelItem => item.Comment)</font>
 </td>
         <td>
-            <font color="gold">      @Html.DisplayFor(modelItem => item.ClientName)</font>
+            <font color="gold">      @Html.DisplayFor(modelItem => item.ClientUsername)</font>
 </td>
         <td>
             <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Rating", new { id = item.RatingId })'" />

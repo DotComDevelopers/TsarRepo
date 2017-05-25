@@ -851,6 +851,8 @@
     <Content Include="Views\Rating\Index.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Rating\Done.cshtml" />
+    <Content Include="Views\Tickets\Review.cshtml" />
+    <Content Include="Views\Tickets\Done.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

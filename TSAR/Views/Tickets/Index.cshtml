@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TSAR.Models.Ticket>
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<TSAR.Models.Ticket>
 
 @{
     ViewBag.Title = "Index";
@@ -17,6 +18,10 @@
     }
    
 </p>
+@using (Html.BeginForm("Index", "Tickets", FormMethod.Get))
+{
+    <b>Status</b><font color="black">@Html.DropDownList("status",new SelectList(ViewBag.Status), new { onchange = "this.form.submit()" })</font>
+}
 <table class="table">
     <tr>
         <th>
@@ -34,7 +39,17 @@
         <th>
             <font color="gold">  @Html.DisplayNameFor(model => model.Date)</font>
         </th>
-        <th></th>
+        
+        <th>
+            <font color="gold">  @Html.DisplayNameFor(model => model.Category)</font>
+        </th>
+        <th>
+            <font color="gold">  @Html.DisplayNameFor(model => model.Status)</font>
+        </th>
+        <th>
+            <font color="gold">  @Html.DisplayNameFor(model => model.ConsultantName)</font>
+        </th>
+        
     </tr>
 
 @foreach (var item in Model) {
@@ -54,14 +69,32 @@
         <td>
             <font color="gold">  @Html.DisplayFor(modelItem => item.Date)</font>
         </td>
+        
+       
         <td>
+            <font color="gold">  @Html.DisplayFor(modelItem => item.Category)</font>
+        </td>
         <td>
-            <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Tickets", new { id = item.ID })'" />
+            <font color="gold">  @Html.DisplayFor(modelItem => item.Status)</font>
+        </td>
+        <td>
+            <font color="gold">  @Html.DisplayFor(modelItem => item.ConsultantName)</font>
+        </td>
+        <td>
+<td>
+    @if (User.IsInRole("Admin"))
+                {
+        <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit", "Tickets", new {id = item.ID})'" />
 
 
-            <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Tickets", new { id = item.ID })'" />
+                    <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href = '@Url.Action("Details", "Tickets", new {id = item.ID})'" />
 
-            <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Tickets", new { id = item.ID })'" />
+                    <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href = '@Url.Action("Delete", "Tickets", new {id = item.ID})'" />
+
+    }
+    
+        <input type="button" itle="Review" value="Review" class="btn btn-primary" onclick="location.href = '@Url.Action("Review", "Tickets", new {id = item.ID})'" />
+
         </td>
         </td>
     </tr>

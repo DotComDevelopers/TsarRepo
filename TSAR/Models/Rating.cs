@@ -15,7 +15,9 @@ namespace TSAR.Models
         public int RatingId { get; set; }
         public virtual Consultant Consultant { get; set; }
         [Display(Name = "Consultant Name")]
-        public int ConsultantNum { get; set; }
+        public string ConsultantName { get; set; }
+
+       
         [Required]
         [Display(Name = "Rating")]
         public string Rate { get; set; }
@@ -24,6 +26,8 @@ namespace TSAR.Models
         public string Comment { get; set; }
       
         [Display(Name = "Client Username")]
-        public string ClientName { get; set; }
+        public string ClientUsername { get; set; }
+
+
     }
 }

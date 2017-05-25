@@ -50,17 +50,21 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RatingId,ConsultantNum,Rate,Comment,ClientName")] Rating rating)
+        public ActionResult Create([Bind(Include = "RatingId,ConsultantName,Rate,Comment,ClientName")] Rating rating)
         {
             if (ModelState.IsValid)
-            {
-                rating.ClientName = User.Identity.GetUserName();
+            { string email = User.Identity.GetUserName();
+                //For this to work a client must be created with the same email as the email registered to login as a client
+                rating.ConsultantName = (from Ticket t in db.Tickets
+                                         where t.Email == email
+                                         select t.ConsultantName).FirstOrDefault();
+                rating.ClientUsername = email;
                 db.Ratings.Add(rating);
                 db.SaveChanges();
                 return RedirectToAction("Done");
             }
 
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", rating.ConsultantNum);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", rating.ConsultantName);
             return View(rating);
         }
 
@@ -76,7 +80,7 @@ namespace TSAR.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", rating.ConsultantNum);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", rating.ConsultantName);
             return View(rating);
         }
 
@@ -85,7 +89,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RatingId,ConsultantNum,Rate,Comment,ClientName")] Rating rating)
+        public ActionResult Edit([Bind(Include = "RatingId,ConsultantName,Rate,Comment,ClientName")] Rating rating)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +97,7 @@ namespace TSAR.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", rating.ConsultantNum);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", rating.ConsultantName);
             return View(rating);
         }
 

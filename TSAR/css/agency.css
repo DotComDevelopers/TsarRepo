@@ -812,18 +812,22 @@ body {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+
+
 .starRating:not(old){
   display        : inline-block;
   width          : 7.5em;
   height         : 1.5em;
   overflow       : hidden;
   vertical-align : bottom;
+   font-size      : 16px;   /* added to try to enforce image size */
 }
 
 .starRating:not(old) > input{
   margin-right : -100%;
   opacity      : 0;
-}.starRating:not(old) > label{
+}
+.starRating:not(old) > label{
   display         : block;
   float           : right;
   position        : relative;
@@ -840,12 +844,14 @@ body {
   background-size : contain;
   opacity         : 0;
   transition      : opacity 0.2s linear;
+  
 }
 
  .starRating:not(old) > label:hover:before,
 .starRating:not(old) > label:hover ~ label:before,
 .starRating:not(:hover) > :checked ~ label:before{
   opacity : 1;
+  
 }
 
 
