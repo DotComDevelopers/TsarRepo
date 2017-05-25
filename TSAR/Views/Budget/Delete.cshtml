@@ -19,7 +19,13 @@
         <dd>
             @Html.DisplayFor(model => model.Client.ClientName)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Balance)
         </dt>
@@ -30,7 +36,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
@@ -39,3 +46,4 @@
         </div>
     }
 </div>
+

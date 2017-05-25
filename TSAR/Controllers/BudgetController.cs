@@ -48,7 +48,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BudgetCode,Id,Balance")] Budget budget)
+        public ActionResult Create([Bind(Include = "BudgetCode,Id,Balance,Code")] Budget budget)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BudgetCode,Id,Balance")] Budget budget)
+        public ActionResult Edit([Bind(Include = "BudgetCode,Id,Balance,Code")] Budget budget)
         {
             if (ModelState.IsValid)
             {
