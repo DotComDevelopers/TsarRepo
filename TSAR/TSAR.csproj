@@ -398,6 +398,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="css\agency.css" />
     <Content Include="css\agency.min.css">
       <DependentUpon>agency.css</DependentUpon>
@@ -677,11 +678,13 @@
     <Content Include="Scripts\dhtmlxScheduler\locale\recurring\repeat_template_ro.html" />
     <Content Include="Scripts\dhtmlxScheduler\locale\recurring\repeat_template_ru.html" />
     <Content Include="Scripts\dhtmlxScheduler\locale\recurring\repeat_template_sk.html" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -853,11 +856,13 @@
     <Content Include="Views\Rating\Done.cshtml" />
     <Content Include="Views\Tickets\Review.cshtml" />
     <Content Include="Views\Tickets\Done.cshtml" />
+    <Content Include="Views\Tickets\MyTickets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\bin\cs\" />
     <Folder Include="bin\cs\" />
+    <Folder Include="Content\images\" />
     <Folder Include="Content\themes\base\images\" />
   </ItemGroup>
   <ItemGroup>

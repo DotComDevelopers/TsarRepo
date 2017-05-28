@@ -37,7 +37,10 @@
 </th>
         <th>
             <font color="white">    @Html.DisplayNameFor(model => model.Hours)</font>
-</th>
+        </th>
+        <th>
+            <font color="white">    @Html.DisplayNameFor(model => model.TicketReference)</font>
+        </th>
         <th></th>
         <th></th>
     </tr>
@@ -67,7 +70,10 @@
 </td>
         <td>
             <font color="gold">    @Html.DisplayFor(modelItem => item.Hours)</font>
-</td>
+        </td>
+        <td>
+            <font color="gold">    @Html.DisplayFor(modelItem => item.TicketReference)</font>
+        </td> 
         <td>
         <td>
             <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Timesheets", new { id = item.TimesheetId })'" />

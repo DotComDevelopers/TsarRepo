@@ -11,13 +11,7 @@
     <h4>Client</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ManageTravel.TravelCode)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ManageTravel.TravelCode)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.ClientName)
@@ -36,11 +30,26 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.ClientAddress2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientAddress2)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.ContactNumber)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ContactNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactNumber2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactNumber2)
         </dd>
 
         <dt>
@@ -51,6 +60,13 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Email2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email2)
+        </dd>
 
 
 
@@ -63,7 +79,27 @@
             @Html.DisplayFor(model => model.ProjectLeader)
         </dd>
 
-     
+        <dt>
+            @Html.DisplayNameFor(model => model.ManageTravel.TravelCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManageTravel.TravelCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ManageTravel.TravelFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManageTravel.TravelFee)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TravelCode2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TravelCode2)
+        </dd>
 
     </dl>
 </div>

@@ -11,12 +11,15 @@
 <p>
     @if (User.IsInRole("Admin"))
     {
-        <div align="center">
+        <div >
 
             <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
         </div>
     }
-   
+    <div align="center">
+
+        <a id="button" href="@Url.Action("MyTickets")" class="btn btn-primary">My Tickets</a>
+    </div>
 </p>
 @using (Html.BeginForm("Index", "Tickets", FormMethod.Get))
 {
@@ -25,77 +28,83 @@
 <table class="table">
     <tr>
         <th>
-            <font color="gold">@Html.DisplayNameFor(model => model.ClientName)</font>  
+            <font color="gold">@Html.DisplayNameFor(model => model.TicketReference)</font>
+        </th>
+        <th>
+            <font color="gold">@Html.DisplayNameFor(model => model.ClientName)</font>
         </th>
         <th>
             <font color="gold">@Html.DisplayNameFor(model => model.Email)</font>
-</th>
+        </th>
         <th>
             <font color="gold"> @Html.DisplayNameFor(model => model.FaultDescription)</font>
-</th>
+        </th>
         <th>
             <font color="gold">@Html.DisplayNameFor(model => model.Priority)</font>
-</th>
-        <th>
-            <font color="gold">  @Html.DisplayNameFor(model => model.Date)</font>
-        </th>
-        
-        <th>
-            <font color="gold">  @Html.DisplayNameFor(model => model.Category)</font>
         </th>
         <th>
-            <font color="gold">  @Html.DisplayNameFor(model => model.Status)</font>
+            <font color="gold"> @Html.DisplayNameFor(model => model.Date)</font>
+        </th>
+
+        <th>
+            <font color="gold"> @Html.DisplayNameFor(model => model.Category)</font>
         </th>
         <th>
-            <font color="gold">  @Html.DisplayNameFor(model => model.ConsultantName)</font>
+            <font color="gold"> @Html.DisplayNameFor(model => model.Status)</font>
         </th>
-        
+        <th>
+            <font color="gold"> @Html.DisplayNameFor(model => model.ConsultantName)</font>
+        </th>
+
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            <font color="gold"> @Html.DisplayFor(modelItem => item.TicketReference)</font>
+        </td>
+        <td>
             <font color="gold"> @Html.DisplayFor(modelItem => item.ClientName)</font>
-</td>
+        </td>
         <td>
             <font color="gold"> @Html.DisplayFor(modelItem => item.Email)</font>
-</td>
+        </td>
         <td>
             <font color="gold">@Html.DisplayFor(modelItem => item.FaultDescription)</font>
-</td>
-        <td>
-            <font color="gold">  @Html.DisplayFor(modelItem => item.Priority)</font>
         </td>
         <td>
-            <font color="gold">  @Html.DisplayFor(modelItem => item.Date)</font>
-        </td>
-        
-       
-        <td>
-            <font color="gold">  @Html.DisplayFor(modelItem => item.Category)</font>
+            <font color="gold"> @Html.DisplayFor(modelItem => item.Priority)</font>
         </td>
         <td>
-            <font color="gold">  @Html.DisplayFor(modelItem => item.Status)</font>
+            <font color="gold"> @Html.DisplayFor(modelItem => item.Date)</font>
+        </td>
+
+
+        <td>
+            <font color="gold"> @Html.DisplayFor(modelItem => item.Category)</font>
         </td>
         <td>
-            <font color="gold">  @Html.DisplayFor(modelItem => item.ConsultantName)</font>
+            <font color="gold"> @Html.DisplayFor(modelItem => item.Status)</font>
         </td>
         <td>
-<td>
-    @if (User.IsInRole("Admin"))
+            <font color="gold"> @Html.DisplayFor(modelItem => item.ConsultantName)</font>
+        </td>
+        <td>
+            <td>
+                @if (User.IsInRole("Admin"))
                 {
-        <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit", "Tickets", new {id = item.ID})'" />
+                    <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit", "Tickets", new {id = item.ID})'"/>
 
 
-                    <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href = '@Url.Action("Details", "Tickets", new {id = item.ID})'" />
+                    <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href = '@Url.Action("Details", "Tickets", new {id = item.ID})'"/>
 
-                    <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href = '@Url.Action("Delete", "Tickets", new {id = item.ID})'" />
+                    <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href = '@Url.Action("Delete", "Tickets", new {id = item.ID})'"/>
 
-    }
-    
-        <input type="button" itle="Review" value="Review" class="btn btn-primary" onclick="location.href = '@Url.Action("Review", "Tickets", new {id = item.ID})'" />
+                }
 
-        </td>
+                <input type="button" itle="Review" value="Review" class="btn btn-primary" onclick="location.href = '@Url.Action("Review", "Tickets", new {id = item.ID})'"/>
+
+            </td>
         </td>
     </tr>
 }

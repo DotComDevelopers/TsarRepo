@@ -14,6 +14,7 @@ namespace TSAR.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         
+
         [Display(Name = "Client Name")]
         public string ClientName { get; set; }
 
@@ -42,6 +43,12 @@ namespace TSAR.Models
 
         [Display(Name = "Assigned Consultant")]
         public string ConsultantName { get; set; }
+
+        public int ConsultantId { get; set; }
+
+
+        public string TicketReference { get; set; }
+
 
         public virtual Client Clients { get; set; }
         

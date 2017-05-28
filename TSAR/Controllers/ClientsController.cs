@@ -69,84 +69,146 @@ namespace TSAR.Controllers
             Client client = new Client();
 
             ManageTravel mt = new ManageTravel();
-
-
-            if (model.ClientAddress != null)
+            ManageTravel mt2 = new ManageTravel();
+            if (model.ClientName != null)
             {
-
-                client.ClientName = model.ClientName;
-                client.Distance = model.Distance;
-                client.Rate = model.Rate;
-                client.ClientAddress = model.ClientAddress;
-                client.ContactNumber = model.ContactNumber;
-                client.Email = model.Email;
-                client.ProjectLeader = model.ProjectLeader;
-
-                mt.TravelCode = model.ClientName.Substring(0, 4);
-
-                mt.Rate = model.Rate;
-
-                mt.Distance = model.Distance;
-                double p;
-                int count = 0;
-                foreach (char item in model.Distance)
+                if (model.ClientAddress != null)
                 {
-                    if (item != '_')
+
+                    client.ClientName = model.ClientName;
+
+                    client.ClientAddress = model.ClientAddress;
+                    client.ContactNumber = model.ContactNumber;
+                    client.Email = model.Email;
+                    client.ClientAddress2 = model.ClientAddress2;
+                    client.ContactNumber2 = model.ContactNumber2;
+                    client.Email2 = model.Email2;
+                    client.ProjectLeader = model.ProjectLeader;
+                    //Adding a substring of the clients contactnumber to make the travel code more unique
+                    mt.TravelCode = model.ClientName.Substring(0, 4);//+ Convert.ToString(model.ContactNumber).Substring(0,2);
+
+                    mt.Rate = 3.55;
+
+                    mt.Distance = model.Distance;
+                    double p;
+                    int count = 0;
+                    foreach (char item in model.Distance)
                     {
-                        count++;
+                        if (item != '_')
+                        {
+                            count++;
 
-                        if (count == 3)
-                        {
-                            //p = Convert.ToDouble(model.Distance.Substring(0, 1));
-                            p = double.Parse(model.Distance.Substring(0, 1), CultureInfo.InvariantCulture);
-                            mt.TravelFee = ((mt.Rate * p) * 2);
-                        }
-                        else if (count == 4)
-                        {
-                            //p = Convert.ToDouble(model.Distance.Substring(0, 2));
-                            p = double.Parse(model.Distance.Substring(0, 2), CultureInfo.InvariantCulture);
-                            mt.TravelFee = ((mt.Rate * p) * 2);
-                        }
-                        else if (count == 5)
-                        {
-                            //p = Convert.ToDouble(model.Distance.Substring(0, 3));
-                            p = double.Parse(model.Distance.Substring(0, 3), CultureInfo.InvariantCulture);
-                            mt.TravelFee = ((mt.Rate * p) * 2);
-                        }
-                        else if (count == 6)
+                            if (count == 3)
+                            {
+                                //p = Convert.ToDouble(model.Distance.Substring(0, 1));
+                                p = double.Parse(model.Distance.Substring(0, 1), CultureInfo.InvariantCulture);
+                                mt.TravelFee = ((mt.Rate * p) * 2);
+                            }
+                            else if (count == 4)
+                            {
+                                //p = Convert.ToDouble(model.Distance.Substring(0, 2));
+                                p = double.Parse(model.Distance.Substring(0, 2), CultureInfo.InvariantCulture);
+                                mt.TravelFee = ((mt.Rate * p) * 2);
+                            }
+                            else if (count == 5)
+                            {
+                                //p = Convert.ToDouble(model.Distance.Substring(0, 3));
+                                p = double.Parse(model.Distance.Substring(0, 3), CultureInfo.InvariantCulture);
+                                mt.TravelFee = ((mt.Rate * p) * 2);
+                            }
+                            else if (count == 6)
 
-                        {
-                            //p = Convert.ToDouble(model.Distance.Substring(0, 4));
-                            p = double.Parse(model.Distance.Substring(0, 4), CultureInfo.InvariantCulture);
-                            mt.TravelFee = ((mt.Rate * p) * 2);
+                            {
+                                //p = Convert.ToDouble(model.Distance.Substring(0, 4));
+                                p = double.Parse(model.Distance.Substring(0, 4), CultureInfo.InvariantCulture);
+                                mt.TravelFee = ((mt.Rate * p) * 2);
+                            }
+                            else
+                            {
+                                //p = Convert.ToDouble(model.Distance.Substring(0, 2));
+                                p = double.Parse(model.Distance.Substring(0, 2), CultureInfo.InvariantCulture);
+                                mt.TravelFee = ((mt.Rate * p) * 2);
+
+                            }
+
                         }
-                        else
+                    }
+
+
+                    db.ManageTravels.Add(mt);
+                }
+
+
+                if (model.ClientAddress2 != null)
+                {
+
+                    client.TravelCode2 = client.ClientName.Substring(0, 4) + "**";
+                    mt2.TravelCode = client.ClientName.Substring(0,4) + "**"; // + Convert.ToString(model.ContactNumber).Substring(0, 3); 
+
+                    model.TravelCode2 = mt2.TravelCode;
+
+                    mt2.Rate = 3.55;
+
+                    mt2.Distance = model.Distance2;
+                    double l;
+                    int count2 = 0;
+                    foreach (char item in model.Distance2)
+                    {
+                        if (item != '_')
                         {
-                            //p = Convert.ToDouble(model.Distance.Substring(0, 2));
-                            p = double.Parse(model.Distance.Substring(0, 2), CultureInfo.InvariantCulture);
-                            mt.TravelFee = ((mt.Rate * p) * 2);
+                            count2++;
+
+                            if (count2 == 3)
+                            {
+                                //l = Convert.ToDouble(model.Distance2.Substring(0, 1));
+                                l = double.Parse(model.Distance2.Substring(0, 1), CultureInfo.InvariantCulture);
+                                mt2.TravelFee = ((mt2.Rate * l) * 2);
+                            }
+                            else if (count2 == 4)
+                            {
+                                //l = Convert.ToDouble(model.Distance2.Substring(0, 2));
+                                l = double.Parse(model.Distance2.Substring(0, 2), CultureInfo.InvariantCulture);
+                                mt2.TravelFee = ((mt2.Rate * l) * 2);
+                            }
+                            else if (count2 == 5)
+                            {
+                                // l = Convert.ToDouble(model.Distance2.Substring(0, 3));
+                                l = double.Parse(model.Distance2.Substring(0, 3), CultureInfo.InvariantCulture);
+                                mt2.TravelFee = ((mt2.Rate * l) * 2);
+                            }
+                            else if (count2 == 6)
+
+                            {
+                                // l = Convert.ToDouble(model.Distance2.Substring(0, 4));
+                                l = double.Parse(model.Distance2.Substring(0, 4), CultureInfo.InvariantCulture);
+                                mt2.TravelFee = ((mt2.Rate * l) * 2);
+                            }
+                            else
+                            {
+                                // l = Convert.ToDouble(model.Distance2.Substring(0, 2));
+                                l = double.Parse(model.Distance2.Substring(0, 2), CultureInfo.InvariantCulture);
+                                mt2.TravelFee = ((mt2.Rate * l) * 2);
+
+                            }
 
                         }
 
                     }
+                    db.ManageTravels.Add(mt2);
                 }
 
 
 
 
-
-                db.ManageTravels.Add(mt);
-
                 client.TravelCode = model.ClientName.Substring(0, 4);
-
-
-
+                //+ Convert.ToString(model.ContactNumber).Substring(0, 2); 
+           
                 db.Clients.Add(client);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+
+                
             }
-
-
 
 
             return View(model);

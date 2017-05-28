@@ -5,7 +5,11 @@
 }
 @using (Html.BeginForm())
 {
+
     @Html.AntiForgeryToken()
+
+   
+    
 
     <!-- Contact Section -->
     <div class="container">
@@ -18,6 +22,36 @@
         <div align="center">
             Our Details
             <p>
+             
+                <div id="map" style="min-height: 400px"></div>
+                <script>
+
+      function initMap() {
+          var myLatLng = { lat: -29.738375, lng:  31.066912 };
+           
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: '20 Nollsworth Crescent'
+        });
+      }
+                </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmwokcf-w9HRliiKKP_SZBfOGy5ZjlGtE&callback=initMap"></script>
+                       
+              
+  
+                
+
+    
+                
+              
+                <br/>
                 <i class="fa fa-map-marker"></i>
             </p>
             Unit 6, <br>
@@ -88,7 +122,14 @@
             </div>
         </div>
     </div>
+
+
+
+
 }
-@section Scripts {
+
+
+@section scripts{
     @Scripts.Render("~/bundles/jqueryval")
 }
+
