@@ -39,16 +39,12 @@ namespace TSAR.Models
         [Display(Name = "Email 2")]
         public string Email2 { get; set; }
 
-        [Required]
-        [Display(Name = "Project Leader")]
-        public string ProjectLeader { get; set; }
+        //[Required]
+        //[Display(Name = "Project Leader")]
+        //public string ProjectLeader { get; set; }
 
        
 
-
-        [Display(Name = "Rate")]
-    
-        public double Rate { get; set; }
 
 
         [Display(Name = "Distance")]
@@ -57,12 +53,12 @@ namespace TSAR.Models
 
         public string Distance2 { get; set; }
 
-        public virtual ManageTravel ManageTravel { get; set; }
+        //public virtual ManageTravel ManageTravel { get; set; }
 
-        [Display(Name = "Travel Code")]
-        [Required]
-        public string TravelCode { get; set; }
-        public double TravelFee { get; set; }
-        public string TravelCode2 { get; set; }
+        //[Display(Name = "Travel Code")]
+        //[Required]
+        //public string TravelCode { get; set; }
+        //public double TravelFee { get; set; }
+        //public string TravelCode2 { get; set; }
     }
 }

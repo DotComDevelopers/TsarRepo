@@ -46,7 +46,7 @@ namespace TSAR.Models
 
         public int ConsultantId { get; set; }
 
-
+        [Display(Name = "Ticket Reference")]
         public string TicketReference { get; set; }
 
 

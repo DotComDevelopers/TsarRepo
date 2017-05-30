@@ -55,7 +55,7 @@ namespace TSAR.Controllers
         // GET: Clients/Create
         public ActionResult Create()
         {
-            ViewBag.TravelCode = new SelectList(db.ManageTravels, "TravelCode", "TravelCode");
+        
             return View();
         }
 
@@ -67,9 +67,9 @@ namespace TSAR.Controllers
         public ActionResult Create(TravelViewModel model)
         {
             Client client = new Client();
+            Travel mt = new Travel();
+            Travel mt2 = new Travel();
 
-            ManageTravel mt = new ManageTravel();
-            ManageTravel mt2 = new ManageTravel();
             if (model.ClientName != null)
             {
                 if (model.ClientAddress != null)
@@ -83,12 +83,13 @@ namespace TSAR.Controllers
                     client.ClientAddress2 = model.ClientAddress2;
                     client.ContactNumber2 = model.ContactNumber2;
                     client.Email2 = model.Email2;
-                    client.ProjectLeader = model.ProjectLeader;
+                    //client.ProjectLeader = model.ProjectLeader;
                     //Adding a substring of the clients contactnumber to make the travel code more unique
-                    mt.TravelCode = model.ClientName.Substring(0, 4);//+ Convert.ToString(model.ContactNumber).Substring(0,2);
 
-                    mt.Rate = 3.55;
-
+                    //+ Convert.ToString(model.ContactNumber).Substring(0,2);
+                    mt.ClientAddress = model.ClientAddress;
+                    mt.TravelRate = 3.55;
+                    mt.Id = model.Id;
                     mt.Distance = model.Distance;
                     double p;
                     int count = 0;
@@ -102,52 +103,46 @@ namespace TSAR.Controllers
                             {
                                 //p = Convert.ToDouble(model.Distance.Substring(0, 1));
                                 p = double.Parse(model.Distance.Substring(0, 1), CultureInfo.InvariantCulture);
-                                mt.TravelFee = ((mt.Rate * p) * 2);
+                                mt.TravelFee = ((mt.TravelRate * p) * 2);
                             }
                             else if (count == 4)
                             {
                                 //p = Convert.ToDouble(model.Distance.Substring(0, 2));
                                 p = double.Parse(model.Distance.Substring(0, 2), CultureInfo.InvariantCulture);
-                                mt.TravelFee = ((mt.Rate * p) * 2);
+                                mt.TravelFee = ((mt.TravelRate * p) * 2);
                             }
                             else if (count == 5)
                             {
                                 //p = Convert.ToDouble(model.Distance.Substring(0, 3));
                                 p = double.Parse(model.Distance.Substring(0, 3), CultureInfo.InvariantCulture);
-                                mt.TravelFee = ((mt.Rate * p) * 2);
+                                mt.TravelFee = ((mt.TravelRate * p) * 2);
                             }
                             else if (count == 6)
 
                             {
                                 //p = Convert.ToDouble(model.Distance.Substring(0, 4));
                                 p = double.Parse(model.Distance.Substring(0, 4), CultureInfo.InvariantCulture);
-                                mt.TravelFee = ((mt.Rate * p) * 2);
+                                mt.TravelFee = ((mt.TravelRate * p) * 2);
                             }
                             else
                             {
                                 //p = Convert.ToDouble(model.Distance.Substring(0, 2));
                                 p = double.Parse(model.Distance.Substring(0, 2), CultureInfo.InvariantCulture);
-                                mt.TravelFee = ((mt.Rate * p) * 2);
+                                mt.TravelFee = ((mt.TravelRate * p) * 2);
 
                             }
 
                         }
                     }
-
-
-                    db.ManageTravels.Add(mt);
+                    db.Travels.Add(mt);
                 }
-
-
                 if (model.ClientAddress2 != null)
                 {
 
-                    client.TravelCode2 = client.ClientName.Substring(0, 4) + "**";
-                    mt2.TravelCode = client.ClientName.Substring(0,4) + "**"; // + Convert.ToString(model.ContactNumber).Substring(0, 3); 
 
-                    model.TravelCode2 = mt2.TravelCode;
+                    mt2.ClientAddress = model.ClientAddress2;
 
-                    mt2.Rate = 3.55;
+                    mt2.TravelRate = 3.55;
 
                     mt2.Distance = model.Distance2;
                     double l;
@@ -162,56 +157,53 @@ namespace TSAR.Controllers
                             {
                                 //l = Convert.ToDouble(model.Distance2.Substring(0, 1));
                                 l = double.Parse(model.Distance2.Substring(0, 1), CultureInfo.InvariantCulture);
-                                mt2.TravelFee = ((mt2.Rate * l) * 2);
+                                mt2.TravelFee = ((mt2.TravelRate * l) * 2);
                             }
                             else if (count2 == 4)
                             {
                                 //l = Convert.ToDouble(model.Distance2.Substring(0, 2));
                                 l = double.Parse(model.Distance2.Substring(0, 2), CultureInfo.InvariantCulture);
-                                mt2.TravelFee = ((mt2.Rate * l) * 2);
+                                mt2.TravelFee = ((mt2.TravelRate * l) * 2);
                             }
                             else if (count2 == 5)
                             {
                                 // l = Convert.ToDouble(model.Distance2.Substring(0, 3));
                                 l = double.Parse(model.Distance2.Substring(0, 3), CultureInfo.InvariantCulture);
-                                mt2.TravelFee = ((mt2.Rate * l) * 2);
+                                mt2.TravelFee = ((mt2.TravelRate * l) * 2);
                             }
                             else if (count2 == 6)
 
                             {
                                 // l = Convert.ToDouble(model.Distance2.Substring(0, 4));
                                 l = double.Parse(model.Distance2.Substring(0, 4), CultureInfo.InvariantCulture);
-                                mt2.TravelFee = ((mt2.Rate * l) * 2);
+                                mt2.TravelFee = ((mt2.TravelRate * l) * 2);
                             }
                             else
                             {
                                 // l = Convert.ToDouble(model.Distance2.Substring(0, 2));
                                 l = double.Parse(model.Distance2.Substring(0, 2), CultureInfo.InvariantCulture);
-                                mt2.TravelFee = ((mt2.Rate * l) * 2);
+                                mt2.TravelFee = ((mt2.TravelRate * l) * 2);
 
                             }
 
                         }
 
                     }
-                    db.ManageTravels.Add(mt2);
-                }
+              db.Travels.Add(mt2);    
+                
+            }  
+                
 
-
-
-
-                client.TravelCode = model.ClientName.Substring(0, 4);
-                //+ Convert.ToString(model.ContactNumber).Substring(0, 2); 
-           
-                db.Clients.Add(client);
+                    db.Clients.Add(client);
                     db.SaveChanges();
                     return RedirectToAction("Index");
-
                 
+
             }
 
 
-            return View(model);
+
+            return View(client);
         }
 
         // GET: Clients/Edit/5
@@ -226,7 +218,7 @@ namespace TSAR.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.TravelCode = new SelectList(db.ManageTravels, "TravelCode", "TravelCode", client.TravelCode);
+          
             return View(client);
         }
 
@@ -235,7 +227,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ClientName,Branch,ClientAddress,ContactNumber,Email,ClientType,ProjectLeader,TravelCode,RoleType")] Client client)
+        public ActionResult Edit([Bind(Include = "Id,ClientName,Branch,ClientAddress,ContactNumber,Email,ClientAddress2,ContactNumber2,Email2,TravelCode")] Client client)
         {
             if (ModelState.IsValid)
             {
@@ -243,7 +235,7 @@ namespace TSAR.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TravelCode = new SelectList(db.ManageTravels, "TravelCode", "TravelCode", client.TravelCode);
+ 
             return View(client);
         }
 

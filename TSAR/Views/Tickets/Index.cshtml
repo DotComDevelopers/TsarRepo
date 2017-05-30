@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Tickets</h2>
 
 <p>
     @if (User.IsInRole("Admin"))
@@ -16,6 +16,7 @@
             <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
         </div>
     }
+    <br />
     <div align="center">
 
         <a id="button" href="@Url.Action("MyTickets")" class="btn btn-primary">My Tickets</a>

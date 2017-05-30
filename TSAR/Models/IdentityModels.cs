@@ -30,7 +30,7 @@ namespace TSAR.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<TSAR.Models.ManageTravel> ManageTravels { get; set; }
+    
 
         public System.Data.Entity.DbSet<TSAR.Models.Client> Clients { get; set; }
 
@@ -52,5 +52,6 @@ namespace TSAR.Models
 
         public System.Data.Entity.DbSet<TSAR.Models.Event> Events { get; set; }
 
+        public System.Data.Entity.DbSet<TSAR.Models.Travel> Travels { get; set; }
     }
 }

@@ -32,19 +32,12 @@ namespace TSAR.ViewModels
         public string Email { get; set; }
         [Display(Name = "Email 2 *Optional*")]
         public string Email2 { get; set; }
-        public string Distance2 { get; set; }
-        [Required]
-        [Display(Name = "Project Leader")]
+    
+       // [Required]
+        //[Display(Name = "Project Leader")]
 
-        public string ProjectLeader { get; set; }
-        public string TravelCode2 { get; set; }
-        public virtual ManageTravel ManageTravel { get; set; }
-
-
-
-
-        public string TravelCode { get; set; }
-
+        //public string ProjectLeader { get; set; }
+     
 
 
 
@@ -56,12 +49,13 @@ namespace TSAR.ViewModels
 
 
 
+        
+        public int TravelId { get; set; }
+        public virtual Client Client { get; set; }
+       
+        public double TravelRate { get; set; }
         public string Distance { get; set; }
-
-
-
         public double TravelFee { get; set; }
-        public virtual ICollection<Client> Clients { get; set; }
-
+        public string Distance2 { get; set; }
     }
 }
