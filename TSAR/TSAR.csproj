@@ -228,9 +228,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704091449506_InitialCreate.cs" />
-    <Compile Include="Migrations\201704091449506_InitialCreate.Designer.cs">
-      <DependentUpon>201704091449506_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201705282212491_InitialCreate.cs" />
+    <Compile Include="Migrations\201705282212491_InitialCreate.Designer.cs">
+      <DependentUpon>201705282212491_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -865,8 +865,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704091449506_InitialCreate.resx">
-      <DependentUpon>201704091449506_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705282212491_InitialCreate.resx">
+      <DependentUpon>201705282212491_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
