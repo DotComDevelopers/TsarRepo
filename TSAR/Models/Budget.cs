@@ -19,7 +19,7 @@ namespace TSAR.Models
         public string Code { get; set; }
 
         [Required]
-        [Display(Name = "Balance")]
+        [Display(Name = "Amount")]
         public double Balance { get; set; }
 
     }

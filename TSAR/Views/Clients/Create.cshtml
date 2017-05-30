@@ -56,7 +56,36 @@
                 @Html.ValidationMessageFor(model => model.ClientAddress, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            <div align="center">
+                @Html.LabelFor(model => model.ClientAddress2, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDYt9as2cjmqUnGKD5POvx0xegcT_z40tw&libraries=places" />
+                <script type="text/javascript">
+                    google.maps.event.addDomListener(window,
+                        'load',
+                        function () {
+                            var places = new google.maps.places.Autocomplete(document.getElementById('ClientAddress2'));
+                            google.maps.event.addListener(places,
+                                'place_changed',
+                                function () {
+                                    var place = places.getPlace();
+                                    var address = place.formatted_address;
+                                    var latitude = place.geometry.location.lat();
+                                    var longitude = place.geometry.location.lng();
+                                    var mesg = "Address: " + address;
+                                    mesg += "\nLatitude: " + latitude;
+                                    mesg += "\nLongitude: " + longitude;
 
+                                });
+                        });
+                </script>
+
+                @Html.EditorFor(model => model.ClientAddress2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ClientAddress2, "", new { @class = "text-danger" })
+            </div>
+        </div>
         <div class="form-group">
             <div align="center">
                 @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "control-label" })
@@ -64,6 +93,33 @@
             <div class="col-md-4 col-md-offset-4">
                 @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div align="center">
+                @Html.LabelFor(model => model.Distance, htmlAttributes: new { @class = "control-label", style = "display: none;" })
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                @Html.EditorFor(model => model.Distance, new { htmlAttributes = new { @class = "form-control", @Id="Distance", style = "display: none;" } })
+                @Html.ValidationMessageFor(model => model.Distance, "", new { @class = "text-danger", style = "display: none;" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div align="center">
+                @Html.LabelFor(model => model.Distance2, htmlAttributes: new { @class = "control-label", style = "display: none;" })
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                @Html.EditorFor(model => model.Distance2, new { htmlAttributes = new { @class = "form-control", @Id = "Distance2", style = "display: none;" } })
+                @Html.ValidationMessageFor(model => model.Distance2, "", new { @class = "text-danger", style = "display: none;" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div align="center">
+                @Html.LabelFor(model => model.ContactNumber2, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                @Html.EditorFor(model => model.ContactNumber2, new { htmlAttributes = new { @class = "form-control" } })
+             
             </div>
         </div>
 
@@ -79,34 +135,23 @@
 
 
         </div>
-        <div class="form-group">
-            <div align="center">
-                @Html.LabelFor(model => model.Rate, htmlAttributes: new { @class = "control-label " })
-            </div>
-            <div class="col-md-4 col-md-offset-4">
-                @Html.EditorFor(model => model.Rate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Rate, "", new { @class = "text-danger" })
-
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Distance, htmlAttributes: new { @class = "control-label col-md-2", style = "display: none;" })
-            <div class="col-md-4 col-md-offset-4">
-                @Html.EditorFor(model => model.Distance, new { htmlAttributes = new { @class = "form-control", @id = "Distance", style = "display: none;" } })
-                @Html.ValidationMessageFor(model => model.Distance, "", new { @class = "text-danger", style = "display: none;" })
-
-            </div>
-        </div>
 
         <div class="form-group">
             <div align="center">
-                @Html.LabelFor(model => model.ProjectLeader, htmlAttributes: new { @class = "control-label" })
+                @Html.LabelFor(model => model.Email2, htmlAttributes: new { @class = "control-label" })
             </div>
             <div class="col-md-4 col-md-offset-4">
-                @Html.EditorFor(model => model.ProjectLeader, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ProjectLeader, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Email2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email2, "", new { @class = "text-danger" })
             </div>
+
+
+
         </div>
+        
+        
+
+        
 
 
     </div>
@@ -114,6 +159,8 @@
         <div align="center">
 
             <input type="checkbox" value="Get Route" onclick="GetRoute()" , /> Add Travel
+            <br />
+            <input type="checkbox" value="Get Route" onclick="GetRoute1()" , /> Add Travel2
         </div>
         <div align="center">
 
@@ -125,22 +172,22 @@
     </div>
 
 
-                <br />
+    <br />
 
-                <div align="center">
-                    <a id="button" href="@Url.Action("Index")" class="btn btn-primary">Back To List</a>
-                </div>
-                <div>
-                    <input id="travelfrom" type="text" name="name" value="10 Nollsworth Crescent, Umhlanga, South Africa" style="display: none;" />
+    <div align="center">
+        <a id="button" href="@Url.Action("Index")" class="btn btn-primary">Back To List</a>
+    </div>
+    <div>
+        <input id="travelfrom" type="text" name="name" value="20 Nollsworth Crescent, Umhlanga, South Africa" style="display: none;" />
 
 
 
-                </div>
+    </div>
 
-                <div>
-                </div>
+    <div>
+    </div>
                 <div id="dvMap" style="min-height: 0px"></div>
-
+                <div id="dvMap1" style="min-height: 0px"></div>
 }
 
 
@@ -199,6 +246,245 @@
         //calls distanceMatrixand calculates distance
         var service = new google.maps.DistanceMatrixService();
         service.getDistanceMatrix({
+                origins: [source],
+                destinations: [destination],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false
+            },
+            function (response, status) {
+
+                if (status == google.maps.DistanceMatrixStatus.OK &&
+                    response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                    var distance = response.rows[0].elements[0].distance.text;
+
+                    document.getElementById("Distance").value = distance;
+
+                    //The distance is worked out and sent to a textbox, where it is then saved to the model
+
+
+
+                } else {
+                    alert("Unable to find the distance via road.");
+                }
+            });
+
+
+
+
+
+    }
+
+</script>
+
+<script>
+
+
+    var source, destination;
+    var directionsDisplay;
+    var directionsService = new google.maps.DirectionsService();
+
+
+    var map = new google.maps.Map(document.getElementById('dvMap1'),
+    {
+        center: { lat: 50.834697, lng: -0.773792 },
+        zoom: 13,
+        mapTypeId: 'roadmap'
+    });
+
+    google.maps.event.addDomListener(window,
+        'load',
+        function () {
+            new google.maps.places.SearchBox(document.getElementById('travelfrom'));
+            new google.maps.places.SearchBox(document.getElementById('ClientAddress2'));
+            directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
+        });
+
+    function GetRoute1() {
+
+        directionsDisplay.setMap(map);
+
+        source = document.getElementById("travelfrom").value;
+        destination = document.getElementById("ClientAddress2").value;
+
+        var request = {
+            origin: source,
+            destination: destination,
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+
+        directionsService.route(request,
+            function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                }
+            });
+
+
+        //calls distanceMatrixand calculates distance
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix({
+                origins: [source],
+                destinations: [destination],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false
+            },
+            function (response, status) {
+
+                if (status == google.maps.DistanceMatrixStatus.OK &&
+                    response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                    var distance = response.rows[0].elements[0].distance.text;
+
+                    document.getElementById("Distance2").value = distance;
+
+                    //The distance is worked out and sent to a textbox, where it is then saved to the model
+
+
+
+                } else {
+                    alert("Unable to find the distance via road.");
+                }
+            });
+
+
+
+
+
+    }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAmwokcf-w9HRliiKKP_SZBfOGy5ZjlGtE" type="text/javascript"></script>
+
+
+<script>
+
+
+    var source, destination;
+    var directionsDisplay;
+    var directionsService = new google.maps.DirectionsService();
+
+
+    var map = new google.maps.Map(document.getElementById('dvMap'),
+    {
+        center: { lat: 50.834697, lng: -0.773792 },
+        zoom: 13,
+        mapTypeId: 'roadmap'
+    });
+
+    google.maps.event.addDomListener(window,
+        'load',
+        function () {
+            new google.maps.places.SearchBox(document.getElementById('travelfrom'));
+            new google.maps.places.SearchBox(document.getElementById('ClientAddress'));
+            directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
+        });
+
+    function GetRoute() {
+
+        directionsDisplay.setMap(map);
+
+        source = document.getElementById("travelfrom").value;
+        destination = document.getElementById("ClientAddress").value;
+
+        var request = {
+            origin: source,
+            destination: destination,
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+
+        directionsService.route(request,
+            function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                }
+            });
+
+
+        //calls distanceMatrixand calculates distance
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix({
+                origins: [source],
+                destinations: [destination],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false
+            },
+            function (response, status) {
+
+                if (status == google.maps.DistanceMatrixStatus.OK &&
+                    response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                    var distance = response.rows[0].elements[0].distance.text;
+
+                    document.getElementById("Distance").value = distance;
+
+                    //The distance is worked out and sent to a textbox, where it is then saved to the model
+
+
+
+                } else {
+                    alert("Unable to find the distance via road.");
+                }
+            });
+
+
+
+
+
+    }
+
+</script>
+
+<script>
+
+
+    var source, destination;
+    var directionsDisplay;
+    var directionsService = new google.maps.DirectionsService();
+
+
+    var map = new google.maps.Map(document.getElementById('dvMap1'),
+    {
+        center: { lat: 50.834697, lng: -0.773792 },
+        zoom: 13,
+        mapTypeId: 'roadmap'
+    });
+
+    google.maps.event.addDomListener(window,
+        'load',
+        function () {
+            new google.maps.places.SearchBox(document.getElementById('travelfrom'));
+            new google.maps.places.SearchBox(document.getElementById('ClientAddress2'));
+            directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
+        });
+
+    function GetRoute1() {
+
+        directionsDisplay.setMap(map);
+
+        source = document.getElementById("travelfrom").value;
+        destination = document.getElementById("ClientAddress2").value;
+
+        var request = {
+            origin: source,
+            destination: destination,
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+
+        directionsService.route(request,
+            function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                }
+            });
+
+
+        //calls distanceMatrixand calculates distance
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix({
             origins: [source],
             destinations: [destination],
             travelMode: google.maps.TravelMode.DRIVING,
@@ -212,7 +498,7 @@
                     response.rows[0].elements[0].status != "ZERO_RESULTS") {
                     var distance = response.rows[0].elements[0].distance.text;
 
-                    document.getElementById("Distance").value = distance;
+                    document.getElementById("Distance2").value = distance;
 
                     //The distance is worked out and sent to a textbox, where it is then saved to the model
 

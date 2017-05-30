@@ -1,0 +1,111 @@
+﻿@model IEnumerable<TSAR.Models.Ticket>
+
+@{
+    ViewBag.Title = "MyTickets";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>My Tickets</h2>
+<p><input type="button" title="Tickets" value="Tickets" class="btn btn-primary" onclick="location.href = '@Url.Action("Index", "Tickets")'" /></p>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<link href="~/Content/jquery-ui-1.10.4.custom.min.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $("#txtSearch").autocomplete({
+            source: '@Url.Action("GetTickets")',
+            minLength: 2
+        });
+    });
+</script>
+@using (@Html.BeginForm())
+{
+    <b>Ticket Ref:</b>
+    <font color="black">@Html.TextBox("searchTerm", null, new { @id = "txtSearch" })</font> 
+    <input type="submit" value="Search" class="btn btn-primary"/>
+}
+<table class="table">
+    <tr>
+        <th>
+            <font color="gold">@Html.DisplayNameFor(model => model.TicketReference)</font>
+        </th>
+        <th>
+            <font color="gold">@Html.DisplayNameFor(model => model.ClientName)</font>
+        </th>
+        <th>
+            <font color="gold">@Html.DisplayNameFor(model => model.Email)</font>
+        </th>
+        <th>
+            <font color="gold"> @Html.DisplayNameFor(model => model.FaultDescription)</font>
+        </th>
+        <th>
+            <font color="gold">@Html.DisplayNameFor(model => model.Priority)</font>
+        </th>
+        <th>
+            <font color="gold"> @Html.DisplayNameFor(model => model.Date)</font>
+        </th>
+
+        <th>
+            <font color="gold"> @Html.DisplayNameFor(model => model.Category)</font>
+        </th>
+        <th>
+            <font color="gold"> @Html.DisplayNameFor(model => model.Status)</font>
+        </th>
+        <th>
+            <font color="gold"> @Html.DisplayNameFor(model => model.ConsultantName)</font>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.TicketReference)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.ClientName)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.Email)</font>
+            </td>
+            <td>
+                <font color="gold">@Html.DisplayFor(modelItem => item.FaultDescription)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.Priority)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.Date)</font>
+            </td>
+
+
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.Category)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.Status)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.ConsultantName)</font>
+            </td>
+            <td>
+            <td>
+                @if (User.IsInRole("Admin"))
+                {
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                }
+
+                <input type="button" title="Create Timesheet" value="Create Timesheet" class="btn btn-primary" onclick="location.href = '@Url.Action("Create", "Timesheets", new {tickRef= item.TicketReference })'" />
+                @*@Html.ActionLink("Create Timesheets", "Create", "Timesheets", new {id = item.ID }, null)*@
+            </td>
+        </tr>
+    }
+
+</table>

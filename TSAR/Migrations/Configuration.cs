@@ -87,26 +87,27 @@ namespace TSAR.Migrations
         userManager.AddToRole(userToInsert.Id, "Client");
       }
 
-      //Create default Travel
-      context.ManageTravels.AddOrUpdate(
-        t => t.TravelCode,
-        new ManageTravel() { TravelCode = "EVER", Distance = "1 km", Rate = 2, TravelFee = 20 }
-           //new ManageTravel() { TravelCode = "CPT",distance = 20, rate =2 , TravelFee =40 },
-           );
-      //Create default Client
-      context.Clients.AddOrUpdate(
-          c => c.Id,
-          new Client()
-          {
-            Id = 1,
-            ClientAddress = "15 Narbada Road",
-            ClientName = "Everest",
-            ContactNumber = 0765054589,
-            Email = "nash@everest.com",
-            ProjectLeader = "Nash",
-            Distance = "1 km",
-            Rate = 2,
-            TravelCode = "EVER"
+            //Create default Travel
+            //context.ManageTravels.AddOrUpdate(
+            //  t => t.TravelCode,
+            //  new ManageTravel() { TravelCode = "EVER", Distance= "1 km", Rate = 2, TravelFee = 20 }
+            // //new ManageTravel() { TravelCode = "CPT",distance = 20, rate =2 , TravelFee =40 },
+            //     );
+            //Create default Client
+            context.Clients.AddOrUpdate(
+                c => c.Id,
+                new Client()
+                {
+                    Id = 1,
+                    ClientAddress = "15 Narbada Road",
+                    ClientAddress2 = "16 Narbada Road",
+                    ClientName = "Everest",
+                    ContactNumber = 0765054589,
+                    Email = "nash@everest.com",
+                    ContactNumber2 ="076505498989",
+                    Email2 = "nash@everest.com",
+
+
 
           }
           );

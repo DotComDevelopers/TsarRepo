@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Ratings</h2>
 
 <p>
     @if (User.IsInRole("Admin"))
@@ -47,12 +47,15 @@
             <font color="gold">      @Html.DisplayFor(modelItem => item.ClientUsername)</font>
 </td>
         <td>
-            <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Rating", new { id = item.RatingId })'" />
+    @if (User.IsInRole("Admin"))
+    {
+        <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit", "Rating", new {id = item.RatingId})'"/>
 
 
-            <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Rating", new { id = item.RatingId })'" />
+        <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href = '@Url.Action("Details", "Rating", new {id = item.RatingId})'"/>
 
-            <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Rating", new { id = item.RatingId })'" />
+        <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href = '@Url.Action("Delete", "Rating", new {id = item.RatingId})'"/>
+    }
         </td>
     </tr>
 }

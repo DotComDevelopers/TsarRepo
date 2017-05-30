@@ -40,6 +40,7 @@ namespace TSAR.Controllers
         // GET: Timesheets/Create
         public ActionResult Create()
         {
+            
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName");
             ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName");
             return View();
@@ -50,12 +51,12 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TimesheetId,CaptureDate,StartTime,EndTime,ActivityDescription,Total,Hours,Id,ConsultantNum")] Timesheet timesheet)
+        public ActionResult Create([Bind(Include = "TimesheetId,CaptureDate,StartTime,EndTime,ActivityDescription,Total,Hours,Id,ConsultantNum,TicketReference")] Timesheet timesheet,string tickRef)
         {           
 
             if (ModelState.IsValid)
-            {                               
-
+            {
+                timesheet.TicketReference = tickRef;
                 timesheet.CaptureDate = System.DateTime.Now;
                 timesheet.Hours = (timesheet.EndTime - timesheet.StartTime).TotalHours;
                 timesheet.Total = (700 * (timesheet.EndTime - timesheet.StartTime).TotalHours);

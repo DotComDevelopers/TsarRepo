@@ -7,7 +7,7 @@
 
 <h2>Index</h2>
 <p>
-    @using (Html.BeginForm("Index", "Client", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Clients", FormMethod.Get))
     {
         <b>Search by:</b><font color="Black"> @Html.TextBox("Search")<input type="submit" value="Search" style="color: black" /></font>}
 </p>
@@ -27,20 +27,19 @@
         <th>
             <font color="white"> @Html.DisplayNameFor(model => model.ClientAddress)</font>
         </th>
+
         <th>
             <font color="white"> @Html.DisplayNameFor(model => model.ContactNumber)</font>
         </th>
+
+
         <th>
             <font color="white"> @Html.DisplayNameFor(model => model.Email)</font>
         </th>
 
-        
-        <th>
-            <font color="white"> @Html.DisplayNameFor(model => model.ManageTravel.TravelCode)</font>
-        </th>
-        <th>
+        @*<th>
             <font color="white"> @Html.DisplayNameFor(model => model.ProjectLeader)</font>
-        </th>
+        </th>*@
 
 
 
@@ -59,22 +58,18 @@
             <td>
                 <font color="gold">   @Html.DisplayFor(modelItem => item.ClientAddress)</font>
             </td>
+
             <td>
                 <font color="gold">  @Html.DisplayFor(modelItem => item.ContactNumber)</font>
             </td>
+
             <td>
                 <font color="gold">   @Html.DisplayFor(modelItem => item.Email)</font>
             </td>
-           
 
-            <td>
-                <font color="gold" style="text-transform:uppercase;"> @Html.DisplayFor(modelItem => item.ManageTravel.TravelCode)</font>
-
-            </td>
-
-            <td>
+            @*<td>
                 <font color="gold"> @Html.DisplayFor(modelItem => item.ProjectLeader)</font>
-            </td>
+            </td>*@
 
 
             <td>
@@ -90,3 +85,9 @@
     }
 
 </table>
+@Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })
+<div>
+    <a href="@Request.UrlReferrer" class="btn btn-primary btn-lg" title="Back to list">
+        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+    </a>
+</div>

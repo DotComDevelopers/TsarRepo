@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using TSAR.Models;
 using TSAR.SmsHelper;
@@ -36,6 +37,49 @@ namespace TSAR.Controllers
           
         }
 
+        public ActionResult MyTickets()
+        {
+            string username= User.Identity.GetUserName();
+           string  cn = (from Consultant c in db.Consultants
+                                     where c.Email == username
+                                     select c.FullName).FirstOrDefault();
+
+            return View(db.Tickets.Where(p => p.ConsultantName == cn));
+
+        }
+
+        [HttpPost]
+        public ActionResult MyTickets(string searchTerm)
+        {
+            string username = User.Identity.GetUserName();
+            string cn = (from Consultant c in db.Consultants
+                         where c.Email == username
+                         select c.FullName).FirstOrDefault();
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return View(db.Tickets.Where(p => p.ConsultantName == cn));
+            }
+
+            else
+            {
+                return View(db.Tickets.Where(x=>x.TicketReference.StartsWith(searchTerm)).ToList());
+            }
+          
+
+        }
+
+        public JsonResult GetTickets(string term)
+        {
+           
+            List<string> tickets;
+          
+                tickets = db.Tickets.Where(x => x.TicketReference.StartsWith(term)).Select(y => y.TicketReference).ToList();
+
+            return Json(tickets,JsonRequestBehavior.AllowGet);
+
+
+
+        }
         // GET: Tickets/Details/5
         public ActionResult Details(int? id)
         {
@@ -62,12 +106,14 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date,Category,ConsultantName,Status")] Ticket ticket)
+        public ActionResult Create([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date,Category,ConsultantName,Status,ConsultantId,TicketReference")] Ticket ticket)
         {
+            string tickRef =
+                $"{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Second}{User.Identity.GetUserName().Substring(0, 4)}";
             if (ModelState.IsValid)
             {
                 //created ticket ID should be returned as a reference
-             
+                
                 string email = User.Identity.GetUserName();
                 //For this to work a client must be created with the same email as the email registered to login as a client
                 ticket.ClientName = (from Client c in db.Clients
@@ -75,6 +121,7 @@ namespace TSAR.Controllers
                                      select c.ClientName).FirstOrDefault();
                 ticket.Email = email;
                 ticket.Date = DateTime.Now;
+                ticket.TicketReference = tickRef;
                 if (ticket.Category == "Email" )
                 {
                     ticket.Priority = "Low";
@@ -131,7 +178,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date,Category,Consultant,Status")] Ticket ticket)
+        public ActionResult Edit([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date,Category,Consultant,Status,ConsultantId,TicketReference")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
@@ -207,7 +254,7 @@ namespace TSAR.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Review([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date,Category,ConsultantName,Status")] Ticket ticket)
+        public ActionResult Review([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date,Category,ConsultantName,Status,ConsultantId,TicketReference")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
@@ -218,14 +265,16 @@ namespace TSAR.Controllers
                 ticket.ConsultantName = (from Consultant c in db.Consultants
                                          where c.Email == username
                                          select c.FullName).FirstOrDefault();
-
+                ticket.ConsultantId = (from Consultant c in db.Consultants
+                                       where c.Email == username
+                                       select c.ConsultantNum).FirstOrDefault();
                 if (ticket.ConsultantName != null)
                 {
                     ticket.Status = "In-Progress";
                 }
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyTickets");
             }
             return View(ticket);
         }
