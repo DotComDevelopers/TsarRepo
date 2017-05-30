@@ -7,11 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TSAR.Models;
-using TSAR.SmsHelper;
 
 namespace TSAR.Controllers
 {
-    [Authorize(Roles = "Admin,Consultant")]
+    [Authorize(Roles = "Admin, Consultant")]
     public class LeavesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -19,7 +18,8 @@ namespace TSAR.Controllers
         // GET: Leaves
         public ActionResult Index()
         {
-            return View(db.Leaves.ToList());
+            var leaves = db.Leaves.Include(l => l.Consultant).Include(l => l.LeaveType);
+            return View(leaves.ToList());
         }
 
         // GET: Leaves/Details/5
@@ -37,41 +37,46 @@ namespace TSAR.Controllers
             return View(leave);
         }
 
+        //public int count;
         // GET: Leaves/Create
         public ActionResult Create()
         {
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName");
+            ViewBag.LeaveTypeId = new SelectList(db.LeaveTypes, "LeaveTypeId", "LeaveTypeName");
+
+            //count++;
             return View();
         }
-
+        public int count;
         // POST: Leaves/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LeaveId,FirstName,ApprovedBy,IsConfirmed,LeaveDecsription,LeaveDate,ReturnDate")] Leave leave)
+        public ActionResult Create([Bind(Include = "LeaveId,FirstName,ApprovedBy,IsConfirmed,LeaveDecsription,AccumulatedLeave,AllocatedLeave,LeaveCount,LeaveDate,ReturnDate,LeaveTypeId,ConsultantNum,Gender")] Leave leave)
         {
             if (ModelState.IsValid)
-
             {
+                //var c = new Consultant();
+                //if (c.Gender.Equals("Male"))
 
+                //}
                 leave.IsConfirmed = false;
+                count++;
+                leave.LeaveCount = count;
+                leave.AllocatedLeave = 24;
+                leave.AccumulatedLeave = leave.AllocatedLeave - leave.LeaveCount;
                 db.Leaves.Add(leave);
-                db.SaveChanges();
+               // break here after commenting out>>>>>>>>if (ModelState.IsValid)
+                 db.SaveChanges();
+                //var a = new Leave();
+                //a.AccumulatedLeave = leave.Count(leave => leave.AccumulatedLeave);
 
-                var twilioSmsClient = new TwilioSmsRestClient();
-                var smsStatusResult = twilioSmsClient.SendMessage($"Leave Application created Successfully. Leave Application Reference {leave.LeaveId}");
-
-                if (smsStatusResult.IsCompleted)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {//an appropriate message stating sms failed error, either try again it
-                    return View(leave);
-                }
-
+                return RedirectToAction("Index"); //>>>>>>>>>>Was created automatically with controller >>>> Edit also has this
             }
 
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", leave.ConsultantNum);
+            ViewBag.LeaveTypeId = new SelectList(db.LeaveTypes, "LeaveTypeId", "LeaveTypeName", leave.LeaveTypeId);
             return View(leave);
         }
 
@@ -87,6 +92,8 @@ namespace TSAR.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", leave.ConsultantNum);
+            ViewBag.LeaveTypeId = new SelectList(db.LeaveTypes, "LeaveTypeId", "LeaveTypeName", leave.LeaveTypeId);
             return View(leave);
         }
 
@@ -95,7 +102,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LeaveId,FirstName,ApprovedBy,IsConfirmed,LeaveDecsription,LeaveDate,ReturnDate")] Leave leave)
+        public ActionResult Edit([Bind(Include = "LeaveId,FirstName,ApprovedBy,IsConfirmed,LeaveDecsription,AccumulatedLeave,AllocatedLeave,LeaveCount,LeaveDate,ReturnDate,LeaveTypeId,ConsultantNum,Gender")] Leave leave)
         {
             if (ModelState.IsValid)
             {
@@ -103,6 +110,8 @@ namespace TSAR.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", leave.ConsultantNum);
+            ViewBag.LeaveTypeId = new SelectList(db.LeaveTypes, "LeaveTypeId", "LeaveTypeName", leave.LeaveTypeId);
             return View(leave);
         }
 
