@@ -21,7 +21,7 @@ namespace TSAR.Controllers
         {
             string username = User.Identity.GetUserName();
             int consultantnum = (from Consultant c in db.Consultants
-                where c.Email == username
+                where c.ConsultantUserName == username
                 select c.ConsultantNum).FirstOrDefault();
             var timesheets = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant);
             List<Timesheet> index=null;
@@ -211,7 +211,7 @@ namespace TSAR.Controllers
                 }
                 db.Entry(timesheet).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("ViewTimeheets");
+                return RedirectToAction("Create","Rating");
 
             }
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", timesheet.Id);

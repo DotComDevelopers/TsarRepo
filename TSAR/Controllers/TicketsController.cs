@@ -41,7 +41,7 @@ namespace TSAR.Controllers
         {
             string username= User.Identity.GetUserName();
            string  cn = (from Consultant c in db.Consultants
-                                     where c.Email == username
+                                     where c.ConsultantUserName == username
                                      select c.FullName).FirstOrDefault();
 
             return View(db.Tickets.Where(p => p.ConsultantName == cn));
@@ -263,10 +263,10 @@ namespace TSAR.Controllers
 
                 //For this to work a consultant must be created with the same email as the email registered to login as a consultant
                 ticket.ConsultantName = (from Consultant c in db.Consultants
-                                         where c.Email == username
+                                         where c.ConsultantUserName == username
                                          select c.FullName).FirstOrDefault();
                 ticket.ConsultantId = (from Consultant c in db.Consultants
-                                       where c.Email == username
+                                       where c.ConsultantUserName == username
                                        select c.ConsultantNum).FirstOrDefault();
                 if (ticket.ConsultantName != null)
                 {
