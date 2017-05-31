@@ -49,6 +49,8 @@ namespace TSAR.Models
 
         public string TicketReference { get; set; }
 
+        [Display(Name = "Sign Off")]
+        public bool SignOff { get; set; }
 
 
     }

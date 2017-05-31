@@ -56,7 +56,12 @@
         <th>
             <font color="gold"> @Html.DisplayNameFor(model => model.ConsultantName)</font>
         </th>
+        <th>
+           
+        </th>
+        <th>
 
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -102,9 +107,10 @@
                     <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href = '@Url.Action("Delete", "Tickets", new {id = item.ID})'"/>
 
                 }
-
-                <input type="button" itle="Review" value="Review" class="btn btn-primary" onclick="location.href = '@Url.Action("Review", "Tickets", new {id = item.ID})'"/>
-
+                @if (item.ConsultantName == null)
+                {
+                    <input type="button" itle="Review" value="Review" class="btn btn-primary" onclick="location.href = '@Url.Action("Review", "Tickets", new {id = item.ID})'"/>
+                }
             </td>
         </td>
     </tr>

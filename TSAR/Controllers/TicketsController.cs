@@ -26,8 +26,8 @@ namespace TSAR.Controllers
                 select r.Status).Distinct();
 
             var model = from r in db.Tickets
-                orderby r.Date
-                where r.Status == status || status == null || status == ""
+                orderby  r.Date ascending
+                        where r.Status == status || status == null || status == ""
                 select r;
 
                 return View(model);
@@ -140,12 +140,12 @@ namespace TSAR.Controllers
                 }
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
-                //var twilioSmsClient = new TwilioSmsRestClient();
-                //var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
+                var twilioSmsClient = new TwilioSmsRestClient();
+                var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
 
                 //if (smsStatusResult.IsCompleted)
                 //{
-                //    return RedirectToAction("Index");
+                //    return RedirectToAction("Done");
                 //}
                 //else
                 //{//an appropriate message stating sms failed error, either try again it

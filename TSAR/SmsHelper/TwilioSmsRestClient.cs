@@ -11,7 +11,7 @@ namespace TSAR.SmsHelper
 
         public TwilioSmsRestClient()
         {
-            _client = new TwilioRestClient("AC92899c64b86aefec4836139d443487ad", "c32f724903485277ecc816e298169f27");
+            _client = new TwilioRestClient("AC6773002e07fc3b89f4bab57340c39f1c", "a31ce63a8ac3fe1bdd6f17c8b5e62cd1");
         }
 
         /*DO NOT REMOVE COMMENT:
@@ -21,10 +21,10 @@ namespace TSAR.SmsHelper
          when using MessageResource.Create()*/
         public async Task<MessageResource> SendMessage(string text)
         {
-            var toPhoneNumber = new PhoneNumber("+27711919156");
+            var toPhoneNumber = new PhoneNumber("+27725640265");
             return MessageResource.Create(
                 toPhoneNumber,
-                @from: new PhoneNumber("+12522854117"),
+                @from: new PhoneNumber("+12513877118"),
                 body: text,
                 mediaUrl: null,
                 client: _client);
@@ -35,7 +35,7 @@ namespace TSAR.SmsHelper
             var toPhoneNumber = new PhoneNumber(sendToNumber);
             return MessageResource.Create(
                 toPhoneNumber,
-                @from: new PhoneNumber("+12522854117"),
+                @from: new PhoneNumber("+12513877118"),
                 body: text,
                 mediaUrl: null,
                 client: _client);
