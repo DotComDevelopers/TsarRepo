@@ -870,6 +870,8 @@
     <Content Include="Views\TimeSheetHistory\History.cshtml" />
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Timesheets\ViewTimeheets.cshtml" />
+    <Content Include="Views\Timesheets\SignOff.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
