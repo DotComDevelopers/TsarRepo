@@ -87,6 +87,15 @@
                 @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
             </div>
         </div>
+        @*<div class="form-group">
+            <div align="center">
+                @Html.LabelFor(model => model.ConfirmEmail, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                @Html.EditorFor(model => model.ConfirmEmail, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.ConfirmEmail, "", new {@class = "text-danger"})
+            </div>
+        </div>*@
 
         <div class="form-group">
             <div align="center">
@@ -98,16 +107,26 @@
                 </div>
             </div>
 
+        
         <div class="form-group">
             <div align="center">
-                @Html.LabelFor(model => model.ComissionCode, htmlAttributes: new { @class = "control-label" })
+                @Html.LabelFor(model => model.CommissionId, "Commission", htmlAttributes: new { @class = "control-label" })
             </div>
-                <div class="col-md-4 col-md-offset-4">
-                    @Html.EditorFor(model => model.ComissionCode, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ComissionCode, "", new { @class = "text-danger" })
-                </div>
+            <div class="col-md-4 col-md-offset-4">
+                @Html.DropDownList("CommissionId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CommissionId, "", new { @class = "text-danger" })
             </div>
-
+        </div>
+        
+        <div class="form-group">
+            <div align="center">
+                @Html.LabelFor(model => model.ConsultantUserName, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                @Html.EditorFor(model => model.ConsultantUserName, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.ConsultantUserName, "", new {@class = "text-danger"})
+            </div>
+        </div>
         <div class="form-group">
             <div align="center">
                 @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
@@ -117,16 +136,15 @@
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
             </div>
-
-        <div class="form-group">
+        @*<div class="form-group">
             <div align="center">
-                @Html.LabelFor(model => model.RoleType, htmlAttributes: new { @class = "control-label" })
+                @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label" })
             </div>
-                <div class="col-md-4 col-md-offset-4">
-                    @Html.EditorFor(model => model.RoleType, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.RoleType, "", new { @class = "text-danger" })
-                </div>
+            <div class="col-md-4 col-md-offset-4">
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
             </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -145,5 +163,8 @@
 </div>*@
 
 @section Scripts {
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
 }

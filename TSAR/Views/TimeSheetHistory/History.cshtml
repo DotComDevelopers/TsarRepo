@@ -1,0 +1,142 @@
+﻿@model IEnumerable<TSAR.Models.Timesheet>
+@using System.Data.Entity.ModelConfiguration.Conventions
+@using GridMvc.Html;
+@using TSAR.Models
+
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+
+
+<h2>Timesheet Histroy</h2>
+<p>
+    @using (Html.BeginForm())
+    {
+        <table >
+            <tr>
+                <div>
+                    <th>
+                        <font color="white">
+                            Consulatnt Name: &nbsp &nbsp
+                        </font>
+                    </th>
+                </div>
+                <div class="dropdown-menu">
+                   
+                    <th>
+                        @Html.DropDownList("ConsultantNum", null, htmlAttributes: new {@class = "form-control"})
+                    </th>
+                </div>
+                
+                @*<th>
+                    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+                    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+                    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+                    <script>
+                        $(document).ready(function () {
+                            $("#CaptureDate").datepicker({ dateFormat:""});
+                        });
+                    </script>
+
+
+                    <input type="date" id="CaptureDate"/>
+
+                </th>*@
+               
+                    <input type="submit" value="Search" class="btn btn-primary" />
+             
+
+            
+
+            </tr>
+        </table>
+    }
+
+</p>
+
+<div class="table">
+
+    <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/gridmvc.min.js"></script>
+
+    @Html.Grid(Model).Columns(Columns =>
+{
+    Columns.Add(t => t.Client.ClientName).Titled("Client Name");
+    Columns.Add(t => t.Consultant.FullName).Titled("Consultant Name");
+    Columns.Add(t => t.CaptureDate).Titled("Capture Date");
+    Columns.Add(t => t.StartTime).Titled("StartTime");
+    Columns.Add(t => t.EndTime).Titled("EndTime");
+    Columns.Add(t => t.ActivityDescription).Titled("ActivityDescription");
+    Columns.Add(t => t.Total).Titled("Total");
+    Columns.Add(t => t.Hours).Titled("Hours");
+    //Columns.Add().Encoded(false).Sanitized(false).SetWidth(30).RenderValueAs(o=>Html.ActionLink(("Edit",Edit)))
+
+}).WithPaging(10).Sortable(true)
+
+
+</div>
+@*<table class="table">
+    <tr>
+        <th>
+            <font color="white">        @Html.DisplayNameFor(model => model.Client.ClientName)</font>
+        </th>
+        <th>
+            <font color="white">         @Html.DisplayNameFor(model => model.Consultant.FullName)</font>
+        </th>
+        <th>
+            <font color="white">     @Html.DisplayNameFor(model => model.CaptureDate)</font>
+        </th>
+        <th>
+            <font color="white">       @Html.DisplayNameFor(model => model.StartTime)</font>
+        </th>
+        <th>
+            <font color="white">       @Html.DisplayNameFor(model => model.EndTime)</font>
+        </th>
+        <th>
+            <font color="white">    @Html.DisplayNameFor(model => model.ActivityDescription)</font>
+        </th>
+        <th>
+            <font color="white">     @Html.DisplayNameFor(model => model.Total)</font>
+        </th>
+        <th>
+            <font color="white">    @Html.DisplayNameFor(model => model.Hours)</font>
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.Client.ClientName)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.Consultant.FirstName)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.CaptureDate)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.StartTime)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.EndTime)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.ActivityDescription)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.Total)</font>
+            </td>
+            <td>
+                <font color="gold"> @Html.DisplayFor(modelItem => item.Hours)</font>
+            </td>
+        </tr>
+    }
+</table>*@

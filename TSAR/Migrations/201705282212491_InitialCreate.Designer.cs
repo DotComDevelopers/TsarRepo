@@ -13,7 +13,7 @@ namespace TSAR.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201704091449506_InitialCreate"; }
+            get { return "201705282212491_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
