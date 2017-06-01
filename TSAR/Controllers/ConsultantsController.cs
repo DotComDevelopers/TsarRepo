@@ -95,7 +95,14 @@ namespace TSAR.Controllers
         consultant.FullName = $"{consultant.FirstName} {consultant.LastName}";
         db.Consultants.Add(consultant);
         db.SaveChanges();
-       //userManager.AddToRole(consuser.Id, "Consultant");
+        //userManager.AddToRole(consuser.Id, "Consultant");
+        if (consultant.ConsultantUserName == consuser.UserName)
+        {
+          
+          // if (!await UserManager.IsInRoleAsync(user.Id, "Member"))
+           UserManager.AddToRole(consuser.Id, "Consultant");
+          //return RedirectToAction("Index", "Home");
+        }
 
         return RedirectToAction("Index");
       }
