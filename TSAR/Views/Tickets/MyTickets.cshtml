@@ -101,9 +101,12 @@
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
                 }
-
-                <input type="button" title="Create Timesheet" value="Create Timesheet" class="btn btn-primary" onclick="location.href = '@Url.Action("Create", "Timesheets", new {tickRef= item.TicketReference })'" />
+                
+                @if (item.Status == "In-Progress")
+                {
+                    <input type="button" title="Create Timesheet" value="Create Timesheet" class="btn btn-primary" onclick="location.href = '@Url.Action("Create", "Timesheets", new {tickRef = item.TicketReference})'"/>
                 @*@Html.ActionLink("Create Timesheets", "Create", "Timesheets", new {id = item.ID }, null)*@
+                }
             </td>
         </tr>
     }

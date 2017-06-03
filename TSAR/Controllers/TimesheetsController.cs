@@ -204,9 +204,12 @@ namespace TSAR.Controllers
             {
                 if (timesheet.SignOff == true)
                 {
-                    Ticket tick = db.Tickets.Where(p => p.TicketReference == timesheet.TicketReference).SingleOrDefault();
-                    tick.Status = "Closed-Ticket";
-                    db.Entry(tick).State = EntityState.Modified;
+                    var tick = db.Tickets.SingleOrDefault(p => p.TicketReference == timesheet.TicketReference);
+                    if (tick != null)
+                    {
+                        tick.Status = "Closed-Ticket";
+                        db.Entry(tick).State = EntityState.Modified;
+                    }
                     db.SaveChanges();
                 }
                 db.Entry(timesheet).State = EntityState.Modified;

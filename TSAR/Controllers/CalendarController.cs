@@ -16,33 +16,12 @@ namespace TSAR.Controllers
     [Authorize(Roles = "Admin,Consultant")]
     public class CalendarController : Controller
 
-    
-    {
+ {      ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
             //Being initialized in that way, scheduler will use CalendarController.Data as a the datasource and CalendarController.Save to process changes
             var scheduler = new DHXScheduler(this);
-
-            /*
-             * It's possible to use different actions of the current controller
-             *      var scheduler = new DHXScheduler(this);     
-             *      scheduler.DataAction = "ActionName1";
-             *      scheduler.SaveAction = "ActionName2";
-             * 
-             * Or to specify full paths
-             *      var scheduler = new DHXScheduler();
-             *      scheduler.DataAction = Url.Action("Data", "Calendar");
-             *      scheduler.SaveAction = Url.Action("Save", "Calendar");
-             */
-
-            /*
-             * The default codebase folder is ~/Scripts/dhtmlxScheduler. It can be overriden:
-             *      scheduler.Codebase = Url.Content("~/customCodebaseFolder");
-             */
-            
- 
-           
-
+            ViewBag.Name = User.Identity.Name;
             scheduler.LoadData = true;
             scheduler.EnableDataprocessor = true;
 
@@ -71,6 +50,7 @@ namespace TSAR.Controllers
                 {
                     case DataActionTypes.Insert:
                         data.Events.Add(changedEvent);
+                        ViewBag.Name = changedEvent.name;
                        
                         break;
                     case DataActionTypes.Delete:
@@ -92,6 +72,29 @@ namespace TSAR.Controllers
             }
             return (ContentResult)new AjaxSaveResponse(action);
         }
-    }
+
+
+
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "id,text,start_date,end_date")] Event events)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Events.Add(events);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(events);
+        }
+    }  
 }
 

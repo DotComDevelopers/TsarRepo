@@ -223,6 +223,7 @@
     <Compile Include="Controllers\LeavesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsletterController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SendMailerController.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Models\Leave.cs" />
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Projects.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\RolesLogic.cs" />
     <Compile Include="Models\RolesView.cs" />
@@ -872,6 +874,12 @@
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Views\Timesheets\ViewTimeheets.cshtml" />
     <Content Include="Views\Timesheets\SignOff.cshtml" />
+    <Content Include="Views\Projects\Create.cshtml" />
+    <Content Include="Views\Projects\Delete.cshtml" />
+    <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Projects\Edit.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
+    <Content Include="Views\Calendar\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
