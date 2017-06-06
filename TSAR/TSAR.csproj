@@ -872,6 +872,7 @@
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Views\Timesheets\ViewTimeheets.cshtml" />
     <Content Include="Views\Timesheets\SignOff.cshtml" />
+    <Content Include="Views\Leaves\Done.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

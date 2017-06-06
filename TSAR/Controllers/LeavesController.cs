@@ -63,7 +63,7 @@ namespace TSAR.Controllers
 
                 if (smsStatusResult.IsCompleted)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Done");
                 }
                 else
                 {//an appropriate message stating sms failed error, either try again it
@@ -139,6 +139,12 @@ namespace TSAR.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ViewResult Done()
+        {
+
+            return View();
         }
     }
 }

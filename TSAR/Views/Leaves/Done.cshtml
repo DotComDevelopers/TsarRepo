@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Done";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Leave Request sent </h2>
+<br />
+
+
+<input type="button" style="height:50px;width:100px" title="Back" value="←Back" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Leaves")'" />
+
+
+
+<input type="button" style="height:50px;width:100px" title="Index" value="Index→" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Leaves")'" />
