@@ -137,7 +137,8 @@ namespace TSAR.Migrations
             FirstName = "Jonny",
             LastName = "Bravo",
             FullName = "Jonny Bravo",
-            ConsultantUserName = "Consultant"
+            ConsultantUserName = "Consultant",
+            Gender = "Male"
           }
           );
       if (!(context.Users.Any(u => u.UserName == "dotcomconsultant@gmail.com")))

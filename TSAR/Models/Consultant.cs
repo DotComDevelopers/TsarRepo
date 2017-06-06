@@ -22,7 +22,10 @@ namespace TSAR.Models
 
     [Display(Name = "Full Name")]
     public string FullName { get; set; }
-    [Required]
+        [Required]
+        [Display(Name = "Consultant Gender")]
+        public string Gender { get; set; }
+        [Required]
     [Display(Name = "Contact Number")]
     public int ContactNumber { get; set; }
     [Required]
