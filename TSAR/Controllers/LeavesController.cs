@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TSAR.Models;
+using TSAR.SmsHelper;
+
 
 namespace TSAR.Controllers
 {
@@ -67,10 +69,19 @@ namespace TSAR.Controllers
                 leave.AllocatedLeave = 24;
                 leave.AccumulatedLeave = leave.AllocatedLeave - leave.LeaveCount;
                 db.Leaves.Add(leave);
-               // break here after commenting out>>>>>>>>if (ModelState.IsValid)
-                 db.SaveChanges();
-                //var a = new Leave();
-                //a.AccumulatedLeave = leave.Count(leave => leave.AccumulatedLeave);
+                db.SaveChanges();
+
+                var twilioSmsClient = new TwilioSmsRestClient();
+                var smsStatusResult = twilioSmsClient.SendMessage($"Leave Application created Successfully. Leave Application Reference {leave.LeaveId}");
+
+                if (smsStatusResult.IsCompleted)
+                {
+                    return RedirectToAction("Done");
+                }
+                else
+                {//an appropriate message stating sms failed error, either try again it
+                    return View(leave);
+                }
 
                 return RedirectToAction("Index"); //>>>>>>>>>>Was created automatically with controller >>>> Edit also has this
             }
@@ -148,6 +159,12 @@ namespace TSAR.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ViewResult Done()
+        {
+
+            return View();
         }
     }
 }

@@ -15,8 +15,11 @@ namespace TSAR.Models
         public virtual Client Client { get; set; }
         [Display(Name = "Id")]
         public int Id { get; set; }
+        [Display(Name = "Reference Code")]
+        public string Code { get; set; }
+
         [Required]
-        [Display(Name = "Balance")]
+        [Display(Name = "Amount")]
         public double Balance { get; set; }
 
     }

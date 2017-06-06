@@ -1,0 +1,59 @@
+﻿@model TSAR.Models.Travel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Travel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.ClientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.ClientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TravelRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TravelRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TravelFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TravelFee)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TravelId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -6,11 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using TSAR.Models;
 
 namespace TSAR.Controllers
 {
-    [Authorize(Roles = "Admin,Consultant")]
+    [Authorize(Roles = "Admin,Consultant,Client")]
     public class TimesheetsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -18,10 +19,34 @@ namespace TSAR.Controllers
         // GET: Timesheets
         public ActionResult Index()
         {
+            string username = User.Identity.GetUserName();
+            int consultantnum = (from Consultant c in db.Consultants
+                where c.ConsultantUserName == username
+                select c.ConsultantNum).FirstOrDefault();
             var timesheets = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant);
-            return View(timesheets.ToList());
+            List<Timesheet> index=null;
+            if(User.IsInRole("Admin"))
+            {
+              index =  timesheets.ToList();
+            }
+            else if (User.IsInRole("Consultant"))
+            {
+
+                index = db.Timesheets.Where(p => p.ConsultantNum==consultantnum).ToList();
+            }
+
+            return View(index);
         }
 
+        public ActionResult ViewTimeheets()
+        {
+            var timesheets = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant);
+            string username = User.Identity.GetUserName();
+            int clientid = (from Client c in db.Clients
+                            where c.Email == username
+                            select c.Id).FirstOrDefault();
+            return View(db.Timesheets.Where(p => p.Id==clientid).ToList());
+        }
         // GET: Timesheets/Details/5
         public ActionResult Details(int? id)
         {
@@ -37,9 +62,13 @@ namespace TSAR.Controllers
             return View(timesheet);
         }
 
+
+        
+
         // GET: Timesheets/Create
         public ActionResult Create()
         {
+            
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName");
             ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName");
             return View();
@@ -50,12 +79,23 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TimesheetId,CaptureDate,StartTime,EndTime,ActivityDescription,Total,Hours,Id,ConsultantNum")] Timesheet timesheet)
+        public ActionResult Create([Bind(Include = "TimesheetId,CaptureDate,StartTime,EndTime,ActivityDescription,Total,Hours,Id,ConsultantNum,TicketReference,SignOff")] Timesheet timesheet,string tickRef)
         {           
 
             if (ModelState.IsValid)
-            {                               
+            {
+                timesheet.TicketReference = tickRef;
+                string clientname = (from Ticket t in db.Tickets
+                                     where t.TicketReference == tickRef
+                                     select t.ClientName).FirstOrDefault();
 
+                timesheet.Id = (from Client c in db.Clients
+                                where c.ClientName == clientname
+                                select c.Id).FirstOrDefault();
+
+                timesheet.ConsultantNum = (from Ticket t in db.Tickets
+                                             where t.TicketReference == tickRef
+                                             select t.ConsultantId).FirstOrDefault();
                 timesheet.CaptureDate = System.DateTime.Now;
                 timesheet.Hours = (timesheet.EndTime - timesheet.StartTime).TotalHours;
                 timesheet.Total = (700 * (timesheet.EndTime - timesheet.StartTime).TotalHours);
@@ -91,7 +131,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "TimesheetId,CaptureDate,StartTime,EndTime,ActivityDescription,Total,Hours,Id,ConsultantNum")] Timesheet timesheet)
+        public ActionResult Edit([Bind(Include = "TimesheetId,CaptureDate,StartTime,EndTime,ActivityDescription,Total,Hours,Id,ConsultantNum,TicketReference,SignOff")] Timesheet timesheet)
         {
             if (ModelState.IsValid)
             {
@@ -138,5 +178,46 @@ namespace TSAR.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult SignOff(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Timesheet timesheet = db.Timesheets.Find(id);
+            if (timesheet == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", timesheet.Id);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", timesheet.ConsultantNum);
+            return View(timesheet);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignOff([Bind(Include = "TimesheetId,CaptureDate,StartTime,EndTime,ActivityDescription,Total,Hours,Id,ConsultantNum,TicketReference,SignOff")] Timesheet timesheet)
+        {
+            if (ModelState.IsValid)
+            {
+                if (timesheet.SignOff == true)
+                {
+                    Ticket tick = db.Tickets.Where(p => p.TicketReference == timesheet.TicketReference).SingleOrDefault();
+                    tick.Status = "Closed-Ticket";
+                    db.Entry(tick).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                db.Entry(timesheet).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Create","Rating");
+
+            }
+            ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", timesheet.Id);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", timesheet.ConsultantNum);
+            return View(timesheet);
+        }
     }
 }
+                                                                                                

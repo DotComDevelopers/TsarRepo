@@ -43,14 +43,14 @@
             <font color="white">   @Html.DisplayNameFor(model => model.ConsultantType)</font>
         </th>
         <th>
-            <font color="white">   @Html.DisplayNameFor(model => model.ComissionCode)</font>
+            <font color="white">   @Html.DisplayNameFor(model => model.CommissionId)</font>
         </th>
         <th>
             <font color="white">  @Html.DisplayNameFor(model => model.Password)</font>
         </th>
-        <th>
+        @*<th>
             <font color="white">   @Html.DisplayNameFor(model => model.RoleType)</font>
-        </th>
+        </th>*@
         <th></th>
         <th></th>
         <th></th>
@@ -77,14 +77,9 @@
             <td>
                 <font color="gold">   @Html.DisplayFor(modelItem => item.ConsultantType)</font>
             </td>
-            <td>
-                <font color="gold">   @Html.DisplayFor(modelItem => item.ComissionCode)</font>
-            </td>
+   
             <td>
                 <font color="gold">  @Html.DisplayFor(modelItem => item.Password)</font>
-            </td>
-            <td>
-                <font color="gold"> @Html.DisplayFor(modelItem => item.RoleType)</font>
             </td>
             <td>
                 <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Consultants", new { id = item.ConsultantNum })'" />

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 using TSAR.Models;
 using TSAR.SmsHelper;
 
@@ -17,11 +19,67 @@ namespace TSAR.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Tickets
-        public ActionResult Index()
+        public ActionResult Index(string status)
         {
-            return View(db.Tickets.ToList());
+
+            ViewBag.Status = (from r in db.Tickets
+                select r.Status).Distinct();
+
+            var model = from r in db.Tickets
+                orderby  r.Date ascending
+                        where r.Status == status || status == null || status == ""
+                select r;
+
+                return View(model);
+
+            
+              
+          
         }
 
+        public ActionResult MyTickets()
+        {
+            string username= User.Identity.GetUserName();
+           string  cn = (from Consultant c in db.Consultants
+                                     where c.ConsultantUserName == username
+                                     select c.FullName).FirstOrDefault();
+
+            return View(db.Tickets.Where(p => p.ConsultantName == cn));
+
+        }
+
+        [HttpPost]
+        public ActionResult MyTickets(string searchTerm)
+        {
+            string username = User.Identity.GetUserName();
+            string cn = (from Consultant c in db.Consultants
+                         where c.Email == username
+                         select c.FullName).FirstOrDefault();
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return View(db.Tickets.Where(p => p.ConsultantName == cn));
+            }
+
+            else
+            {
+                return View(db.Tickets.Where(x=>x.TicketReference.StartsWith(searchTerm)).ToList());
+            }
+          
+
+        }
+
+        public JsonResult GetTickets(string term)
+        {
+           
+            List<string> tickets;
+          
+                tickets = db.Tickets.Where(x => x.TicketReference.StartsWith(term)).Select(y => y.TicketReference).ToList();
+
+            return Json(tickets,JsonRequestBehavior.AllowGet);
+
+
+
+        }
         // GET: Tickets/Details/5
         public ActionResult Details(int? id)
         {
@@ -48,30 +106,56 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date")] Ticket ticket)
+        public ActionResult Create([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date,Category,ConsultantName,Status,ConsultantId,TicketReference")] Ticket ticket)
         {
+            string tickRef =
+                $"{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Second}{User.Identity.GetUserName().Substring(0, 4)}";
             if (ModelState.IsValid)
             {
                 //created ticket ID should be returned as a reference
-               
+                
+                string email = User.Identity.GetUserName();
+                //For this to work a client must be created with the same email as the email registered to login as a client
+                ticket.ClientName = (from Client c in db.Clients
+                                     where c.Email == email
+                                     select c.ClientName).FirstOrDefault();
+                ticket.Email = email;
+                ticket.Date = DateTime.Now;
+                ticket.TicketReference = tickRef;
+                if (ticket.Category == "Email" )
+                {
+                    ticket.Priority = "Low";
+                }
+                else if (ticket.Category == "Printer" || ticket.Category == "Other")
+                {
+                    ticket.Priority = "Medium";
+                }
+                else if (ticket.Category == "Hardware"|| ticket.Category == "Maintenance" || ticket.Category == "Network" || ticket.Category == "Software"  )
+                {
+                    ticket.Priority = "High";
+                }
+                if (ticket.Status == null)
+                {
+                    ticket.Status = "Open Ticket";
+                }
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
-
                 var twilioSmsClient = new TwilioSmsRestClient();
                 var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
 
-                if (smsStatusResult.IsCompleted)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {//an appropriate message stating sms failed error, either try again it
-                    return View(ticket);
-                }
-                
+                //if (smsStatusResult.IsCompleted)
+                //{
+                //    return RedirectToAction("Done");
+                //}
+                //else
+                //{//an appropriate message stating sms failed error, either try again it
+                //    return View(ticket);
+                //}
+
             }
 
-            return View(ticket);
+
+            return RedirectToAction("Done");
         }
 
         // GET: Tickets/Edit/5
@@ -94,16 +178,29 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date")] Ticket ticket)
+        public ActionResult Edit([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date,Category,Consultant,Status,ConsultantId,TicketReference")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
+                if (ticket.Category == "Email")
+                {
+                    ticket.Priority = "Low";
+                }
+                else if (ticket.Category == "Printer"|| ticket.Category == "Other")
+                {
+                    ticket.Priority = "Medium";
+                }
+                else if (ticket.Category == "Hardware" || ticket.Category == "Maintenance" || ticket.Category == "Network" || ticket.Category == "Software")
+                {
+                    ticket.Priority = "High";
+                }
                 db.Entry(ticket).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(ticket);
         }
+
 
         // GET: Tickets/Delete/5
         public ActionResult Delete(int? id)
@@ -139,5 +236,54 @@ namespace TSAR.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Review(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Ticket ticket = db.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return HttpNotFound();
+            }
+            return View(ticket);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Review([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date,Category,ConsultantName,Status,ConsultantId,TicketReference")] Ticket ticket)
+        {
+            if (ModelState.IsValid)
+            {
+                string username = User.Identity.GetUserName();
+
+
+                //For this to work a consultant must be created with the same email as the email registered to login as a consultant
+                ticket.ConsultantName = (from Consultant c in db.Consultants
+                                         where c.ConsultantUserName == username
+                                         select c.FullName).FirstOrDefault();
+                ticket.ConsultantId = (from Consultant c in db.Consultants
+                                       where c.ConsultantUserName == username
+                                       select c.ConsultantNum).FirstOrDefault();
+                if (ticket.ConsultantName != null)
+                {
+                    ticket.Status = "In-Progress";
+                }
+                db.Entry(ticket).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("MyTickets");
+            }
+            return View(ticket);
+        }
+
+        public ViewResult Done()
+        {
+
+            return View();
+        }
+
     }
 }

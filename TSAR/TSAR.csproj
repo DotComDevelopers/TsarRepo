@@ -52,6 +52,10 @@
       <HintPath>..\packages\DHTMLX.Scheduler.NET.3.3.27.0\lib\DHTMLX.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GridMvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.4\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -218,19 +222,20 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeavesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ManageTravelController.cs" />
     <Compile Include="Controllers\NewsletterController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SendMailerController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
+    <Compile Include="Controllers\TimeSheetHistoryController.cs" />
     <Compile Include="Controllers\TimesheetsController.cs" />
+    <Compile Include="Controllers\TravelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704091449506_InitialCreate.cs" />
-    <Compile Include="Migrations\201704091449506_InitialCreate.Designer.cs">
-      <DependentUpon>201704091449506_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201705282212491_InitialCreate.cs" />
+    <Compile Include="Migrations\201705282212491_InitialCreate.Designer.cs">
+      <DependentUpon>201705282212491_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -245,7 +250,6 @@
     <Compile Include="Models\Leave.cs" />
     <Compile Include="Models\LeaveType.cs" />
     <Compile Include="Models\MailModel.cs" />
-    <Compile Include="Models\ManageTravel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\RolesLogic.cs" />
@@ -254,6 +258,7 @@
     <Compile Include="Models\Subscription.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\Timesheet.cs" />
+    <Compile Include="Models\Travel.cs" />
     <Compile Include="Models\UserLogic.cs" />
     <Compile Include="Models\UserTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -400,6 +405,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="css\agency.css" />
     <Content Include="css\agency.min.css">
       <DependentUpon>agency.css</DependentUpon>
@@ -463,6 +470,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Grid.mvc.readme" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy.pubxml" />
@@ -679,11 +687,16 @@
     <Content Include="Scripts\dhtmlxScheduler\locale\recurring\repeat_template_ro.html" />
     <Content Include="Scripts\dhtmlxScheduler\locale\recurring\repeat_template_ru.html" />
     <Content Include="Scripts\dhtmlxScheduler\locale\recurring\repeat_template_sk.html" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -802,11 +815,6 @@
     <Content Include="Views\Clients\Details.cshtml" />
     <Content Include="Views\Clients\Edit.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
-    <Content Include="Views\ManageTravel\Create.cshtml" />
-    <Content Include="Views\ManageTravel\Delete.cshtml" />
-    <Content Include="Views\ManageTravel\Details.cshtml" />
-    <Content Include="Views\ManageTravel\Edit.cshtml" />
-    <Content Include="Views\ManageTravel\Index.cshtml" />
     <Content Include="Views\Home\Sent.cshtml" />
     <Content Include="Views\Commissions\Create.cshtml" />
     <Content Include="Views\Commissions\Delete.cshtml" />
@@ -853,11 +861,26 @@
     <Content Include="Views\Rating\Index.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Rating\Done.cshtml" />
+    <Content Include="Views\Tickets\Review.cshtml" />
+    <Content Include="Views\Tickets\Done.cshtml" />
+    <Content Include="Views\Tickets\MyTickets.cshtml" />
+    <Content Include="Views\Travel\Create.cshtml" />
+    <Content Include="Views\Travel\Delete.cshtml" />
+    <Content Include="Views\Travel\Details.cshtml" />
+    <Content Include="Views\Travel\Edit.cshtml" />
+    <Content Include="Views\Travel\Index.cshtml" />
+    <Content Include="Views\TimeSheetHistory\History.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Timesheets\ViewTimeheets.cshtml" />
+    <Content Include="Views\Timesheets\SignOff.cshtml" />
+    <Content Include="Views\Leaves\Done.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bin\bin\cs\" />
     <Folder Include="bin\cs\" />
+    <Folder Include="Content\images\" />
     <Folder Include="Content\themes\base\images\" />
   </ItemGroup>
   <ItemGroup>
@@ -865,8 +888,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704091449506_InitialCreate.resx">
-      <DependentUpon>201704091449506_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705282212491_InitialCreate.resx">
+      <DependentUpon>201705282212491_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

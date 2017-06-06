@@ -18,6 +18,9 @@
             <font color="White">@Html.DisplayNameFor(model => model.Client.ClientName) </font>
         </th>
         <th>
+            <font color="White">    @Html.DisplayNameFor(model => model.Code)</font>
+        </th>
+        <th>
             <font color="White">    @Html.DisplayNameFor(model => model.Balance)</font>
         </th>
         <th></th>
@@ -29,6 +32,9 @@
         <tr>
             <td>
                 <font color="gold">      @Html.DisplayFor(modelItem => item.Client.ClientName)</font>
+            </td>
+            <td>
+                <font color="gold">       @Html.DisplayFor(modelItem => item.Code)</font>
             </td>
             <td>
                 <font color="gold">       @Html.DisplayFor(modelItem => item.Balance)</font>

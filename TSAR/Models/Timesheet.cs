@@ -47,8 +47,10 @@ namespace TSAR.Models
         [Display(Name = "Consultant Name")]
         public int ConsultantNum { get; set; }
 
+        public string TicketReference { get; set; }
 
-
+        [Display(Name = "Sign Off")]
+        public bool SignOff { get; set; }
 
 
     }

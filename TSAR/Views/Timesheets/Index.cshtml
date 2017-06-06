@@ -16,69 +16,76 @@
     <tr>
         <th>
             <font color="white">        @Html.DisplayNameFor(model => model.Client.ClientName)</font>
-</th>
+        </th>
         <th>
             <font color="white">         @Html.DisplayNameFor(model => model.Consultant.FullName)</font>
-</th>
+        </th>
         <th>
             <font color="white">     @Html.DisplayNameFor(model => model.CaptureDate)</font>
-</th>
+        </th>
         <th>
             <font color="white">       @Html.DisplayNameFor(model => model.StartTime)</font>
-</th>
+        </th>
         <th>
             <font color="white">       @Html.DisplayNameFor(model => model.EndTime)</font>
-</th>
+        </th>
         <th>
             <font color="white">    @Html.DisplayNameFor(model => model.ActivityDescription)</font>
-</th>
+        </th>
         <th>
             <font color="white">     @Html.DisplayNameFor(model => model.Total)</font>
-</th>
+        </th>
         <th>
             <font color="white">    @Html.DisplayNameFor(model => model.Hours)</font>
-</th>
+        </th>
+        <th>
+            <font color="white">    @Html.DisplayNameFor(model => model.TicketReference)</font>
+        </th>
         <th></th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <font color="gold">      @Html.DisplayFor(modelItem => item.Client.ClientName)</font>
-</td>
-        <td>
-            <font color="gold">      @Html.DisplayFor(modelItem => item.Consultant.FirstName)</font>
-</td>
-        <td>
-            <font color="gold">     @Html.DisplayFor(modelItem => item.CaptureDate)</font>
-</td>
-        <td>
-            <font color="gold">     @Html.DisplayFor(modelItem => item.StartTime)</font>
-</td>
-        <td>
-            <font color="gold">        @Html.DisplayFor(modelItem => item.EndTime)</font>
-</td>
-        <td>
-            <font color="gold">      @Html.DisplayFor(modelItem => item.ActivityDescription)</font>
-</td>
-        <td>
-            <font color="gold">     @Html.DisplayFor(modelItem => item.Total)</font>
-</td>
-        <td>
-            <font color="gold">    @Html.DisplayFor(modelItem => item.Hours)</font>
-</td>
-        <td>
-        <td>
-            <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Timesheets", new { id = item.TimesheetId })'" />
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <font color="gold">      @Html.DisplayFor(modelItem => item.Client.ClientName)</font>
+            </td>
+            <td>
+                <font color="gold">      @Html.DisplayFor(modelItem => item.Consultant.FirstName)</font>
+            </td>
+            <td>
+                <font color="gold">     @Html.DisplayFor(modelItem => item.CaptureDate)</font>
+            </td>
+            <td>
+                <font color="gold">     @Html.DisplayFor(modelItem => item.StartTime)</font>
+            </td>
+            <td>
+                <font color="gold">        @Html.DisplayFor(modelItem => item.EndTime)</font>
+            </td>
+            <td>
+                <font color="gold">      @Html.DisplayFor(modelItem => item.ActivityDescription)</font>
+            </td>
+            <td>
+                <font color="gold">     @Html.DisplayFor(modelItem => item.Total)</font>
+            </td>
+            <td>
+                <font color="gold">    @Html.DisplayFor(modelItem => item.Hours)</font>
+            </td>
+            <td>
+                <font color="gold">    @Html.DisplayFor(modelItem => item.TicketReference)</font>
+            </td>
+            <td>
+            <td>
+                <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Timesheets", new { id = item.TimesheetId })'" />
 
 
-            <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Timesheets", new { id = item.TimesheetId })'" />
+                <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Timesheets", new { id = item.TimesheetId })'" />
 
-            <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Timesheets", new { id = item.TimesheetId })'" />
-        </td>
-        </td>
-    </tr>
-}
+                <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Timesheets", new { id = item.TimesheetId })'" />
+            </td>
+            </td>
+        </tr>
+    }
 
 </table>

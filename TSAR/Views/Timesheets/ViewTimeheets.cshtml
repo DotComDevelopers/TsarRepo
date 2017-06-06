@@ -1,0 +1,99 @@
+﻿@model IEnumerable<TSAR.Models.Timesheet>
+
+@{
+    ViewBag.Title = "ViewTimeheets";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Sign Off Timeheets</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+<table class="table">
+    <tr>
+        <th>
+            <font color="white">        @Html.DisplayNameFor(model => model.Client.ClientName)</font>
+        </th>
+        <th>
+            <font color="white">         @Html.DisplayNameFor(model => model.Consultant.FullName)</font>
+        </th>
+        <th>
+            <font color="white">     @Html.DisplayNameFor(model => model.CaptureDate)</font>
+        </th>
+        <th>
+            <font color="white">       @Html.DisplayNameFor(model => model.StartTime)</font>
+        </th>
+        <th>
+            <font color="white">       @Html.DisplayNameFor(model => model.EndTime)</font>
+        </th>
+        <th>
+            <font color="white">    @Html.DisplayNameFor(model => model.ActivityDescription)</font>
+        </th>
+        <th>
+            <font color="white">     @Html.DisplayNameFor(model => model.Total)</font>
+        </th>
+        <th>
+            <font color="white">    @Html.DisplayNameFor(model => model.Hours)</font>
+        </th>
+        <th>
+            <font color="white">    @Html.DisplayNameFor(model => model.TicketReference)</font>
+        </th>
+        <th>
+            <font color="white">    @Html.DisplayNameFor(model => model.SignOff)</font>
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <font color="gold">      @Html.DisplayFor(modelItem => item.Client.ClientName)</font>
+            </td>
+            <td>
+                <font color="gold">      @Html.DisplayFor(modelItem => item.Consultant.FullName)</font>
+            </td>
+            <td>
+                <font color="gold">     @Html.DisplayFor(modelItem => item.CaptureDate)</font>
+            </td>
+            <td>
+                <font color="gold">     @Html.DisplayFor(modelItem => item.StartTime)</font>
+            </td>
+            <td>
+                <font color="gold">        @Html.DisplayFor(modelItem => item.EndTime)</font>
+            </td>
+            <td>
+                <font color="gold">      @Html.DisplayFor(modelItem => item.ActivityDescription)</font>
+            </td>
+            <td>
+                <font color="gold">     @Html.DisplayFor(modelItem => item.Total)</font>
+            </td>
+            <td>
+                <font color="gold">    @Html.DisplayFor(modelItem => item.Hours)</font>
+            </td>
+            <td>
+                <font color="gold">    @Html.DisplayFor(modelItem => item.TicketReference)</font>
+            </td>
+            <td>
+                <font color="gold">    @Html.DisplayFor(modelItem => item.SignOff)</font>
+            </td>
+            <td>
+            <td>
+                @*<input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Timesheets", new { id = item.TimesheetId })'" />*@
+
+
+                @*<input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Timesheets", new { id = item.TimesheetId })'" />*@
+                @if (item.SignOff == false)
+                {
+                    <input type="button" title="SignOff" value="Sign Off" class="btn btn-primary" onclick="location.href = '@Url.Action("SignOff", "Timesheets", new {id = item.TimesheetId})'"/>
+                }
+                @*<input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Timesheets", new { id = item.TimesheetId })'" />*@
+            </td>
+            </td>
+        </tr>
+    }
+
+</table>

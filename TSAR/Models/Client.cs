@@ -19,33 +19,46 @@ namespace TSAR.Models
         [Required]
         [Display(Name = "Client Address")]
         public string ClientAddress { get; set; }
+
+        [Display(Name = "Client Address 2")]
+        public string ClientAddress2 { get; set; }
+
+
         [Required]
         [Display(Name = "Contact Number")]
         public long ContactNumber { get; set; }
+
+        [Display(Name = "Contact Number 2")]
+        public string ContactNumber2 { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "Email 2")]
+        public string Email2 { get; set; }
+
+        //[Required]
+        //[Display(Name = "Project Leader")]
+        //public string ProjectLeader { get; set; }
+
        
-        [Required]
-        [Display(Name = "Project Leader")]
-        public string ProjectLeader { get; set; }
 
-        public virtual ManageTravel ManageTravel { get; set; }
-
-
-        [Display(Name = "Rate")]
-    
-        public double Rate { get; set; }
 
 
         [Display(Name = "Distance")]
   
         public string Distance  { get; set; }
 
+        public string Distance2 { get; set; }
 
-        [Display(Name = "Rate")]
-        [Required]
-        public string TravelCode { get; set; }
+        //public virtual ManageTravel ManageTravel { get; set; }
+
+        //[Display(Name = "Travel Code")]
+        //[Required]
+        //public string TravelCode { get; set; }
+        //public double TravelFee { get; set; }
+        //public string TravelCode2 { get; set; }
     }
 }

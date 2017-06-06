@@ -13,11 +13,12 @@ namespace TSAR.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        [Required]
+        
+
         [Display(Name = "Client Name")]
         public string ClientName { get; set; }
 
-        [Required]
+        
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -30,8 +31,29 @@ namespace TSAR.Models
         public string Priority { get; set; }
 
 
-        [Required]
+       
         [Display(Name = "Date & Time")]
         public DateTime Date { get; set; }
+
+        [Display(Name = "Status")]
+        public string Status { get; set; }
+
+        [Display(Name = "Category")]
+        public string Category { get; set; }
+
+        [Display(Name = "Assigned Consultant")]
+        public string ConsultantName { get; set; }
+
+        public int ConsultantId { get; set; }
+
+        [Display(Name = "Ticket Reference")]
+        public string TicketReference { get; set; }
+
+
+        public virtual Client Clients { get; set; }
+        
+        public virtual Timesheet Timesheets { get; set; }
+
+        public virtual Consultant Consultants { get; set; }
     }
 }
