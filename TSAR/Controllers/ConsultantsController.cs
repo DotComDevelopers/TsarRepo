@@ -76,7 +76,7 @@ namespace TSAR.Controllers
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Create([Bind(Include = "ConsultantNum,FirstName,LastName,FullName,ContactNumber,ConsultantAddress,Email,ConsultantType,CommissionId,Password,ConsultantUserName")] Consultant consultant)
+    public ActionResult Create([Bind(Include = "ConsultantNum,FirstName,LastName,FullName,ContactNumber,ConsultantAddress,Email,ConsultantType,CommissionId,Password,ConsultantUserName,Gender")] Consultant consultant)
     {
 
       if (ModelState.IsValid)
@@ -95,7 +95,14 @@ namespace TSAR.Controllers
         consultant.FullName = $"{consultant.FirstName} {consultant.LastName}";
         db.Consultants.Add(consultant);
         db.SaveChanges();
-       //userManager.AddToRole(consuser.Id, "Consultant");
+        //userManager.AddToRole(consuser.Id, "Consultant");
+        if (consultant.ConsultantUserName == consuser.UserName)
+        {
+          
+          // if (!await UserManager.IsInRoleAsync(user.Id, "Member"))
+           UserManager.AddToRole(consuser.Id, "Consultant");
+          //return RedirectToAction("Index", "Home");
+        }
 
         return RedirectToAction("Index");
       }
@@ -124,7 +131,7 @@ namespace TSAR.Controllers
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit([Bind(Include = "ConsultantNum,FirstName,LastName,FullName,ContactNumber,ConsultantAddress,Email,ConsultantType,CommissionId,Password")] Consultant consultant)
+    public ActionResult Edit([Bind(Include = "ConsultantNum,FirstName,LastName,FullName,ContactNumber,ConsultantAddress,Email,ConsultantType,CommissionId,Password,Gender")] Consultant consultant)
     {
       if (ModelState.IsValid)
       {

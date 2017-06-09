@@ -13,6 +13,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.LeaveType.LeaveTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaveType.LeaveTypeName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
@@ -20,62 +28,62 @@
             @Html.DisplayFor(model => model.FirstName)
         </dd>
 
-        @if (User.IsInRole("Admin"))
-        {
-            <dt>
-                @Html.DisplayNameFor(model => model.ApprovedBy)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovedBy)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.ApprovedBy)
-            </dd>
-        }
+        <dd>
+            @Html.DisplayFor(model => model.ApprovedBy)
+        </dd>
 
-            @if (User.IsInRole("Admin"))
-            {
-                <dt>
-                    @Html.DisplayNameFor(model => model.IsConfirmed)
-                </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsConfirmed)
+        </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.IsConfirmed)
-                </dd>
-            }
+        <dd>
+            @Html.DisplayFor(model => model.IsConfirmed)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.LeaveDecsription)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveDecsription)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.LeaveDecsription)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.LeaveDecsription)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.LeaveDate)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.AccumulatedLeave)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.LeaveDate)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.AccumulatedLeave)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.ReturnDate)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveDate)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.ReturnDate)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.LeaveDate)
+        </dd>
 
-        </dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </dt>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+        <dd>
+            @Html.DisplayFor(model => model.ReturnDate)
+        </dd>
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-primary" /> |
-                <a id="button" href="@Url.Action("Index")" class="btn btn-primary">Back To List</a>
-                @*@Html.ActionLink("Back to List", "Index")*@
-            </div>
-        }
-    </div>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

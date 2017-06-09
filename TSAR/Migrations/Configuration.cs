@@ -137,7 +137,8 @@ namespace TSAR.Migrations
             FirstName = "Jonny",
             LastName = "Bravo",
             FullName = "Jonny Bravo",
-            ConsultantUserName = "Consultant"
+            ConsultantUserName = "Consultant",
+            Gender = "Male"
           }
           );
       if (!(context.Users.Any(u => u.UserName == "dotcomconsultant@gmail.com")))
@@ -194,18 +195,99 @@ namespace TSAR.Migrations
           }
       );
 
-      context.Leaves.AddOrUpdate(
-          c => c.LeaveId,
-          new Leave()
-          {
-            LeaveId = 1,
-            FirstName = "Mary",
-            ApprovedBy = "John",
-            IsConfirmed = true,
-            LeaveDecsription = "Sick Leave",
-            LeaveDate = DateTime.Now,
-            ReturnDate = DateTime.Now
-          });
+   
+
+            context.LeaveTypes.AddOrUpdate(
+                c=> c.LeaveTypeId,
+                new LeaveType()
+                {
+                    LeaveTypeId = 1,
+                    LeaveTypeName = "Annual"
+                    
+                });
+
+            context.LeaveTypes.AddOrUpdate(
+                c=> c.LeaveTypeId,
+                new LeaveType()
+                {
+                    LeaveTypeId = 2,
+                    LeaveTypeName = "Maternity"
+                });
+
+            context.LeaveTypes.AddOrUpdate(
+                c => c.LeaveTypeId,
+                new LeaveType()
+                {
+                    LeaveTypeId = 3,
+                    LeaveTypeName = "Sick"
+                });
+
+            context.LeaveTypes.AddOrUpdate(
+                c => c.LeaveTypeId,
+                new LeaveType()
+                {
+                    LeaveTypeId = 4,
+                    LeaveTypeName = "Family Resonsibilty"
+                });
+
+            context.LeaveTypes.AddOrUpdate(
+                c => c.LeaveTypeId,
+                new LeaveType()
+                {
+                    LeaveTypeId = 5,
+                    LeaveTypeName = "Compassionate"
+                });
+
+            context.LeaveTypes.AddOrUpdate(
+                c => c.LeaveTypeId,
+                new LeaveType()
+                {
+                    LeaveTypeId = 6,
+                    LeaveTypeName = "Paternity"
+                });
+
+            context.LeaveTypes.AddOrUpdate(
+                c => c.LeaveTypeId,
+                new LeaveType()
+                {
+                    LeaveTypeId = 7,
+                    LeaveTypeName = "Disability"
+                });
+
+            context.LeaveTypes.AddOrUpdate(
+                c => c.LeaveTypeId,
+                new LeaveType()
+                {
+                    LeaveTypeId = 8,
+                    LeaveTypeName = "Study"
+                });
+
+            context.LeaveTypes.AddOrUpdate(
+                c => c.LeaveTypeId,
+                new LeaveType()
+                {
+                    LeaveTypeId = 9,
+                    LeaveTypeName = "Religious"
+                });
+
+            context.Leaves.AddOrUpdate(
+       c => c.LeaveId,
+       new Leave()
+       {
+           LeaveId = 1,
+           FirstName = "Mary",
+           ApprovedBy = "John",
+           IsConfirmed = true,
+           LeaveDecsription = "Sick Leave",
+           LeaveDate = DateTime.Now,
+           ReturnDate = DateTime.Now,
+           ConsultantNum = 1,
+           LeaveTypeId = 1,
+           AccumulatedLeave = 24,
+           LeaveCount = 1,
+           AllocatedLeave = 24
+
+       });
+        }
     }
-  }
 }

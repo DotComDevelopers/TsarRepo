@@ -12,6 +12,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.LeaveType.LeaveTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaveType.LeaveTypeName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
@@ -44,6 +52,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.AccumulatedLeave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccumulatedLeave)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.LeaveDate)
         </dt>
 
@@ -63,6 +79,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.LeaveId }) |
-    <a id="button" href="@Url.Action("Index")" class="btn btn-primary">Back To List</a>
-    @*@Html.ActionLink("Back to List", "Index")*@
+    @Html.ActionLink("Back to List", "Index")
 </p>

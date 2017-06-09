@@ -249,6 +249,7 @@
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Leave.cs" />
+    <Compile Include="Models\LeaveType.cs" />
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Projects.cs" />
@@ -271,6 +272,7 @@
     <Compile Include="SmsHelper\ITwilioSmsRestClient.cs" />
     <Compile Include="SmsHelper\TwilioSmsRestClient.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\LeaveTypeViewModel.cs" />
     <Compile Include="ViewModels\TravelViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -874,6 +876,7 @@
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Views\Timesheets\ViewTimeheets.cshtml" />
     <Content Include="Views\Timesheets\SignOff.cshtml" />
+    <Content Include="Views\Leaves\Done.cshtml" />
     <Content Include="Views\Projects\Create.cshtml" />
     <Content Include="Views\Projects\Delete.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
