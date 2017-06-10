@@ -88,11 +88,14 @@ namespace TSAR.Migrations
       }
 
             //Create default Travel
-            //context.ManageTravels.AddOrUpdate(
-            //  t => t.TravelCode,
-            //  new ManageTravel() { TravelCode = "EVER", Distance= "1 km", Rate = 2, TravelFee = 20 }
-            // //new ManageTravel() { TravelCode = "CPT",distance = 20, rate =2 , TravelFee =40 },
-            //     );
+            context.Travels.AddOrUpdate(
+              t => t.TravelId,
+              new Travel() { TravelId = 1, Distance = "1 km", TravelRate = 2, TravelFee = 2, Id=1,MClientAddress =" 15 Narbada Road "},
+              new Travel() { TravelId = 2, Distance = "10 km", TravelRate = 2, TravelFee = 20, Id = 1, MClientAddress = " 16 Narbada Road " }
+
+                 //new ManageTravel() { TravelCode = "CPT",distance = 20, rate =2 , TravelFee =40 },
+                 );
+
             //Create default Client
             context.Clients.AddOrUpdate(
                 c => c.Id,
@@ -174,6 +177,7 @@ namespace TSAR.Migrations
           {
             BudgetCode = 1,
             Id = 1,
+            Code ="Wk-23y734",
             Balance = 100000
           }
           );

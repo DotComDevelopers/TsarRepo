@@ -18,6 +18,8 @@ namespace TSAR.Models
         [Display(Name = "Reference Code")]
         public string Code { get; set; }
 
+      
+
         [Required]
         [Display(Name = "Amount")]
         public double Balance { get; set; }

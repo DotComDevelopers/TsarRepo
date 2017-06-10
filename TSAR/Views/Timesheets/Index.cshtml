@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Timesheets</h2>
 
 <p>
     <div align="center">
@@ -76,16 +76,18 @@
                 <font color="gold">    @Html.DisplayFor(modelItem => item.TicketReference)</font>
             </td>
             <td>
-            <td>
-                <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Timesheets", new { id = item.TimesheetId })'" />
+                <td>
+                    <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Timesheets", new { id = item.TimesheetId })'" />
 
 
-                <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Timesheets", new { id = item.TimesheetId })'" />
+                    <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Timesheets", new { id = item.TimesheetId })'" />
 
-                <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Timesheets", new { id = item.TimesheetId })'" />
-            </td>
+                    <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Timesheets", new { id = item.TimesheetId })'" />
+                </td>
             </td>
         </tr>
     }
 
 </table>
+
+

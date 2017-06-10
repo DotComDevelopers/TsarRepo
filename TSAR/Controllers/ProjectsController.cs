@@ -17,6 +17,8 @@ namespace TSAR.Controllers
         // GET: Projects
         public ActionResult Index()
         {
+           
+
             var projects = db.Projects.Include(p => p.Client);
             return View(projects.ToList());
         }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using TSAR.Models;
 
@@ -68,7 +69,23 @@ namespace TSAR.Controllers
         // GET: Timesheets/Create
         public ActionResult Create()
         {
-            
+
+           string username = User.Identity.GetUserName();
+            string conname = (from Consultant c in db.Consultants
+                           where c.ConsultantUserName == username
+                           select c.FullName).FirstOrDefault();
+            string clientname = (from Ticket t in db.Tickets
+                         where t.ConsultantName == conname
+                         select t.ClientName).FirstOrDefault();
+            string add1 = (from Client c  in db.Clients
+                           where c.ClientName == clientname
+                           select c.ClientAddress).FirstOrDefault();
+            string add2 = (from Client c in db.Clients
+                           where c.ClientName == clientname
+                           select c.ClientAddress2).FirstOrDefault();
+            ViewBag.Addresses = new List<string> { add1, add2};
+            //   ViewBag.Addresses = new SelectList;
+            //ViewBag.Addresses = new SelectList(db.Travels);
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName");
             ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName");
             return View();
@@ -99,12 +116,36 @@ namespace TSAR.Controllers
                 timesheet.CaptureDate = System.DateTime.Now;
                 timesheet.Hours = (timesheet.EndTime - timesheet.StartTime).TotalHours;
                 timesheet.Total = (700 * (timesheet.EndTime - timesheet.StartTime).TotalHours);
+                //timesheet.MClientAddress = (from Travel c in db.Travels
+                //               where c.Id == timesheet.Id
+                             //  select c.MClientAddress).FirstOrDefault();
                 db.Timesheets.Add(timesheet);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            //var add = (from Travel c in db.Travels
+            //                   where c.Id == timesheet.Id
+            //                 select c.MClientAddress).ToList();
 
-            ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", timesheet.Id);
+
+            string username = User.Identity.GetUserName();
+            string conname = (from Consultant c in db.Consultants
+                              where c.ConsultantUserName == username
+                              select c.FullName).FirstOrDefault();
+            string cliname = (from Ticket t in db.Tickets
+                                 where t.ConsultantName == conname
+                                 select t.ClientName).FirstOrDefault();
+            string add1 = (from Client c in db.Clients
+                           where c.ClientName == cliname
+                           select c.ClientAddress).FirstOrDefault();
+            string add2 = (from Client c in db.Clients
+                           where c.ClientName == cliname
+                           select c.ClientAddress2).FirstOrDefault();
+            ViewBag.Addresses = new List<string> { add1, add2 };
+            //ViewBag.MClientAddress = new SelectList(db.Travels, "Id", "MClientAddress", timesheet.Id);
+            // ViewBag.Addresses = new SelectList(db.Travels, "MClientAddress", "MClientAddress", timesheet.MClientAddress);
+
+            // ViewBag.Addresses = new SelectList(timesheet.MClientAddress);
             ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", timesheet.ConsultantNum);
             return View(timesheet);
         }
@@ -139,6 +180,7 @@ namespace TSAR.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", timesheet.Id);
             ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", timesheet.ConsultantNum);
             return View(timesheet);
