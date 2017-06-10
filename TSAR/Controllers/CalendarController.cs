@@ -22,6 +22,19 @@ namespace TSAR.Controllers
             //Being initialized in that way, scheduler will use CalendarController.Data as a the datasource and CalendarController.Save to process changes
             var scheduler = new DHXScheduler(this);
             ViewBag.Name = User.Identity.Name;
+            scheduler.Extensions.Add(SchedulerExtensions.Extension.Collision);
+            scheduler.Extensions.Add(SchedulerExtensions.Extension.Limit);
+            scheduler.Config.time_step = 30; 
+            scheduler.Config.multi_day = true;
+            scheduler.Config.limit_time_select = true;
+
+
+
+
+            scheduler.Config.first_hour = 8;
+            scheduler.Config.last_hour = 21;
+
+
             scheduler.LoadData = true;
             scheduler.EnableDataprocessor = true;
 
