@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
@@ -54,11 +55,14 @@ namespace TSAR.Controllers
       ViewBag.FirstName = (from Consultant c in db.Consultants
                            where c.ConsultantUserName == conUserName
                            select c.FirstName).FirstOrDefault();
-
+      ViewBag.LeaveBal = (from Consultant c in db.Consultants
+                          where c.ConsultantUserName == conUserName
+                          select c.LeaveBalance).FirstOrDefault();
       //count++;
       return View();
     }
-    public int count;
+    //public int count;
+
     // POST: Leaves/Create
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -76,20 +80,30 @@ namespace TSAR.Controllers
         if (User.IsInRole("Consultant"))
         {
           leave.IsConfirmed = false;
+          leave.ApprovedBy = "Sent for Approval";
         }
+        var conleavebal = (from Consultant c in db.Consultants
+                           where c.ConsultantUserName == conUserName
+                           select c.LeaveBalance).FirstOrDefault();
 
-        count++;
+        //count++;
         leave.FirstName = (from Consultant c in db.Consultants where c.ConsultantUserName == conUserName select c.FirstName).FirstOrDefault();
-        leave.LeaveCount = count;
+        //leave.LeaveCount = count;
         leave.ConsultantNum = (from Consultant c in db.Consultants where c.ConsultantUserName == conUserName select c.ConsultantNum).FirstOrDefault();
-        leave.AllocatedLeave = 24;
-        //var leavetype = (from LeaveType c 
-        //                     in db.LeaveTypes where 
-        //                     c.LeaveTypeId == leave.LeaveTypeId
-        //                     select c.LeaveTypeName).FirstOrDefault();
-        //leave.LeaveTypeName
-        //leave.LeaveTypeName = leavetype;
-        leave.AccumulatedLeave = leave.AllocatedLeave - leave.LeaveCount;
+        leave.AllocatedLeave = conleavebal;
+        //if (leave.AllocatedLeave <= 0)
+        //{
+        //  leave.AccumulatedLeave = 0;
+        //}
+        leave.LeaveCount = (leave.ReturnDate - leave.LeaveDate).Days;
+        
+        leave.AccumulatedLeave = conleavebal;
+
+        //var consultant = (from Consultant c in db.Consultants where c.ConsultantUserName == conUserName select c).FirstOrDefault();
+        //{
+        //  if (consultant != null) consultant.LeaveBalance = leave.AccumulatedLeave;
+        //};         
+        //db.Entry(consultant).State = EntityState.Modified;
         db.Leaves.Add(leave);
         db.SaveChanges();
 
@@ -104,8 +118,7 @@ namespace TSAR.Controllers
         //{//an appropriate message stating sms failed error, either try again it
         //    return View(leave);
         //}
-
-        return RedirectToAction("Index"); //>>>>>>>>>>Was created automatically with controller >>>> Edit also has this
+        return RedirectToAction(User.IsInRole("Consultant") ? "MyLeave" : "Index");
       }
 
       ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", leave.ConsultantNum);
@@ -137,10 +150,19 @@ namespace TSAR.Controllers
         where l.LeaveId == leave.LeaveId
         select l.LeaveDecsription).FirstOrDefault();
 
-      ViewBag.AccumulatedLeaveString = (from Leave l
+      //ViewBag.AccumulatedLeaveString = (from Leave l
+      //  in db.Leaves
+      //  where l.LeaveId == leave.LeaveId
+      //  select l.AccumulatedLeave).FirstOrDefault().ToString();
+
+      var conleaveid = (from Leave l
         in db.Leaves
         where l.LeaveId == leave.LeaveId
-        select l.AccumulatedLeave).FirstOrDefault().ToString();
+        select l.ConsultantNum).FirstOrDefault();
+
+      ViewBag.AccumulatedLeaveString = (from Consultant c in db.Consultants
+        where c.ConsultantNum == conleaveid
+        select c.LeaveBalance).FirstOrDefault();
 
       ViewBag.AccumulatedLeaveInt = (from Leave l
         in db.Leaves
@@ -177,7 +199,6 @@ namespace TSAR.Controllers
         where l.LeaveId == leave.LeaveId
         select l.ApprovedBy).FirstOrDefault();
 
-
       //ViewBag.LeaveTypeId = new SelectList(db.LeaveTypes, "LeaveTypeId", "LeaveTypeName", leave.LeaveTypeId);
       return View(leave);
     }
@@ -189,6 +210,13 @@ namespace TSAR.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Edit([Bind(Include = "LeaveId,FirstName,ApprovedBy,IsConfirmed,LeaveDecsription,AccumulatedLeave,AllocatedLeave,LeaveCount,LeaveDate,ReturnDate,ConsultantNum,LeaveTypeName")] Leave leave)
     {
+      var conUserName = User.Identity.GetUserName();
+
+      var conleaveid = (from Leave l
+        in db.Leaves
+        where l.LeaveId == leave.LeaveId
+        select l.Consultant.ConsultantUserName).FirstOrDefault();
+
       if (ModelState.IsValid)
       {
         leave.ConsultantNum = (from Leave l
@@ -208,10 +236,11 @@ namespace TSAR.Controllers
           where l.LeaveId == leave.LeaveId
           select l.LeaveDecsription).FirstOrDefault();
 
-        leave.AccumulatedLeave = (from Leave l
-          in db.Leaves
-          where l.LeaveId == leave.LeaveId
-          select l.AccumulatedLeave).FirstOrDefault();
+        var conleavebal = (from Consultant c in db.Consultants
+          where c.ConsultantUserName == conUserName
+          select c.LeaveBalance).FirstOrDefault();
+
+        leave.AccumulatedLeave = conleavebal-leave.LeaveCount+leave.AllocatedLeave;
 
         leave.AllocatedLeave = (from Leave l
           in db.Leaves
@@ -240,13 +269,22 @@ namespace TSAR.Controllers
 
         if (leave.IsConfirmed == true)
         {
-          leave.ApprovedBy = User.Identity.Name;
+          leave.ApprovedBy ="Approved by " + User.Identity.Name;
         }
         else
         {
           leave.ApprovedBy = "Not Approved";
         }
-       
+
+        var consultant = (from Consultant c in db.Consultants where
+                          c.ConsultantUserName == conleaveid
+                          select c).FirstOrDefault();
+
+        {
+          if (consultant != null) consultant.LeaveBalance = leave.AccumulatedLeave;
+        };
+        db.Entry(consultant).State = EntityState.Modified;
+
         db.Entry(leave).State = EntityState.Modified;
 
         try
@@ -311,6 +349,35 @@ namespace TSAR.Controllers
     {
 
       return View();
+    }
+
+    public ActionResult MyLeave()
+    {
+      
+        var username = User.Identity.GetUserName();
+        var cn = (from Consultant c in db.Consultants
+        where c.ConsultantUserName == username
+        select c.ConsultantNum).FirstOrDefault();
+        ViewBag.Name = (from Consultant c in db.Consultants
+        where c.ConsultantUserName == username
+        select c.FirstName).FirstOrDefault();
+        ViewBag.LeaveBal = (from Consultant c in db.Consultants
+          where c.ConsultantUserName == username
+          select c.LeaveBalance).FirstOrDefault();
+
+
+      return View(db.Leaves.Where(p => p.ConsultantNum == cn).ToList());
+
+    }
+
+    [HttpPost]
+    public ActionResult MyLeave(string searchTerm)
+    {
+      var username = User.Identity.GetUserName();
+      var cn = (from Consultant c in db.Consultants
+        where c.Email == username
+        select c.FirstName).FirstOrDefault();
+        return View(db.Leaves.Where(x => x.FirstName.StartsWith(searchTerm)).ToList());
     }
   }
 }

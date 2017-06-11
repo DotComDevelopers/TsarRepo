@@ -2,145 +2,132 @@
 @model TSAR.Models.Leave
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+  ViewBag.Title = "Create";
+  Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Apply for leave</h2>
 
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+@Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Leave</h4>
+        <h4>Fill in the deatils below</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @Value = User.Identity.GetUserName() } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.ApprovedBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ApprovedBy, new { htmlAttributes = new { @class = "form-control", @Value = User.Identity.GetUserName() } })
-                @Html.ValidationMessageFor(model => model.ApprovedBy, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
 
         @if (User.IsInRole("Admin"))
         {
             <div class="form-group">
-                @Html.LabelFor(model => model.IsConfirmed, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.IsConfirmed)
-                        @Html.ValidationMessageFor(model => model.IsConfirmed, "", new { @class = "text-danger" })
-                    </div>
+                <div align="center">
+                    @Html.LabelFor(model => model.IsConfirmed, htmlAttributes: new { @class = "control-label" })
                 </div>
+
+
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsConfirmed)
+                    @Html.ValidationMessageFor(model => model.IsConfirmed, "", new { @class = "text-danger" })
+                </div>
+
             </div>
         }
+    
+        <div class="form-group">
+            <div align="center">
+                @Html.LabelFor(model => model.LeaveTypeName, "Leave Type", htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                @if (ViewBag.Gender == "Male")
+                {
+
+                    @Html.DropDownList("LeaveTypeName", new List<SelectListItem>
+                    {
+                        new SelectListItem {Text = "Annual", Value = "Annual"},
+                        new SelectListItem {Text = "Sick", Value = "Sick"},
+                        new SelectListItem {Text = "Family Resonsibilty", Value = "Family Resonsibilty"},
+                        new SelectListItem {Text = "Compassionate", Value = "Compassionate"},
+                        new SelectListItem {Text = "Paternity", Value = "Paternity"},
+                        new SelectListItem {Text = "Disability", Value = "Disability"},
+                        new SelectListItem {Text = "Study", Value = "Study"},
+                        new SelectListItem {Text = "Religious", Value = "Religious"},
+
+                    }, htmlAttributes: new { @class = "dropdown form-control" })
+                }
+                else
+                {
+                    @Html.DropDownList("LeaveTypeName", new List<SelectListItem>
+                    {
+                        new SelectListItem {Text = "Annual", Value = "Annual"},
+                        new SelectListItem {Text = "Sick", Value = "Sick"},
+                        new SelectListItem {Text = "Family Resonsibilty", Value = "Family Resonsibilty"},
+                        new SelectListItem {Text = "Compassionate", Value = "Compassionate"},
+                        new SelectListItem {Text = "Maternity", Value = "Maternity"},
+                        new SelectListItem {Text = "Disability", Value = "Disability"},
+                        new SelectListItem {Text = "Study", Value = "Study"},
+                        new SelectListItem {Text = "Religious", Value = "Religious"},
+
+                    }, htmlAttributes: new { @class = "dropdown form-control" })
+                }
+            </div>
+        </div>
 
         <div class="form-group">
-                @Html.LabelFor(model => model.LeaveDecsription, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.LeaveDecsription, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LeaveDecsription, "", new { @class = "text-danger" })
-                </div>
+            <div align="center">
+                @Html.LabelFor(model => model.LeaveDate, htmlAttributes: new { @class = "control-label" })
             </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.AccumulatedLeave, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AccumulatedLeave, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AccumulatedLeave, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                @Html.TextBoxFor(model => model.AccumulatedLeave)
-            </div>
-        </div>*@
-        
-        
-        @*@for (int i = 0; i <= Model.Count(); i++)
-        {
-            
-        }*@
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LeaveDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-4 col-md-offset-4">
                 @Html.EditorFor(model => model.LeaveDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.LeaveDate, "", new { @class = "datemustbeequalorgreaterthancurrentdate" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ReturnDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div align="center">
+                @Html.LabelFor(model => model.ReturnDate, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-4 col-md-offset-4">
                 @Html.EditorFor(model => model.ReturnDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ReturnDate, "", new { @class = "datemustbeequalorgreaterthancurrentdate" })
             </div>
         </div>
+    </div>
 
-
-
-                <div class="form-group">
-            @Html.LabelFor(model => model.LeaveTypeName, "Leave Type", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @if (ViewBag.Gender == "Male")
-            {
-
-            @Html.DropDownList("LeaveTypeName", new List<SelectListItem>
-                {
-                    new SelectListItem{ Text="Annual", Value = "Annual"},
-                    new SelectListItem{ Text="Sick", Value = "Sick" },
-                    new SelectListItem{ Text="Family Resonsibilty", Value = "Family Resonsibilty" },
-                    new SelectListItem{ Text="Compassionate", Value = "Compassionate" },
-                    new SelectListItem{ Text="Paternity", Value = "Paternity" },
-                    new SelectListItem{ Text="Disability", Value = "Disability" },
-                    new SelectListItem{ Text="Study", Value = "Study" },
-                    new SelectListItem{ Text="Religious", Value = "Religious" },
-
-                },htmlAttributes: new {@class="dropdown form-control"})
-        }
-        else
-        {
-            @Html.DropDownList("LeaveTypeName", new List<SelectListItem>
-                {
-                    new SelectListItem{ Text="Annual", Value = "Annual"},
-                    new SelectListItem{ Text="Sick", Value = "Sick" },
-                    new SelectListItem{ Text="Family Resonsibilty", Value = "Family Resonsibilty" },
-                    new SelectListItem{ Text="Compassionate", Value = "Compassionate" },
-                    new SelectListItem{ Text="Maternity", Value = "Maternity" },
-                    new SelectListItem{ Text="Disability", Value = "Disability" },
-                    new SelectListItem{ Text="Study", Value = "Study" },
-                    new SelectListItem{ Text="Religious", Value = "Religious" },
-
-                }, htmlAttributes: new { @class = "dropdown form-control" })
-        }
-            </div>
+    <div class="form-group">
+        <div align="center">
+            @Html.LabelFor(model => model.LeaveDecsription, htmlAttributes: new { @class = "control-label" })
         </div>
-           
-        
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-            </div>
+        <div class="col-md-4 col-md-offset-4">
+            @Html.EditorFor(model => model.LeaveDecsription, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LeaveDecsription, "", new { @class = "text-danger" })
         </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-4 col-md-offset-4">
+            <br/>
+            <input type="submit" value="Submit Request" class="btn btn-primary"/>
+        </div>
+    </div>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+
+<div class="col-md-4 col-md-offset-4">
+    <br />
+    @if (User.IsInRole("Admin"))
+    {
+        <a id="button" href="@Url.Action("Index")" class="btn btn-primary">Back To List</a>    
+    }
+    else
+    {
+        <a id="button" href="@Url.Action("MyLeave")" class="btn btn-primary">Back To List</a>
+    }
+    
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

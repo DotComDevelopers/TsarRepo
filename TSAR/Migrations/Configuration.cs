@@ -141,7 +141,8 @@ namespace TSAR.Migrations
             LastName = "Bravo",
             FullName = "Jonny Bravo",
             ConsultantUserName = "Consultant",
-            Gender = "Male"
+            Gender = "Male",
+            LeaveBalance = 24
           }
           );
       if (!(context.Users.Any(u => u.UserName == "dotcomconsultant@gmail.com")))

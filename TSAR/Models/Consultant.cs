@@ -40,6 +40,9 @@ namespace TSAR.Models
     [Display(Name = "Commission")]
     public int CommissionId { get; set; }
 
+    [Display(Name = "Leave Balance")]
+    public int LeaveBalance { get; set; } 
+
 
 
     [Required]

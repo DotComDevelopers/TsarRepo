@@ -18,7 +18,7 @@ namespace TSAR.Models
         public int LeaveId { get; set; }
 
         //[Required]
-        [Display(Name = "First Name")]
+        [Display(Name = "Consultant Name")]
         public string FirstName { get; set; }
 
         //[Required]
@@ -26,19 +26,20 @@ namespace TSAR.Models
         public string ApprovedBy { get; set; }
 
         [Required]
-        [Display(Name = "Is Confirmed")]
+        [Display(Name = "Confirmed?")]
         public bool IsConfirmed { get; set; }
 
         [Required]
-        [Display(Name = "Leave Description")]
+        [Display(Name = "Comments")]
         public string LeaveDecsription { get; set; }
 
         [Required]
-        [Display(Name = "Accumulated Leave")]
+        [Display(Name = "Leave Balance")]
         public int AccumulatedLeave { get; set; }
 
         public int AllocatedLeave { get; set; }
 
+        [Display(Name = "No. of Days")]
         public int LeaveCount { get; set; }
 
         [Required]
@@ -55,11 +56,12 @@ namespace TSAR.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime ReturnDate { get; set; }
 
-   
-        //public virtual LeaveType LeaveType { get; set; }
-        ////[Display(Name = "Leave Type")]
-        //public int LeaveTypeId { get; set; }
-        public string LeaveTypeName { get; set; }
+
+    //public virtual LeaveType LeaveType { get; set; }
+    ////[Display(Name = "Leave Type")]
+
+    [Display(Name = "Type of Leave")]
+    public string LeaveTypeName { get; set; }
 
     public virtual Consultant Consultant { get; set; }
     public int ConsultantNum { get; set; }
