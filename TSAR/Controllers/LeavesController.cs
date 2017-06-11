@@ -107,18 +107,19 @@ namespace TSAR.Controllers
         db.Leaves.Add(leave);
         db.SaveChanges();
 
-        //var twilioSmsClient = new TwilioSmsRestClient();
-        //var smsStatusResult = twilioSmsClient.SendMessage($"Leave Application created Successfully. Leave Application Reference {leave.LeaveId}");
+                var twilioSmsClient = new TwilioSmsRestClient();
+                var smsStatusResult = twilioSmsClient.SendMessage($"Leave Application created Successfully. Leave Application Reference {leave.LeaveId}");
 
-        //if (smsStatusResult.IsCompleted)
-        //{
-        //    return RedirectToAction("Done");
-        //}
-        //else
-        //{//an appropriate message stating sms failed error, either try again it
-        //    return View(leave);
-        //}
-        return RedirectToAction(User.IsInRole("Consultant") ? "MyLeave" : "Index");
+                if (smsStatusResult.IsCompleted)
+                {
+                    return RedirectToAction("Done");
+                }
+                else
+                {//an appropriate message stating sms failed error, either try again it
+                    return View(leave);
+                }
+
+             //   return RedirectToAction("Index"); //>>>>>>>>>>Was created automatically with controller >>>> Edit also has this
       }
 
       ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", leave.ConsultantNum);

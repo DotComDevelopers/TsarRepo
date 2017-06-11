@@ -10,37 +10,39 @@
         <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
     </div>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            <font color="white">     @Html.DisplayNameFor(model => model.FileName)</font>
-</th>
-        <th>
-            <font color="white">     @Html.DisplayNameFor(model => model.FileType)</font>
-</th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model)
-    {
+<div style="overflow-x: auto">
+    <table class="table bg-light-gray">
         <tr>
-            <td>
-                <font color="gold">       @Html.DisplayFor(modelItem => item.FileName)</font>
-</td>
-            <td>
-                <font color="gold">      @Html.DisplayFor(modelItem => item.FileType)</font>
-</td>
-            <td>
-            <td>
-            <td>
-                <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Files", new { id = item.FileId })'" />
-
-
-                <input type="button" title="Download" value="Download" class="btn btn-primary" onclick="location.href='@Url.Action("Download", "Files", new { id = item.FileId })'" />
-
-                <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Files", new { id = item.FileId })'" />
-            </td>
-            </td>
-            </td>
+            <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.FileType)
+            </th>
+            <th></th>
         </tr>
-    }
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                       @Html.DisplayFor(modelItem => item.FileName)
+                </td>
+                <td>
+                         @Html.DisplayFor(modelItem => item.FileType)
+                </td>
+               
+               
+                <td>
+                    <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Files", new { id = item.FileId })'" />
+
+
+                    <input type="button" title="Download" value="Download" class="btn btn-primary" onclick="location.href='@Url.Action("Download", "Files", new { id = item.FileId })'" />
+
+                    <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Files", new { id = item.FileId })'" />
+                </td>
+         
+     
+            </tr>
+        }
+    </table>
+    </div>

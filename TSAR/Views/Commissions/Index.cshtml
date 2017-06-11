@@ -12,37 +12,39 @@
         <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
     </div>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            <font color="white"> @Html.DisplayNameFor(model => model.CommissionId)</font>
-        </th>
-        <th>
-            <font color="white"> @Html.DisplayNameFor(model => model.CommissionName)</font>
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div style="overflow-x: auto">
+    <table class="table bg-light-gray">
         <tr>
-            <td>
-                <font color="gold"> @Html.DisplayFor(modelItem => item.CommissionId)</font>
-            </td>
-            <td>
-                <font color="gold"> @Html.DisplayFor(modelItem => item.CommissionName)</font>
-            </td>
-            <td>
-
-                <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Commissions", new { id = item.CommissionId })'" />
-
-
-                <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Commissions", new { id = item.CommissionId })'" />
-
-                <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Commissions", new { id = item.CommissionId })'" />
-
-            </td>
+            <th>
+             @Html.DisplayNameFor(model => model.CommissionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommissionName)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommissionId)
+                </td>
+                <td>
+                   @Html.DisplayFor(modelItem => item.CommissionName)
+                </td>
+                <td>
+
+                    <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Commissions", new { id = item.CommissionId })'" />
+
+
+                    <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Commissions", new { id = item.CommissionId })'" />
+
+                    <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Commissions", new { id = item.CommissionId })'" />
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

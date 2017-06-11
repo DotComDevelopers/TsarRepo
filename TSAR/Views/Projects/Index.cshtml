@@ -13,49 +13,52 @@
         <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
     </div>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            <font color="white">   @Html.DisplayNameFor(model => model.Client.ClientName)</font>
-</th>
-        <th>
-            <font color="white">    @Html.DisplayNameFor(model => model.ProjectName)</font>
-        </th>
-        @*<th>
-            <font color="white">    @Html.DisplayNameFor(model => model.Budget.Code)</font>
-        </th>
-        <th>
-            <font color="white">    @Html.DisplayNameFor(model => model.Budget.Balance)</font>
-        </th>*@
-        <th></th>
-    </tr>
+<div style="overflow-x: auto">
+    <table class="table bg-light-gray">
+        <tr>
+            <th>
+                  @Html.DisplayNameFor(model => model.Client.ClientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectName)
+            </th>
+            @*<th>
+                    <font color="white">    @Html.DisplayNameFor(model => model.Budget.Code)</font>
+                </th>
+                <th>
+                    <font color="white">    @Html.DisplayNameFor(model => model.Budget.Balance)</font>
+                </th>*@
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <font color="gold">    @Html.DisplayFor(modelItem => item.Client.ClientName)</font>
-</td>
-        <td>
-            <font color="gold">     @Html.DisplayFor(modelItem => item.ProjectName)</font>
-        @*</td>
-        <td>
-            <font color="gold">     @Html.DisplayFor(modelItem => item.Budget.Code)</font>
-        </td>
-        <td>
-            <font color="gold">     @Html.DisplayFor(modelItem => item.Budget.B)</font>
-        </td>*@
-        <td>
-        <td>
-            <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Projects", new { id = item.ProjectId })'" />
-        </td>
-        <td>
-            <input type="button" title="Delete" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Projects", new { id = item.ProjectId })'" />
-        </td>
-        <td>
-            <input type="button" title="Delete" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Projects", new { id = item.ProjectId })'" />
-        </td>
-      
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                       @Html.DisplayFor(modelItem => item.Client.ClientName)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.ProjectName)
+                    @*</td>
+                        <td>
+                            <font color="gold">     @Html.DisplayFor(modelItem => item.Budget.Code)</font>
+                        </td>
+                        <td>
+                            <font color="gold">     @Html.DisplayFor(modelItem => item.Budget.B)</font>
+                        </td>*@
+                <td>
+                <td>
+                    <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Projects", new { id = item.ProjectId })'" />
+                </td>
+                <td>
+                    <input type="button" title="Delete" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Projects", new { id = item.ProjectId })'" />
+                </td>
+                <td>
+                    <input type="button" title="Delete" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Projects", new { id = item.ProjectId })'" />
+                </td>
 
-</table>
+            </tr>
+        }
+
+    </table>
+    </div>
