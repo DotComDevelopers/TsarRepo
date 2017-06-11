@@ -60,7 +60,7 @@ namespace TSAR.Controllers
 
                     travel.Id = model.Id;
 
-                    travel.ClientAddress = model.ClientAddress;
+                    travel.MClientAddress = model.ClientAddress;
 
 
 
@@ -115,28 +115,28 @@ namespace TSAR.Controllers
 
 
                 db.Travels.Add(travel);
-                    db.SaveChanges();
-                    ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", travel.Id);
-                    string Address1 = (from Client c in db.Clients
-                        where c.Id == model.Id
-                        select c.ClientAddress).FirstOrDefault();
-                    string Address2 = (from Client c in db.Clients
-                        where c.Id == model.Id
-                        select c.ClientAddress2).FirstOrDefault();
+                db.SaveChanges();
+                ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", travel.Id);
+                string Address1 = (from Client c in db.Clients
+                    where c.Id == model.Id
+                    select c.ClientAddress).FirstOrDefault();
+                string Address2 = (from Client c in db.Clients
+                    where c.Id == model.Id
+                    select c.ClientAddress2).FirstOrDefault();
 
                 ViewBag.Addresses = new SelectList(Address1, Address2);
 
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
 
-                }
-
-
-
-                return View(model);
             }
         
 
-        // GET: Travel/Edit/5
+
+        return View(model);
+        }
+    
+
+    // GET: Travel/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)

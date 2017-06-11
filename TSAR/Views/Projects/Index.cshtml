@@ -20,7 +20,13 @@
 </th>
         <th>
             <font color="white">    @Html.DisplayNameFor(model => model.ProjectName)</font>
-</th>
+        </th>
+        @*<th>
+            <font color="white">    @Html.DisplayNameFor(model => model.Budget.Code)</font>
+        </th>
+        <th>
+            <font color="white">    @Html.DisplayNameFor(model => model.Budget.Balance)</font>
+        </th>*@
         <th></th>
     </tr>
 
@@ -31,7 +37,13 @@
 </td>
         <td>
             <font color="gold">     @Html.DisplayFor(modelItem => item.ProjectName)</font>
-</td>
+        @*</td>
+        <td>
+            <font color="gold">     @Html.DisplayFor(modelItem => item.Budget.Code)</font>
+        </td>
+        <td>
+            <font color="gold">     @Html.DisplayFor(modelItem => item.Budget.B)</font>
+        </td>*@
         <td>
         <td>
             <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Projects", new { id = item.ProjectId })'" />
@@ -42,7 +54,7 @@
         <td>
             <input type="button" title="Delete" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Projects", new { id = item.ProjectId })'" />
         </td>
-        </td>
+      
     </tr>
 }
 
