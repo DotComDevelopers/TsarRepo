@@ -17,21 +17,21 @@
         <h4>Leave</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @Value = User.Identity.GetUserName() } })
                 @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.ApprovedBy, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ApprovedBy, new { htmlAttributes = new { @class = "form-control", @Value = User.Identity.GetUserName() } })
                 @Html.ValidationMessageFor(model => model.ApprovedBy, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
 
         @if (User.IsInRole("Admin"))
@@ -47,24 +47,24 @@
             </div>
         }
 
-        @*<div class="form-group">
+        <div class="form-group">
                 @Html.LabelFor(model => model.LeaveDecsription, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.LeaveDecsription, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.LeaveDecsription, "", new { @class = "text-danger" })
                 </div>
-            </div>*@
+            </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.AccumulatedLeave, htmlAttributes: new { @class = "control-label col-md-2" })
-            @*<div class="col-md-10">
+            <div class="col-md-10">
                 @Html.EditorFor(model => model.AccumulatedLeave, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AccumulatedLeave, "", new { @class = "text-danger" })
-            </div>*@
+            </div>
             <div class="form-group">
                 @Html.TextBoxFor(model => model.AccumulatedLeave)
             </div>
-        </div>
+        </div>*@
         
         
         @*@for (int i = 0; i <= Model.Count(); i++)
@@ -91,46 +91,43 @@
 
 
 
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.LeaveTypeId, "Leave Type", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("LeaveTypeId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.LeaveTypeId, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-        
-        <label>Leave Type</label>
-            @if (User.Identity.Name == "Male")  @*I'm sure this is not supposed to be User.Identity.Name == "Male"*@
-                {
-
-                @Html.DropDownList("LeaveTypes", new List<SelectListItem>
-                    {
-                        new SelectListItem{ Text="Annual", Value = "1"},
-                        new SelectListItem{ Text="Sick", Value = "2" },
-                        new SelectListItem{ Text="Family Resonsibilty", Value = "3" },
-                        new SelectListItem{ Text="Compassionate", Value = "4" },
-                        new SelectListItem{ Text="Paternity", Value = "5" },
-                        new SelectListItem{ Text="Disability", Value = "6" },
-                        new SelectListItem{ Text="Study", Value = "7" },
-                        new SelectListItem{ Text="Religious", Value = "8" },
-
-                    })
-            }
-            else
+                <div class="form-group">
+            @Html.LabelFor(model => model.LeaveTypeName, "Leave Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @if (ViewBag.Gender == "Male")
             {
-                @Html.DropDownList("LeaveTypes", new List<SelectListItem>
-                    {
-                        new SelectListItem{ Text="Annual", Value = "1"},
-                        new SelectListItem{ Text="Sick", Value = "2" },
-                        new SelectListItem{ Text="Family Resonsibilty", Value = "3" },
-                        new SelectListItem{ Text="Compassionate", Value = "4" },
-                        new SelectListItem{ Text="Maternity", Value = "5" },
-                        new SelectListItem{ Text="Disability", Value = "6" },
-                        new SelectListItem{ Text="Study", Value = "7" },
-                        new SelectListItem{ Text="Religious", Value = "8" },
 
-                    })
-            }
+            @Html.DropDownList("LeaveTypeName", new List<SelectListItem>
+                {
+                    new SelectListItem{ Text="Annual", Value = "Annual"},
+                    new SelectListItem{ Text="Sick", Value = "Sick" },
+                    new SelectListItem{ Text="Family Resonsibilty", Value = "Family Resonsibilty" },
+                    new SelectListItem{ Text="Compassionate", Value = "Compassionate" },
+                    new SelectListItem{ Text="Paternity", Value = "Paternity" },
+                    new SelectListItem{ Text="Disability", Value = "Disability" },
+                    new SelectListItem{ Text="Study", Value = "Study" },
+                    new SelectListItem{ Text="Religious", Value = "Religious" },
+
+                },htmlAttributes: new {@class="dropdown form-control"})
+        }
+        else
+        {
+            @Html.DropDownList("LeaveTypeName", new List<SelectListItem>
+                {
+                    new SelectListItem{ Text="Annual", Value = "Annual"},
+                    new SelectListItem{ Text="Sick", Value = "Sick" },
+                    new SelectListItem{ Text="Family Resonsibilty", Value = "Family Resonsibilty" },
+                    new SelectListItem{ Text="Compassionate", Value = "Compassionate" },
+                    new SelectListItem{ Text="Maternity", Value = "Maternity" },
+                    new SelectListItem{ Text="Disability", Value = "Disability" },
+                    new SelectListItem{ Text="Study", Value = "Study" },
+                    new SelectListItem{ Text="Religious", Value = "Religious" },
+
+                }, htmlAttributes: new { @class = "dropdown form-control" })
+        }
+            </div>
+        </div>
+           
         
 
             <div class="form-group">

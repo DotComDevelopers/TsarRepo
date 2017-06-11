@@ -13,15 +13,15 @@ namespace TSAR.Models
     {
 
         [Key]
-        [Required]
+        //[Required]
         [Display(Name = "Leave Id")]
         public int LeaveId { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "Approved By")]
         public string ApprovedBy { get; set; }
 
@@ -56,20 +56,19 @@ namespace TSAR.Models
         public DateTime ReturnDate { get; set; }
 
    
-        public virtual LeaveType LeaveType { get; set; }
-        //[Display(Name = "Leave Type")]
-        public int LeaveTypeId { get; set; }
+        //public virtual LeaveType LeaveType { get; set; }
+        ////[Display(Name = "Leave Type")]
+        //public int LeaveTypeId { get; set; }
+        public string LeaveTypeName { get; set; }
 
-        public virtual Consultant Consultant { get; set; }
-        public int ConsultantNum { get; set; }
+    public virtual Consultant Consultant { get; set; }
+    public int ConsultantNum { get; set; }
 
-        public bool Gender { get; set; }
-
-        //public int Count(Func<object, object> p)
-        //{
-        //    throw new NotImplementedException();
-        //}
-    }
+    //public int Count(Func<object, object> p)
+    //{
+    //  throw new NotImplementedException();
+    //}
+  }
 
 
     //Created custom validation attribute to validate the date chosen for leave

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -76,7 +77,7 @@ namespace TSAR.Controllers
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Create([Bind(Include = "ConsultantNum,FirstName,LastName,FullName,ContactNumber,ConsultantAddress,Email,ConsultantType,CommissionId,Password,ConsultantUserName,Gender")] Consultant consultant)
+    public async Task<ActionResult> Create([Bind(Include = "ConsultantNum,FirstName,LastName,FullName,ContactNumber,ConsultantAddress,Email,ConsultantType,CommissionId,Password,ConsultantUserName,Gender")] Consultant consultant)
     {
 
       if (ModelState.IsValid)
@@ -94,17 +95,19 @@ namespace TSAR.Controllers
         //var userManager = new UserManager<ApplicationUser>(userStore);        
         consultant.FullName = $"{consultant.FirstName} {consultant.LastName}";
         db.Consultants.Add(consultant);
-        db.SaveChanges();
+        await result;
+        db.SaveChanges();       
         //userManager.AddToRole(consuser.Id, "Consultant");
+
+
+        if (await UserManager.IsInRoleAsync(consuser.Id, "Member")) return RedirectToAction("Index", "Home");
         if (consultant.ConsultantUserName == consuser.UserName)
         {
-          
-          // if (!await UserManager.IsInRoleAsync(user.Id, "Member"))
-           UserManager.AddToRole(consuser.Id, "Consultant");
-          //return RedirectToAction("Index", "Home");
+          UserManager.AddToRole(consuser.Id, "Consultant");
         }
 
         return RedirectToAction("Index");
+
       }
       ViewBag.CommissionId = new SelectList(db.Commissions, "CommissionId", "CommissionName", consultant.CommissionId);
       return View(consultant);

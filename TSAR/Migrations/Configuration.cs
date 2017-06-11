@@ -282,10 +282,11 @@ namespace TSAR.Migrations
            LeaveDate = DateTime.Now,
            ReturnDate = DateTime.Now,
            ConsultantNum = 1,
-           LeaveTypeId = 1,
+           //LeaveTypeId = 1,
            AccumulatedLeave = 24,
            LeaveCount = 1,
-           AllocatedLeave = 24
+           AllocatedLeave = 24,
+           LeaveTypeName = "Sick"
 
        });
         }
