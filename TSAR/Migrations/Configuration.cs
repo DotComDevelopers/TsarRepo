@@ -70,17 +70,66 @@ namespace TSAR.Migrations
         userManager.Create(userToInsert, "Green1!");
         userManager.AddToRole(userToInsert.Id, "Admin");
       }
-
-      if (!(context.Users.Any(u => u.UserName == "dotcomclient@gmail.com")))
+      //Create default User and assign role
+      if (!(context.Users.Any(u => u.UserName == "Suren")))
       {
         var userStore = new UserStore<ApplicationUser>(context);
         var userManager = new UserManager<ApplicationUser>(userStore);
         var userToInsert = new ApplicationUser
         {
-          UserName = "dotcomclient@gmail.com",
-          PhoneNumber = "0745697898",
+          UserName = "Suren",
+          PhoneNumber = "0225458987",
           //Id = "34594e90-6b49-4c14-a858-deb018c5ad29",
-          Email = "dotcomclient@gmail.com",
+          Email = "suren@gmail.com",
+          EmailConfirmed = true
+        };
+        userManager.Create(userToInsert, "Green1!");
+        userManager.AddToRole(userToInsert.Id, "Consultant");
+      }
+
+      //Create default User and assign role
+      if (!(context.Users.Any(u => u.UserName == "Devashen")))
+      {
+        var userStore = new UserStore<ApplicationUser>(context);
+        var userManager = new UserManager<ApplicationUser>(userStore);
+        var userToInsert = new ApplicationUser
+        {
+          UserName = "Devashen",
+          PhoneNumber = "0744119110",
+          //Id = "34594e90-6b49-4c14-a858-deb018c5ad29",
+          Email = "devashen@gmail.com",
+          EmailConfirmed = true
+        };
+        userManager.Create(userToInsert, "Green1!");
+        userManager.AddToRole(userToInsert.Id, "Consultant");
+      }
+
+      if (!(context.Users.Any(u => u.UserName == "Admin")))
+      {
+        var userStore = new UserStore<ApplicationUser>(context);
+        var userManager = new UserManager<ApplicationUser>(userStore);
+        var userToInsert = new ApplicationUser
+        {
+          UserName = "Admin",
+          PhoneNumber = "0785256452",
+          //Id = "34594e90-6b49-4c14-a858-deb018c5ad29",
+          Email = "admin@gmail.com",
+          EmailConfirmed = true
+        };
+        userManager.Create(userToInsert, "Green1!");
+        userManager.AddToRole(userToInsert.Id, "Admin");
+      }
+
+      if (!(context.Users.Any(u => u.UserName == "Everest")))
+      {
+        var userStore = new UserStore<ApplicationUser>(context);
+        var userManager = new UserManager<ApplicationUser>(userStore);
+        var userToInsert = new ApplicationUser
+        {
+          UserName = "Everest",
+          PhoneNumber = "0765054589",
+          //Id = "34594e90-6b49-4c14-a858-deb018c5ad29",
+          Email = "nash@everest.com",
           EmailConfirmed = true,
         };
         userManager.Create(userToInsert, "Green1!");
@@ -109,11 +158,9 @@ namespace TSAR.Migrations
                     Email = "nash@everest.com",
                     ContactNumber2 ="076505498989",
                     Email2 = "nash@everest.com",
-
-
-
           }
           );
+
       //Create default Commission
       context.Commissions.AddOrUpdate(
         c => c.CommissionId,
@@ -135,17 +182,61 @@ namespace TSAR.Migrations
             Password = "Green1!",
             //ConfirmPassword = "Green1!",
             ContactNumber = 0745693488,
-            Email = "dotcomconsultant@gmail.com",
+            Email = "nerisha@gmail.com",
             //ConfirmEmail = "jonny@gmail.com",
-            FirstName = "Jonny",
-            LastName = "Bravo",
-            FullName = "Jonny Bravo",
+            FirstName = "Nerisha",
+            LastName = "Lutchman",
+            FullName = "Nerisha Lutchman",
             ConsultantUserName = "Consultant",
-            Gender = "Male",
+            Gender = "Female",
             LeaveBalance = 24
           }
           );
-      if (!(context.Users.Any(u => u.UserName == "dotcomconsultant@gmail.com")))
+      //Create default Consultant
+      context.Consultants.AddOrUpdate(
+        c => c.ConsultantNum,
+        new Consultant()
+        {
+          ConsultantNum = 2,
+          CommissionId = 1,
+          ConsultantAddress = "12 Narbada Road",
+          ConsultantType = "Finance",
+          Password = "Green1!",
+          //ConfirmPassword = "Green1!",
+          ContactNumber = 0225458987,
+          Email = "suren@gmail.com",
+          //ConfirmEmail = "jonny@gmail.com",
+          FirstName = "Suren",
+          LastName = "Naidoo",
+          FullName = "Suren Naidoo",
+          ConsultantUserName = "Suren",
+          Gender = "Male",
+          LeaveBalance = 24
+        }
+      );
+      //Create default Consultant
+      context.Consultants.AddOrUpdate(
+        c => c.ConsultantNum,
+        new Consultant()
+        {
+          ConsultantNum = 3,
+          CommissionId = 1,
+          ConsultantAddress = "72 Aurora Road",
+          ConsultantType = "Finance",
+          Password = "Green1!",
+          //ConfirmPassword = "Green1!",
+          ContactNumber = 0744119110,
+          Email = "devashen@gmail.com",
+          //ConfirmEmail = "jonny@gmail.com",
+          FirstName = "Devashen",
+          LastName = "Govender",
+          FullName = "Devashen Govender",
+          ConsultantUserName = "Devashen",
+          Gender = "Male",
+          LeaveBalance = 24
+        }
+      );
+      if (!(context.Users.Any(u => u.UserName == "Consultant")))
       {
         var userStore = new UserStore<ApplicationUser>(context);
         var userManager = new UserManager<ApplicationUser>(userStore);
@@ -154,7 +245,7 @@ namespace TSAR.Migrations
           UserName = "Consultant",
           PhoneNumber = "0745693488",
           //Id = "34594e90-6b49-4c14-a858-deb018c5ad29",
-          Email = "dotcomconsultant@gmail.com",
+          Email = "nerisha@gmail.com",
           EmailConfirmed = true,
           //ConsultantNum = 1,
         };
@@ -200,9 +291,26 @@ namespace TSAR.Migrations
           }
       );
 
-   
+      context.Timesheets.AddOrUpdate(
+        c => c.TimesheetId,
+        new Timesheet()
+        {
+          TimesheetId = 2,
+          ActivityDescription = "Site Visit",
+          CaptureDate = System.DateTime.Now,
+          Id = 1,
+          ConsultantNum = 2,
+          StartTime = System.TimeSpan.FromHours(12),
+          EndTime = System.TimeSpan.FromHours(13),
+          Hours = 1,
+          Total = 700
 
-            context.LeaveTypes.AddOrUpdate(
+        }
+      );
+
+
+
+      context.LeaveTypes.AddOrUpdate(
                 c=> c.LeaveTypeId,
                 new LeaveType()
                 {
@@ -280,13 +388,13 @@ namespace TSAR.Migrations
        new Leave()
        {
            LeaveId = 1,
-           FirstName = "Mary",
-           ApprovedBy = "John",
+           FirstName = "Suren",
+           ApprovedBy = "Admin",
            IsConfirmed = true,
            LeaveDecsription = "Sick Leave",
            LeaveDate = DateTime.Now,
            ReturnDate = DateTime.Now,
-           ConsultantNum = 1,
+           ConsultantNum = 2,
            //LeaveTypeId = 1,
            AccumulatedLeave = 24,
            LeaveCount = 1,
