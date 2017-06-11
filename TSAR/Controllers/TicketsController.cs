@@ -139,18 +139,29 @@ namespace TSAR.Controllers
                     ticket.Status = "Open Ticket";
                 }
                 db.Tickets.Add(ticket);
+
+                var textforevent = "Reference Number:    " + ticket.TicketReference + "      " + "Fault Description:    " + ticket.FaultDescription;
+                var calendarevent = new Event()
+                {
+                    start_date = ticket.Date,
+                    end_date = ticket.Date,
+                    name = ticket.Category,
+                    text = textforevent
+
+                };
+                db.Events.Add(calendarevent);
                 db.SaveChanges();
                 var twilioSmsClient = new TwilioSmsRestClient();
                 var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
 
-                //if (smsStatusResult.IsCompleted)
-                //{
-                //    return RedirectToAction("Done");
-                //}
-                //else
-                //{//an appropriate message stating sms failed error, either try again it
-                //    return View(ticket);
-                //}
+                if (smsStatusResult.IsCompleted)
+                {
+                   return RedirectToAction("Done");
+                }
+                else
+                {//an appropriate message stating sms failed error, either try again it
+                   return View(ticket);
+                }
 
             }
 
