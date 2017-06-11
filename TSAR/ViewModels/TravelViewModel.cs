@@ -15,7 +15,8 @@ namespace TSAR.ViewModels
         [Required]
         [Display(Name = "Client Name")]
         public string ClientName { get; set; }
-
+        [Display(Name = "Client Address")]
+        public string MClientAddress { get; set; }
         [Required]
         [Display(Name = "Client Address")]
         public string ClientAddress { get; set; }

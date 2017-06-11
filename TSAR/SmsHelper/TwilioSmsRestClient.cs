@@ -21,7 +21,7 @@ namespace TSAR.SmsHelper
          when using MessageResource.Create()*/
         public async Task<MessageResource> SendMessage(string text)
         {
-            var toPhoneNumber = new PhoneNumber("+27725640265");
+            var toPhoneNumber = new PhoneNumber("+27711919156");
             return MessageResource.Create(
                 toPhoneNumber,
                 @from: new PhoneNumber("+12513877118"),

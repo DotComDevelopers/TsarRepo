@@ -1,8 +1,8 @@
 ﻿@model TSAR.Models.Leave
 
 @{
-    ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+  ViewBag.Title = "Edit";
+  Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
 <h2>Edit</h2>
@@ -10,86 +10,108 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Leave</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.LeaveId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.FirstName, new { @readonly = "readonly" })*@
+            @Html.TextBoxFor(model => model.FirstName, (string)ViewBag.FirstName, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+            @*@Html.TextBoxFor(m => m.userCode, new { @readonly = "readonly" })*@
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ApprovedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            @if (Model.ApprovedBy == null)
+            {
+            <label class="form-control">Not Approved</label>
+            }
+            @if (Model.ApprovedBy != null)
+            {
+            @*<label>@ViewBag.ApprovedBy</label>*@
+                @Html.TextBoxFor(model=>model.ApprovedBy, (string)ViewBag.ApprovedBy, htmlAttributes:new {@class = "form-control",@readonly="readonly"})
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LeaveDecsription, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.LeaveDecsription, (string)ViewBag.LeaveDecsription, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AccumulatedLeave, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.AccumulatedLeave, htmlAttributes: new { @class = "form-control", @readonly = "readonly", @Value = ViewBag.AccumulatedLeaveString })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LeaveDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.LeaveDate, (string)ViewBag.LeaveDate, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ReturnDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.ReturnDate, (string)ViewBag.ReturnDate, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+            <label></label>
+        </div>
+    </div>
     
-    <div class="form-horizontal">
-        <h4>Leave</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.LeaveId)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AllocatedLeave, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.AllocatedLeave, htmlAttributes: new { @class = "form-control", @readonly = "readonly", @Value = ViewBag.AllocatedLeave })
+            <label></label>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ApprovedBy, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ApprovedBy, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ApprovedBy, "", new { @class = "text-danger" })
-            </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.LeaveCount, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.LeaveCount, htmlAttributes: new { @class = "form-control", @readonly = "readonly", @Value = ViewBag.LeaveCount })
+            <label></label>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsConfirmed, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsConfirmed)
-                    @Html.ValidationMessageFor(model => model.IsConfirmed, "", new { @class = "text-danger" })
-                </div>
-            </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.LeaveTypeName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.LeaveTypeName, (string)ViewBag.LeaveTypeName, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+            <label></label>
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LeaveDecsription, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LeaveDecsription, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LeaveDecsription, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AccumulatedLeave, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AccumulatedLeave, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AccumulatedLeave, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LeaveDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LeaveDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LeaveDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReturnDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ReturnDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ReturnDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LeaveTypeId, "LeaveTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("LeaveTypeId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.LeaveTypeId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsConfirmed, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsConfirmed)
+                @Html.ValidationMessageFor(model => model.IsConfirmed, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>

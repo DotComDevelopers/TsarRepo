@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Create </h2>
 
 
 @using (Html.BeginForm())
@@ -14,7 +14,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Ticket</h4>
+        <h4>A Ticket</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @*<div class="form-group">
@@ -33,19 +33,23 @@
             </div>
         </div>*@
         <div class="form-group">
-            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
+            <div align="center">
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-4 col-md-offset-4">
 
-                @Html.DropDownListFor(model => model.Category, new List<SelectListItem> { new SelectListItem { Text = "Email", Value = "Email" }, new SelectListItem() { Text = "Hardware", Value = "Hardware" }, new SelectListItem() { Text = "Maintenance", Value = "Maintenance" }, new SelectListItem() { Text = "Network", Value = "Network" }, new SelectListItem() { Text = "Printer", Value = "Printer" }, new SelectListItem() { Text = "Software", Value = "Software" }, new SelectListItem() { Text = "Other", Value = "Other" } }, "---Select a category---", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.Category, new List<SelectListItem> {new SelectListItem {Text = "Email", Value = "Email"}, new SelectListItem() {Text = "Hardware", Value = "Hardware"}, new SelectListItem() {Text = "Maintenance", Value = "Maintenance"}, new SelectListItem() {Text = "Network", Value = "Network"}, new SelectListItem() {Text = "Printer", Value = "Printer"}, new SelectListItem() {Text = "Software", Value = "Software"}, new SelectListItem() {Text = "Other", Value = "Other"}}, "---Select a category---", new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Category, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FaultDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-6">
-                @Html.TextAreaFor(model => model.FaultDescription, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.FaultDescription, "", new { @class = "text-danger" })
+            <div align="center">
+                @Html.LabelFor(model => model.FaultDescription, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                @Html.TextAreaFor(model => model.FaultDescription, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.FaultDescription, "", new {@class = "text-danger"})
             </div>
         </div>
 
@@ -67,7 +71,7 @@
         </div>*@
 
         <div class="form-group">
-            <div class="col-md-11" align="center">
+            <div class="col-md-4 col-md-offset-4">
                 <input type="submit" value="Create Ticket" class="btn btn-primary" />
             </div>
         </div>
@@ -77,8 +81,12 @@
 @if (User.IsInRole("Admin"))
 {
     <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+        
+        <div class="col-md-4 col-md-offset-4">
+            <br/>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        </div>
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

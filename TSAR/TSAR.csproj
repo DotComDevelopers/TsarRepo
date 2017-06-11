@@ -883,6 +883,7 @@
     <Content Include="Views\Projects\Edit.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Calendar\Create.cshtml" />
+    <Content Include="Views\Leaves\MyLeave.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

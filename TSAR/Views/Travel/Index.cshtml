@@ -12,20 +12,21 @@
         <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
     </div>
 </p>
-<table class="table">
+<div style="overflow-x: auto">
+<table class="table bg-light-gray">
     <tr>
         <th>
-            <font color="white">      @Html.DisplayNameFor(model => model.Client.ClientName)</font>
+            @Html.DisplayNameFor(model => model.Client.ClientName)
         </th>
         <th>
-            <font color="white">       @Html.DisplayNameFor(model => model.ClientAddress)</font>
+            @Html.DisplayNameFor(model => model.MClientAddress)
         </th>
-       
+
         <th>
-            <font color="white">    @Html.DisplayNameFor(model => model.Distance)</font>
+            @Html.DisplayNameFor(model => model.Distance)
         </th>
         <th>
-            <font color="white">       @Html.DisplayNameFor(model => model.TravelFee)</font>
+            @Html.DisplayNameFor(model => model.TravelFee)
         </th>
         <th></th>
     </tr>
@@ -34,18 +35,18 @@
     {
         <tr>
             <td>
-                <font color="gold">     @Html.DisplayFor(modelItem => item.Client.ClientName)</font>
+                @Html.DisplayFor(modelItem => item.Client.ClientName)
             </td>
             <td>
-                <font color="gold">       @Html.DisplayFor(modelItem => item.ClientAddress)</font>
+                @Html.DisplayFor(modelItem => item.MClientAddress)
             </td>
-           
+
             <td>
-                <font color="gold">    @Html.DisplayFor(modelItem => item.Distance)</font>
+                @Html.DisplayFor(modelItem => item.Distance)
             </td>
             <td>
-                <font color="gold">     @Html.DisplayFor(modelItem => item.TravelFee)</font>
-           </td>
+                @Html.DisplayFor(modelItem => item.TravelFee)
+            </td>
             <td>
                 <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Travel", new { id = item.TravelId })'" />
             </td>
@@ -59,9 +60,10 @@
     }
 
 </table>
-@Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })
-<div>
-    <a href="@Request.UrlReferrer" class="btn btn-primary btn-lg" title="Back to list">
-        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-    </a>
-</div>
+    </div>
+    @Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })
+    <div>
+        <a href="@Request.UrlReferrer" class="btn btn-primary btn-lg" title="Back to list">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+        </a>
+    </div>

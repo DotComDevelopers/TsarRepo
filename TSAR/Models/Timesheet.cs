@@ -47,11 +47,17 @@ namespace TSAR.Models
         [Display(Name = "Consultant Name")]
         public int ConsultantNum { get; set; }
 
+        [Display(Name = "Ticket Reference")]
         public string TicketReference { get; set; }
 
         [Display(Name = "Sign Off")]
         public bool SignOff { get; set; }
 
+        public virtual Travel Travel { get; set; }
+        public string MClientAddress { get; set; }
+
+
+     
 
     }
 }

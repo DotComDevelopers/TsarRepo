@@ -5,95 +5,97 @@
     Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
-<h2>Sign Off Timesheets</h2>
+<h2>Completed Timesheets</h2>
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
-
-<table class="table">
-    <tr>
-        <th>
-            <font color="white">        @Html.DisplayNameFor(model => model.Client.ClientName)</font>
-        </th>
-        <th>
-            <font color="white">         @Html.DisplayNameFor(model => model.Consultant.FullName)</font>
-        </th>
-        <th>
-            <font color="white">     @Html.DisplayNameFor(model => model.CaptureDate)</font>
-        </th>
-        <th>
-            <font color="white">       @Html.DisplayNameFor(model => model.StartTime)</font>
-        </th>
-        <th>
-            <font color="white">       @Html.DisplayNameFor(model => model.EndTime)</font>
-        </th>
-        <th>
-            <font color="white">    @Html.DisplayNameFor(model => model.ActivityDescription)</font>
-        </th>
-        <th>
-            <font color="white">     @Html.DisplayNameFor(model => model.Total)</font>
-        </th>
-        <th>
-            <font color="white">    @Html.DisplayNameFor(model => model.Hours)</font>
-        </th>
-        <th>
-            <font color="white">    @Html.DisplayNameFor(model => model.TicketReference)</font>
-        </th>
-        <th>
-            <font color="white">    @Html.DisplayNameFor(model => model.SignOff)</font>
-        </th>
-        <th></th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<div style="overflow-x: auto">
+    <table class="table bg-light-gray">
         <tr>
-            <td>
-                <font color="gold">      @Html.DisplayFor(modelItem => item.Client.ClientName)</font>
-            </td>
-            <td>
-                <font color="gold">      @Html.DisplayFor(modelItem => item.Consultant.FullName)</font>
-            </td>
-            <td>
-                <font color="gold">     @Html.DisplayFor(modelItem => item.CaptureDate)</font>
-            </td>
-            <td>
-                <font color="gold">     @Html.DisplayFor(modelItem => item.StartTime)</font>
-            </td>
-            <td>
-                <font color="gold">        @Html.DisplayFor(modelItem => item.EndTime)</font>
-            </td>
-            <td>
-                <font color="gold">      @Html.DisplayFor(modelItem => item.ActivityDescription)</font>
-            </td>
-            <td>
-                <font color="gold">     @Html.DisplayFor(modelItem => item.Total)</font>
-            </td>
-            <td>
-                <font color="gold">    @Html.DisplayFor(modelItem => item.Hours)</font>
-            </td>
-            <td>
-                <font color="gold">    @Html.DisplayFor(modelItem => item.TicketReference)</font>
-            </td>
-            <td>
-                <font color="gold">    @Html.DisplayFor(modelItem => item.SignOff)</font>
-            </td>
-            <td>
-            <td>
-                @*<input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Timesheets", new { id = item.TimesheetId })'" />*@
-
-
-                @*<input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Timesheets", new { id = item.TimesheetId })'" />*@
-                @if (item.SignOff == false)
-                {
-                    <input type="button" title="SignOff" value="Sign Off" class="btn btn-primary" onclick="location.href = '@Url.Action("SignOff", "Timesheets", new {id = item.TimesheetId})'"/>
-                }
-                @*<input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Timesheets", new { id = item.TimesheetId })'" />*@
-            </td>
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Client.ClientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Consultant.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CaptureDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActivityDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TicketReference)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SignOff)
+            </th>
+            <th></th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Consultant.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CaptureDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActivityDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hours)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TicketReference)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SignOff)
+                </td>
+                <td>
+                    <td>
+                        @*<input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Timesheets", new { id = item.TimesheetId })'" />*@
+
+
+                        @*<input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Timesheets", new { id = item.TimesheetId })'" />*@
+                        @if (item.SignOff == false)
+                        {
+                            <input type="button" title="SignOff" value="Sign Off" class="btn btn-primary" onclick="location.href = '@Url.Action("SignOff", "Timesheets", new {id = item.TimesheetId})'" />
+                        }
+                    @*<input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Timesheets", new { id = item.TimesheetId })'" />*@
+            </td>
+              
+            </tr>
+        }
+
+    </table>
+
+</div>

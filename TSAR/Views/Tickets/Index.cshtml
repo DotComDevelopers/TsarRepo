@@ -11,7 +11,7 @@
 <p>
     @if (User.IsInRole("Admin"))
     {
-        <div >
+        <div>
 
             <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
         </div>
@@ -24,96 +24,100 @@
 </p>
 @using (Html.BeginForm("Index", "Tickets", FormMethod.Get))
 {
-    <b>Status</b><font color="black">@Html.DropDownList("status",new SelectList(ViewBag.Status), new { onchange = "this.form.submit()" })</font>
+    <b>Status</b><font color="black">@Html.DropDownList("status", new SelectList(ViewBag.Status), new { onchange = "this.form.submit()" })</font>
 }
-<table class="table">
+<div style="overflow-x: auto">
+<table class="table bg-light-gray">
     <tr>
         <th>
-            <font color="gold">@Html.DisplayNameFor(model => model.TicketReference)</font>
+         @Html.DisplayNameFor(model => model.TicketReference)
         </th>
         <th>
-            <font color="gold">@Html.DisplayNameFor(model => model.ClientName)</font>
+          @Html.DisplayNameFor(model => model.ClientName)
         </th>
         <th>
-            <font color="gold">@Html.DisplayNameFor(model => model.Email)</font>
+          @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            <font color="gold"> @Html.DisplayNameFor(model => model.FaultDescription)</font>
+            @Html.DisplayNameFor(model => model.FaultDescription)
         </th>
         <th>
-            <font color="gold">@Html.DisplayNameFor(model => model.Priority)</font>
+           @Html.DisplayNameFor(model => model.Priority)
         </th>
         <th>
-            <font color="gold"> @Html.DisplayNameFor(model => model.Date)</font>
+            @Html.DisplayNameFor(model => model.Date)
         </th>
 
         <th>
-            <font color="gold"> @Html.DisplayNameFor(model => model.Category)</font>
+           @Html.DisplayNameFor(model => model.Category)
         </th>
         <th>
-            <font color="gold"> @Html.DisplayNameFor(model => model.Status)</font>
+       @Html.DisplayNameFor(model => model.Status)
         </th>
         <th>
-            <font color="gold"> @Html.DisplayNameFor(model => model.ConsultantName)</font>
+           @Html.DisplayNameFor(model => model.ConsultantName)
         </th>
         <th>
-           
+
         </th>
         <th>
 
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <font color="gold"> @Html.DisplayFor(modelItem => item.TicketReference)</font>
-        </td>
-        <td>
-            <font color="gold"> @Html.DisplayFor(modelItem => item.ClientName)</font>
-        </td>
-        <td>
-            <font color="gold"> @Html.DisplayFor(modelItem => item.Email)</font>
-        </td>
-        <td>
-            <font color="gold">@Html.DisplayFor(modelItem => item.FaultDescription)</font>
-        </td>
-        <td>
-            <font color="gold"> @Html.DisplayFor(modelItem => item.Priority)</font>
-        </td>
-        <td>
-            <font color="gold"> @Html.DisplayFor(modelItem => item.Date)</font>
-        </td>
-
-
-        <td>
-            <font color="gold"> @Html.DisplayFor(modelItem => item.Category)</font>
-        </td>
-        <td>
-            <font color="gold"> @Html.DisplayFor(modelItem => item.Status)</font>
-        </td>
-        <td>
-            <font color="gold"> @Html.DisplayFor(modelItem => item.ConsultantName)</font>
-        </td>
-        <td>
+    @foreach (var item in Model)
+    {
+        <tr>
             <td>
-                @if (User.IsInRole("Admin"))
-                {
-                    <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit", "Tickets", new {id = item.ID})'"/>
-
-
-                    <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href = '@Url.Action("Details", "Tickets", new {id = item.ID})'"/>
-
-                    <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href = '@Url.Action("Delete", "Tickets", new {id = item.ID})'"/>
-
-                }
-                @if (item.ConsultantName == null)
-                {
-                    <input type="button" itle="Review" value="Review" class="btn btn-primary" onclick="location.href = '@Url.Action("Review", "Tickets", new {id = item.ID})'"/>
-                }
+               @Html.DisplayFor(modelItem => item.TicketReference)
             </td>
-        </td>
-    </tr>
-}
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientName)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.FaultDescription)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsultantName)
+            </td>
+            <td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit", "Tickets", new {id = item.ID})'" />
+
+
+                        <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href = '@Url.Action("Details", "Tickets", new {id = item.ID})'" />
+
+                        <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href = '@Url.Action("Delete", "Tickets", new {id = item.ID})'" />
+
+                    }
+                    @if (item.ConsultantName == null)
+                    {
+                        <input type="button" itle="Review" value="Review" class="btn btn-primary" onclick="location.href = '@Url.Action("Review", "Tickets", new {id = item.ID})'" />
+                    }
+                </td>
+            </td>
+        </tr>
+    }
 
 </table>
+    
+    </div>

@@ -87,7 +87,7 @@ namespace TSAR.Controllers
                     //Adding a substring of the clients contactnumber to make the travel code more unique
 
                     //+ Convert.ToString(model.ContactNumber).Substring(0,2);
-                    mt.ClientAddress = model.ClientAddress;
+                    mt.MClientAddress = model.ClientAddress;
                     mt.TravelRate = 3.55;
                     mt.Id = model.Id;
                     mt.Distance = model.Distance;
@@ -140,7 +140,7 @@ namespace TSAR.Controllers
                 {
 
 
-                    mt2.ClientAddress = model.ClientAddress2;
+                    mt2.MClientAddress = model.ClientAddress2;
 
                     mt2.TravelRate = 3.55;
 
@@ -203,7 +203,7 @@ namespace TSAR.Controllers
 
 
 
-            return View(client);
+            return View(model);
         }
 
         // GET: Clients/Edit/5
