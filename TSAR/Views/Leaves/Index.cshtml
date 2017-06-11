@@ -85,10 +85,14 @@
     <td>
         @Html.DisplayFor(modelItem => item.LeaveTypeName)
     </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.LeaveId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.LeaveId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.LeaveId })
+<td>
+    <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Leaves", new { id = item.LeaveId })'" />
+</td>
+<td>
+        <input type="button" title="Details" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Leaves", new { id = item.LeaveId })'" />
+</td>
+<td>  <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Leaves", new { id = item.LeaveId })'" />
+
     </td>
 </tr>
 }

@@ -12,44 +12,47 @@
         <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
     </div>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            <font color="White">@Html.DisplayNameFor(model => model.Client.ClientName) </font>
-        </th>
-        <th>
-            <font color="White">    @Html.DisplayNameFor(model => model.Code)</font>
-        </th>
-        <th>
-            <font color="White">    @Html.DisplayNameFor(model => model.Balance)</font>
-        </th>
-        <th></th>
-
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div style="overflow-x: auto">
+    <table class="table bg-light-gray">
+     
         <tr>
-            <td>
-                <font color="gold">      @Html.DisplayFor(modelItem => item.Client.ClientName)</font>
-            </td>
-            <td>
-                <font color="gold">       @Html.DisplayFor(modelItem => item.Code)</font>
-            </td>
-            <td>
-                <font color="gold">       @Html.DisplayFor(modelItem => item.Balance)</font>
-            </td>
-            <td>
+            <th>
+              @Html.DisplayNameFor(model => model.Client.ClientName) 
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                  @Html.DisplayNameFor(model => model.Balance)
+            </th>
+            <th></th>
 
-                <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Budget", new { id = item.BudgetCode })'" />
-
-
-                <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Budget", new { id = item.BudgetCode })'" />
-
-                <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Budget", new { id = item.BudgetCode })'" />
-
-            </td>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Client.ClientName)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                         @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+                <td>
+
+                    <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Budget", new { id = item.BudgetCode })'" />
+
+
+                    <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Budget", new { id = item.BudgetCode })'" />
+
+                    <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Budget", new { id = item.BudgetCode })'" />
+
+                </td>
+            </tr>
+               
+        }
+    </table>
+</div>

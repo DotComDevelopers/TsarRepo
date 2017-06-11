@@ -15,49 +15,52 @@
         </div>
     }
 </p>
-<table class="table">
+<div style="overflow-x: auto">
+<table class="table bg-light-gray">
     <tr>
         <th>
-            <font color="White">   @Html.DisplayNameFor(model => model.ConsultantName)</font>
-</th>
+             @Html.DisplayNameFor(model => model.ConsultantName)
+        </th>
         <th>
-            <font color="White">    @Html.DisplayNameFor(model => model.Rate)</font>
-</th>
+           @Html.DisplayNameFor(model => model.Rate)
+        </th>
         <th>
-            <font color="White">     @Html.DisplayNameFor(model => model.Comment)</font>
-</th>
+               @Html.DisplayNameFor(model => model.Comment)
+        </th>
         <th>
-            <font color="White">     @Html.DisplayNameFor(model => model.ClientUsername)</font>
-</th>
+            @Html.DisplayNameFor(model => model.ClientUsername)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <font color="gold">     @Html.DisplayFor(modelItem => item.ConsultantName)</font>
-</td>
-        <td>
-            <font color="gold">    @Html.DisplayFor(modelItem => item.Rate)</font>
-</td>
-        <td>
-            <font color="gold">      @Html.DisplayFor(modelItem => item.Comment)</font>
-</td>
-        <td>
-            <font color="gold">      @Html.DisplayFor(modelItem => item.ClientUsername)</font>
-</td>
-        <td>
-    @if (User.IsInRole("Admin"))
+    @foreach (var item in Model)
     {
-        <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit", "Rating", new {id = item.RatingId})'"/>
+        <tr>
+            <td>
+                   @Html.DisplayFor(modelItem => item.ConsultantName)
+            </td>
+            <td>
+                   @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.ClientUsername)
+            </td>
+            <td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href = '@Url.Action("Edit", "Rating", new {id = item.RatingId})'" />
 
 
-        <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href = '@Url.Action("Details", "Rating", new {id = item.RatingId})'"/>
+                    <input type="button" title="Edit" value="Details" class="btn btn-primary" onclick="location.href = '@Url.Action("Details", "Rating", new {id = item.RatingId})'" />
 
-        <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href = '@Url.Action("Delete", "Rating", new {id = item.RatingId})'"/>
+                    <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href = '@Url.Action("Delete", "Rating", new {id = item.RatingId})'" />
+                }
+            </td>
+        </tr>
     }
-        </td>
-    </tr>
-}
 
 </table>
+</div>

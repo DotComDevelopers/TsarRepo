@@ -16,31 +16,33 @@
         <b>Search for your E-mail subscription</b><font color="black">@Html.TextBox("search")<input type="submit" value="Search" color="black" /></font>
     }
 </p>
-<table class="table">
-    <tr>
-        <th>
-            <font color="gold">@Html.DisplayNameFor(model => model.Email)</font> 
-        </th>
-        <th></th>
-    </tr>
-    @if (Model.Count() == 0)
-    {
+<div style="overflow-x: auto">
+    <table class="table bg-light-gray">
         <tr>
-            <td colspan="4">No active subscription found.</td>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
         </tr>
-    }
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Unsubscribe", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4">No active subscription found.</td>
+            </tr>
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Unsubscribe", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>

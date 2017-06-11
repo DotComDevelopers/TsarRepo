@@ -16,30 +16,31 @@
         <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
     </div>
 </p>
-<table class="table">
+<div style="overflow-x: auto">
+<table class="table bg-light-gray">
     <tr>
 
 
         <th>
-            <font color="white"> @Html.DisplayNameFor(model => model.ClientName)</font>
+            @Html.DisplayNameFor(model => model.ClientName)
         </th>
 
         <th>
-            <font color="white"> @Html.DisplayNameFor(model => model.ClientAddress)</font>
+             @Html.DisplayNameFor(model => model.ClientAddress)
         </th>
 
         <th>
-            <font color="white"> @Html.DisplayNameFor(model => model.ContactNumber)</font>
+             @Html.DisplayNameFor(model => model.ContactNumber)
         </th>
 
 
         <th>
-            <font color="white"> @Html.DisplayNameFor(model => model.Email)</font>
+             @Html.DisplayNameFor(model => model.Email)
         </th>
 
         @*<th>
-            <font color="white"> @Html.DisplayNameFor(model => model.ProjectLeader)</font>
-        </th>*@
+                    <font color="white"> @Html.DisplayNameFor(model => model.ProjectLeader)</font>
+                </th>*@
 
 
 
@@ -53,23 +54,23 @@
         <tr>
 
             <td>
-                <font color="gold">  @Html.DisplayFor(modelItem => item.ClientName)</font>
+               @Html.DisplayFor(modelItem => item.ClientName)
             </td>
             <td>
-                <font color="gold">   @Html.DisplayFor(modelItem => item.ClientAddress)</font>
-            </td>
-
-            <td>
-                <font color="gold">  @Html.DisplayFor(modelItem => item.ContactNumber)</font>
+                   @Html.DisplayFor(modelItem => item.ClientAddress)
             </td>
 
             <td>
-                <font color="gold">   @Html.DisplayFor(modelItem => item.Email)</font>
+                  @Html.DisplayFor(modelItem => item.ContactNumber)
+            </td>
+
+            <td>
+                  @Html.DisplayFor(modelItem => item.Email)
             </td>
 
             @*<td>
-                <font color="gold"> @Html.DisplayFor(modelItem => item.ProjectLeader)</font>
-            </td>*@
+                        <font color="gold"> @Html.DisplayFor(modelItem => item.ProjectLeader)</font>
+                    </td>*@
 
 
             <td>
@@ -85,9 +86,11 @@
     }
 
 </table>
-@Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })
-<div>
-    <a href="@Request.UrlReferrer" class="btn btn-primary btn-lg" title="Back to list">
-        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-    </a>
-</div>
+    </div>
+    @Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })
+    <div>
+        <a href="@Request.UrlReferrer" class="btn btn-primary btn-lg" title="Back to list">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+        </a>
+    </div>
+    

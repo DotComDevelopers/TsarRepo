@@ -6,8 +6,8 @@
 }
 
 <h2>List of consultants</h2>
-<br/>
-<br/>
+<br />
+<br />
 <p>
     <div align="center">
         <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
@@ -22,35 +22,36 @@
 </p>
 <br />
 <br />
-<table class="table">
+<div style="overflow-x: auto">
+<table class="table bg-light-gray">
     <tr>
         <th>
-            <font color="white">    @Html.DisplayNameFor(model => model.FirstName) </font>
+              @Html.DisplayNameFor(model => model.FirstName) 
         </th>
         <th>
-            <font color="white">    @Html.DisplayNameFor(model => model.LastName) </font>
+                @Html.DisplayNameFor(model => model.LastName) 
         </th>
         <th>
-            <font color="white">   @Html.DisplayNameFor(model => model.ContactNumber)</font>
+              @Html.DisplayNameFor(model => model.ContactNumber)
         </th>
         <th>
-            <font color="white">    @Html.DisplayNameFor(model => model.ConsultantAddress)</font>
+         @Html.DisplayNameFor(model => model.ConsultantAddress)
         </th>
         <th>
-            <font color="white">    @Html.DisplayNameFor(model => model.Email)</font>
+             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            <font color="white">   @Html.DisplayNameFor(model => model.ConsultantType)</font>
+               @Html.DisplayNameFor(model => model.ConsultantType)
         </th>
         <th>
-            <font color="white">   @Html.DisplayNameFor(model => model.CommissionId)</font>
+               @Html.DisplayNameFor(model => model.CommissionId)
         </th>
         <th>
-            <font color="white">  @Html.DisplayNameFor(model => model.Password)</font>
+        @Html.DisplayNameFor(model => model.Password)
         </th>
         @*<th>
-            <font color="white">   @Html.DisplayNameFor(model => model.RoleType)</font>
-        </th>*@
+                    <font color="white">   @Html.DisplayNameFor(model => model.RoleType)</font>
+                </th>*@
         <th></th>
         <th></th>
         <th></th>
@@ -60,26 +61,28 @@
     {
         <tr>
             <td>
-                <font color="gold">  @Html.DisplayFor(modelItem => item.FirstName)</font>
+                  @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
-                <font color="gold">    @Html.DisplayFor(modelItem => item.LastName)</font>
+                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                <font color="gold">   @Html.DisplayFor(modelItem => item.ContactNumber)</font>
+                 @Html.DisplayFor(modelItem => item.ContactNumber)
             </td>
             <td>
-                <font color="gold">   @Html.DisplayFor(modelItem => item.ConsultantAddress)</font>
+                  @Html.DisplayFor(modelItem => item.ConsultantAddress)
             </td>
             <td>
-                <font color="gold">  @Html.DisplayFor(modelItem => item.Email)</font>
+                  @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                <font color="gold">   @Html.DisplayFor(modelItem => item.ConsultantType)</font>
+                  @Html.DisplayFor(modelItem => item.ConsultantType)
             </td>
-   
             <td>
-                <font color="gold">  @Html.DisplayFor(modelItem => item.Password)</font>
+                @Html.DisplayFor(modelItem => item.CommissionId)
+            </td>
+            <td>
+                 @Html.DisplayFor(modelItem => item.Password)
             </td>
             <td>
                 <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Consultants", new { id = item.ConsultantNum })'" />
@@ -94,3 +97,4 @@
         </tr>
     }
 </table>
+    </div>
