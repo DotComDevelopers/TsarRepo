@@ -109,7 +109,7 @@ namespace TSAR.Controllers
         public ActionResult Create([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date,Category,ConsultantName,Status,ConsultantId,TicketReference")] Ticket ticket)
         {
             string tickRef =
-                $"{DateTime.Now.Second}{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{User.Identity.GetUserName().Substring(0, 4)}";
+                $"{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Second}{User.Identity.GetUserName().Substring(0, 4)}";
             if (ModelState.IsValid)
             {
                 //created ticket ID should be returned as a reference
@@ -139,18 +139,30 @@ namespace TSAR.Controllers
                     ticket.Status = "Open Ticket";
                 }
                 db.Tickets.Add(ticket);
-                db.SaveChanges();
-                //var twilioSmsClient = new TwilioSmsRestClient();
-                //var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
 
-                //if (smsStatusResult.IsCompleted)
-                //{
-                //    return RedirectToAction("Done");
-                //}
-                //else
-                //{//an appropriate message stating sms failed error, either try again it
-                //    return View(ticket);
-                //}
+                var textforevent = "Reference Number:    " + ticket.TicketReference + "      " + "Fault Description:    " + ticket.FaultDescription;
+                var calendarevent = new Event()
+                {
+                    start_date = ticket.Date,
+                    end_date = ticket.Date,
+                    name = ticket.Category,
+                    text = textforevent
+
+                };
+                db.Events.Add(calendarevent);
+                db.SaveChanges();
+
+                var twilioSmsClient = new TwilioSmsRestClient();
+                var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
+
+                if (smsStatusResult.IsCompleted)
+                {
+                   return RedirectToAction("Done");
+                }
+                else
+                {//an appropriate message stating sms failed error, either try again it
+                   return View(ticket);
+                }
 
             }
 
