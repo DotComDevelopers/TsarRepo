@@ -109,7 +109,7 @@ namespace TSAR.Controllers
         public ActionResult Create([Bind(Include = "ID,ClientName,Email,FaultDescription,Priority,Date,Category,ConsultantName,Status,ConsultantId,TicketReference")] Ticket ticket)
         {
             string tickRef =
-                $"{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Second}{User.Identity.GetUserName().Substring(0, 4)}";
+                $"{DateTime.Now.Second}{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{User.Identity.GetUserName().Substring(0, 4)}";
             if (ModelState.IsValid)
             {
                 //created ticket ID should be returned as a reference
@@ -140,8 +140,8 @@ namespace TSAR.Controllers
                 }
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
-                var twilioSmsClient = new TwilioSmsRestClient();
-                var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
+                //var twilioSmsClient = new TwilioSmsRestClient();
+                //var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
 
                 //if (smsStatusResult.IsCompleted)
                 //{

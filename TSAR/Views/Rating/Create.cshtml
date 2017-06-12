@@ -63,7 +63,7 @@
             <div align="center">
                 @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label" })
             </div>
-            <div class="col-md-offset-5 col-md-2">
+            <div class="col-md-4 col-md-offset-4">
                 @Html.TextAreaFor(model => model.Comment, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
             </div>

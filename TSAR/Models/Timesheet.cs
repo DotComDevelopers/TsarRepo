@@ -56,8 +56,8 @@ namespace TSAR.Models
         public virtual Travel Travel { get; set; }
         public string MClientAddress { get; set; }
 
+       
 
-     
 
     }
 }

@@ -92,18 +92,19 @@
 
             <dt>
                 @Html.DisplayNameFor(model => model.SignOff)
-              
+          
             </dt>
 
             <dd>
                 @*@Html.DisplayFor(model => model.SignOff)*@
                 @Html.CheckBoxFor(model => model.SignOff)
+              
             </dd>
 
         </dl>
 
     </div>
-
+   
     <div class="form-group">
         @*@Html.LabelFor(model => model.CaptureDate, htmlAttributes: new { @class = "control-label col-md-2" })*@
         <div class="col-md-10">
@@ -197,9 +198,10 @@
         </div>
         <br />
         <br />
-        <div class="col-md-4 col-md-offset-4">
-            <a id="button" href="@Url.Action("ViewTimeheets")" class="btn btn-primary">Back To List</a>
-        </div>
+    <div class="col-md-4 col-md-offset-4">
+        <br />
+        <a id="button" href="@Url.Action("ViewTimeheets")" class="btn btn-primary">Back To List</a>
+    </div>
 }
 
 

@@ -56,8 +56,8 @@ namespace TSAR.Controllers
             { string email = User.Identity.GetUserName();
                 //For this to work a client must be created with the same email as the email registered to login as a client
                 rating.ConsultantName = (from Ticket t in db.Tickets
-                                         where t.Email == email
-                                         select t.ConsultantName).FirstOrDefault();
+                    where t.Email == email
+                    select t.ConsultantName).Max();
                 rating.ClientUsername = email;
                 db.Ratings.Add(rating);
                 db.SaveChanges();

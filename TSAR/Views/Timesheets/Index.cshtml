@@ -42,6 +42,9 @@
             <th>
                 <font color="white">    @Html.DisplayNameFor(model => model.TicketReference)</font>
             </th>
+            <th>
+                <font color="white">    @Html.DisplayNameFor(model => model.SignOff)</font>
+            </th>
             <th></th>
             <th></th>
         </tr>
@@ -76,7 +79,9 @@
                 <td>
                        @Html.DisplayFor(modelItem => item.TicketReference)
                 </td>
-               
+                <td>
+                    @Html.DisplayFor(modelItem => item.SignOff)
+                </td>
                 <td>
                     <input type="button" title="Edit" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Timesheets", new { id = item.TimesheetId })'" />
 
