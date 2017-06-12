@@ -402,6 +402,25 @@ namespace TSAR.Migrations
            LeaveTypeName = "Sick"
 
        });
+
+            context.Tickets.AddOrUpdate(
+                t=>t.ID,
+                new Ticket()
+                {
+                    ID = 1,
+                    ClientName = "Everest",
+                    Email = "nash@everest.com",
+                    Category = "Software",
+                    Priority = "High",
+                    FaultDescription = "My computer keeps on crashing and it also displays a blue screen after it crashes, on the screen it says problem cause by SPCMDCON.SYS",
+                    Status="Open Ticket",
+                    Date =  Convert.ToDateTime("2017-06-11 11:07 PM") ,
+                    TicketReference = "201706112nash",
+                    ConsultantName = null,
+                    ConsultantId = Convert.ToInt32(null)
+                });
+
+          
         }
     }
 }

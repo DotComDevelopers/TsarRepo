@@ -50,10 +50,6 @@ namespace TSAR.Models
         public string TicketReference { get; set; }
 
 
-        public virtual Client Clients { get; set; }
-        
-        public virtual Timesheet Timesheets { get; set; }
-
-        public virtual Consultant Consultants { get; set; }
+      
     }
 }
