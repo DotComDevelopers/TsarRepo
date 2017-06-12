@@ -151,6 +151,7 @@ namespace TSAR.Controllers
                 };
                 db.Events.Add(calendarevent);
                 db.SaveChanges();
+
                 var twilioSmsClient = new TwilioSmsRestClient();
                 var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
 

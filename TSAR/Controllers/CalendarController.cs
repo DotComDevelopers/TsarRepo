@@ -35,7 +35,7 @@ namespace TSAR.Controllers
             schedulerget.Config.first_hour = 8;
             schedulerget.Config.last_hour = 18;
 
-        
+
             schedulerget.LoadData = true;
             schedulerget.EnableDataprocessor = true;
             var conuser = User.Identity.Name;
@@ -48,7 +48,7 @@ namespace TSAR.Controllers
 
 
             schedulerget.Lightbox.AddDefaults();
-            
+
 
 
 
@@ -59,11 +59,11 @@ namespace TSAR.Controllers
         public ActionResult Index(DHXScheduler scheduler)
         {
             //Being initialized in that way, scheduler will use CalendarController.Data as a the datasource and CalendarController.Save to process changes
-           // var scheduler = new DHXScheduler(this);
+            // var scheduler = new DHXScheduler(this);
             ViewBag.Name = User.Identity.Name;
             scheduler.Extensions.Add(SchedulerExtensions.Extension.Collision);
             scheduler.Extensions.Add(SchedulerExtensions.Extension.Limit);
-            scheduler.Config.time_step = 30; 
+            scheduler.Config.time_step = 30;
             scheduler.Config.multi_day = true;
             scheduler.Config.limit_time_select = true;
             scheduler.Config.cascade_event_display = true;
@@ -77,13 +77,13 @@ namespace TSAR.Controllers
             var user = (from Consultant c in db.Consultants where c.ConsultantUserName == conuser select c.ConsultantNum).FirstOrDefault();
             ViewBag.TicketRef = (from Ticket t in db.Tickets
                                  where t.Status == "Open Ticket"
-                                 && t.ConsultantId==user
+                                 && t.ConsultantId == user
                                  select t.TicketReference).FirstOrDefault();
 
 
 
             scheduler.Lightbox.AddDefaults();
-          
+
 
 
             return View(scheduler);
@@ -92,23 +92,23 @@ namespace TSAR.Controllers
         public ContentResult Data()
         {
             var data = new SchedulerAjaxData(new ApplicationDbContext().Events);
-                    
-                
+
+
             return (ContentResult)data;
         }
 
         public ContentResult Save(int? id, FormCollection actionValues)
         {
             ViewBag.Ticket = (from Ticket t in db.Tickets
-                                 where t.Status == "Open Ticket"
-                                 select t.Date).FirstOrDefault();
+                              where t.Status == "Open Ticket"
+                              select t.Date).FirstOrDefault();
             var action = new DataAction(actionValues);
-            
+
             try
             {
                 var changedEvent = (Event)DHXEventsHelper.Bind(typeof(Event), actionValues);
                 var data = new ApplicationDbContext();
-     
+
 
                 switch (action.Type)
                 {
@@ -118,12 +118,12 @@ namespace TSAR.Controllers
                         changedEvent.text = "from ticket";
                         data.Events.Add(changedEvent);
                         ViewBag.Name = changedEvent.name;
-                       
+
                         break;
                     case DataActionTypes.Delete:
-                       changedEvent = data.Events.SingleOrDefault(ev => ev.id == action.SourceId);
-                       data.Events.Remove(changedEvent);
-                       break;
+                        changedEvent = data.Events.SingleOrDefault(ev => ev.id == action.SourceId);
+                        data.Events.Remove(changedEvent);
+                        break;
                     default:// "update"                          
                         var eventToUpdate = data.Events.SingleOrDefault(ev => ev.id == action.SourceId);
                         DHXEventsHelper.Update(eventToUpdate, changedEvent, new List<string>() { "id" });
@@ -162,6 +162,6 @@ namespace TSAR.Controllers
 
             return View(events);
         }
-    }  
+    }
 }
 
