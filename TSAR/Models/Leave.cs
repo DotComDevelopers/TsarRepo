@@ -42,6 +42,23 @@ namespace TSAR.Models
         [Display(Name = "No. of Days")]
         public int LeaveCount { get; set; }
 
+        //13/06/17
+        [Display(Name = "Annual Leave Balance")]
+        public int AnnualBalance { get; set; }
+
+        [Display(Name = "Maternity Leave Balance")]
+        public int MaternityBalance { get; set; }
+
+        [Display(Name = "Sick Leave Balance")]
+        public int SickBalance { get; set; }
+
+        [Display(Name = "Family Responsibility Leave Balance")]
+        public int FamilyResponsibilityBalance { get; set; }
+
+        [Display(Name = "Paternity Leave Balance")]
+        public int PaternityBalance { get; set; }
+        //13/06/17
+
         [Required]
         [Display(Name = "Leave Date")]
         [DateMustBeEqualOrGreaterThanCurrentDate]
