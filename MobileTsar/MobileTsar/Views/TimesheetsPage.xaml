@@ -11,14 +11,15 @@
   </ContentPage.BindingContext>
   
   <StackLayout Orientation="Vertical">
-    <Entry Text="{Binding AccessToken}"></Entry>
+    <!--<Entry Text="{Binding AccessToken}"></Entry>-->
     <Button Command="{Binding GetTimesheetsCommand}" Text="Get Timesheets"></Button>
+    <Button Text="Add new timesheet" Clicked="Button_OnClicked"></Button>
     
     <ListView ItemsSource="{Binding Timesheets}" HasUnevenRows="True">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <StackLayout>
+            <StackLayout Padding="20,10">
                 <Label Text="Timesheet Id:" TextColor="DeepSkyBlue"></Label>
                 <Label Text="{Binding TimesheetId}"></Label>
                 <Label Text="Client Id:" TextColor="DeepSkyBlue"></Label>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using MobileTsar.Helpers;
 using MobileTsar.Services;
 using Xamarin.Forms;
 
@@ -27,6 +28,9 @@ namespace MobileTsar.ViewModels
         return  new Command(async() =>
         {
          var isSuccess = await _apiServices.RegisterAsync(Email, Password, ConfirmPassword);
+
+          Settings.Username = Email;
+          Settings.Password = Password;
 
           if (isSuccess) Message = "Registered Successfully";
           else

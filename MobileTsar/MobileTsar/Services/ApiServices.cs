@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using MobileTsar.Models;
 using MobileTsar.ViewModels;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MobileTsar.Services
 {
@@ -35,7 +36,7 @@ namespace MobileTsar.Services
       return response.IsSuccessStatusCode;
     }
 
-    public async Task LoginAsync(string userName, string password)
+    public async Task<string> LoginAsync(string userName, string password)
     {
       var keyValues = new List<KeyValuePair<string,string>>
       {
@@ -50,9 +51,14 @@ namespace MobileTsar.Services
 
       var client = new HttpClient();
       var response = await client.SendAsync(request);
-      var content = await response.Content.ReadAsStringAsync();
-      Debug.WriteLine(content);
+      var jwt = await response.Content.ReadAsStringAsync();
 
+      JObject jwtDynamic = JsonConvert.DeserializeObject<dynamic>(jwt);
+      var accessToken = jwtDynamic.Value<string>("access_token");
+
+      Debug.WriteLine(jwt);
+
+      return accessToken;
     }
 
     public async Task<List<Timesheet>> GetTimesheetAsync(string accessToken)
@@ -63,6 +69,20 @@ namespace MobileTsar.Services
 
       var timesheets = JsonConvert.DeserializeObject<List<Timesheet>>(json);
       return timesheets;
+    }
+
+    public async Task PostTimesheetAsync(Timesheet timesheet, string accessToken)
+    {
+      var  client = new HttpClient();
+      client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",accessToken);
+
+      var json = JsonConvert.SerializeObject(timesheet);
+      HttpContent content = new StringContent(json);
+      content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+      var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/mobiletimesheets", content);
+      //add success message here using response 
+
     }
   }
 }

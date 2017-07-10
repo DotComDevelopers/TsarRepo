@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using MobileTsar.Helpers;
 using MobileTsar.Services;
 using Xamarin.Forms;
 
@@ -23,9 +24,16 @@ namespace MobileTsar.ViewModels
         return new Command(async () =>
 
         {
-          await _apiServices.LoginAsync(Username, Password);
+         var accesstoken = await _apiServices.LoginAsync(Username, Password);
+          Settings.AccessToken = accesstoken;
         });
       }
+    }
+
+    public LoginViewModel()
+    {
+      Username = Settings.Username;
+      Password = Settings.Password;
     }
   }
 }

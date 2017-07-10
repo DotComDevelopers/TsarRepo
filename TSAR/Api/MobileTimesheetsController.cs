@@ -12,7 +12,7 @@ using Twilio.Http;
 
 namespace TSAR.Api
 {
-
+  //[Authorize]
   public class MobileTimesheetsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();

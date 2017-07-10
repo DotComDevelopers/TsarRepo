@@ -9,10 +9,10 @@
   <viewModels:RegisterViewModel/>
 </ContentPage.BindingContext>
 
-  <StackLayout Orientation="Vertical">
-    <Entry Text="{Binding Email}" Placeholder="Your Email"></Entry>
-    <Entry Text="{Binding Password}" Placeholder="Your Password" IsPassword="True"></Entry>
-    <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm your password" IsPassword="True"></Entry>
+  <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
+    <Entry Text="{Binding Email}" Placeholder="Your Email" FontSize="30"></Entry>
+    <Entry Text="{Binding Password}" Placeholder="Your Password" IsPassword="True" FontSize="30"></Entry>
+    <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm your password" IsPassword="True" FontSize="30"></Entry>
   
   <Button Command="{Binding RegisterCommand}" Text="Register"></Button>
   

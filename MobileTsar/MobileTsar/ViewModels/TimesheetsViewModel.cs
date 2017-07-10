@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MobileTsar.Annotations;
+using MobileTsar.Helpers;
 using MobileTsar.Models;
 using MobileTsar.Services;
 using Xamarin.Forms;
@@ -17,7 +18,7 @@ namespace MobileTsar.ViewModels
   {
      ApiServices _apiServices = new ApiServices();
     private List<Timesheet> _timesheets;
-    public string AccessToken { get; set; }
+    //public string AccessToken { get; set; }
 
     public List<Timesheet> Timesheets
     {
@@ -35,7 +36,8 @@ namespace MobileTsar.ViewModels
       {
         return  new Command(async () =>
         {
-          Timesheets = await _apiServices.GetTimesheetAsync(AccessToken);
+          var accesstoken = Settings.AccessToken;
+          Timesheets = await _apiServices.GetTimesheetAsync(accesstoken);
         });
       }
     }

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
+             x:Class="MobileTsar.Views.AddNewTimesheetPage">
+  
+
+<ContentPage.BindingContext>
+  <viewModels:AddNewTimesheetViewModel>
+    
+  </viewModels:AddNewTimesheetViewModel>
+</ContentPage.BindingContext>
+<ScrollView>
+    <StackLayout Orientation="Vertical" >
+
+        <Label Text="Activity:" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding ActivityDescription}"></Entry>
+      
+        <Label Text="Capture date:" TextColor="DeepSkyBlue"></Label>
+        <DatePicker Date="{Binding CaptureDate}"></DatePicker>
+        <!--<Entry Text="{Binding CaptureDate}"></Entry>-->
+      
+        <Label Text="Client:" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding Client}"></Entry>
+      
+        <Label Text="Consultant:" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding Consultant}"></Entry>
+      
+        <Label Text="Consultant Id:" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding ConsultantNum}"></Entry>
+      
+        <Label Text="Hours" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding Hours}"></Entry>
+      
+        <Label Text="Client Id:" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding Id}"></Entry>
+      
+        <Label Text="Sign off:" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding SignOff}"></Entry>
+      
+        <Label Text="Start Time:" TextColor="DeepSkyBlue"></Label>
+        <!--<Entry Text="{Binding StartTime}"></Entry>-->
+        <TimePicker Time="{Binding StartTime}"></TimePicker>
+      
+        <Label Text="End Time:" TextColor="DeepSkyBlue"></Label>
+        <!--<Entry Text="{Binding EndTime}"></Entry>-->
+        <TimePicker Time="{Binding EndTime}"></TimePicker>
+      
+        <Label Text="Ticket Reference:" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding TicketReference}"></Entry>
+      
+        <Label Text="Total:" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding Total}"></Entry>
+      
+        <Label Text="Travel:" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding Travel}"></Entry>
+      
+        <Label Text="Client Address:" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding MClientAddress}"></Entry>
+
+        <Button Command="{Binding AddCommand}" Text="Add New Timesheet" Clicked="Button_OnClicked"></Button>
+
+    </StackLayout>
+</ScrollView>
+</ContentPage>
