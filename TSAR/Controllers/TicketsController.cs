@@ -31,11 +31,7 @@ namespace TSAR.Controllers
                 select r;
 
                 return View(model);
-
-            
-              
-          
-        }
+}
 
         public ActionResult MyTickets()
         {

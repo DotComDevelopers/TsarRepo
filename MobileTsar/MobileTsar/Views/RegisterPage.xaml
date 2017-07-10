@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
+             x:Class="MobileTsar.Views.RegisterPage">
+  <!--<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />-->
+
+<ContentPage.BindingContext>
+  <viewModels:RegisterViewModel/>
+</ContentPage.BindingContext>
+
+  <StackLayout Orientation="Vertical">
+    <Entry Text="{Binding Email}" Placeholder="Your Email"></Entry>
+    <Entry Text="{Binding Password}" Placeholder="Your Password" IsPassword="True"></Entry>
+    <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm your password" IsPassword="True"></Entry>
+  
+  <Button Command="{Binding RegisterCommand}" Text="Register"></Button>
+  
+  <Label Text="{Binding Message}"></Label>
+  
+  <Button Text="Login Instead" Clicked="Button_OnClicked"></Button>
+  </StackLayout>
+
+</ContentPage>
