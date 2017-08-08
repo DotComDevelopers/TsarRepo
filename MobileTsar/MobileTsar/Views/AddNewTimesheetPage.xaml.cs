@@ -15,10 +15,10 @@ namespace MobileTsar.Views
       InitializeComponent();
     }
 
-    private void Button_OnClicked(object sender, EventArgs e)
+    private async void Button_OnClicked(object sender, EventArgs e)
     {
-      DisplayAlert("Done", "New Timesheet added!", "Close");
-      Navigation.PushAsync(new TimesheetsPage());
+      await DisplayAlert("Done", "New Timesheet added!", "Close");
+      await Navigation.PushAsync(new TimesheetsPage());
     }
   }
 }

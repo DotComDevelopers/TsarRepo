@@ -12,6 +12,7 @@
   
   <StackLayout Orientation="Vertical">
     <!--<Entry Text="{Binding AccessToken}"></Entry>-->
+    <Button Text="Log Off" Clicked="LogOffButton_OnClicked"></Button>
     <Button Command="{Binding GetTimesheetsCommand}" Text="Get Timesheets"></Button>
     <Button Text="Add new timesheet" Clicked="Button_OnClicked"></Button>
     

@@ -1,11 +1,13 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Plugin.CurrentActivity;
+using Plugin.Fingerprint;
+
 
 namespace MobileTsar.Droid
 {
@@ -16,7 +18,7 @@ namespace MobileTsar.Droid
     {
       TabLayoutResource = Resource.Layout.Tabbar;
       ToolbarResource = Resource.Layout.Toolbar;
-
+      CrossFingerprint.SetCurrentActivityResolver(() => CrossCurrentActivity.Current.Activity);
       base.OnCreate(bundle);
 
       global::Xamarin.Forms.Forms.Init(this, bundle);

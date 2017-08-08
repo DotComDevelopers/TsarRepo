@@ -56,9 +56,9 @@ namespace MobileTsar.Services
       JObject jwtDynamic = JsonConvert.DeserializeObject<dynamic>(jwt);
       var accessToken = jwtDynamic.Value<string>("access_token");
 
-      Debug.WriteLine(jwt);
-
+      Debug.WriteLine(jwt);      
       return accessToken;
+
     }
 
     public async Task<List<Timesheet>> GetTimesheetAsync(string accessToken)

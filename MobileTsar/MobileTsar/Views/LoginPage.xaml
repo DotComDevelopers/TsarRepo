@@ -10,8 +10,9 @@
   <StackLayout Orientation="Vertical">
     <Entry Text="{Binding Username}" Placeholder="Your Username"></Entry>
     <Entry Text="{Binding Password}" IsPassword="True" Placeholder="Your Password"></Entry>
-    <Button Command="{Binding LoginCommand}" Text="Login"></Button>
-    <Button Clicked="Button_OnClicked" Text="Get Timesheets"></Button>
+    <Button Command="{Binding LoginCommand}" Text="Login" Clicked="GetTimesheetsButton_OnClicked"></Button>
+    <Button Text="Sign Out" Clicked="SignOutButton_OnClicked"></Button>
+    <!--<Button  Text="Get Timesheets"></Button>-->
   </StackLayout>
   
 </ContentPage>

@@ -28,6 +28,8 @@ namespace MobileTsar.ViewModels
           Settings.AccessToken = accesstoken;
         });
       }
+      
+      
     }
 
     public LoginViewModel()
