@@ -221,7 +221,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BudgetController.cs" />
+    <Compile Include="Controllers\BudgetsController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CommissionsController.cs" />
@@ -706,11 +706,6 @@
     <Content Include="Views\Commissions\Details.cshtml" />
     <Content Include="Views\Commissions\Edit.cshtml" />
     <Content Include="Views\Commissions\Index.cshtml" />
-    <Content Include="Views\Budget\Create.cshtml" />
-    <Content Include="Views\Budget\Delete.cshtml" />
-    <Content Include="Views\Budget\Details.cshtml" />
-    <Content Include="Views\Budget\Edit.cshtml" />
-    <Content Include="Views\Budget\Index.cshtml" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Views\Roles\AnotherUserToRole.cshtml" />
     <Content Include="Views\Roles\Create.cshtml" />
@@ -760,13 +755,21 @@
     <Content Include="Views\Timesheets\ViewTimeheets.cshtml" />
     <Content Include="Views\Timesheets\SignOff.cshtml" />
     <Content Include="Views\Leaves\Done.cshtml" />
+    <Content Include="Views\Calendar\Create.cshtml" />
+    <Content Include="Views\Leaves\MyLeave.cshtml" />
     <Content Include="Views\Projects\Create.cshtml" />
     <Content Include="Views\Projects\Delete.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
-    <Content Include="Views\Calendar\Create.cshtml" />
-    <Content Include="Views\Leaves\MyLeave.cshtml" />
+    <Content Include="Views\Timesheets\ProjectTimeSheet.cshtml" />
+    <Content Include="Views\Timesheets\ProjectTimeSheetIndex.cshtml" />
+    <Content Include="Views\Budgets\Create.cshtml" />
+    <Content Include="Views\Budgets\Delete.cshtml" />
+    <Content Include="Views\Budgets\Details.cshtml" />
+    <Content Include="Views\Budgets\Edit.cshtml" />
+    <Content Include="Views\Budgets\Index.cshtml" />
+    <Content Include="Views\Timesheets\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -275,16 +275,16 @@ namespace TSAR.Migrations
                 );
 
 
-            context.Budgets.AddOrUpdate(
-                c => c.BudgetCode,
-                new Budget()
-                {
-                    BudgetCode = 1,
-                    Id = 1,
-                    Code = "Wk-23y734",
-                    Balance = 100000
-                }
-                );
+            //context.Budgets.AddOrUpdate(
+            //    c => c.BudgetCode,
+            //    new Budget()
+            //    {
+            //        BudgetCode = 1,
+            //         ProjectId= "",
+            //        Code = "Wk-23y734",
+            //        Balance = 100000
+            //    }
+            //    );
 
             context.Timesheets.AddOrUpdate(
                 c => c.TimesheetId,
