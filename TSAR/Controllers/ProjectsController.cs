@@ -17,11 +17,10 @@ namespace TSAR.Controllers
         // GET: Projects
         public ActionResult Index()
         {
-           
-
-            var projects = db.Projects.Include(p => p.Client);
+            var projects = db.Projects.Include(p => p.Client).Include(p => p.Consultant);
             return View(projects.ToList());
         }
+
 
         // GET: Projects/Details/5
         public ActionResult Details(int? id)
@@ -31,6 +30,8 @@ namespace TSAR.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Projects projects = db.Projects.Find(id);
+
+
             if (projects == null)
             {
                 return HttpNotFound();
@@ -38,10 +39,42 @@ namespace TSAR.Controllers
             return View(projects);
         }
 
+        public ActionResult ProjectTimeSheetIndex(int? id)
+        {
+            Projects projects = db.Projects.Find(id);
+
+            var ts = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant).Include(p=>p.Project).ToList(); 
+         
+            // if (projects.ProjectName == ts.ProjectName)
+            //{
+
+            return View(ts);
+
+
+           //  }
+           // else 
+
+           //return View();
+
+        }
+
+        //[HttpPost]
+        //public ActionResult ProjectTimeSheetIndex(Timesheet timesheet, int? id)
+        //{
+        //    var projects = db.Projects.Find(id);
+
+        //    var timesheets = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant).Where(a => a.ProjectId == timesheet.ProjectId);
+        //    var r = timesheets.ToList();
+        //    return View(r);
+
+
+        //}
+
         // GET: Projects/Create
         public ActionResult Create()
         {
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName");
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName");
             return View();
         }
 
@@ -50,7 +83,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProjectId,ProjectName,Id")] Projects projects)
+        public ActionResult Create([Bind(Include = "ProjectId,ProjectName,Id,ConsultantNum,StartDate,EndDate")] Projects projects)
         {
             if (ModelState.IsValid)
             {
@@ -60,6 +93,7 @@ namespace TSAR.Controllers
             }
 
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", projects.Id);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", projects.ConsultantNum);
             return View(projects);
         }
 
@@ -76,6 +110,7 @@ namespace TSAR.Controllers
                 return HttpNotFound();
             }
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", projects.Id);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", projects.ConsultantNum);
             return View(projects);
         }
 
@@ -84,7 +119,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProjectId,ProjectName,Id")] Projects projects)
+        public ActionResult Edit([Bind(Include = "ProjectId,ProjectName,Id,ConsultantNum,StartDate,EndDate")] Projects projects)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +128,7 @@ namespace TSAR.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", projects.Id);
+            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", projects.ConsultantNum);
             return View(projects);
         }
 

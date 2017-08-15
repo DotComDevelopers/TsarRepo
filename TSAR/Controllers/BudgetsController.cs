@@ -10,18 +10,18 @@ using TSAR.Models;
 
 namespace TSAR.Controllers
 {
-    public class BudgetController : Controller
+    public class BudgetsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Budget
+        // GET: Budgets
         public ActionResult Index()
         {
-            var budgets = db.Budgets.Include(b => b.Client);
+            var budgets = db.Budgets.Include(b => b.Project);
             return View(budgets.ToList());
         }
 
-        // GET: Budget/Details/5
+        // GET: Budgets/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,32 +36,38 @@ namespace TSAR.Controllers
             return View(budget);
         }
 
-        // GET: Budget/Create
+        // GET: Budgets/Create
         public ActionResult Create()
         {
-            ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName");
+            ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName");
             return View();
         }
 
-        // POST: Budget/Create
+        // POST: Budgets/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BudgetCode,Id,Balance,Code")] Budget budget)
+        public ActionResult Create([Bind(Include = "BudgetCode,ProjectId,Code,Balance")] Budget budget)
         {
             if (ModelState.IsValid)
             {
+                if (db.Budgets.Any(ac => ac.ProjectId.Equals(budget.ProjectId)))
+                      {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest); 
+               
+                }
+                else
                 db.Budgets.Add(budget);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", budget.Id);
+        
+            ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName", budget.ProjectId);
             return View(budget);
         }
 
-        // GET: Budget/Edit/5
+        // GET: Budgets/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,16 +79,16 @@ namespace TSAR.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", budget.Id);
+            ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName", budget.ProjectId);
             return View(budget);
         }
 
-        // POST: Budget/Edit/5
+        // POST: Budgets/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BudgetCode,Id,Balance,Code")] Budget budget)
+        public ActionResult Edit([Bind(Include = "BudgetCode,ProjectId,Code,Balance")] Budget budget)
         {
             if (ModelState.IsValid)
             {
@@ -90,11 +96,11 @@ namespace TSAR.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", budget.Id);
+            ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName", budget.ProjectId);
             return View(budget);
         }
 
-        // GET: Budget/Delete/5
+        // GET: Budgets/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +115,7 @@ namespace TSAR.Controllers
             return View(budget);
         }
 
-        // POST: Budget/Delete/5
+        // POST: Budgets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

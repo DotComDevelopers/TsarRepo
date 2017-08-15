@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Timesheet has been created successfully</h2>
+<br />
+<br />
+<input type="button" style="height:50px;width:100px" title="Home" value="←Home" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Home")'" />
+
+<input type="button" style="height:50px;width:100px" title="Consultant Menu" value="Menu→" class="btn btn-primary" onclick="location.href='@Url.Action("ConsultantMenu", "Manage")'" />
+
+
