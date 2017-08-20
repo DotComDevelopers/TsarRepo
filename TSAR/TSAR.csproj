@@ -213,7 +213,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\MobileClientsController.cs" />
+    <Compile Include="Api\MobileConsultantsController.cs" />
     <Compile Include="Api\MobileTimesheetsController.cs" />
+    <Compile Include="Api\MobileTravelController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -357,8 +360,10 @@
     <Content Include="Grid.mvc.readme" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TSAR1 - FTP %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
