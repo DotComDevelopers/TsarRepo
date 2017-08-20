@@ -213,7 +213,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\MobileApplicationUsersController.cs" />
+    <Compile Include="Api\MobileClientsController.cs" />
+    <Compile Include="Api\MobileConsultantsController.cs" />
     <Compile Include="Api\MobileTimesheetsController.cs" />
+    <Compile Include="Api\MobileTravelsController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />

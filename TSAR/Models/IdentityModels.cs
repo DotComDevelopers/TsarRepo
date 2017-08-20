@@ -59,5 +59,7 @@ namespace TSAR.Models
         public System.Data.Entity.DbSet<TSAR.Models.Travel> Travels { get; set; }
 
         public System.Data.Entity.DbSet<TSAR.Models.Projects> Projects { get; set; }
-    }
+
+    public System.Data.Entity.DbSet<TSAR.Models.ApplicationUser> ApplicationUsers { get; set; }
+  }
 }
