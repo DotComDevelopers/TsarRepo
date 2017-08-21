@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
+             xmlns:acr="clr-namespace:Acr.XamForms.SignaturePad;assembly=Acr.XamForms.SignaturePad"
+             x:Class="MobileTsar.Views.TimesheetSign"
+              >
+    <ContentPage.BindingContext>
+        <viewModels:TimesheetsViewModel>
+
+        </viewModels:TimesheetsViewModel>
+    </ContentPage.BindingContext>
+
+
+
+
+    <StackLayout>
+        <acr:SignaturePadView
+         x:Name="padView"
+         HorizontalOptions="FillAndExpand"
+         VerticalOptions="FillAndExpand"  
+        HeightRequest="150"
+        CaptionText="________________________________________________________"
+        CaptionTextColor="Black"
+        ClearText="Clear Text"
+        ClearTextColor="Red"
+        PromptText="Please sign here"
+        PromptTextColor="Green"
+        BackgroundColor="White"
+        SignatureLineColor="White"
+        StrokeWidth="2"
+        StrokeColor="Maroon"
+           />
+      
+        <Button Command="{Binding SignCommand}"  Clicked="Done" Text="Done"></Button>
+        <Button  Clicked="Timesheets" Text="Get Timesheets"></Button>
+    </StackLayout>
+
+  
+</ContentPage>

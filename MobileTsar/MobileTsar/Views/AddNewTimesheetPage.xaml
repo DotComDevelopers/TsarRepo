@@ -58,7 +58,7 @@
         <Label Text="Client Address:" TextColor="DeepSkyBlue"></Label>
         <Entry Text="{Binding MClientAddress}"></Entry>
 
-        <Button Command="{Binding AddCommand}" Text="Add New Timesheet" Clicked="Button_OnClicked"></Button>
+            <Button Command="{Binding AddCommand}" Text="Add New Timesheet" Clicked="Button_OnClicked" ></Button>
 
     </StackLayout>
 </ScrollView>

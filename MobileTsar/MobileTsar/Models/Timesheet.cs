@@ -44,7 +44,9 @@ namespace MobileTsar.Models
         public virtual Travel Travel { get; set; }
         public string MClientAddress { get; set; }
 
-       
+        public string Filename { get; set; }
+
+        public byte[] Signature { get; set; }
 
 
     }

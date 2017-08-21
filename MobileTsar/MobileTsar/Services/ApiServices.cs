@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -71,6 +72,8 @@ namespace MobileTsar.Services
       return timesheets;
     }
 
+
+
     public async Task PostTimesheetAsync(Timesheet timesheet, string accessToken)
     {
       var  client = new HttpClient();
@@ -84,5 +87,20 @@ namespace MobileTsar.Services
       //add success message here using response 
 
     }
-  }
+
+      public async Task PutTimesheetAsync(int id, Timesheet timesheet, string accessToken)
+      {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var json = JsonConvert.SerializeObject(timesheet);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await client.PutAsync("http://tsar1.azurewebsites.net/api/mobiletimesheets/" + id, content);
+          
+      }
+
+
+
+
+    }
 }

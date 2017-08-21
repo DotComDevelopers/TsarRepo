@@ -15,28 +15,29 @@
     <Button Text="Log Off" Clicked="LogOffButton_OnClicked"></Button>
     <Button Command="{Binding GetTimesheetsCommand}" Text="Get Timesheets"></Button>
     <Button Text="Add new timesheet" Clicked="Button_OnClicked"></Button>
-    
-    <ListView ItemsSource="{Binding Timesheets}" HasUnevenRows="True">
+
+        <ListView x:Name="TimesheetListView"   ItemsSource="{Binding Timesheets}" HasUnevenRows="True" ItemTapped="SignPage">
       <ListView.ItemTemplate>
         <DataTemplate>
-          <ViewCell>
+          <ViewCell >
             <StackLayout Padding="20,10">
+                <Label x:Name="msg"  Text="Tap here to sign >" HorizontalTextAlignment="End"></Label>
                 <Label Text="Timesheet Id:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding TimesheetId}"></Label>
+                <Label  Text="{Binding TimesheetId}"></Label>
                 <Label Text="Client Id:" TextColor="DeepSkyBlue"></Label>
                 <Label Text="{Binding Id}"></Label>
                 <Label Text="Client:" TextColor="DeepSkyBlue"></Label>
                 <Label Text="{Binding Client}"></Label>
                 <Label Text="Consultant:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding Consultant}"></Label>
+                <Label Text="{Binding ConsultantNum}"></Label>
                 <Label Text="Activity:" TextColor="DeepSkyBlue"></Label>
                 <Label Text="{Binding ActivityDescription}"></Label>
                 <Label Text="Date Captured:" TextColor="DeepSkyBlue"></Label>
                 <Label Text="{Binding CaptureDate}"></Label>
                 <Label Text="Start Time:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding StartTime}"></Label>
+                <Label Text="{Binding StartTime,StringFormat='{}{0:hh\\:mm}'}"></Label>
                 <Label Text="End Time:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding EndTime}"></Label>
+                <Label Text="{Binding EndTime,StringFormat='{}{0:hh\\:mm}'}"></Label>
                 <Label Text="Hours:" TextColor="DeepSkyBlue"></Label>
                 <Label Text="{Binding Hours}"></Label>
                 <Label Text="Client Address:" TextColor="DeepSkyBlue"></Label>
@@ -49,7 +50,9 @@
                 <Label Text="{Binding Travel}"></Label>
                 <Label Text="Total:" TextColor="DeepSkyBlue"></Label>
                 <Label Text="{Binding Total}"></Label>
-            </StackLayout>
+                <Label Text="Signature:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding Filename}"></Label>
+                </StackLayout>
           </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>

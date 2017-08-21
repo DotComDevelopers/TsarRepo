@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileTsar.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,8 @@ namespace MobileTsar.Views
 
     private async void Button_OnClicked(object sender, EventArgs e)
     {
-      await DisplayAlert("Done", "New Timesheet added!", "Close");
-      await Navigation.PushAsync(new TimesheetsPage());
+            await DisplayAlert("Done", "New Timesheet added!", "Close");
+            //await Navigation.PushAsync(new TimesheetSign());
     }
   }
 }

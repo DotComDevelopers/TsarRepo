@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Acr.XamForms.SignaturePad;
 using MobileTsar.Helpers;
 using MobileTsar.Models;
 using MobileTsar.Services;
 using MobileTsar.Views;
 using Xamarin.Forms;
+
+using Xamarin.Forms.Xaml;
 
 namespace MobileTsar.ViewModels
 {
@@ -39,18 +42,25 @@ namespace MobileTsar.ViewModels
 
     public bool SignOff { get; set; }
 
-    public virtual Travel Travel { get; set; }
-    public string MClientAddress { get; set; }
+   
 
-    public ICommand AddCommand
+        public virtual Travel Travel { get; set; }
+    public string MClientAddress { get; set; }
+        public string Filename { get; set; }
+
+        public byte[] Signature { get; set; }
+
+
+
+        public ICommand AddCommand
     {
       get
       {
         return new Command(async () =>
         {
-          var timesheet = new Timesheet
+          var timesheet = new  Timesheet
           {
-            Client = Client,
+            Client=Client,
             ActivityDescription = ActivityDescription,
             Consultant = Consultant,
             Id = Id,
@@ -63,8 +73,11 @@ namespace MobileTsar.ViewModels
             EndTime = EndTime,
             MClientAddress = MClientAddress,
             SignOff = SignOff,
-            StartTime = StartTime,            
+            StartTime = StartTime,
+            Filename = "",
+            Signature = null,
           };
+           
              await _apiServices.PostTimesheetAsync(timesheet, Settings.AccessToken);
           
         });
