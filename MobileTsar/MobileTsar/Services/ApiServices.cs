@@ -84,5 +84,28 @@ namespace MobileTsar.Services
       //add success message here using response 
 
     }
+
+    public async Task<List<Client>> GetClientAsync(string accessToken)
+    {
+      var client = new HttpClient();
+      client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+      var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/MobileClients");
+
+      var clients = JsonConvert.DeserializeObject<List<Client>>(json);
+      return clients;
+    }
+
+
+    //GET CONSULTANTS
+    public async Task<List<Consultant>> GetConsultantAsync(string accessToken)
+    {
+      var client = new HttpClient();
+      client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+      var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/MobileConsultants");
+
+      var consultants = JsonConvert.DeserializeObject<List<Consultant>>(json);
+      return consultants;
+    }
   }
 }

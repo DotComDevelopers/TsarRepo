@@ -21,9 +21,11 @@
         <!--<Entry Text="{Binding CaptureDate}"></Entry>-->
       
         <Label Text="Client:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding Client}"></Entry>
+        <Entry Text="{Binding Source={x:Reference ClientPicker},Path=SelectedItem}" IsVisible="False"></Entry>
+        <Picker x:Name="ClientPicker" Title="Client Name"></Picker>
       
         <Label Text="Consultant:" TextColor="DeepSkyBlue"></Label>
+        <Picker x:Name="ConsultantPicker"></Picker>
         <Entry Text="{Binding Consultant}"></Entry>
       
         <Label Text="Consultant Id:" TextColor="DeepSkyBlue"></Label>
@@ -33,7 +35,7 @@
         <Entry Text="{Binding Hours}"></Entry>
       
         <Label Text="Client Id:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding Id}"></Entry>
+        <Entry Text="{Binding Source={x:Reference ClientPicker}, Path=SelectedIndex}" IsVisible="False"></Entry>
       
         <Label Text="Sign off:" TextColor="DeepSkyBlue"></Label>
         <Entry Text="{Binding SignOff}"></Entry>
@@ -47,7 +49,8 @@
         <TimePicker Time="{Binding EndTime}"></TimePicker>
       
         <Label Text="Ticket Reference:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding TicketReference}"></Entry>
+        <!--<Entry Text="{Binding TicketReference}"></Entry>-->
+        <Picker x:Name="TicketPicker" Title="Ticket Number" SelectedItem="{Binding TicketReference}"></Picker>
       
         <Label Text="Total:" TextColor="DeepSkyBlue"></Label>
         <Entry Text="{Binding Total}"></Entry>
