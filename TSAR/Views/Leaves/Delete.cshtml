@@ -54,6 +54,48 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.AnnualBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnnualBalance)
+        </dd>
+        @if (ViewBag.Gender == "Female")
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.MaternityBalance)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaternityBalance)
+            </dd>
+        }
+        @if (ViewBag.Gender == "Male")
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.PaternityBalance)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaternityBalance)
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.SickBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SickBalance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FamilyResponsibilityBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FamilyResponsibilityBalance)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.LeaveDate)
         </dt>
 
@@ -71,11 +113,12 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

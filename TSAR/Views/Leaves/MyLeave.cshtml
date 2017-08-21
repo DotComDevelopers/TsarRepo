@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<TSAR.Models.Leave>
 
 @{
-  ViewBag.Title = "MyLeave";
-  Layout = "~/Views/Shared/_LayoutOther.cshtml";
+    ViewBag.Title = "MyLeave";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
 <h2>@ViewBag.Name's leave balance: @ViewBag.LeaveBal Days</h2>
-<br/>
+<br />
 
 
 
@@ -14,87 +14,129 @@
     @*@Html.ActionLink("Create New Application", "Create")*@
     <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create new application</a>
 </p>
-<br/>
+<br />
 <div style="overflow-x: auto">
-<table class="table bg-light-gray">
-    <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Consultant.FirstName)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.ApprovedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsConfirmed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LeaveDecsription)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.AccumulatedLeave)
-        </th>*@
-        @*<th>
-            @Html.DisplayNameFor(model => model.AllocatedLeave)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.LeaveCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LeaveDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReturnDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LeaveTypeName)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <table class="table bg-light-gray">
         <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Consultant.FirstName)
-            </td>*@
-            @*<td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.ApprovedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsConfirmed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveDecsription)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.AccumulatedLeave)
-            </td>*@
-            @*<td>
-                @Html.DisplayFor(modelItem => item.AllocatedLeave)
-            </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReturnDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveTypeName)
-            </td>
-            <td>                
-                @Html.ActionLink("Details", "Details", new { id = item.LeaveId })                
-            </td>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Consultant.FirstName)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.ApprovedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsConfirmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveDecsription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnualBalance)
+            </th>
+            @if (ViewBag.Gender == "Female")
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.MaternityBalance)
+                </th>
+            }
+            @if (ViewBag.Gender == "Male")
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.PaternityBalance)
+                </th>
+            }
+            <th>
+                @Html.DisplayNameFor(model => model.SickBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FamilyResponsibilityBalance)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.AccumulatedLeave)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.AllocatedLeave)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveTypeName)
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Consultant.FirstName)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApprovedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveDecsription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnualBalance)
+                </td>
+                @if (ViewBag.Gender == "Female")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaternityBalance)
+                    </td>
+                }
+                @if (ViewBag.Gender == "Male")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaternityBalance)
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.SickBalance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FamilyResponsibilityBalance)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.AccumulatedLeave)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.AllocatedLeave)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveTypeName)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.LeaveId })
+                </td>
+            </tr>
+        }
+
+    </table>
 </div>

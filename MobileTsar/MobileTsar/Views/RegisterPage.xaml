@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
+             x:Class="MobileTsar.Views.RegisterPage"
+  Title="TSAR Mobile App">
+  <!--<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />-->
+
+<ContentPage.BindingContext>
+  <viewModels:RegisterViewModel/>
+</ContentPage.BindingContext>
+<ScrollView>
+    <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">  
+      <Label Text="REGISTER" FontSize="40"></Label>
+        <Entry Text="{Binding Email}" Placeholder="Your Email" FontSize="15"></Entry>
+        <Entry Text="{Binding Password}" Placeholder="Your Password" IsPassword="True" FontSize="15"></Entry>
+        <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm your password" IsPassword="True" FontSize="15"></Entry>
+
+        <Button Command="{Binding RegisterCommand}" Text="Register"></Button>
+        <Label Text="{Binding Message}" IsVisible="False"></Label>
+        <Label Text="Have an Account?" FontSize="40"></Label>
+        <Button Text="Login Instead" Clicked="LoginButton_OnClicked"></Button>
+        <!--<Button Text="Finger Print Login" Clicked="FingerButton_OnClicked"></Button>-->
+    </StackLayout>
+</ScrollView>
+
+
+</ContentPage>

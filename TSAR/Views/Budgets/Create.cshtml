@@ -1,0 +1,63 @@
+﻿@model TSAR.Models.Budget
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Budget</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div align="center">
+                @Html.LabelFor(model => model.ProjectId, "ProjectId", htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4 col-md-offset-4">
+                    @Html.DropDownList("ProjectId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ProjectId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        <div class="form-group">
+            <div align="center">
+                @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4 col-md-offset-4">
+                    @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        <div class="form-group">
+            <div align="center">
+                @Html.LabelFor(model => model.Balance, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-4 col-md-offset-4">
+                    @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-4">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div align="center">
+    <a id="button" href="@Url.Action("Index")" class="btn btn-primary">Back To List</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

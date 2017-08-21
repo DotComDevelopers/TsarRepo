@@ -12,13 +12,12 @@ namespace TSAR.Models
         [Required]
         [Display(Name = "Budget Code")]
         public int BudgetCode { get; set; }
-        public virtual Client Client { get; set; }
-        [Display(Name = "Id")]
-        public int Id { get; set; }
+        public virtual Projects Project { get; set; }
+        public int ProjectId { get; set; }
         [Display(Name = "Reference Code")]
         public string Code { get; set; }
 
-      
+
 
         [Required]
         [Display(Name = "Amount")]

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TSAR.Models.Budget>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+
+
+<p>
+    <div align="center">
+        <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create</a>
+    </div>
+</p>
+<div style="overflow-x: auto">
+    <table class="table bg-light-gray">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Project.ProjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Balance)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Balance)
+                </td>
+
+                <td>
+                    <input type="button" title="Delete" value="Delete" class="btn btn-primary" onclick="location.href='@Url.Action("Delete", "Budgets", new { id = item.BudgetCode })'" />
+                </td>
+                <td>
+                    <input type="button" title="Delete" value="Edit" class="btn btn-primary" onclick="location.href='@Url.Action("Edit", "Budgets", new { id = item.BudgetCode })'" />
+                </td>
+                <td>
+                    <input type="button" title="Delete" value="Details" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Budgets", new { id = item.BudgetCode })'" />
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+@Html.ActionLink("Back to previous page", null, null, null, new { href = Request.UrlReferrer })
+<div>
+    <a href="@Request.UrlReferrer" class="btn btn-primary btn-lg" title="Back to list">
+        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+    </a>
+</div>

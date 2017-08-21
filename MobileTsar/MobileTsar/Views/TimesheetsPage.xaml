@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
+             x:Class="MobileTsar.Views.TimesheetsPage">
+  
+  <ContentPage.BindingContext>
+    <viewModels:TimesheetsViewModel>
+      
+    </viewModels:TimesheetsViewModel>
+  </ContentPage.BindingContext>
+  
+  <StackLayout Orientation="Vertical">
+    <!--<Entry Text="{Binding AccessToken}"></Entry>-->
+    <Button Text="Log Off" Clicked="LogOffButton_OnClicked"></Button>
+    <Button Command="{Binding GetTimesheetsCommand}" Text="Get Timesheets"></Button>
+    <Button Text="Add new timesheet" Clicked="Button_OnClicked"></Button>
+    
+    <ListView ItemsSource="{Binding Timesheets}" HasUnevenRows="True">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Padding="20,10">
+                <Label Text="Timesheet Id:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding TimesheetId}"></Label>
+                <Label Text="Client Id:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding Id}"></Label>
+                <Label Text="Client:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding Client}"></Label>
+                <Label Text="Consultant:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding Consultant}"></Label>
+                <Label Text="Activity:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding ActivityDescription}"></Label>
+                <Label Text="Date Captured:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding CaptureDate}"></Label>
+                <Label Text="Start Time:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding StartTime}"></Label>
+                <Label Text="End Time:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding EndTime}"></Label>
+                <Label Text="Hours:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding Hours}"></Label>
+                <Label Text="Client Address:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding MClientAddress}"></Label>
+                <Label Text="Signed Off? :" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding SignOff}"></Label>
+                <Label Text="Ticket Reference:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding TicketReference}"></Label>
+                <Label Text="Travel:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding Travel}"></Label>
+                <Label Text="Total:" TextColor="DeepSkyBlue"></Label>
+                <Label Text="{Binding Total}"></Label>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+  
+</ContentPage>
