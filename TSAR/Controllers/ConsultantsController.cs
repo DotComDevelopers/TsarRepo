@@ -90,18 +90,20 @@ namespace TSAR.Controllers
           UserName = consultant.ConsultantUserName,        
         };
         Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-        var result = UserManager.CreateAsync(consuser, consultant.Password);
+        //var result = UserManager.CreateAsync(consuser, consultant.Password);
+        
         //var userStore = new UserStore<ApplicationUser>(db);
         //var userManager = new UserManager<ApplicationUser>(userStore);        
         consultant.FullName = $"{consultant.FirstName} {consultant.LastName}";
         consultant.LeaveBalance = 24;
         db.Consultants.Add(consultant);
-        await result;
+        db.Users.Add(consuser);
+        //await result;
         db.SaveChanges();       
         //userManager.AddToRole(consuser.Id, "Consultant");
 
 
-        if (await UserManager.IsInRoleAsync(consuser.Id, "Member")) return RedirectToAction("Index", "Home");
+        //if (await UserManager.IsInRoleAsync(consuser.Id, "Member")) return RedirectToAction("Index", "Home");
         if (consultant.ConsultantUserName == consuser.UserName)
         {
           UserManager.AddToRole(consuser.Id, "Consultant");

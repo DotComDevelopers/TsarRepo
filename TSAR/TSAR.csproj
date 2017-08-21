@@ -109,6 +109,10 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SendGrid, Version=9.4.1.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sendgrid.9.5.0\lib\net452\SendGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -211,6 +215,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccomodationFilesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
@@ -239,6 +244,8 @@
       <DependentUpon>201705282212491_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccomodationFiles.cs" />
+    <Compile Include="Models\AccomodationFilesEmail.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Budget.cs" />
     <Compile Include="Models\Client.cs" />
@@ -756,9 +763,16 @@
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Calendar\Create.cshtml" />
     <Content Include="Views\Leaves\MyLeave.cshtml" />
+    <Content Include="Views\AccomodationFiles\Create.cshtml" />
+    <Content Include="Views\AccomodationFiles\Delete.cshtml" />
+    <Content Include="Views\AccomodationFiles\Details.cshtml" />
+    <Content Include="Views\AccomodationFiles\Edit.cshtml" />
+    <Content Include="Views\AccomodationFiles\Index.cshtml" />
+    <Content Include="Views\AccomodationFiles\SendMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Attach\" />
     <Folder Include="Content\images\" />
     <Folder Include="Content\themes\base\images\" />
   </ItemGroup>
