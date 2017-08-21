@@ -106,6 +106,7 @@ namespace MobileTsar.Services
 
       var consultants = JsonConvert.DeserializeObject<List<Consultant>>(json);
       return consultants;
+     
     }
   }
 }
