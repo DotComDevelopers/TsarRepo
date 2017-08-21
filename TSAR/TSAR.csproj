@@ -231,7 +231,6 @@
   <ItemGroup>
     <Compile Include="Api\MobileClientsController.cs" />
     <Compile Include="Api\MobileConsultantsController.cs" />
-    <Compile Include="Api\MobileTimesheetsController.cs" />
     <Compile Include="Api\MobileTravelController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -266,6 +265,14 @@
     <Compile Include="Migrations\201705282212491_InitialCreate.cs" />
     <Compile Include="Migrations\201705282212491_InitialCreate.Designer.cs">
       <DependentUpon>201705282212491_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708212100566_Projects.cs" />
+    <Compile Include="Migrations\201708212100566_Projects.Designer.cs">
+      <DependentUpon>201708212100566_Projects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708212120546_project2.cs" />
+    <Compile Include="Migrations\201708212120546_project2.Designer.cs">
+      <DependentUpon>201708212120546_project2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccomodationFiles.cs" />
@@ -816,6 +823,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705282212491_InitialCreate.resx">
       <DependentUpon>201705282212491_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708212100566_Projects.resx">
+      <DependentUpon>201708212100566_Projects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708212120546_project2.resx">
+      <DependentUpon>201708212120546_project2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

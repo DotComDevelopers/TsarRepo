@@ -13,15 +13,18 @@ namespace TSAR.Models
         public int ProjectId { get; set; }
 
         public string ProjectName { get; set; }
+        //public string ProjectTitle { get; set; }
         public virtual Client Client { get; set; }
         public int Id { get; set; }
 
         public virtual Consultant Consultant { get; set; }
         public int ConsultantNum { get; set; }
-        // public List<Consultant> consultants { get; set; }
 
 
-        [Required]
+    // public List<Consultant> consultants { get; set; }
+
+
+    [Required]
         [Display(Name = "Start Date")]
         [DateMustBeEqualOrGreaterThanCurrentDate]
         [DataType(DataType.Date)]

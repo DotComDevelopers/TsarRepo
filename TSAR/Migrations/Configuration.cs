@@ -13,6 +13,8 @@ namespace TSAR.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+          AutomaticMigrationDataLossAllowed = true;
+
         }
 
         protected override void Seed(TSAR.Models.ApplicationDbContext context)
