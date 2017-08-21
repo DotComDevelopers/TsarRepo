@@ -34,7 +34,9 @@
         <tr>
             <td><input type="button" style="height:50px;width:200px" title="Commission" value="Commission" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Commissions")'" /></td>
             <td><input type="button" style="height:50px;width:200px" title="View Travel Code" value="View Travel Code" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Travel")'" /></td>
-            <td><input type="button" style="height:50px;width:200px" title="Send Newsletter" value="Send Newsletter" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "SendMailer")'" /></td>           
+            <td><input type="button" style="height:50px;width:200px" title="Send Newsletter" value="Send Newsletter" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "SendMailer")'" /></td>  
+           
+         
         </tr>
     <tr>
         <td><input type="button" style="height: 50px; width: 200px" title="Leave Requests" value="Leave Requests" class="btn btn-primary" onclick="location.href = '@Url.Action("Index", "Leaves")'"/></td>
@@ -48,10 +50,16 @@
         <td><input type="button" style="height:50px;width:200px" title="Calendar" value="Calendar" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Calendar")'" /></td>
     </tr>
     <tr>
-        <td></td>
+        <td><input type="button" style="height:50px;width:200px" title="AccomodationFiles" value="AccomodatonFiles" class="btn btn-primary" onclick="location.href='@Url.Action("SendMail", "AccomodationFiles")'" /></td>    
         <td></td>
         <td><input type="button" style="height:50px;width:200px" title="View Projects" value="View Projects" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Projects")'" /></td>
     </tr>
+ 
+        <tr>
+            <td><input type="button" style="height:50px;width:200px" title="Upload" value="Upload" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "AccomodationFiles")'" /></td>     
+            <td></td>
+            <td></td>
+        </tr>
     </tbody>
 </table>
 
