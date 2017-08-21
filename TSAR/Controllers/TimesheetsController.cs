@@ -57,11 +57,12 @@ namespace TSAR.Controllers
             int consultantnum = (from Consultant c in db.Consultants
                                  where c.ConsultantUserName == username
                                  select c.ConsultantNum).FirstOrDefault();
-            
-                string name= (from Projects d in db.Projects
-                              where d.ProjectId ==  id
-                               select d.ProjectName).FirstOrDefault();
-            var timesheets = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant).Where(p => p.ProjectName == name);
+
+      string name = (from Projects d in db.Projects
+                     where d.ProjectId == id
+                     select d.ProjectName).FirstOrDefault();
+
+      var timesheets = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant).Where(p => p.ProjectName == name);
          //   var time = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant);
    ViewBag.Total = "Actual Budget: " + timesheets.Sum(x => x.Total).ToString("R0.00");
 

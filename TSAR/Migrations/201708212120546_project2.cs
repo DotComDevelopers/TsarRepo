@@ -1,0 +1,19 @@
+namespace TSAR.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class project2 : DbMigration
+    {
+        public override void Up()
+        {
+       
+          AddColumn("dbo.Projects", "ProjectName", c => c.String(nullable: false));
+      
+    }
+        
+        public override void Down()
+        { 
+        }
+    }
+}

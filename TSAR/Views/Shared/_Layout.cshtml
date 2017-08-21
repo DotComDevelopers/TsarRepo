@@ -78,19 +78,7 @@
                     <li>
                         @Html.ActionLink("Subscribe", "Create", "Newsletter")
                     </li>
-                    <li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <a href="javascript:document.getElementById('logoutForm').submit()">Log Off</a>
-                        }
-                        else
-                        {
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>@Html.ActionLink("Log In", "Login", "Account")</li>
-                                <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                            </ul>                  
-                        }
-                    </li>
+
                     <li>
                         @if (User.IsInRole("Admin"))                      
                         {
@@ -127,8 +115,27 @@
                             </ul>
                         }
                     </li>
+                    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!","", "", routeValues: null, htmlAttributes: new { title = "" })</li>
+                            <li> <a href="javascript:document.getElementById('logoutForm').submit()">Log Off</a></li>
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Log In", "Login", "Account")</li>
+                                <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                            </ul>                  
+                        }
+                    </li>
+                    </ul>
 
-                </ul>
+                   
+
+                @*</ul>*@
             </div>
             <!-- /.navbar-collapse -->
         </div>

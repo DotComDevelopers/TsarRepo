@@ -1,0 +1,79 @@
+﻿@model TSAR.Models.AccomodationFilesEmail
+
+@{
+    ViewBag.Title = "SendMail";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Send Accomodation Details</h2>
+
+
+@using (Html.BeginForm("SendMail", "AccomodationFiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Please complete form below</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Consultant_Name,"Consultant Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Consultant_Name, ViewBag.mails as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Consultant_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.File_Name,"File Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("fileName", ViewBag.files as SelectList,"Select File", new { @class = "form-control" })
+                @*@Html.DropDownListFor(model => model.accomodationfile_id, ViewBag.files as SelectList, new { @class = "form-control" })*@
+                @Html.ValidationMessageFor(model => model.File_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*<div class="form-group">
+            @Html.Label("Attachment", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="file" id="file" accept="application/*" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div align="center">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="SEND" class="btn btn-primary" />
+                </div>
+            </div>
+    </div>
+}
+
+
+    <div class="form-group">
+    <div align="center">
+        <div class="col-md-offset-2 col-md-10">
+            <a id="button" href="@Url.Action("Index")" class="btn btn-primary">Back To List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
