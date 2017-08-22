@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
+//using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Acr.XamForms.SignaturePad;
-using Android.Content;
+//using Android.Content;
 using MobileTsar.Models;
 using MobileTsar.Services;
 using MobileTsar.ViewModels;

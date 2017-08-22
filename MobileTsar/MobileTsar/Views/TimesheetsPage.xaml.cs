@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Android.Telephony;
+//using Android.Telephony;
 using MobileTsar.Helpers;
 using Xamarin.Forms;
 using MobileTsar.Models;
