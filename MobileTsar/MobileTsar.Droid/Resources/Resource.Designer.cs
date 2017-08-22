@@ -3516,8 +3516,26 @@ namespace MobileTsar.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
+			// aapt resource value: 0x7f02010f
+			public const int avd_hide_password_1 = 2130837775;
+			
+			// aapt resource value: 0x7f020110
+			public const int avd_hide_password_2 = 2130837776;
+			
+			// aapt resource value: 0x7f020111
+			public const int avd_hide_password_3 = 2130837777;
+			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
+			
+			// aapt resource value: 0x7f020112
+			public const int avd_show_password_1 = 2130837778;
+			
+			// aapt resource value: 0x7f020113
+			public const int avd_show_password_2 = 2130837779;
+			
+			// aapt resource value: 0x7f020114
+			public const int avd_show_password_3 = 2130837780;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;
@@ -4171,11 +4189,11 @@ namespace MobileTsar.Droid
 			// aapt resource value: 0x7f080028
 			public const int bottom = 2131230760;
 			
-			// aapt resource value: 0x7f0800b6
-			public const int btnCancel = 2131230902;
+			// aapt resource value: 0x7f0800b8
+			public const int btnCancel = 2131230904;
 			
-			// aapt resource value: 0x7f0800b7
-			public const int btnSave = 2131230903;
+			// aapt resource value: 0x7f0800b9
+			public const int btnSave = 2131230905;
 			
 			// aapt resource value: 0x7f08004b
 			public const int buttonPanel = 2131230795;
@@ -4336,10 +4354,8 @@ namespace MobileTsar.Droid
 			// aapt resource value: 0x7f080048
 			public const int list_item = 2131230792;
 			
-			// aapt resource value: 0x7f0800b9
-			public const int masked = 2131230905;
-			// aapt resource value: 0x7f0800bb
-			public const int masked = 2131230907;
+			// aapt resource value: 0x7f0800bd
+			public const int masked = 2131230909;
 			
 			// aapt resource value: 0x7f0800a5
 			public const int media_actions = 2131230885;
@@ -4476,11 +4492,9 @@ namespace MobileTsar.Droid
 			// aapt resource value: 0x7f0800a9
 			public const int right_side = 2131230889;
 			
-			// aapt resource value: 0x7f0800b4
-			public const int rootView = 2131230900;
+			// aapt resource value: 0x7f0800b6
+			public const int rootView = 2131230902;
 			
-			// aapt resource value: 0x7f08001b
-			public const int screen = 2131230747;
 			// aapt resource value: 0x7f08001a
 			public const int screen = 2131230746;
 			
@@ -4544,13 +4558,11 @@ namespace MobileTsar.Droid
 			// aapt resource value: 0x7f080017
 			public const int showTitle = 2131230743;
 			
-			// aapt resource value: 0x7f0800b5
-			public const int signatureView = 2131230901;
+			// aapt resource value: 0x7f0800b7
+			public const int signatureView = 2131230903;
 			
-			// aapt resource value: 0x7f0800b8
-			public const int sliding_tabs = 2131230904;
-			// aapt resource value: 0x7f0800b6
-			public const int sliding_tabs = 2131230902;
+			// aapt resource value: 0x7f0800ba
+			public const int sliding_tabs = 2131230906;
 			
 			// aapt resource value: 0x7f080073
 			public const int smallLabel = 2131230835;
@@ -4627,10 +4639,8 @@ namespace MobileTsar.Droid
 			// aapt resource value: 0x7f080057
 			public const int title_template = 2131230807;
 			
-			// aapt resource value: 0x7f0800b9
-			public const int toolbar = 2131230905;
-			// aapt resource value: 0x7f0800b7
-			public const int toolbar = 2131230903;
+			// aapt resource value: 0x7f0800bb
+			public const int toolbar = 2131230907;
 			
 			// aapt resource value: 0x7f080029
 			public const int top = 2131230761;
@@ -4656,10 +4666,8 @@ namespace MobileTsar.Droid
 			// aapt resource value: 0x7f08000e
 			public const int view_offset_helper = 2131230734;
 			
-			// aapt resource value: 0x7f0800ba
-			public const int visible = 2131230906;
-			// aapt resource value: 0x7f0800b8
-			public const int visible = 2131230904;
+			// aapt resource value: 0x7f0800bc
+			public const int visible = 2131230908;
 			
 			// aapt resource value: 0x7f080097
 			public const int volume_item_container = 2131230871;

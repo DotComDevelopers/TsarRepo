@@ -56,21 +56,21 @@ namespace MobileTsar.ViewModels
       }
     }
 
-      public Command SignCommand
-      {
-          get
-          {
-              return new Command(async () =>
-              {
-                  _selectedTimesheet.Filename = "Signed on " + DateTime.Now;
-                  _selectedTimesheet.Signature = Signature;
-                  await _apiServices.PutTimesheetAsync(_selectedTimesheet.TimesheetId, _selectedTimesheet,
-                      Settings.AccessToken);
-              });
-          }
-      }
+        public Command SignCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    _selectedTimesheet.Filename = "Signed on " + DateTime.Now;
+                    _selectedTimesheet.Signature = Signature;
+                    await _apiServices.PutTimesheetAsync(_selectedTimesheet.TimesheetId, _selectedTimesheet,
+                        Settings.AccessToken);
+                });
+            }
+        }
 
-      
+
         public event PropertyChangedEventHandler PropertyChanged;
 
     [NotifyPropertyChangedInvocator]
