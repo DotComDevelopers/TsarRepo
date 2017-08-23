@@ -51,19 +51,21 @@ namespace MobileTsar.ViewModels
 
 
     public ICommand AddCommand
-    {     
+    {    
       get
       {
         return new Command(async () =>
-        {          
+        {
+          var hour = System.Math.Round((EndTime - StartTime).TotalHours, 2);
+          var tot = (700 * (EndTime - StartTime).TotalHours);
+          var roundedtot = System.Math.Round(tot, 2);
           var timesheet = new Timesheet
           {
           
             ActivityDescription = ActivityDescription,
             Id = Id,
             ConsultantNum = ConsultantNum,
-            TicketReference = $"MOBILE {DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Second}{ActivityDescription.Substring(0, 4)}",
-            Total = (700 * (EndTime - StartTime).TotalHours),
+            TicketReference = $"MOBILE {DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Second}{ActivityDescription.Substring(0, 4)}",            
             CaptureDate = System.DateTime.Now,
             EndTime = EndTime,
             MClientAddress = MClientAddress,
@@ -71,7 +73,8 @@ namespace MobileTsar.ViewModels
             StartTime = StartTime,
             Filename = null,
             Signature = null,
-            Hours = (EndTime - StartTime).TotalHours
+            Total = roundedtot,
+            Hours = hour
           };
 
           await _apiServices.PostTimesheetAsync(timesheet, Settings.AccessToken);

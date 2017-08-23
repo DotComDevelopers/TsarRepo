@@ -13,7 +13,7 @@
 </ContentPage.BindingContext>
 <ScrollView>
         <StackLayout  Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center" >
-            
+            <Label x:Name="UsernameLabel"></Label>
             <Label Text="Consultant Id:" TextColor="DeepSkyBlue"></Label>
             <Picker x:Name="ConsultantPicker" SelectedIndexChanged="ConsultantPicker_OnSelectedIndexChanged"></Picker>
             <Entry x:Name="ConsultantIdLabel" Text="{Binding ConsultantNum}" IsVisible="False"></Entry>
