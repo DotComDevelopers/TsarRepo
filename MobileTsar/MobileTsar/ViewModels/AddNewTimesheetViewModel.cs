@@ -72,7 +72,7 @@ namespace MobileTsar.ViewModels
             CaptureDate = CaptureDate,
             EndTime = EndTime,
             MClientAddress = MClientAddress,
-            SignOff = SignOff,
+            SignOff = false,
             StartTime = StartTime,
             Filename = "",
             Signature = null,

@@ -22,10 +22,6 @@ namespace MobileTsar.Views
     public partial class TimesheetSign : ContentPage
     {
         
-        
-        
-        
-
         public TimesheetsViewModel TimesheetsView { get; set; }
         
         public TimesheetSign()
@@ -34,7 +30,6 @@ namespace MobileTsar.Views
             InitializeComponent();
         }
 
-        
 
         public TimesheetSign(TimesheetsViewModel mainViewModel)
         {
@@ -44,9 +39,6 @@ namespace MobileTsar.Views
             TimesheetsView = mainViewModel;
            
             BindingContext = mainViewModel;
-
-            
-
 
         }
 
@@ -58,6 +50,7 @@ namespace MobileTsar.Views
                 var signimage = padView.GetImage(Acr.XamForms.SignaturePad.ImageFormatType.Jpg);
                 
                 TimesheetsView.Signature = ((MemoryStream)signimage).ToArray();
+       
                
             }
             catch (Exception r)
@@ -66,8 +59,9 @@ namespace MobileTsar.Views
             }
 
             await DisplayAlert("Done", "Signed Successfully", "Close");
-           
-        }
+            await Navigation.PushAsync(new TimesheetsPage());
+
+    }
 
 
        

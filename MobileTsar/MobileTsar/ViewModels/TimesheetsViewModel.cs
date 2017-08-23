@@ -64,6 +64,7 @@ namespace MobileTsar.ViewModels
                 {
                     _selectedTimesheet.Filename = "Signed on " + DateTime.Now;
                     _selectedTimesheet.Signature = Signature;
+                  _selectedTimesheet.SignOff = true;
                     await _apiServices.PutTimesheetAsync(_selectedTimesheet.TimesheetId, _selectedTimesheet,
                         Settings.AccessToken);
                 });

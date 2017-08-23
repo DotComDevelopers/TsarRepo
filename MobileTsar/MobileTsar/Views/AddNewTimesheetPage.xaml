@@ -37,8 +37,8 @@
         <Label Text="Client Id:" TextColor="DeepSkyBlue"></Label>
         <Entry Text="{Binding Source={x:Reference ClientPicker}, Path=SelectedIndex}" IsVisible="False"></Entry>
       
-        <Label Text="Sign off:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding SignOff}"></Entry>
+        <!--<Label Text="Sign off:" TextColor="DeepSkyBlue"></Label>
+        <Entry Text="{Binding SignOff}"></Entry>-->
       
         <Label Text="Start Time:" TextColor="DeepSkyBlue"></Label>
         <!--<Entry Text="{Binding StartTime}"></Entry>-->
