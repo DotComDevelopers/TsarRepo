@@ -37,15 +37,19 @@ namespace MobileTsar.Views
         private async void SignPage(object sender, ItemTappedEventArgs e)
         {
            var  timesheet = TimesheetListView.SelectedItem as Timesheet;
-            if (timesheet != null)
-            {
-                var mainViewModel = BindingContext as TimesheetsViewModel;
-                if (mainViewModel != null)
-                {
-                    mainViewModel.SelectedTimesheet = timesheet;
-                    await Navigation.PushAsync(new TimesheetSign(mainViewModel));
-                }
-            }
+          if (timesheet.SignOff==true)
+          {
+            await DisplayAlert("Oops!", "Timesheet Has been signed already", "Close");
+          }
+          else
+          {
+            if (timesheet == null) return;
+            var mainViewModel = BindingContext as TimesheetsViewModel;
+            if (mainViewModel == null) return;
+            mainViewModel.SelectedTimesheet = timesheet;
+            await Navigation.PushAsync(new TimesheetSign(mainViewModel));
+      }
+    
         }
     }
   }

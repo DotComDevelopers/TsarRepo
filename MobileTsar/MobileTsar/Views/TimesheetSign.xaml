@@ -10,11 +10,7 @@
 
         </viewModels:TimesheetsViewModel>
     </ContentPage.BindingContext>
-
-
-
-
-    <StackLayout>
+    <StackLayout  Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
         <acr:SignaturePadView
          x:Name="padView"
          HorizontalOptions="FillAndExpand"
