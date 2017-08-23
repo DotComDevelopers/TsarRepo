@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
-             x:Class="MobileTsar.Views.AddNewTimesheetPage">
+             x:Class="MobileTsar.Views.AddNewTimesheetPage"
+             Title="New Timesheet">
   
 
 <ContentPage.BindingContext>
@@ -11,57 +12,26 @@
   </viewModels:AddNewTimesheetViewModel>
 </ContentPage.BindingContext>
 <ScrollView>
-    <StackLayout Orientation="Vertical" >
+        <StackLayout  Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center" >
+            
+            <Label Text="Consultant Id:" TextColor="DeepSkyBlue"></Label>
+            <Picker x:Name="ConsultantPicker" SelectedIndexChanged="ConsultantPicker_OnSelectedIndexChanged"></Picker>
+            <Entry x:Name="ConsultantIdLabel" Text="{Binding ConsultantNum}" IsVisible="False"></Entry>
+            <Label Text="Client:" TextColor="DeepSkyBlue"></Label>        
+            <Picker x:Name="ClientPicker" Title="Client Name" SelectedIndexChanged="ClientPicker_OnSelectedIndexChanged"></Picker>
+            <Entry x:Name="ClientIdLabel" Text="{Binding Id}" IsVisible="False"></Entry>
+            <Label Text="Activity:" TextColor="DeepSkyBlue"></Label>
+            <Entry Text="{Binding ActivityDescription}"></Entry>
+            <Label Text="Start Time:" TextColor="DeepSkyBlue"></Label>
+            <TimePicker x:Name="StartTimePicker" Time="{Binding StartTime}"></TimePicker>
+            <Label Text="End Time:" TextColor="DeepSkyBlue"></Label>
+            <TimePicker Time="{Binding EndTime}"></TimePicker>
+            <Label Text="Client Address:" TextColor="DeepSkyBlue"></Label>
+            <Picker x:Name="AddressPicker" SelectedIndexChanged="AddressPicker_OnSelectedIndexChanged"></Picker>
+            <Entry x:Name="AddressLabel" Text="{Binding MClientAddress}" IsVisible="False"></Entry>
 
-        <Label Text="Activity:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding ActivityDescription}"></Entry>
-      
-        <Label Text="Capture date:" TextColor="DeepSkyBlue"></Label>
-        <DatePicker Date="{Binding CaptureDate}"></DatePicker>
-        <!--<Entry Text="{Binding CaptureDate}"></Entry>-->
-      
-        <Label Text="Client:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding Source={x:Reference ClientPicker},Path=SelectedItem}" IsVisible="False"></Entry>
-        <Picker x:Name="ClientPicker" Title="Client Name"></Picker>
-      
-        <Label Text="Consultant:" TextColor="DeepSkyBlue"></Label>
-        <Picker x:Name="ConsultantPicker"></Picker>
-        <Entry Text="{Binding Consultant}"></Entry>
-      
-        <Label Text="Consultant Id:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding ConsultantNum}"></Entry>
-      
-        <Label Text="Hours" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding Hours}"></Entry>
-      
-        <Label Text="Client Id:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding Source={x:Reference ClientPicker}, Path=SelectedIndex}" IsVisible="False"></Entry>
-      
-        <!--<Label Text="Sign off:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding SignOff}"></Entry>-->
-      
-        <Label Text="Start Time:" TextColor="DeepSkyBlue"></Label>
-        <!--<Entry Text="{Binding StartTime}"></Entry>-->
-        <TimePicker Time="{Binding StartTime}"></TimePicker>
-      
-        <Label Text="End Time:" TextColor="DeepSkyBlue"></Label>
-        <!--<Entry Text="{Binding EndTime}"></Entry>-->
-        <TimePicker Time="{Binding EndTime}"></TimePicker>
-      
-        <Label Text="Ticket Reference:" TextColor="DeepSkyBlue"></Label>
-        <!--<Entry Text="{Binding TicketReference}"></Entry>-->
-        <Picker x:Name="TicketPicker" Title="Ticket Number" SelectedItem="{Binding TicketReference}"></Picker>
-      
-        <Label Text="Total:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding Total}"></Entry>
-      
-        <Label Text="Travel:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding Travel}"></Entry>
-      
-        <Label Text="Client Address:" TextColor="DeepSkyBlue"></Label>
-        <Entry Text="{Binding MClientAddress}"></Entry>
-
-            <Button Command="{Binding AddCommand}" Text="Add New Timesheet" Clicked="Button_OnClicked" ></Button>
+            <Button x:Name="ValidateBtn" Text="Validate" Clicked="ValidateBtn_OnClicked"></Button>
+            <Button x:Name="FinishBtn" Command="{Binding AddCommand}" Text="Finish" Clicked="Button_OnClicked" IsVisible="False" ></Button>
 
     </StackLayout>
 </ScrollView>

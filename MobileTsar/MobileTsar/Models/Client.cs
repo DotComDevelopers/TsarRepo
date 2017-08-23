@@ -14,7 +14,6 @@
         public string ClientAddress2 { get; set; }
 
 
-
         public long ContactNumber { get; set; }
 
         public string ContactNumber2 { get; set; }

@@ -23,7 +23,7 @@ namespace TSAR.Api
             return db.Timesheets.Include(timesheet => timesheet.Client)
             .Include(timesheet => timesheet.Consultant)
             .Include(timesheet => timesheet.Travel)
-            .Include(t => t.Consultant.Commission); ;
+            .Include(t => t.Consultant.Commission).Include(t=>t.Project); 
         }
 
         // GET: api/MobileTimesheets/5

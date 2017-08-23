@@ -31,8 +31,8 @@ namespace MobileTsar.ViewModels
 
     public double Hours { get; set; }
 
-    public virtual Consultant Consultant { get; set; }
-    public virtual Client Client { get; set; }
+    //public virtual Consultant Consultant { get; set; }
+    //public virtual Client Client { get; set; }
 
     public int Id { get; set; }
 
@@ -42,44 +42,40 @@ namespace MobileTsar.ViewModels
 
     public bool SignOff { get; set; }
 
-   
-
-        public virtual Travel Travel { get; set; }
+   // public virtual Travel Travel { get; set; }
     public string MClientAddress { get; set; }
-        public string Filename { get; set; }
+    public string Filename { get; set; }
 
-        public byte[] Signature { get; set; }
+    public byte[] Signature { get; set; }
 
 
 
-        public ICommand AddCommand
-    {
+    public ICommand AddCommand
+    {     
       get
       {
         return new Command(async () =>
-        {
-          var timesheet = new  Timesheet
+        {          
+          var timesheet = new Timesheet
           {
-            Client=Client,
+          
             ActivityDescription = ActivityDescription,
-            Consultant = Consultant,
             Id = Id,
             ConsultantNum = ConsultantNum,
-            TicketReference = TicketReference,
-            Total = Total,
-            Travel = Travel,
-            Hours = Hours,
-            CaptureDate = CaptureDate,
+            TicketReference = $"MOBILE {DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Second}{ActivityDescription.Substring(0, 4)}",
+            Total = (700 * (EndTime - StartTime).TotalHours),
+            CaptureDate = System.DateTime.Now,
             EndTime = EndTime,
             MClientAddress = MClientAddress,
             SignOff = false,
             StartTime = StartTime,
-            Filename = "",
+            Filename = null,
             Signature = null,
+            Hours = (EndTime - StartTime).TotalHours
           };
-           
-             await _apiServices.PostTimesheetAsync(timesheet, Settings.AccessToken);
-          
+
+          await _apiServices.PostTimesheetAsync(timesheet, Settings.AccessToken);
+
         });
       }
     }

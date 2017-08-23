@@ -39,6 +39,7 @@ namespace MobileTsar.Views
             TimesheetsView = mainViewModel;
            
             BindingContext = mainViewModel;
+          
 
         }
 
@@ -49,9 +50,8 @@ namespace MobileTsar.Views
             {
                 var signimage = padView.GetImage(Acr.XamForms.SignaturePad.ImageFormatType.Jpg);
                 
-                TimesheetsView.Signature = ((MemoryStream)signimage).ToArray();
-       
-               
+                TimesheetsView.Signature = ((MemoryStream)signimage).ToArray();        
+
             }
             catch (Exception r)
             {

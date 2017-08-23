@@ -20,7 +20,7 @@ namespace TSAR.Api
         // GET: api/MobileConsultants
         public IQueryable<Consultant> GetConsultants()
         {
-            return db.Consultants;
+            return db.Consultants.Include(t=>t.Commission);
         }
 
         // GET: api/MobileConsultants/5
