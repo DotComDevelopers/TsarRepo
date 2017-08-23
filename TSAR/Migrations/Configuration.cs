@@ -88,9 +88,41 @@ namespace TSAR.Migrations
                 userManager.Create(userToInsert, "Green1!");
                 userManager.AddToRole(userToInsert.Id, "Consultant");
             }
+          //Create default User and assign role
+          if (!(context.Users.Any(u => u.UserName == "Anoop")))
+          {
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var userToInsert = new ApplicationUser
+            {
+              UserName = "Anoop",
+              PhoneNumber = "0211445776",
+              //Id = "34594e90-6b49-4c14-a858-deb018c5ad29",
+              Email = "anoop@gmail.com",
+              EmailConfirmed = true
+            };
+            userManager.Create(userToInsert, "Green1!");
+            userManager.AddToRole(userToInsert.Id, "Consultant");
+          }
+          //Create default User and assign role
+          if (!(context.Users.Any(u => u.UserName == "Ivan")))
+          {
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var userToInsert = new ApplicationUser
+            {
+              UserName = "Ivan",
+              PhoneNumber = "2455663554",
+              //Id = "34594e90-6b49-4c14-a858-deb018c5ad29",
+              Email = "ivan@gmail.com",
+              EmailConfirmed = true
+            };
+            userManager.Create(userToInsert, "Green1!");
+            userManager.AddToRole(userToInsert.Id, "Consultant");
+          }
 
-            //Create default User and assign role
-            if (!(context.Users.Any(u => u.UserName == "Devashen")))
+      //Create default User and assign role
+      if (!(context.Users.Any(u => u.UserName == "Devashen")))
             {
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
@@ -137,9 +169,24 @@ namespace TSAR.Migrations
                 userManager.Create(userToInsert, "Green1!");
                 userManager.AddToRole(userToInsert.Id, "Client");
             }
+          if (!(context.Users.Any(u => u.UserName == "FoodPro")))
+          {
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var userToInsert = new ApplicationUser
+            {
+              UserName = "FoodPro",
+              PhoneNumber = "0214569876",
+              //Id = "34594e90-6b49-4c14-a858-deb018c5ad29",
+              Email = "evan@foodpro.com",
+              EmailConfirmed = true,
+            };
+            userManager.Create(userToInsert, "Green1!");
+            userManager.AddToRole(userToInsert.Id, "Client");
+          }
 
-            //Create default Travel
-            context.Travels.AddOrUpdate(
+      //Create default Travel
+      context.Travels.AddOrUpdate(
               t => t.TravelId,
               new Travel() { TravelId = 1, Distance = "1 km", TravelRate = 2, TravelFee = 2, Id = 1, MClientAddress = " 15 Narbada Road " },
               new Travel() { TravelId = 2, Distance = "10 km", TravelRate = 2, TravelFee = 20, Id = 1, MClientAddress = " 16 Narbada Road " }
@@ -162,9 +209,24 @@ namespace TSAR.Migrations
                     Email2 = "nash@everest.com",
                 }
           );
+          //Create default Client
+          context.Clients.AddOrUpdate(
+            c => c.Id,
+            new Client()
+            {
+              Id = 1,
+              ClientAddress = "13 Ronald Avenue, Durban South",
+              ClientAddress2 = "11 Romford Road, Durban South",
+              ClientName = "FoodPro",
+              ContactNumber = 0765054589,
+              Email = "evan@foodpro.com",
+              ContactNumber2 = "076505498989",
+              Email2 = "info@foodpro.com",
+            }
+          );
 
-            //Create default Commission
-            context.Commissions.AddOrUpdate(
+      //Create default Commission
+      context.Commissions.AddOrUpdate(
               c => c.CommissionId,
               new Commission()
               {
@@ -172,8 +234,34 @@ namespace TSAR.Migrations
                   CommissionName = "5%"
               }
             );
-            //Create default Consultant
-            context.Consultants.AddOrUpdate(
+          //Create default Consultant
+          context.Consultants.AddOrUpdate(
+            c => c.ConsultantNum,
+            new Consultant()
+            {
+              ConsultantNum = 1,
+              CommissionId = 1,
+              ConsultantAddress = "5 Edmonds Place, Berea",
+              ConsultantType = "Finance",
+              Password = "Green1!",
+              //ConfirmPassword = "Green1!",
+              ContactNumber = 0745693488,
+              Email = "anoop@gmail.com",
+              //ConfirmEmail = "jonny@gmail.com",
+              FirstName = "Anoop",
+              LastName = "Brijmohun",
+              FullName = "Anoop Brijmohun",
+              ConsultantUserName = "Consultant",
+              Gender = "Male",
+              LeaveBalance = 24,
+              AnnualLeaveBalance = 21,
+              PaternityLeaveBalance = 120,
+              SickLeaveBalance = 13,
+              FamilyResponsibilityBalance = 3
+            }
+          );
+      //Create default Consultant
+      context.Consultants.AddOrUpdate(
                 c => c.ConsultantNum,
                 new Consultant()
                 {
@@ -198,6 +286,7 @@ namespace TSAR.Migrations
                     FamilyResponsibilityBalance = 3
                 }
                 );
+          
             //Create default Consultant
             context.Consultants.AddOrUpdate(
               c => c.ConsultantNum,
@@ -224,8 +313,34 @@ namespace TSAR.Migrations
                   FamilyResponsibilityBalance = 3
               }
             );
-            //Create default Consultant
-            context.Consultants.AddOrUpdate(
+          //Create default Consultant
+          context.Consultants.AddOrUpdate(
+            c => c.ConsultantNum,
+            new Consultant()
+            {
+              ConsultantNum = 2,
+              CommissionId = 1,
+              ConsultantAddress = "4 Hyder Road, Berea",
+              ConsultantType = "Finance",
+              Password = "Green1!",
+              //ConfirmPassword = "Green1!",
+              ContactNumber = 0225458987,
+              Email = "ivan@gmail.com",
+              //ConfirmEmail = "jonny@gmail.com",
+              FirstName = "Ivan",
+              LastName = "Naidoo",
+              FullName = "Ivan Naidoo",
+              ConsultantUserName = "Ivan",
+              Gender = "Male",
+              LeaveBalance = 24,
+              AnnualLeaveBalance = 21,
+              PaternityLeaveBalance = 120,
+              SickLeaveBalance = 13,
+              FamilyResponsibilityBalance = 3
+            }
+          );
+      //Create default Consultant
+      context.Consultants.AddOrUpdate(
               c => c.ConsultantNum,
               new Consultant()
               {
@@ -300,7 +415,8 @@ namespace TSAR.Migrations
                     StartTime = System.TimeSpan.FromHours(12),
                     EndTime = System.TimeSpan.FromHours(13),
                     Hours = 1,
-                    Total = 700
+                    Total = 700,
+                    TicketReference = "201761236jonn"
 
                 }
             );
@@ -317,7 +433,8 @@ namespace TSAR.Migrations
                   StartTime = System.TimeSpan.FromHours(12),
                   EndTime = System.TimeSpan.FromHours(13),
                   Hours = 1,
-                  Total = 700
+                  Total = 700,
+                  TicketReference = "201761239jonn"
 
               }
             );
@@ -436,8 +553,35 @@ namespace TSAR.Migrations
                     ConsultantName = null,
                     ConsultantId = Convert.ToInt32(null)
                 });
+          //Create default Payroll
+          context.Payrolls.AddOrUpdate(
+            c => c.PayrollId,
+            new Payroll()
+            {
+              PayrollId = 1,
+              Basic = 5000,
+              Comm = 1000,
+              ConsultantNum = 1,
+              tax = 700,
+              totPay = 6000,
+              total = 5300
+            }
+          );
+          //Create default Payroll
+          context.Payrolls.AddOrUpdate(
+            c => c.PayrollId,
+            new Payroll()
+            {
+              PayrollId = 2,
+              Basic = 6000,
+              Comm = 2000,
+              ConsultantNum = 1,
+              tax = 840,
+              totPay = 8000,
+              total = 7160
+            }
+          );
 
-
-        }
+    }
     }
 }
