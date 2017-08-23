@@ -61,5 +61,7 @@ namespace TSAR.Models
         public System.Data.Entity.DbSet<TSAR.Models.Projects> Projects { get; set; }
 
         public System.Data.Entity.DbSet<TSAR.Models.AccomodationFiles> AccomodationFiles { get; set; }
+
+        public System.Data.Entity.DbSet<TSAR.Models.Payroll> Payrolls { get; set; }
     }
 }

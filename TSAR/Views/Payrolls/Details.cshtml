@@ -1,0 +1,67 @@
+﻿@model TSAR.Models.Payroll
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Payroll</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Consultant.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consultant.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Basic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Basic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totPay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totPay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PayrollId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

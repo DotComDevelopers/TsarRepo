@@ -1,0 +1,62 @@
+﻿@model TSAR.Models.Payroll
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+ 
+<h2>Calculated Salary</h2>
+ 
+//Date function for current month 
+<div>
+    <h4>Payroll for @DateTime.Now.ToString("MMMM") </h4>
+    <hr />
+    <dl class="dl-horizontal">
+ 
+        <dt>
+            @Html.DisplayNameFor(model => model.Basic)
+        </dt>
+ 
+        <dd>
+            @Html.DisplayFor(model => model.Basic)
+        </dd>
+        //no of timesheets...devashen wanted it as Comission((no of timesheets) Timesheets at 10%)
+        <dt>
+            @Html.DisplayNameFor(model => model.Comm):( @ViewBag.NoTimesheets timesheets at)
+        </dt>
+ 
+        <dd>
+            @Html.DisplayFor(model => model.Comm)
+        </dd>
+ 
+        <dt>
+            @Html.DisplayNameFor(model => model.totPay)
+        </dt>
+ 
+        <dd>
+            @Html.DisplayFor(model => model.totPay)
+        </dd>
+ 
+        <dt>
+            @Html.DisplayNameFor(model => model.tax)
+        </dt>
+ 
+        <dd>
+            @Html.DisplayFor(model => model.tax)
+        </dd>
+ 
+ 
+        <dt>
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+ 
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+ 
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PayrollId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
