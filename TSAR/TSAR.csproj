@@ -64,8 +64,8 @@
       <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -234,6 +234,7 @@
   <ItemGroup>
     <Compile Include="Api\MobileClientsController.cs" />
     <Compile Include="Api\MobileConsultantsController.cs" />
+    <Compile Include="Api\MobileTimesheetsController.cs" />
     <Compile Include="Api\MobileTravelController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -373,6 +374,7 @@
     <Content Include="js\contact_me.js" />
     <Content Include="js\jqBootstrapValidation.js" />
     <Content Include="mail\contact_me.php" />
+    <Content Include="NewFile.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="less\agency.less" />
@@ -387,12 +389,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Grid.mvc.readme" />
-    <None Include="Properties\PublishProfiles\TSAR1 - FTP %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\TSAR1 - FTP %283%29.pubxml" />
-    <None Include="Properties\PublishProfiles\TSAR1 - FTP %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
