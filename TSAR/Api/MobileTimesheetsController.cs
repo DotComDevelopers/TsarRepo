@@ -20,7 +20,10 @@ namespace TSAR.Api
         // GET: api/MobileTimesheets
         public IQueryable<Timesheet> GetTimesheets()
         {
-            return db.Timesheets;
+            return db.Timesheets.Include(timesheet => timesheet.Client)
+            .Include(timesheet => timesheet.Consultant)
+            .Include(timesheet => timesheet.Travel)
+            .Include(t => t.Consultant.Commission); ;
         }
 
         // GET: api/MobileTimesheets/5
