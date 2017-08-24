@@ -7,7 +7,7 @@
   <ContentPage.BindingContext>
     <viewModels:LoginViewModel></viewModels:LoginViewModel>
   </ContentPage.BindingContext>
-  <StackLayout Orientation="Vertical">
+    <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
     <Entry Text="{Binding Username}" Placeholder="Your Username"></Entry>
     <Entry Text="{Binding Password}" IsPassword="True" Placeholder="Your Password"></Entry>
     <Button Command="{Binding LoginCommand}" Text="Login" Clicked="GetTimesheetsButton_OnClicked"></Button>

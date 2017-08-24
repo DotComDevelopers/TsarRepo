@@ -12,11 +12,12 @@
 <ScrollView>
     <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">  
       <Label Text="REGISTER" FontSize="40"></Label>
-        <Entry Text="{Binding Email}" Placeholder="Your Email" FontSize="15"></Entry>
-        <Entry Text="{Binding Password}" Placeholder="Your Password" IsPassword="True" FontSize="15"></Entry>
-        <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm your password" IsPassword="True" FontSize="15"></Entry>
+        <Entry x:Name="TxtEmail" Text="{Binding Email}" Placeholder="Your Email" FontSize="15"></Entry>
+        <Entry x:Name="TxtPassword"  Text="{Binding Password}" Placeholder="Your Password" IsPassword="True" FontSize="15"></Entry>
+        <Entry x:Name="TxtConfPassword"  Text="{Binding ConfirmPassword}" Placeholder="Confirm your password" IsPassword="True" FontSize="15"></Entry>
 
-        <Button Command="{Binding RegisterCommand}" Text="Register"></Button>
+        <Button x:Name="RegisterBtn" Command="{Binding RegisterCommand}" Text="Register" IsVisible="False"></Button>
+        <Button x:Name="ValidateButton" Clicked="ValidateButton_OnClicked" Text="Validate"></Button>
         <Label Text="{Binding Message}" IsVisible="False"></Label>
         <Label Text="Have an Account?" FontSize="40"></Label>
         <Button Text="Login Instead" Clicked="LoginButton_OnClicked"></Button>

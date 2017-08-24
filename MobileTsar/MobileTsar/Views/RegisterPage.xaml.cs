@@ -42,5 +42,39 @@ namespace MobileTsar.Views
         }
       }
     }
+
+    private async void ValidateButton_OnClicked(object sender, EventArgs e)
+    {
+      var isvalid = "YES";
+      if (TxtEmail.Text == null)
+      {
+        isvalid = "NO";
+        await DisplayAlert("Please enter an email address", "Email is Required", "OK");
+        RegisterBtn.IsVisible = false;
+        TxtEmail.Focus();
+      }
+      if (TxtPassword.Text == null)
+      {
+        isvalid = "NO";
+        await DisplayAlert("Please enter a password", "Password is Required", "OK");
+        TxtPassword.Focus();
+      }
+        if (TxtConfPassword.Text != TxtPassword.Text)
+        {
+          isvalid = "NO";
+          await DisplayAlert("Please enter the same password", "Password confirmation is Required", "OK");
+          TxtConfPassword.Text = "";
+          TxtEmail.Text = "";
+          TxtEmail.Focus();
+        }
+    
+     if (isvalid=="YES")
+      {
+        RegisterBtn.IsVisible = true;
+        ValidateButton.IsVisible = false;
+        await DisplayAlert("Success", "You may now register", "OK");        
+      }
+
+    }
   }
 }

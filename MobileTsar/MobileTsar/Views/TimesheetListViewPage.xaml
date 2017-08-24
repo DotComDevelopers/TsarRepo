@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
+             x:Class="MobileTsar.Views.TimesheetListViewPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:TimesheetsViewModel>
+
+        </viewModels:TimesheetsViewModel>
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
+        <Label Text="Select a client :" TextColor="DeepSkyBlue" FontSize="20"></Label>
+        <Picker x:Name="ClientPicker" SelectedIndexChanged="ClientPicker_OnSelectedIndexChanged"></Picker>
+
+        <ListView x:Name="TimesheetListView" ItemsSource="{Binding Timesheets}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        <StackLayout Padding="20,10">
+                            <Label x:Name="msg"  Text="Tap here to sign " HorizontalTextAlignment="End"></Label>
+                            <Label Text="Timesheet Id:" TextColor="DeepSkyBlue" FontSize="20"></Label>
+                            <Label Text="{Binding TimesheetId}" FontSize="10"></Label>
+                            <Label Text="Client Id:" TextColor="DeepSkyBlue" FontSize="20"></Label>
+                            <Label Text="{Binding Id}" FontSize="10"></Label>
+                            <Label Text="Client:" TextColor="DeepSkyBlue" FontSize="20"></Label>
+                            <Label Text="{Binding Client}" FontSize="10"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

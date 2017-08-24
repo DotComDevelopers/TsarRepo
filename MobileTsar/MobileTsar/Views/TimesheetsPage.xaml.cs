@@ -17,7 +17,8 @@ namespace MobileTsar.Views
     public TimesheetsPage()
     {
           
-      InitializeComponent();
+      InitializeComponent();     
+                  
     }
 
     private async void Button_OnClicked(object sender, EventArgs e)
@@ -38,7 +39,7 @@ namespace MobileTsar.Views
         {
            var  timesheet = TimesheetListView.SelectedItem as Timesheet;
           if (timesheet.SignOff==true)
-          {
+          {        
             await DisplayAlert("Oops!", "Timesheet Has been signed already", "Close");
           }
           else
@@ -48,9 +49,15 @@ namespace MobileTsar.Views
             if (mainViewModel == null) return;
             mainViewModel.SelectedTimesheet = timesheet;
             await Navigation.PushAsync(new TimesheetSign(mainViewModel));
+        
       }
     
         }
+
+    private async void TimesheetsList(object sender, EventArgs e)
+    {
+      await Navigation.PushAsync(new TimesheetListViewPage());
     }
+  }
   }
 
