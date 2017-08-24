@@ -9,12 +9,13 @@
       
     </viewModels:TimesheetsViewModel>
   </ContentPage.BindingContext>
-  
-  <StackLayout Orientation="Vertical">
+
+    <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
     <!--<Entry Text="{Binding AccessToken}"></Entry>-->
     <Button Text="Log Off" Clicked="LogOffButton_OnClicked"></Button>
     <Button Command="{Binding GetTimesheetsCommand}" Text="Get Timesheets"></Button>
     <Button Text="Add new timesheet" Clicked="Button_OnClicked"></Button>
+    <Button Text="Add new timesheet" Clicked="TimesheetsList"></Button>
 
         <ListView x:Name="TimesheetListView"   ItemsSource="{Binding Timesheets}" HasUnevenRows="True"
                   ItemTapped="SignPage">
@@ -23,6 +24,7 @@
           <ViewCell >
             <StackLayout Padding="20,10">
                 <Label x:Name="msg"  Text="Tap here to sign >" HorizontalTextAlignment="End"></Label>
+                <Label x:Name="Labelss"></Label>
                 <Label Text="Timesheet Id:" TextColor="DeepSkyBlue"></Label>
                 <Label  Text="{Binding TimesheetId}"></Label>
                 <Label Text="Client Id:" TextColor="DeepSkyBlue"></Label>

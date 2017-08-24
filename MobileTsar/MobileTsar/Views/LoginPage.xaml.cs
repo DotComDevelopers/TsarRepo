@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using MobileTsar.Helpers;
 using MobileTsar.Services;
 using MobileTsar.ViewModels;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
 using Xamarin.Forms;
 
 namespace MobileTsar.Views
@@ -15,18 +17,20 @@ namespace MobileTsar.Views
     public LoginPage()
     {
       InitializeComponent();
+      //DisplayAlert($"{Settings.Username}", $"{Settings.AccessToken}", $"{Settings.Password}");
     }
 
     private async void GetTimesheetsButton_OnClicked(object sender, EventArgs e)
-    {      
+    {         
       if (Settings.AccessToken!="")
       {
-        await DisplayAlert("Login Success", "You are now logged in!", "OK");
+        await DisplayAlert("Login Success", "Welcome Back", "OK");
+
         await Navigation.PushModalAsync(new TimesheetsPage());
       }
       else
       {        
-        await DisplayAlert("Login Failed", "You are not logged in", "Close");
+        await DisplayAlert("Connection Error", "Please try again", "Close");
       }
 
     }

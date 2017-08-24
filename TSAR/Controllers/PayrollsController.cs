@@ -36,13 +36,17 @@ namespace TSAR.Controllers
                     ViewBag.NoTimesheets = totalValue.Count();
                     var tottimesheet = totalValue.Sum(u => u.Total);
 
-                    ViewBag.Comm = payroll.Comm = tottimesheet * 0.1;
+                    ViewBag.Comm = (payroll.Comm = tottimesheet * 0.1).ToString("R0.00");
 
-                    ViewBag.Basic = payroll.Basic = 5000;
+                    ViewBag.Basic = (payroll.Basic = 5000).ToString("R0.00");
 
-                    ViewBag.Totpay = payroll.totPay = payroll.Basic + payroll.Comm;
+                    ViewBag.Totpay = (payroll.totPay = payroll.Basic + payroll.Comm).ToString("0.00");
 
-                    ViewBag.Tax = payroll.tax = payroll.totPay * 0.2;
+                    ViewBag.Tax = (payroll.tax = payroll.totPay * 0.2).ToString("0.00");
+
+                    ViewBag.Net = (ViewBag.Total - ViewBag.Tax);
+
+                    
 
                 }
                 return View(payroll);
@@ -86,7 +90,7 @@ namespace TSAR.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
 
-                ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", payroll.ConsultantNum);
+                //ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", payroll.ConsultantNum);
             }
             return View(payroll);
 
