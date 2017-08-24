@@ -28,8 +28,6 @@ namespace TSAR.Models
 
         public virtual Timesheet Timesheet { get; set; }
 
-
-
         public double total { get; set; }
 
 
