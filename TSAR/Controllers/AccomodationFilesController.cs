@@ -54,8 +54,8 @@ namespace TSAR.Controllers
                         file_bytes = ToBytes(file),
                         accomodationfile_id = Guid.NewGuid()
                     };
-                    var path = Path.Combine(Server.MapPath("~/Attach"), accomodationfiles.file_name);
-                    file.SaveAs(path);
+                    //var path = Path.Combine(Server.MapPath("~/Attach"), accomodationfiles.file_name);
+                    //file.SaveAs(path);
                     db.AccomodationFiles.Add(accomodationfiles);
                     db.SaveChanges();
                     return RedirectToAction("SendMail");
