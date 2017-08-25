@@ -48,6 +48,7 @@
     <Compile Include="Models\RegisterBindingModel.cs" />
     <Compile Include="Models\Timesheet.cs" />
     <Compile Include="Models\Travel.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApiServices.cs" />

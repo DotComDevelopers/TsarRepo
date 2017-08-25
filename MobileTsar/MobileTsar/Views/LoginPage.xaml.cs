@@ -20,16 +20,28 @@ namespace MobileTsar.Views
       //DisplayAlert($"{Settings.Username}", $"{Settings.AccessToken}", $"{Settings.Password}");
     }
 
+    private async void GetUsername()
+    {
+      var api = new ApiServices();
+      var token = Settings.AccessToken;
+
+      var list = await api.GetUsernameAsync(token);
+      var ret = list.Email;
+      UserNameLabel.Text = ret;
+    }
     private async void GetTimesheetsButton_OnClicked(object sender, EventArgs e)
-    {         
+    {
+     
       if (Settings.AccessToken!="")
       {
-        await DisplayAlert("Login Success", "Welcome Back", "OK");
+        GetUsername();
+        await DisplayAlert("Login Success", $"Welcome back {UserNameLabel.Text}", "OK");
 
         await Navigation.PushModalAsync(new TimesheetsPage());
       }
       else
-      {        
+      {
+       
         await DisplayAlert("Connection Error", "Please try again", "Close");
       }
 

@@ -75,9 +75,19 @@ namespace MobileTsar.Services
             return timesheets;
         }
 
+      public async Task<User> GetUsernameAsync(string accessToken)
+      {
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        var json = await client.GetStringAsync("http://api20170705060604.azurewebsites.net/api/Account/UserInfo");
+        
+        var user = JsonConvert.DeserializeObject<User>(json);
+        return user;
+      }
 
 
-        public async Task PostTimesheetAsync(Timesheet timesheet, string accessToken)
+
+    public async Task PostTimesheetAsync(Timesheet timesheet, string accessToken)
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);

@@ -392,6 +392,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Grid.mvc.readme" />
+    <Content Include="Attach\EnergyPolicy.pdf" />
+    <Content Include="Attach\pdf.pdf" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -820,7 +822,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Attach\" />
     <Folder Include="Content\images\" />
     <Folder Include="Content\themes\base\images\" />
     <Folder Include="Views\Payroll\" />

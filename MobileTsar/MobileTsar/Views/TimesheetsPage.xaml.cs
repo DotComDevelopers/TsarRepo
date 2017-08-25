@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MobileTsar.Helpers;
 using Xamarin.Forms;
 using MobileTsar.Models;
+using MobileTsar.Services;
 using MobileTsar.ViewModels;
 
 namespace MobileTsar.Views
@@ -17,8 +18,17 @@ namespace MobileTsar.Views
     public TimesheetsPage()
     {
           
-      InitializeComponent();     
-                  
+      InitializeComponent();
+      GetUsername();
+    }
+    private async void GetUsername()
+    {
+      var api = new ApiServices();
+      var token = Settings.AccessToken;
+
+      var list = await api.GetUsernameAsync(token);
+      var ret = list.Email;
+      UsernameLabel.Text = $"Hello {ret}";
     }
 
     private async void Button_OnClicked(object sender, EventArgs e)
@@ -57,6 +67,11 @@ namespace MobileTsar.Views
     private async void TimesheetsList(object sender, EventArgs e)
     {
       await Navigation.PushAsync(new TimesheetListViewPage());
+    }
+
+    private void GetTimesheetsButton_OnClicked(object sender, EventArgs e)
+    {
+      GetTimesheetsButton.IsVisible = false;
     }
   }
   }

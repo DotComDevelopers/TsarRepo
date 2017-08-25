@@ -3,63 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
              x:Class="MobileTsar.Views.TimesheetsPage">
-  
-  <ContentPage.BindingContext>
-    <viewModels:TimesheetsViewModel>
-      
-    </viewModels:TimesheetsViewModel>
-  </ContentPage.BindingContext>
+
+    <ContentPage.BindingContext>
+        <viewModels:TimesheetsViewModel>
+
+        </viewModels:TimesheetsViewModel>
+    </ContentPage.BindingContext>
 
     <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
-    <!--<Entry Text="{Binding AccessToken}"></Entry>-->
-    <Button Text="Log Off" Clicked="LogOffButton_OnClicked"></Button>
-    <Button Command="{Binding GetTimesheetsCommand}" Text="Get Timesheets"></Button>
-    <Button Text="Add new timesheet" Clicked="Button_OnClicked"></Button>
-    <Button Text="Add new timesheet" Clicked="TimesheetsList"></Button>
+        <!--<Entry Text="{Binding AccessToken}"></Entry>-->
+        <Label x:Name="UsernameLabel" FontSize="40" HorizontalTextAlignment="Center"></Label>
+        <Button Text="Log Off" Clicked="LogOffButton_OnClicked"></Button>
+        <Button x:Name="GetTimesheetsButton" Clicked="GetTimesheetsButton_OnClicked"  Command="{Binding GetTimesheetsCommand}" Text="Get Timesheets"></Button>
+        <Button x:Name="AddnewTimesheetBtn" Text="Add new timesheet" Clicked="Button_OnClicked"></Button>
+        <Button Text="Timesheet List" Clicked="TimesheetsList" IsVisible="False"></Button>
 
-        <ListView x:Name="TimesheetListView"   ItemsSource="{Binding Timesheets}" HasUnevenRows="True"
-                  ItemTapped="SignPage">
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell >
-            <StackLayout Padding="20,10">
-                <Label x:Name="msg"  Text="Tap here to sign >" HorizontalTextAlignment="End"></Label>
-                <Label x:Name="Labelss"></Label>
-                <Label Text="Timesheet Id:" TextColor="DeepSkyBlue"></Label>
-                <Label  Text="{Binding TimesheetId}"></Label>
-                <Label Text="Client Id:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding Id}"></Label>
-                <Label Text="Client:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding Client}"></Label>
-                <Label Text="Consultant:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding ConsultantNum}"></Label>
-                <Label Text="Activity:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding ActivityDescription}"></Label>
-                <Label Text="Date Captured:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding CaptureDate}"></Label>
-                <Label Text="Start Time:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding StartTime,StringFormat='{}{0:hh\\:mm}'}"></Label>
-                <Label Text="End Time:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding EndTime,StringFormat='{}{0:hh\\:mm}'}"></Label>
-                <Label Text="Hours:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding Hours}"></Label>
-                <Label Text="Client Address:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding MClientAddress}"></Label>
-                <Label Text="Signed Off? :" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding SignOff}"></Label>
-                <Label Text="Ticket Reference:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding TicketReference}"></Label>
-                <Label Text="Travel:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding Travel}"></Label>
-                <Label Text="Total:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding Total}"></Label>
-                <Label Text="Signature:" TextColor="DeepSkyBlue"></Label>
-                <Label Text="{Binding Filename}"></Label>
-                </StackLayout>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
-  </StackLayout>
-  
+        <ListView x:Name="TimesheetListView"   ItemsSource="{Binding Timesheets}" HasUnevenRows="True" ItemTapped="SignPage">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        <StackLayout Padding="20,10">
+                            <Label x:Name="msg"  Text="Tap here to sign >" HorizontalTextAlignment="End"></Label>
+                            <Label FontSize="25" Text="Timesheet Id:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding TimesheetId}"></Label>
+                            <Label FontSize="25"  Text="Client Id:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding Id}"></Label>
+                            <Label FontSize="25"  Text="Client:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding Client}"></Label>
+                            <Label FontSize="25"  Text="Consultant:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding ConsultantNum}"></Label>
+                            <Label FontSize="25"  Text="Activity:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding ActivityDescription}"></Label>
+                            <Label FontSize="25"  Text="Date Captured:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding CaptureDate}"></Label>
+                            <Label FontSize="25"  Text="Start Time:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding StartTime,StringFormat='{}{0:hh\\:mm}'}"></Label>
+                            <Label FontSize="25"  Text="End Time:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding EndTime,StringFormat='{}{0:hh\\:mm}'}"></Label>
+                            <Label FontSize="25"  Text="Hours:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding Hours}"></Label>
+                            <Label FontSize="25"  Text="Client Address:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding MClientAddress}"></Label>
+                            <Label FontSize="25"  Text="Signed Off? :" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding SignOff}"></Label>
+                            <Label FontSize="25"  Text="Ticket Reference:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding TicketReference}"></Label>
+                            <Label FontSize="25"  Text="Total:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding Total}"></Label>
+                            <Label FontSize="25"  Text="Signed on:" TextColor="DeepSkyBlue"></Label>
+                            <Label FontSize="25"  Text="{Binding Filename}"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
 </ContentPage>
