@@ -156,8 +156,10 @@ namespace TSAR.Controllers
                 mail.To.Add(model.Consultant_Name);
                 mail.Subject = model.Subject;
                 mail.Body = model.Message;
-                mail.Attachments.Add(new System.Net.Mail.Attachment(HttpContext.Server.MapPath("~/Attach/"+ fileName)));
+                mail.Attachments.
+                //mail.Attachments.Add(new System.Net.Mail.Attachment(HttpContext.Server.MapPath("~/Attach/"+ fileName)));
                 mail.IsBodyHtml = false;
+
                 //System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com");
                 //client.Host = "smtp.gmail.com";
                 //client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;

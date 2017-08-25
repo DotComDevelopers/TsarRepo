@@ -2,11 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
+             xmlns:widget="clr-namespace:Android.Widget;assembly=Mono.Android"
              x:Class="MobileTsar.Views.RegisterPage"
-             BackgroundImage="TransTusks.png"
-  Title="TSAR Mobile App">
+             BackgroundImage="Background2.png"
+             Title="TSAR Mobile App"
+             
+             >
   <!--<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />-->
-
 <ContentPage.BindingContext>
   <viewModels:RegisterViewModel/>
 </ContentPage.BindingContext>
