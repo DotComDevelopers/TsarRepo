@@ -12,6 +12,7 @@
 
     <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
         <!--<Entry Text="{Binding AccessToken}"></Entry>-->
+        <Label x:Name="UsernameLabel" FontSize="40" HorizontalTextAlignment="Center"></Label>
         <Button Text="Log Off" Clicked="LogOffButton_OnClicked"></Button>
         <Button x:Name="GetTimesheetsButton" Clicked="GetTimesheetsButton_OnClicked"  Command="{Binding GetTimesheetsCommand}" Text="Get Timesheets"></Button>
         <Button x:Name="AddnewTimesheetBtn" Text="Add new timesheet" Clicked="Button_OnClicked"></Button>

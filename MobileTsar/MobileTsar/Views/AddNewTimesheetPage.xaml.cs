@@ -17,11 +17,13 @@ namespace MobileTsar.Views
     {
       InitializeComponent();
       GetClientName();
-      GetConsultantName();
+      //GetConsultantName();
       ClientPicker.Items.Add("Please Select a Client");
-      ConsultantPicker.Items.Add("Please Select a Consultant");
-      ConsultantPicker.SelectedIndex = 0;
+      //ConsultantPicker.Items.Add("Please Select a Consultant");
+      //ConsultantPicker.SelectedIndex = 0;
       ClientPicker.SelectedIndex = 0;
+      GetUsername();
+      GetConsultantId();
 
     }
 
@@ -50,17 +52,37 @@ namespace MobileTsar.Views
     }
 
 
-    public async void GetConsultantName()
+    //public async void GetConsultantName()
+    //{
+    //  var api = new ApiServices();
+    //  var token = Settings.AccessToken;
+
+    //  var list = await api.GetConsultantAsync(token);
+    //  var ret = list.Select(t => t.FirstName).ToList();
+    //  foreach (var ts in ret)
+    //  {
+    //    ConsultantPicker.Items.Add(ts);
+    //  }
+    //}
+    private async void GetUsername()
     {
       var api = new ApiServices();
       var token = Settings.AccessToken;
 
+      var list = await api.GetUsernameAsync(token);
+      var ret = list.Email;
+      UsernameLabel.Text = ret;
+    }
+    public async void GetConsultantId()
+    {
+      var api = new ApiServices();
+      var token = Settings.AccessToken;
+      var list2 = await api.GetUsernameAsync(token);
+      var currentuser =list2.Email;
       var list = await api.GetConsultantAsync(token);
-      var ret = list.Select(t => t.FirstName).ToList();
-      foreach (var ts in ret)
-      {
-        ConsultantPicker.Items.Add(ts);
-      }
+      //var ret = list.Select(t => t.FirstName).ToList();
+      var username = list.Where(t => t.ConsultantUserName == currentuser).Select(t => t.ConsultantNum).FirstOrDefault();
+      ConsultantIdLabel.Text = username.ToString();
     }
 
     // Uses web service to get cleint name and populate drop down
@@ -97,20 +119,19 @@ namespace MobileTsar.Views
       AddressLabel.Text = AddressPicker.SelectedItem.ToString();
     }
 
-    private void ConsultantPicker_OnSelectedIndexChanged(object sender, EventArgs e)
-    {
+    //private void ConsultantPicker_OnSelectedIndexChanged(object sender, EventArgs e)
+    //{
     
-      ConsultantIdLabel.Text = ConsultantPicker.SelectedIndex.ToString();
-    }
+    //  ConsultantIdLabel.Text = ConsultantPicker.SelectedIndex.ToString();
+    //}
 
     private async void ValidateBtn_OnClicked(object sender, EventArgs e)
     {
       var isvalid = true;
-      if (ConsultantIdLabel.Text == "0")
+      if (ConsultantIdLabel.Text == null)
       {
         isvalid = false;
-         await DisplayAlert("Please select a consultant", "Consultant is Required", "OK");
-        ConsultantPicker.Focus();
+        await DisplayAlert("Please try again", "Something went wrong", "OK");     
       }
       if (ClientIdLabel.Text == "0")
       {
