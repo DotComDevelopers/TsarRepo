@@ -58,6 +58,11 @@ namespace MobileTsar.Views
     {
       await Navigation.PushAsync(new TimesheetListViewPage());
     }
+
+    private void GetTimesheetsButton_OnClicked(object sender, EventArgs e)
+    {
+      GetTimesheetsButton.IsVisible = false;
+    }
   }
   }
 
