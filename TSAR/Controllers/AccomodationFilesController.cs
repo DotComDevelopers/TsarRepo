@@ -126,55 +126,30 @@ namespace TSAR.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SendMail(AccomodationFilesEmail model,string fileName)
         {
-            //var file = db.AccomodationFiles.FirstOrDefault().file_bytes;
-            //String fileName = db.AccomodationFiles.FirstOrDefault().file_name;
-            //MemoryStream content = new MemoryStream(file.file_bytes);
-            //string smtpAddress = "smtp.live.com";
-            //int portNumber = 587;
-            //bool enableSSL = true;
-
-            //string emailFrom = "khethamch@gmail.com";
-            //string password = "Green1!";
-            //string emailTo = "khethamch@gmail.com";
-            //string subject = "Hello";
-            //string body = "Hello, I'm just writing this to say Hi!";
-
-            // Credentials:
-            //var credentialUserName = "dotcomdevelopers19@gmail.com";
-            //var sentFrom = "khethamch@gmail.com";
-            //var pwd = "Lavelle2014";
+            
 
             using (MailMessage mail = new MailMessage())
             {
 
 
-                //foreach (var item  in db.Subscriptions.ToList())
-                //{
-                //    objModelMail.To += item.Email + ",";
-                //}
-                mail.From = new MailAddress("ramarioadkins36@gmail.com");
+                
+                mail.From = new MailAddress("dotcomdevelopers19@gmail.com");
                 mail.To.Add(model.Consultant_Name);
                 mail.Subject = model.Subject;
                 mail.Body = model.Message;
-                mail.Attachments.
-                //mail.Attachments.Add(new System.Net.Mail.Attachment(HttpContext.Server.MapPath("~/Attach/"+ fileName)));
+                if (model.file != null)
+                {
+                    fileName = Path.GetFileName(model.file.FileName);
+                    mail.Attachments.Add(new Attachment(model.file.InputStream, fileName));
+                }
+                
                 mail.IsBodyHtml = false;
-
-                //System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp.gmail.com");
-                //client.Host = "smtp.gmail.com";
-                //client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-                //client.EnableSsl = true;
-                //NetworkCredential networkCredential = new NetworkCredential(credentialUserName, pwd);
-                //client.UseDefaultCredentials = false;
-                //client.Credentials = new System.Net.NetworkCredential(credentialUserName, pwd);
-
-                //client.Port = 587;
-
+                
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
                 smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new System.Net.NetworkCredential("ramarioadkins36@gmail.com", "Lavelle2014");
+                smtp.Credentials = new System.Net.NetworkCredential("dotcomdevelopers19@gmail.com", "P@ssword0123");
                 smtp.EnableSsl = true;
                 try
                 {
@@ -192,29 +167,7 @@ namespace TSAR.Controllers
                 return View();
             }
 
-            //using (MailMessage mail = new MailMessage())
-            //{
-            //    mail.From = new MailAddress(emailFrom);
-            //    mail.To.Add(emailTo);
-            //    mail.Subject = subject;
-            //    mail.Body = body;
-            //    mail.IsBodyHtml = true;
-            //    mail.Attachments.Add(new Attachment(content, file.file_name, file.file_type));
-            //    // Can set to false, if you are sending pure text.
-
-            //    // mail.Attachments.Add(new Attachment("C://Users\fanien//Documents//Visual Studio 2015//Projects//WebApplication2//WebApplication2TextFile1.txt"));
-            //    //mail.Attachments.Add(new Attachment("C:\\SomeZip.zip"));
-
-            //    using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
-            //    {
-            //        smtp.Credentials = new NetworkCredential(emailFrom, password);
-            //        smtp.EnableSsl = enableSSL;
-            //        smtp.Send(mail);
-            //    }
-            //}
-            //ViewBag.mails = new SelectList(GetConsultantEmails(), "Address", "DisplayName", model.Address);
-            //ViewBag.files = new SelectList(GetFiles(), "accomodationfile_id", "file_name");
-            //return View();
+            
         }
         public FileResult GenerateFile(HttpPostedFileBase file)
         {
@@ -222,32 +175,9 @@ namespace TSAR.Controllers
             MemoryStream ms = new MemoryStream(bytes);
             return File(bytes, file.FileName, "Accomodation Files");
         }
-        // GET: Contracts/Delete/5
-        public ActionResult Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Consultant contract = db.Consultants.Find(id);
-            if (contract == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contract);
-        }
+      
 
-        // POST: Contracts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
-        {
-            Consultant contract = db.Consultants.Find(id);
-            db.Consultants.Remove(contract);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
+      
         protected override void Dispose(bool disposing)
         {
             if (disposing)
