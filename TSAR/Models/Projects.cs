@@ -39,11 +39,6 @@ namespace TSAR.Models
         public DateTime EndDate { get; set; }
         public static List<Projects> projects { get; internal set; }
 
-
-
-
-
-
         //Created custom validation attribute to validate the date chosen for leave
         [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
         public sealed class DateMustBeEqualOrGreaterThanCurrentDate : ValidationAttribute, IClientValidatable
