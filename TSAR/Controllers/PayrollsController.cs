@@ -40,11 +40,13 @@ namespace TSAR.Controllers
 
                     ViewBag.Basic = (payroll.Basic = 5000).ToString("R0.00");
 
-                    ViewBag.Totpay = (payroll.totPay = payroll.Basic + payroll.Comm).ToString("0.00");
+                    ViewBag.Totpay = (payroll.totPay = payroll.Basic + payroll.Comm).ToString("R0.00");
+                   var totpay = (payroll.totPay = payroll.Basic + payroll.Comm);
 
-                    ViewBag.Tax = (payroll.tax = payroll.totPay * 0.2).ToString("0.00");
+                    ViewBag.Tax = (payroll.tax = payroll.totPay * 0.2).ToString("R0.00");
+                    var tax = (payroll.tax = payroll.totPay * 0.2);
 
-                    ViewBag.Net = (ViewBag.Total - ViewBag.Tax);
+                    ViewBag.Net = (totpay - tax).ToString("R0.00");
 
                     
 

@@ -1,58 +1,55 @@
 ﻿@model TSAR.Models.Payroll
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+  ViewBag.Title = "Details";
+  Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
- 
+
 <h2>Calculated Salary</h2>
- 
+
 
 <div>
-    <h4>Payroll for @DateTime.Now.ToString("MMMM") </h4>
-   
-    <table>
+    <h4>Payroll calculation for @DateTime.Now.ToString("MMMM") </h4>
+
+    <table >
         <tr>
             <td>
-                <h4>Additional Information</h4>
-
-
-
-                @Html.DisplayFor(model => model.Basic)
-
+                <h4 align="left" style="color: white"> Basic Information :</h4><a> R @Html.DisplayFor(model => model.Basic)  </a>
             </td>
+
+            <td>   </td>
+
+        </tr>
+        <tr>
+            @*<td style="color: white">R @Html.DisplayFor(model => model.Basic)</td>*@
+        </tr>
+        <tr>
             <td>
-                <h4>Commission at @ViewBag.NoTimesheets of Timesheets</h4>
-
-                
-
-                @Html.DisplayFor(model => model.Comm)
-
-
-
-            </td>
-            <td>
-                <h4>Tax</h4>
-
-               
-                @Html.DisplayFor(model => model.tax)
-
-            </td>
-            <td>
-                <h4>Total</h4>
-
-            
-                @Html.DisplayFor(model => model.tax)
-                @ViewBag.NetPay
-
+                <h4 style="color: white" align="center">Commission at 10% of @ViewBag.NoTimesheets Timesheets :</h4> <a style="text-align:end">R @Html.DisplayFor(model => model.Comm)</a>
+       
             </td>
         </tr>
+        <tr>
+            @*<td style="color: white">R @Html.DisplayFor(model => model.Comm)</td>*@
+        </tr>
+        <tr>
+            <td>
+                <h4 style="color: white" align="left">Tax :</h4><a>  R @Html.DisplayFor(model => model.tax)</a>
+            </td>
+        </tr>
+        <tr>
+            @*<td style="color: white">R @Html.DisplayFor(model => model.tax)</td>*@
+        </tr>
+        <tr>
+            <td>
+                <h4 style="color: white" align="left">Total due :</h4><a>@ViewBag.Net </a>
+            </td>
+        </tr>
+        <tr>
+            @*<td style="color: white"> @ViewBag.Net</td>*@
+            @*<td>@Html.DisplayFor(model => model.total) @ViewBag.Net</td>*@
+        </tr>
     </table>
-    
-   
-   
-        
- 
-  
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.PayrollId }) |

@@ -52,7 +52,7 @@ namespace TSAR.Controllers
                           select b.Balance).FirstOrDefault();
          
             //ViewBag.Budget = "Balance R " + db.Budgets.Where(p => p.ProjectId == id);
-            ViewBag.Budget ="Estimated amount used: "+ bal.ToString("R0.00");
+            ViewBag.Budget ="Clients budget "+ bal.ToString("R0.00");
             string username = User.Identity.GetUserName();
             int consultantnum = (from Consultant c in db.Consultants
                                  where c.ConsultantUserName == username
@@ -64,7 +64,7 @@ namespace TSAR.Controllers
 
       var timesheets = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant).Where(p => p.ProjectName == name);
          //   var time = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant);
-   ViewBag.Total = "Actual Budget: " + timesheets.Sum(x => x.Total).ToString("R0.00");
+   ViewBag.Total = "Total costs : " + timesheets.Sum(x => x.Total).ToString("R0.00");
 
             List<Timesheet> index = null;
 

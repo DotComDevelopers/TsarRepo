@@ -39,24 +39,6 @@ namespace TSAR.Controllers
             return View(projects);
         }
 
-        public ActionResult ProjectTimeSheetIndex(int? id)
-        {
-            Projects projects = db.Projects.Find(id);
-
-            var ts = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant).Include(p=>p.Project).ToList(); 
-         
-            // if (projects.ProjectName == ts.ProjectName)
-            //{
-
-            return View(ts);
-
-
-           //  }
-           // else 
-
-           //return View();
-
-        }
 
         //[HttpPost]
         //public ActionResult ProjectTimeSheetIndex(Timesheet timesheet, int? id)
