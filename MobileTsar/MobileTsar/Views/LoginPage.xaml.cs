@@ -18,6 +18,7 @@ namespace MobileTsar.Views
     {
       InitializeComponent();
       //DisplayAlert($"{Settings.Username}", $"{Settings.AccessToken}", $"{Settings.Password}");
+      var logvm = new LoginViewModel();
     }
 
     private async void GetUsername()
@@ -31,20 +32,23 @@ namespace MobileTsar.Views
     }
     private async void GetTimesheetsButton_OnClicked(object sender, EventArgs e)
     {
-     
-      if (Settings.AccessToken!="")
+      ProgressBar.IsVisible = true;
+      LoadingLabel.IsVisible = true;
+      while (Settings.AccessToken=="")
       {
-        GetUsername();
-        await DisplayAlert("Login Success", $"Welcome back {UserNameLabel.Text}", "OK");
-
-        await Navigation.PushModalAsync(new TimesheetsPage());
+       await ProgressBar.ProgressTo(0.8, 2500, Easing.BounceOut);
       }
-      else
-      {
-       
-        await DisplayAlert("Connection Error", "Please try again", "Close");
-      }
+      await ProgressBar.ProgressTo(1, 1, Easing.CubicInOut);
+      GetUsername();
 
+      await DisplayAlert("Login Success", $"Welcome back {UserNameLabel.Text}", "OK");    
+      await Navigation.PushModalAsync(new TimesheetsPage());
+
+    }
+
+    public double SetComplete()
+    {
+      return Settings.AccessToken=="" ? 0.8 : 1;
     }
 
     private async void SignOutButton_OnClicked(object sender, EventArgs e)
