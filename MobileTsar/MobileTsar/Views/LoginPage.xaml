@@ -11,8 +11,10 @@
   </ContentPage.BindingContext>
     <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
         <Label x:Name="UserNameLabel" IsVisible="False"></Label>
-    <Entry Text="{Binding Username}" Placeholder="Your Username"></Entry>
-    <Entry Text="{Binding Password}" IsPassword="True" Placeholder="Your Password"></Entry>
+    <Entry x:Name="UsernameLabel" Text="{Binding Username}" Placeholder="Your Username"></Entry>
+        <Entry x:Name="PasswordLabel" Text="{Binding Password}" IsPassword="True" Placeholder="Your Password"></Entry>
+        <Entry x:Name="LoadingLabel" IsVisible="False" Text="Logging in.." VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold"></Entry>
+        <ProgressBar x:Name="ProgressBar" IsVisible="False" Progress="0"></ProgressBar>
     <Button Command="{Binding LoginCommand}" Text="Login" Clicked="GetTimesheetsButton_OnClicked"></Button>
     <Button Text="Sign Out" Clicked="SignOutButton_OnClicked"></Button>
     <!--<Button  Text="Get Timesheets"></Button>-->
