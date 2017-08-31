@@ -25,10 +25,15 @@ namespace MobileTsar.Views
     {
       var api = new ApiServices();
       var token = Settings.AccessToken;
-
       var list = await api.GetUsernameAsync(token);
-      var ret = list.Email;
-      UsernameLabel.Text = $"Hello {ret}";
+
+      var username = list.Email;
+      var list2 = await api.GetConsultantAsync(token);
+      var list3 = await api.GetTimesheetAsync(token);
+      var consultantnum = list2.Where(t => t.ConsultantUserName == username).Select(t => t.ConsultantNum).FirstOrDefault();
+      var tscount = list3.Count(t => t.ConsultantNum == consultantnum && t.SignOff==false);
+  
+      UsernameLabel.Text = $"Hello {username}, you have {tscount} unsigned timesheets";
     }
 
     private async void Button_OnClicked(object sender, EventArgs e)
