@@ -1,0 +1,59 @@
+﻿@model TSAR.Models.Location
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Location</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.ClientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.ClientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Consultant.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consultant.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckinTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckinTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LocationId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

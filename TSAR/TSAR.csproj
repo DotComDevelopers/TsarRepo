@@ -236,6 +236,7 @@
   <ItemGroup>
     <Compile Include="Api\MobileClientsController.cs" />
     <Compile Include="Api\MobileConsultantsController.cs" />
+    <Compile Include="Api\MobileLocationsController.cs" />
     <Compile Include="Api\MobileTimesheetsController.cs" />
     <Compile Include="Api\MobileTravelController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -255,6 +256,7 @@
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeavesController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsletterController.cs" />
     <Compile Include="Controllers\PayrollsController.cs" />
@@ -295,6 +297,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Leave.cs" />
     <Compile Include="Models\LeaveType.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Payroll.cs" />
@@ -819,6 +822,11 @@
     <Content Include="Views\Payrolls\Details.cshtml" />
     <Content Include="Views\Payrolls\Edit.cshtml" />
     <Content Include="Views\Payrolls\Index.cshtml" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\Delete.cshtml" />
+    <Content Include="Views\Locations\Details.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

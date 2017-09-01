@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TSAR.Models.Location>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.ClientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consultant.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckinTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.ClientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Consultant.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckinTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LocationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LocationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LocationId })
+        </td>
+    </tr>
+}
+
+</table>
