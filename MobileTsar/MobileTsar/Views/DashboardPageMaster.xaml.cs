@@ -6,9 +6,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using ZXing;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing.Net.Mobile.Forms;
 
 namespace MobileTsar.Views
 {
@@ -37,6 +39,7 @@ namespace MobileTsar.Views
                     new DashboardPageMenuItem { Id = 0, Title = "My Timesheets",TargetType = typeof(TimesheetsPage)},
                     new DashboardPageMenuItem { Id = 1, Title = "New Timesheet",TargetType = typeof(AddNewTimesheetPage)},
                     new DashboardPageMenuItem { Id = 2, Title = "Timesheets List",TargetType = typeof(MyTimesheetsPage)},
+                    new DashboardPageMenuItem { Id = 3, Title = "Scanner", TargetType = typeof(ScanPage)}, 
                 });
       }
 
