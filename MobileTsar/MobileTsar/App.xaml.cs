@@ -21,7 +21,7 @@ namespace MobileTsar
     {
       if (!string.IsNullOrEmpty(Settings.AccessToken))
       {
-        MainPage = new NavigationPage(new TimesheetsPage());
+        MainPage = new DashboardPage();
       }
       else if (!string.IsNullOrEmpty(Settings.Username) && !string.IsNullOrEmpty(Settings.Password))
       {

@@ -59,8 +59,21 @@
     <Compile Include="Views\AddNewTimesheetPage.xaml.cs">
       <DependentUpon>AddNewTimesheetPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DashboardPageDetail.xaml.cs">
+      <DependentUpon>DashboardPageDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DashboardPageMaster.xaml.cs">
+      <DependentUpon>DashboardPageMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DashboardPageMenuItem.cs" />
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyTimesheetsPage.xaml.cs">
+      <DependentUpon>MyTimesheetsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
@@ -181,6 +194,30 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\TimesheetListViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DashboardPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DashboardPageMaster.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DashboardPageDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\MyTimesheetsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

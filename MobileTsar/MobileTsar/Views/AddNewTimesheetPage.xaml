@@ -7,9 +7,8 @@
   
 
 <ContentPage.BindingContext>
-  <viewModels:AddNewTimesheetViewModel>
-    
-  </viewModels:AddNewTimesheetViewModel>
+        <viewModels:AddNewTimesheetViewModel>
+        </viewModels:AddNewTimesheetViewModel>
 </ContentPage.BindingContext>
 <ScrollView>
         <StackLayout  Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center" >

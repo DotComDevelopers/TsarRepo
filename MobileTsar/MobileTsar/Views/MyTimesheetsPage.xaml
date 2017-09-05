@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileTsar.Views.MyTimesheetsPage"
+            
+             Title="My Timesheets">
+  <ListView ItemsSource="{Binding Items}"
+            ItemTapped="Handle_ItemTapped"   
+            HasUnevenRows="True"
+ SeparatorVisibility="Default"
+            SeparatorColor="Crimson"                   
+            >
+            
+    <!--Built in Cells-->
+    <!--<ListView.ItemTemplate>
+            <DataTemplate>
+            </DataTemplate>
+    </ListView.ItemTemplate>-->
+    
+    <!--Custom View Cells-->
+    
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout Padding="20,10">
+              <Label TextColor="DeepSkyBlue" FontSize="25" Text="Timesheet No. : " 
+                     Style="{DynamicResource ListItemDetailTextStyle}"/>
+                        <Label FontSize="24" Text="{Binding TimesheetId}" 
+                   Style="{DynamicResource ListItemTextStyle}" />
+              <Label TextColor="DeepSkyBlue" FontSize="25" Text="Reference: " 
+                     Style="{DynamicResource ListItemDetailTextStyle}"/>
+                        <Label FontSize="24" Text="{Binding TicketReference}" 
+                   Style="{DynamicResource ListItemDetailTextStyle}"/>  
+      
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    
+  </ListView>
+</ContentPage>
