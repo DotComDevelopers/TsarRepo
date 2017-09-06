@@ -207,8 +207,8 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Twilio, Version=5.6.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Twilio.5.6.3\lib\net451\Twilio.dll</HintPath>
+    <Reference Include="Twilio, Version=5.6.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.5.6.4\lib\net451\Twilio.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -234,6 +234,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ClientPasswordsController.cs" />
     <Compile Include="Api\MobileClientsController.cs" />
     <Compile Include="Api\MobileConsultantsController.cs" />
     <Compile Include="Api\MobileLocationsController.cs" />
@@ -249,6 +250,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BudgetsController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\ClientPasswordsController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CommissionsController.cs" />
     <Compile Include="Controllers\ConsultantsController.cs" />
@@ -289,6 +291,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Budget.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ClientPassword.cs" />
     <Compile Include="Models\Commission.cs" />
     <Compile Include="Models\Consultant.cs" />
     <Compile Include="Models\ContactEmailFormModel.cs" />
@@ -827,6 +830,11 @@
     <Content Include="Views\Locations\Details.cshtml" />
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\ClientPasswords\Create.cshtml" />
+    <Content Include="Views\ClientPasswords\Delete.cshtml" />
+    <Content Include="Views\ClientPasswords\Details.cshtml" />
+    <Content Include="Views\ClientPasswords\Edit.cshtml" />
+    <Content Include="Views\ClientPasswords\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
