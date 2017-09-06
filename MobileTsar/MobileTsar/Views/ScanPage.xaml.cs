@@ -36,5 +36,25 @@ namespace MobileTsar.Views
       //Navigate to scanner page
       await Navigation.PushAsync(scanpage);
     }
+
+    private async void EncodeButton_OnClicked(object sender, EventArgs e)
+    {
+      ZXingBarcodeImageView barcode;
+      barcode = new ZXingBarcodeImageView
+      {
+        HorizontalOptions = LayoutOptions.FillAndExpand,
+        VerticalOptions = LayoutOptions.FillAndExpand,
+      };
+      barcode.BarcodeFormat = ZXing.BarcodeFormat.QR_CODE;
+      barcode.BarcodeOptions.Width = 300;
+      barcode.BarcodeOptions.Height = 300;
+      barcode.BarcodeOptions.Margin = 10;
+      var value =barcode.BarcodeValue = $"{System.DateTime.Now}";
+     
+
+      Content = barcode;
+
+      await DisplayAlert("Scanned", $"{value}", "OK");
+    }
   }
 }

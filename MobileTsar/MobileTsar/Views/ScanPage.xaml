@@ -6,6 +6,7 @@
     <ContentPage.Content>
         <StackLayout Padding="20,10">
             <Label Text="Click below to scan a barcode" FontSize="25"></Label>
+            <Button x:Name="EncodeButton" Text="Encode" Clicked="EncodeButton_OnClicked"></Button>
          <Button x:Name="ScanButton" Text="Scan Now" Clicked="ScanButton_OnClicked"></Button>
         </StackLayout>
     </ContentPage.Content>

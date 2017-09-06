@@ -40,7 +40,7 @@ namespace MobileTsar.Views
       LoadingActivityIndicator.IsVisible = true;
       var api = new ApiServices();
       var token = Settings.AccessToken;
-      var list = await api.GetTimesheetAsync(token);     
+      var list = await api.GetTimesheetAsync(token);      
       var usernamelist2 = await api.GetUsernameAsync(token);
       var currentuser = usernamelist2.Email;
       var consultantlist = await api.GetConsultantAsync(token);
