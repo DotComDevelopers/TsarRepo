@@ -840,7 +840,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
     <Folder Include="Content\themes\base\images\" />
-    <Folder Include="Views\Payroll\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

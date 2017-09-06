@@ -20,7 +20,7 @@ namespace TSAR.Api
         // GET: api/ClientPasswords
         public IQueryable<ClientPassword> GetClientPasswords()
         {
-            return db.ClientPasswords;
+            return db.ClientPasswords.Include(t=>t.Client);
         }
 
         // GET: api/ClientPasswords/5
