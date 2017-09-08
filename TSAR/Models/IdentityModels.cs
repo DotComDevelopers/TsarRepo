@@ -67,5 +67,7 @@ namespace TSAR.Models
         public System.Data.Entity.DbSet<TSAR.Models.Location> Locations { get; set; }
 
         public System.Data.Entity.DbSet<TSAR.Models.ClientPassword> ClientPasswords { get; set; }
+
+        public System.Data.Entity.DbSet<TSAR.Models.Tasks> Tasks { get; set; }
     }
 }
