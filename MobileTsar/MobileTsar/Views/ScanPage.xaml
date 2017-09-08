@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileTsar.Views.ScanPage"
+             Title="Mobile Scanner">
+    <ContentPage.Content>
+        <StackLayout Padding="20,10">
+            <Label Text="Click below to scan a barcode" FontSize="25"></Label>
+            <Button x:Name="EncodeButton" Text="Encode" Clicked="EncodeButton_OnClicked"></Button>
+         <Button x:Name="ScanButton" Text="Scan Now" Clicked="ScanButton_OnClicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

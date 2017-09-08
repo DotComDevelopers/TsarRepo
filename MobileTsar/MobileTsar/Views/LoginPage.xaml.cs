@@ -42,7 +42,7 @@ namespace MobileTsar.Views
       GetUsername();
 
       await DisplayAlert("Login Success", $"Welcome back {UserNameLabel.Text}", "OK");    
-      await Navigation.PushModalAsync(new TimesheetsPage());
+      await Navigation.PushModalAsync(new DashboardPage());
 
     }
 

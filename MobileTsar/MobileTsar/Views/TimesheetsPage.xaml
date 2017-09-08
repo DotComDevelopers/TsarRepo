@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
-             x:Class="MobileTsar.Views.TimesheetsPage">
+             x:Class="MobileTsar.Views.TimesheetsPage"
+             Title="Timesheets">
 
     <ContentPage.BindingContext>
         <viewModels:TimesheetsViewModel>
@@ -17,12 +18,14 @@
         <Button x:Name="GetTimesheetsButton" Clicked="GetTimesheetsButton_OnClicked"  Command="{Binding GetTimesheetsCommand}" Text="Get Timesheets"></Button>
         <Button x:Name="AddnewTimesheetBtn" Text="Add new timesheet" Clicked="Button_OnClicked"></Button>
         <Button Text="Timesheet List" Clicked="TimesheetsList" IsVisible="False"></Button>
+
+        <ListView x:Name="TimesheetListView" ItemsSource="{Binding Timesheets}" HasUnevenRows="True" ItemTapped="SignPage">
         <Button x:Name="Checkinbtn" Text="Checkin" Clicked="Checkinbtn_OnClicked"></Button>
         <Button x:Name="Mapsbtn" Text="Maps" Clicked="Mapsbtn_OnClicked"></Button>
         <ListView x:Name="TimesheetListView"   ItemsSource="{Binding Timesheets}" HasUnevenRows="True" ItemTapped="SignPage">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell >
+                    <ViewCell>
                         <StackLayout Padding="20,10">
                             <Label x:Name="msg"  Text="Tap here to sign >" HorizontalTextAlignment="End"></Label>
                             <Label FontSize="25" Text="Timesheet Id:" TextColor="DeepSkyBlue"></Label>

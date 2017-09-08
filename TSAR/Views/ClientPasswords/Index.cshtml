@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TSAR.Models.ClientPassword>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.ClientName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Operator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OperatorPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyPassword)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.ClientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Operator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperatorPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyPassword)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ClientPasswordId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ClientPasswordId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ClientPasswordId })
+        </td>
+    </tr>
+}
+
+</table>

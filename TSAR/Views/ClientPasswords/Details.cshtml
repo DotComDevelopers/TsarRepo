@@ -1,0 +1,51 @@
+﻿@model TSAR.Models.ClientPassword
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ClientPassword</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.ClientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.ClientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Operator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Operator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OperatorPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OperatorPassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyPassword)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ClientPasswordId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

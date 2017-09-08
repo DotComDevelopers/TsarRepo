@@ -137,6 +137,11 @@ namespace MobileTsar.Services
 
         }
 
+      //GET ClientPasswords
+      public async Task<List<ClientPassword>> GetClientPasswordAsync(string accessToken)
+      {
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
         public async Task<List<Location>> GetLocationAsync(string accessToken)
         {
@@ -174,6 +179,6 @@ namespace MobileTsar.Services
         }
 
 
-    }
+  }
 }
 
