@@ -20,7 +20,8 @@ namespace TSAR.Api
         // GET: api/MobileLocations
         public IQueryable<Location> GetLocations()
         {
-            return db.Locations;
+            return db.Locations.Include(timesheet => timesheet.Client)
+            .Include(timesheet => timesheet.Consultant);
         }
 
         // GET: api/MobileLocations/5

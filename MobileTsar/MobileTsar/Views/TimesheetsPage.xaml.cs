@@ -78,6 +78,16 @@ namespace MobileTsar.Views
     {
       GetTimesheetsButton.IsVisible = false;
     }
+
+      private async void Checkinbtn_OnClicked(object sender, EventArgs e)
+      {
+            await Navigation.PushAsync(new CheckinPage());
+        }
+
+      private async void Mapsbtn_OnClicked(object sender, EventArgs e)
+      {
+            await Navigation.PushAsync(new CustomMapPage());
+        }
   }
   }
 

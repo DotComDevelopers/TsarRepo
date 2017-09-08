@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
+             x:Class="MobileTsar.Views.CheckinPage">
+    <ContentPage.BindingContext>
+        <viewModels:LocationViewModel>
+
+        </viewModels:LocationViewModel>
+    </ContentPage.BindingContext>
+    <StackLayout Orientation="Vertical">
+        <Button Text="Checkin" Command="{Binding AddLocationCommand}"  Clicked="Checkin"></Button>
+        <Label Text ="Latitude"/>
+        <Entry x:Name="lblLat" ></Entry>
+        <Label Text="Longitude"/>
+        <Entry x:Name="lblLong"  ></Entry>
+        <!--<Entry x:Name="lblconid" Text="{Binding ConsultantNum}" IsVisible="False"></Entry>-->
+    </StackLayout>
+</ContentPage>

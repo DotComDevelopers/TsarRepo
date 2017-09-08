@@ -138,6 +138,40 @@ namespace MobileTsar.Services
         }
 
 
+        public async Task<List<Location>> GetLocationAsync(string accessToken)
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/MobileLocations");
+
+            var locations = JsonConvert.DeserializeObject<List<Location>>(json);
+            return locations;
+        }
+
+        public async Task PostLocationAsync(Location location, string accessToken)
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+            var json = JsonConvert.SerializeObject(location);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/MobileLocations", content);
+            
+
+        }
+
+        public async Task PutLocationAsync(int id, Location location, string accessToken)
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var json = JsonConvert.SerializeObject(location);
+            HttpContent content = new StringContent(json);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await client.PutAsync("http://tsar1.azurewebsites.net/api/MobileLocations/" + id, content);
+
+        }
 
 
     }
