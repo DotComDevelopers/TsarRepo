@@ -75,19 +75,19 @@ namespace MobileTsar.Services
             return timesheets;
         }
 
-      public async Task<User> GetUsernameAsync(string accessToken)
-      {
-        var client = new HttpClient();
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-        var json = await client.GetStringAsync("http://api20170705060604.azurewebsites.net/api/Account/UserInfo");
-        
-        var user = JsonConvert.DeserializeObject<User>(json);
-        return user;
-      }
+        public async Task<User> GetUsernameAsync(string accessToken)
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var json = await client.GetStringAsync("http://api20170705060604.azurewebsites.net/api/Account/UserInfo");
+
+            var user = JsonConvert.DeserializeObject<User>(json);
+            return user;
+        }
 
 
 
-    public async Task PostTimesheetAsync(Timesheet timesheet, string accessToken)
+        public async Task PostTimesheetAsync(Timesheet timesheet, string accessToken)
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
@@ -137,48 +137,52 @@ namespace MobileTsar.Services
 
         }
 
-      //GET ClientPasswords
-      public async Task<List<ClientPassword>> GetClientPasswordAsync(string accessToken)
-      {
-        var client = new HttpClient();
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        //still working on this
+        //GET ClientPasswords
+        //public async Task<List<ClientPassword>> GetClientPasswordAsync(string accessToken)
+        //{
+        //    var client = new HttpClient();
+        //    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+        //}
 
         public async Task<List<Location>> GetLocationAsync(string accessToken)
-        {
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/MobileLocations");
+            {
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/MobileLocations");
 
-            var locations = JsonConvert.DeserializeObject<List<Location>>(json);
-            return locations;
+                var locations = JsonConvert.DeserializeObject<List<Location>>(json);
+                return locations;
+            }
+
+            public async Task PostLocationAsync(Location location, string accessToken)
+            {
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                var json = JsonConvert.SerializeObject(location);
+                HttpContent content = new StringContent(json);
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/MobileLocations", content);
+
+
+            }
+
+            public async Task PutLocationAsync(int id, Location location, string accessToken)
+            {
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                var json = JsonConvert.SerializeObject(location);
+                HttpContent content = new StringContent(json);
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var response = await client.PutAsync("http://tsar1.azurewebsites.net/api/MobileLocations/" + id, content);
+
+            }
+
+
         }
+    }
 
-        public async Task PostLocationAsync(Location location, string accessToken)
-        {
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-            var json = JsonConvert.SerializeObject(location);
-            HttpContent content = new StringContent(json);
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-
-            var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/MobileLocations", content);
-            
-
-        }
-
-        public async Task PutLocationAsync(int id, Location location, string accessToken)
-        {
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var json = JsonConvert.SerializeObject(location);
-            HttpContent content = new StringContent(json);
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var response = await client.PutAsync("http://tsar1.azurewebsites.net/api/MobileLocations/" + id, content);
-
-        }
-
-
-  }
-}
 

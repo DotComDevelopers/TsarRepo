@@ -16,19 +16,19 @@ namespace MobileTsar.Views
     public ClientPasswordsPage()
     {
       InitializeComponent();
-      GetClientPasswords();
+      //GetClientPasswords();
       ClientPicker.Items.Add("Please Select a Client");
       ClientPicker.SelectedIndex = 0;
       GetClientName();
     }
-
-    private async void GetClientPasswords()
-    {
-      var api = new ApiServices();
-      var token = Settings.AccessToken;
-      var clientpasswordslist = await api.GetClientPasswordAsync(token);
-      PasswordsListView.ItemsSource = clientpasswordslist;
-    }
+        //still working on this
+    //private async void GetClientPasswords()
+    //{
+    //  var api = new ApiServices();
+    //  var token = Settings.AccessToken;
+    //  var clientpasswordslist = await api.GetClientPasswordAsync(token);
+    //  PasswordsListView.ItemsSource = clientpasswordslist;
+    //}
 
     public async void GetClientName()
     {
@@ -55,13 +55,14 @@ namespace MobileTsar.Views
       addlist.Clear();
       var api = new ApiServices();
       var token = Settings.AccessToken;
-      var clientpasswordslist = await api.GetClientPasswordAsync(token);
-      if (ClientPicker.SelectedIndex==0)
-      {
-        PasswordsListView.ItemsSource = clientpasswordslist;
-      }
-      var client = clientpasswordslist.Where(t => t.id == ClientPicker.SelectedIndex).Select(t => t.Client).ToList();
-      PasswordsListView.ItemsSource = client;
+            //still working on this
+      //var clientpasswordslist = await api.GetClientPasswordAsync(token);
+      //if (ClientPicker.SelectedIndex==0)
+      //{
+      //  PasswordsListView.ItemsSource = clientpasswordslist;
+      //}
+      //var client = clientpasswordslist.Where(t => t.id == ClientPicker.SelectedIndex).Select(t => t.Client).ToList();
+      //PasswordsListView.ItemsSource = client;
       
     }
 

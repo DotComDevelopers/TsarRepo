@@ -11,11 +11,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using MobileTsar.CustomMapsModels;
+
 using MobileTsar.Droid.Platform;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.Android;
 using Android.Gms.Maps.Model;
+using MobileTsar.CustomMapsModels;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Platform.Android;
 

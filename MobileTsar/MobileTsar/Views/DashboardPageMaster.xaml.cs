@@ -40,7 +40,8 @@ namespace MobileTsar.Views
                     new DashboardPageMenuItem { Id = 1, Title = "New Timesheet",TargetType = typeof(AddNewTimesheetPage)},
                     new DashboardPageMenuItem { Id = 2, Title = "Timesheets List",TargetType = typeof(MyTimesheetsPage)},
                     new DashboardPageMenuItem { Id = 3, Title = "Scanner", TargetType = typeof(ScanPage)}, 
-                    new DashboardPageMenuItem { Id = 4, Title = "Client Passwords", TargetType = typeof(ClientPasswordsPage)},                     
+                    new DashboardPageMenuItem { Id = 4, Title = "Client Passwords", TargetType = typeof(ClientPasswordsPage)},
+                    new DashboardPageMenuItem { Id = 5, Title = "Navigate To Client", TargetType = typeof(MapsPage)},
                 });
       }
 

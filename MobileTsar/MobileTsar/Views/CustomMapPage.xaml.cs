@@ -28,37 +28,37 @@ namespace MobileTsar.Views
                 IsVisible = true
 
             };
-            var position1 = new Position(36.8961, 10.1865);
-            var position2 = new Position(36.891, 10.181);
-            var position3 = new Position(36.892, 10.182);
-            var position4 = new Position(36.893, 10.183);
-            var position5 = new Position(36.891, 10.185);
-            var position6 = new Position(36.892, 10.187);
+            //var position1 = new Position(36.8961, 10.1865);
+            //var position2 = new Position(36.891, 10.181);
+            //var position3 = new Position(36.892, 10.182);
+            //var position4 = new Position(36.893, 10.183);
+            //var position5 = new Position(36.891, 10.185);
+            //var position6 = new Position(36.892, 10.187);
 
-            var customPin1 = new CustomPin
-            {
-                Pin = new Pin
-                {
-                    Type = PinType.Place,
-                    Position = position1,
-                    Label = "IntilaQ",
-                    Address = "Technopark Elgazala, Tunisia"
-                },
-                Url = "www.intilaq.tn",
-            };
+            //var customPin1 = new CustomPin
+            //{
+            //    Pin = new Pin
+            //    {
+            //        Type = PinType.Place,
+            //        Position = position1,
+            //        Label = "IntilaQ",
+            //        Address = "Technopark Elgazala, Tunisia"
+            //    },
+            //    Url = "www.intilaq.tn",
+            //};
 
 
-            var customPin2 = new CustomPin
-            {
-                Pin = new Pin
-                {
-                    Type = PinType.SearchResult,
-                    Position = position2,
-                    Label = "Telnet R&D",
-                    Address = "Technopark Elgazala, Tunisia"
-                },
-                Url = "www.groupe-telnet.com"
-            };
+            //var customPin2 = new CustomPin
+            //{
+            //    Pin = new Pin
+            //    {
+            //        Type = PinType.SearchResult,
+            //        Position = position2,
+            //        Label = "Telnet R&D",
+            //        Address = "Technopark Elgazala, Tunisia"
+            //    },
+            //    Url = "www.groupe-telnet.com"
+            //};
 
             //var customPin3 = new CustomPin
             //{
