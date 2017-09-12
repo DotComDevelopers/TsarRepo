@@ -18,8 +18,7 @@
         <Button x:Name="GetTimesheetsButton" Clicked="GetTimesheetsButton_OnClicked"  Command="{Binding GetTimesheetsCommand}" Text="Get Timesheets"></Button>
         <Button x:Name="AddnewTimesheetBtn" Text="Add new timesheet" Clicked="Button_OnClicked"></Button>
         <Button Text="Timesheet List" Clicked="TimesheetsList" IsVisible="False"></Button>
-
-        <ListView x:Name="TimesheetListView" ItemsSource="{Binding Timesheets}" HasUnevenRows="True" ItemTapped="SignPage">
+        <ListView x:Name="TimesheetListView"   ItemsSource="{Binding Timesheets}" HasUnevenRows="True" ItemTapped="SignPage">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
