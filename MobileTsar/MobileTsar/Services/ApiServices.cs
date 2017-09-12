@@ -137,16 +137,20 @@ namespace MobileTsar.Services
 
         }
 
-        //still working on this
-        //GET ClientPasswords
-        //public async Task<List<ClientPassword>> GetClientPasswordAsync(string accessToken)
-        //{
-        //    var client = new HttpClient();
-        //    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+    //still working on this
+    //GET ClientPasswords
+        public async Task<List<ClientPassword>> GetClientPasswordAsync(string accessToken)
+    {
+      var client = new HttpClient();
+      client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+    
+      var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/ClientPasswords");
 
-        //}
+      var clientPasswords = JsonConvert.DeserializeObject<List<ClientPassword>>(json);
+      return clientPasswords;
+    }
 
-        public async Task<List<Location>> GetLocationAsync(string accessToken)
+    public async Task<List<Location>> GetLocationAsync(string accessToken)
             {
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
