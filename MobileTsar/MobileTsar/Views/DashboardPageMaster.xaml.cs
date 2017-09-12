@@ -36,13 +36,16 @@ namespace MobileTsar.Views
       {
         MenuItems = new ObservableCollection<DashboardPageMenuItem>(new[]
         {
-                    new DashboardPageMenuItem { Id = 0, Title = "My Timesheets",TargetType = typeof(TimesheetsPage)},
-                    new DashboardPageMenuItem { Id = 1, Title = "New Timesheet",TargetType = typeof(AddNewTimesheetPage)},
-                    new DashboardPageMenuItem { Id = 2, Title = "Timesheets List",TargetType = typeof(MyTimesheetsPage)},
-                    new DashboardPageMenuItem { Id = 3, Title = "Scanner", TargetType = typeof(ScanPage)}, 
-                    new DashboardPageMenuItem { Id = 4, Title = "Client Passwords", TargetType = typeof(ClientPasswordsPage)},
-                    new DashboardPageMenuItem { Id = 5, Title = "Navigate To Client", TargetType = typeof(MapsPage)},
+                    new DashboardPageMenuItem { Id = 0, IsVisible = true, Title = "My Timesheets",TargetType = typeof(TimesheetsPage)},
+                    new DashboardPageMenuItem { Id = 1, IsVisible = true, Title = "New Timesheet",TargetType = typeof(AddNewTimesheetPage)},
+                    new DashboardPageMenuItem { Id = 2, IsVisible = true, Title = "Timesheets List",TargetType = typeof(MyTimesheetsPage)},
+                    new DashboardPageMenuItem { Id = 3, IsVisible = true, Title = "Scanner", TargetType = typeof(ScanPage)}, 
+                    new DashboardPageMenuItem { Id = 4, IsVisible = true, Title = "Client Passwords", TargetType = typeof(ClientPasswordsPage)},
+                    new DashboardPageMenuItem { Id = 5, IsVisible = true, Title = "Navigate To Client", TargetType = typeof(MapsPage)},
+                    new DashboardPageMenuItem { Id = 6, IsVisible = false, Title = "New client password", TargetType = typeof(NewClientPasswordPage)},
                 });
+
+        
       }
 
       #region INotifyPropertyChanged Implementation
