@@ -283,17 +283,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705282212491_InitialCreate.cs" />
-    <Compile Include="Migrations\201705282212491_InitialCreate.Designer.cs">
-      <DependentUpon>201705282212491_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201709172111108_Reset.cs" />
+    <Compile Include="Migrations\201709172111108_Reset.Designer.cs">
+      <DependentUpon>201709172111108_Reset.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708212100566_Projects.cs" />
-    <Compile Include="Migrations\201708212100566_Projects.Designer.cs">
-      <DependentUpon>201708212100566_Projects.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708212120546_project2.cs" />
-    <Compile Include="Migrations\201708212120546_project2.Designer.cs">
-      <DependentUpon>201708212120546_project2.cs</DependentUpon>
+    <Compile Include="Migrations\201709172233398_project.cs" />
+    <Compile Include="Migrations\201709172233398_project.Designer.cs">
+      <DependentUpon>201709172233398_project.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccomodationFiles.cs" />
@@ -309,7 +305,6 @@
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Leave.cs" />
-    <Compile Include="Models\LeaveType.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -336,7 +331,6 @@
     <Compile Include="SmsHelper\ITwilioSmsRestClient.cs" />
     <Compile Include="SmsHelper\TwilioSmsRestClient.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\LeaveTypeViewModel.cs" />
     <Compile Include="ViewModels\TravelViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -871,14 +865,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705282212491_InitialCreate.resx">
-      <DependentUpon>201705282212491_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709172111108_Reset.resx">
+      <DependentUpon>201709172111108_Reset.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708212100566_Projects.resx">
-      <DependentUpon>201708212100566_Projects.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708212120546_project2.resx">
-      <DependentUpon>201708212120546_project2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709172233398_project.resx">
+      <DependentUpon>201709172233398_project.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

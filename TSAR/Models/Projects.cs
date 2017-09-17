@@ -24,7 +24,7 @@ namespace TSAR.Models
     // public List<Consultant> consultants { get; set; }
 
 
-    [Required]
+        [Required]
         [Display(Name = "Start Date")]
         [DateMustBeEqualOrGreaterThanCurrentDate]
         [DataType(DataType.Date)]

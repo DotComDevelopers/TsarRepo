@@ -20,7 +20,7 @@ namespace TSAR.Api
         // GET: api/MobileTravel
         public IQueryable<Travel> GetTravels()
         {
-            return db.Travels;
+            return db.Travels.Include(t=>t.Client);
         }
 
         // GET: api/MobileTravel/5
