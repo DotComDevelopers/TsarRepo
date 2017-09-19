@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using TSAR.Models;
 
 namespace TSAR.Controllers
@@ -17,7 +18,9 @@ namespace TSAR.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            var products = db.Products.Include(p => p.Client);
+            return View(products.ToList());
+            //return View(db.Products.ToList());
         }
 
         // GET: Products/Details/5
@@ -35,8 +38,9 @@ namespace TSAR.Controllers
             return View(product);
         }
 
+        [Authorize(Roles = "Admin, Consultant")]
         // GET: Products/Create
-        public ActionResult Create()
+        public ActionResult CreateProduct()
         {
             return View();
         }
@@ -46,7 +50,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,Price,Name,Email")] Product product)
+        public ActionResult CreateProduct([Bind(Include = "ProductId,ProductName,Description,Price,totalPrice,Selected,Id,ClientName,Email")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -58,8 +62,9 @@ namespace TSAR.Controllers
             return View(product);
         }
 
+        [Authorize(Roles = "Admin, Consultant")]
         // GET: Products/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult EditProduct(int? id)
         {
             if (id == null)
             {
@@ -78,7 +83,7 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Name,Email")] Product product)
+        public ActionResult EditProduct([Bind(Include = "ProductId,ProductName,Description,Price,totalPrice,Selected,Id,ClientName,Email")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -89,8 +94,9 @@ namespace TSAR.Controllers
             return View(product);
         }
 
+        [Authorize(Roles = "Admin, Consultant")]
         // GET: Products/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult DeleteProduct(int? id)
         {
             if (id == null)
             {
@@ -123,5 +129,94 @@ namespace TSAR.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [Authorize(Roles = "Client")]
+        // GET: Products/Create
+        public ActionResult GetQuotation()
+        {
+            var clientusername = User.Identity.GetUserName();
+            var cn = (from Client c in db.Clients
+                      where c.ClientName == clientusername
+                      select c.Id).FirstOrDefault();
+            ViewBag.ClientName = (from Client c in db.Clients
+                            where c.ClientName == clientusername
+                            select c.Id).FirstOrDefault();
+            ViewBag.Email = (from Client c in db.Clients
+                             where c.ClientName == clientusername
+                             select c.Email).FirstOrDefault();
+
+            return View();
+
+            //if (clientusername == null)
+            //{
+            //    return RedirectToAction( /*Register*/);
+            //}
+            //else
+            //{
+            //    return View(db.Products.Where(p => p.Id == cn).ToList()); //to change to Quotation View
+            //}
+        }
+
+        // POST: Products/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GetQuotation([Bind(Include = "ProductId,ProductName,Description,Price,totalPrice,Selected,Id,ClientName,Email")] Product product)
+        {
+
+            var clientusername = User.Identity.GetUserName();
+            var cn = (from Client c in db.Clients
+                      where c.ClientName == clientusername
+                      select c.Id).FirstOrDefault().ToString();
+            ViewBag.ClientName = (from Client c in db.Clients
+                                  where c.ClientName == clientusername
+                                  select c.Id).FirstOrDefault();
+            ViewBag.Email = (from Client c in db.Clients
+                             where c.ClientName == clientusername
+                             select c.Email).FirstOrDefault();
+            //double total, cost;
+            if (product.Selected)
+            {
+                //foreach (var product in Product)
+                //{
+                //    double total = product.Price++;
+                //    //double total = cost++;
+                //}
+                product.totalPrice = product.Price++;
+            }
+
+             if (clientusername == null)
+            {
+                return RedirectToAction("Register", "Account", new {area = ""});
+            }
+            //else
+            //{
+            //    product.Email = clientusername;
+            //}
+
+            if (ModelState.IsValid)
+            {
+                product.ClientName = cn;
+                product.Email = clientusername;
+                db.Products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            //return View(product); // To change to quotation view or pdf
+
+            return View(product); //to change to Quotation View 
+
+            //if (ModelState.IsValid)
+            //{
+            //    db.Products.Add(product);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            //return View(product);
+        }
+
     }
 }

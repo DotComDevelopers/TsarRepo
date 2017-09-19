@@ -27,7 +27,7 @@ namespace TSAR.Controllers
             return View(leaves.ToList());
         }
 
-        // GET: Leaves/Details/5
+        // GET: Leaves/Details/5    
         public ActionResult Details(int? id)
         {
             if (id == null)

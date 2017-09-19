@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Products</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateProduct")
 </p>
 <table class="table">
     <tr>
@@ -19,11 +19,14 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ClientName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -36,15 +39,18 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ClientName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
+            @Html.ActionLink("Edit", "EditProduct", new { id=item.ProductId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
+            @Html.ActionLink("Delete", "DeleteProduct", new { id=item.ProductId })
         </td>
     </tr>
 }
