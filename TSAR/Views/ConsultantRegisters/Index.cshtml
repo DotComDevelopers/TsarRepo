@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TSAR.Models.ConsultantRegister>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutOther.cshtml";
+}
+
+<h2>Clock-In History</h2>
+
+<p>
+    @if (ViewBag.HasSentRegister ==false)
+    {
+        <h2>@Html.ActionLink("Send Register", "Create")</h2>  
+
+    }
+    else
+    {
+        <h2>You have already sent the register for today</h2>
+    }
+   
+</p>
+<table class="table">
+    <tr>
+        <th style="color: white">
+            @Html.DisplayNameFor(model => model.Consultant.FirstName)
+        </th>
+        <th style="color: white">
+            @Html.DisplayNameFor(model => model.DateTime)
+        </th>
+        <th style="color: white">
+            @Html.DisplayNameFor(model => model.BarcodeScanned)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model) {
+             <tr>
+                 <td style="color: white">
+                     @Html.DisplayFor(modelItem => item.Consultant.FirstName)
+                 </td>
+                 <td style="color: white">
+                     @if (Model != null)
+                     {
+                         var x = item.DateTime.ToLongDateString();
+                         @Html.DisplayFor(xx => x)
+                     }
+                   
+                 </td>
+                 <td style="color: white">
+                     @Html.DisplayFor(modelItem => item.BarcodeScanned)
+                 </td>
+                 <td>
+      
+                 </td>
+             </tr>
+         }  
+    }
+    else
+    {
+        <tr>
+            <td>
+                <h2 style="color: white">Nothing to display</h2>
+            </td>
+        </tr>
+    }
+
+
+</table>

@@ -215,6 +215,9 @@
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Windows">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Windows Phone Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd</HintPath>
+    </Reference>
     <Reference Include="zxing, Version=0.16.2.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
       <HintPath>..\packages\ZXing.Net.0.16.2\lib\net45\zxing.dll</HintPath>
       <Private>True</Private>
@@ -261,6 +264,7 @@
     <Compile Include="Controllers\ClientPasswordsController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CommissionsController.cs" />
+    <Compile Include="Controllers\ConsultantRegistersController.cs" />
     <Compile Include="Controllers\ConsultantsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
@@ -300,6 +304,7 @@
     <Compile Include="Models\ClientPassword.cs" />
     <Compile Include="Models\Commission.cs" />
     <Compile Include="Models\Consultant.cs" />
+    <Compile Include="Models\ConsultantRegister.cs" />
     <Compile Include="Models\ContactEmailFormModel.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\File.cs" />
@@ -854,6 +859,11 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\ConsultantRegisters\Create.cshtml" />
+    <Content Include="Views\ConsultantRegisters\Delete.cshtml" />
+    <Content Include="Views\ConsultantRegisters\Details.cshtml" />
+    <Content Include="Views\ConsultantRegisters\Edit.cshtml" />
+    <Content Include="Views\ConsultantRegisters\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

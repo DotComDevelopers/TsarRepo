@@ -71,5 +71,7 @@ namespace TSAR.Models
         public System.Data.Entity.DbSet<TSAR.Models.Tasks> Tasks { get; set; }
 
         public System.Data.Entity.DbSet<TSAR.Models.Product> Products { get; set; }
-    }
+
+    public System.Data.Entity.DbSet<TSAR.Models.ConsultantRegister> ConsultantRegisters { get; set; }
+  }
 }
