@@ -17,5 +17,6 @@ namespace MobileTsar.Views
     public string Title { get; set; }
 
     public Type TargetType { get; set; }
+    public bool IsVisible { get; set; }
   }
 }

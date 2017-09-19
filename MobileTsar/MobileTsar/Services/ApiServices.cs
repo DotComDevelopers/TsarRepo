@@ -97,8 +97,7 @@ namespace MobileTsar.Services
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/mobiletimesheets", content);
-            //add success message here using response 
-
+            //add success message here using response             
         }
 
         public async Task<List<Client>> GetClientAsync(string accessToken)
@@ -137,7 +136,7 @@ namespace MobileTsar.Services
 
         }
 
-    //still working on this
+  
     //GET ClientPasswords
         public async Task<List<ClientPassword>> GetClientPasswordAsync(string accessToken)
     {
@@ -149,6 +148,22 @@ namespace MobileTsar.Services
       var clientPasswords = JsonConvert.DeserializeObject<List<ClientPassword>>(json);
       return clientPasswords;
     }
+
+      //Post ClientPasswords
+    public async Task PostClientPasswordsAsync(ClientPassword clientPassword, string accessToken)
+      {
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+        var json = JsonConvert.SerializeObject(clientPassword);
+        HttpContent content = new StringContent(json);
+        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/ClientPasswords", content);
+      
+        //add success message here using response 
+
+      }
 
     public async Task<List<Location>> GetLocationAsync(string accessToken)
             {
@@ -185,8 +200,21 @@ namespace MobileTsar.Services
 
             }
 
+      public async Task PostConsultantRegisterAsync(ConsultantRegister consultantRegister, string accessToken)
+      {
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-        }
+        var json = JsonConvert.SerializeObject(consultantRegister);
+        HttpContent content = new StringContent(json);
+        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/MobileConsultantRegisters", content);
+        //add success message here using response             
+      }
+
+
+  }
     }
 
 

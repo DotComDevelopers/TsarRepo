@@ -16,11 +16,8 @@ namespace MobileTsar.Views
     public AddNewTimesheetPage()
     {
       InitializeComponent();
-      GetClientName();
-      //GetConsultantName();
-      ClientPicker.Items.Add("Please Select a Client");
-      //ConsultantPicker.Items.Add("Please Select a Consultant");
-      //ConsultantPicker.SelectedIndex = 0;
+      GetClientName();    
+      ClientPicker.Items.Add("Please Select a Client");     
       ClientPicker.SelectedIndex = 0;
       GetUsername();
       GetConsultantId();

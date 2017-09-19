@@ -48,7 +48,7 @@ namespace TSAR.Controllers
         {
             var conUserName = User.Identity.GetUserName();
             ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName");
-            ViewBag.LeaveTypeId = new SelectList(db.LeaveTypes, "LeaveTypeId", "LeaveTypeName");
+           // ViewBag.LeaveTypeId = new SelectList(db.LeaveTypes, "LeaveTypeId", "LeaveTypeName");
             ViewBag.Gender = (from Consultant c in db.Consultants
                               where c.ConsultantUserName == conUserName
                               select c.Gender).FirstOrDefault();

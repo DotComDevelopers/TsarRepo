@@ -215,6 +215,17 @@
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Windows">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Windows Phone Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd</HintPath>
+    </Reference>
+    <Reference Include="zxing, Version=0.16.2.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.2\lib\net45\zxing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.2.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.2\lib\net45\zxing.presentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net.Http.Formatting">
@@ -236,6 +247,7 @@
   <ItemGroup>
     <Compile Include="Api\ClientPasswordsController.cs" />
     <Compile Include="Api\MobileClientsController.cs" />
+    <Compile Include="Api\MobileConsultantRegistersController.cs" />
     <Compile Include="Api\MobileConsultantsController.cs" />
     <Compile Include="Api\MobileLocationsController.cs" />
     <Compile Include="Api\MobileTimesheetsController.cs" />
@@ -253,6 +265,7 @@
     <Compile Include="Controllers\ClientPasswordsController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\CommissionsController.cs" />
+    <Compile Include="Controllers\ConsultantRegistersController.cs" />
     <Compile Include="Controllers\ConsultantsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
@@ -275,17 +288,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705282212491_InitialCreate.cs" />
-    <Compile Include="Migrations\201705282212491_InitialCreate.Designer.cs">
-      <DependentUpon>201705282212491_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201709172111108_Reset.cs" />
+    <Compile Include="Migrations\201709172111108_Reset.Designer.cs">
+      <DependentUpon>201709172111108_Reset.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708212100566_Projects.cs" />
-    <Compile Include="Migrations\201708212100566_Projects.Designer.cs">
-      <DependentUpon>201708212100566_Projects.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708212120546_project2.cs" />
-    <Compile Include="Migrations\201708212120546_project2.Designer.cs">
-      <DependentUpon>201708212120546_project2.cs</DependentUpon>
+    <Compile Include="Migrations\201709172233398_project.cs" />
+    <Compile Include="Migrations\201709172233398_project.Designer.cs">
+      <DependentUpon>201709172233398_project.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccomodationFiles.cs" />
@@ -296,12 +305,12 @@
     <Compile Include="Models\ClientPassword.cs" />
     <Compile Include="Models\Commission.cs" />
     <Compile Include="Models\Consultant.cs" />
+    <Compile Include="Models\ConsultantRegister.cs" />
     <Compile Include="Models\ContactEmailFormModel.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Leave.cs" />
-    <Compile Include="Models\LeaveType.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -328,7 +337,6 @@
     <Compile Include="SmsHelper\ITwilioSmsRestClient.cs" />
     <Compile Include="SmsHelper\TwilioSmsRestClient.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\LeaveTypeViewModel.cs" />
     <Compile Include="ViewModels\TravelViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -852,7 +860,11 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Products\Quotation.cshtml" />
+    <Content Include="Views\ConsultantRegisters\Create.cshtml" />
+    <Content Include="Views\ConsultantRegisters\Delete.cshtml" />
+    <Content Include="Views\ConsultantRegisters\Details.cshtml" />
+    <Content Include="Views\ConsultantRegisters\Edit.cshtml" />
+    <Content Include="Views\ConsultantRegisters\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -864,14 +876,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705282212491_InitialCreate.resx">
-      <DependentUpon>201705282212491_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709172111108_Reset.resx">
+      <DependentUpon>201709172111108_Reset.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708212100566_Projects.resx">
-      <DependentUpon>201708212100566_Projects.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708212120546_project2.resx">
-      <DependentUpon>201708212120546_project2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709172233398_project.resx">
+      <DependentUpon>201709172233398_project.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

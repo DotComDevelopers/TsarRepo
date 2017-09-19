@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileTsar.Views.NoInternetPage"
+             Title="No Internet">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="No internet connection" FontSize="30"></Label>
+            <Button Clicked="Button_OnClicked" Text="Try again"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

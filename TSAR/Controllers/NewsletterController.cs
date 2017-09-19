@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TSAR.Models;
+using ZXing;
 
 namespace TSAR.Controllers
 {
@@ -56,7 +57,9 @@ namespace TSAR.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Email")] Subscription subscription)
         {
-            if (ModelState.IsValid)
+      //BARCODE SCANNER CODE 
+      //Main();
+      if (ModelState.IsValid)
             {
                 db.Subscriptions.Add(subscription);
                 db.SaveChanges();
@@ -66,8 +69,23 @@ namespace TSAR.Controllers
             return View(subscription);
         }
 
-        // GET: Newsletter/Edit/5
-        public ActionResult Edit(int? id)
+    //BARCODE SCANNER CODE
+      //static void Main()
+      //{
+      //  // instantiate a writer object
+      //  var barcodeWriter = new BarcodeWriter();
+
+      //  // set the barcode format
+      //  barcodeWriter.Format = BarcodeFormat.QR_CODE;
+
+      //  // write text and generate a 2-D barcode as a bitmap
+      //  barcodeWriter
+      //    .Write("https://jeremylindsayni.wordpress.com/")
+      //    .Save(@"C:\Users\Devashen\Desktop\Random\generated.bmp");
+      //}
+
+    // GET: Newsletter/Edit/5
+    public ActionResult Edit(int? id)
         {
             if (id == null)
             {

@@ -54,7 +54,7 @@ namespace TSAR.Models
 
         public System.Data.Entity.DbSet<TSAR.Models.Event> Events { get; set; }
 
-        public System.Data.Entity.DbSet<TSAR.Models.LeaveType> LeaveTypes { get; set; }
+       // public System.Data.Entity.DbSet<TSAR.Models.LeaveType> LeaveTypes { get; set; }
 
         public System.Data.Entity.DbSet<TSAR.Models.Travel> Travels { get; set; }
 
@@ -71,5 +71,7 @@ namespace TSAR.Models
         public System.Data.Entity.DbSet<TSAR.Models.Tasks> Tasks { get; set; }
 
         public System.Data.Entity.DbSet<TSAR.Models.Product> Products { get; set; }
-    }
+
+    public System.Data.Entity.DbSet<TSAR.Models.ConsultantRegister> ConsultantRegisters { get; set; }
+  }
 }

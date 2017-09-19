@@ -20,7 +20,8 @@ namespace MobileTsar.Views
     {
       
       //await DisplayAlert("Success", "Successfully Registered", "Close");
-    
+    var c = new App();
+      c.CheckInternet();
         await Navigation.PushAsync(new LoginPage());
       
       

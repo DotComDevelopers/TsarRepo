@@ -224,6 +224,28 @@ namespace TSAR.Migrations
               Email2 = "info@foodpro.com",
             }
           );
+          //context.Leaves.AddOrUpdate(
+          //  c => c.LeaveId,
+          //  new Leave()
+          //  {
+          //    LeaveId = 1,
+          //    FirstName = "Suren",
+          //    ApprovedBy = "Admin",
+          //    IsConfirmed = true,
+          //    LeaveDecsription = "Sick Leave",
+          //    LeaveDate = DateTime.Now,
+          //    ReturnDate = DateTime.Now,
+          //    ConsultantNum = 2,
+          //    //LeaveTypeId = 1,
+          //    AccumulatedLeave = 24,
+          //    LeaveCount = 1,
+          //    AllocatedLeave = 24,
+          //    LeaveTypeName = "Sick",
+          //    SickBalance = 13,
+          //    AnnualBalance = 21,
+          //    FamilyResponsibilityBalance = 3
+
+          //  });
 
       //Create default Commission
       context.Commissions.AddOrUpdate(
@@ -255,7 +277,7 @@ namespace TSAR.Migrations
               Gender = "Male",
               LeaveBalance = 24,
               AnnualLeaveBalance = 21,
-              PaternityLeaveBalance = 120,
+              PaternityLeaveBalance = 22,
               SickLeaveBalance = 13,
               FamilyResponsibilityBalance = 3
             }
@@ -280,7 +302,8 @@ namespace TSAR.Migrations
                     ConsultantUserName = "Consultant",
                     Gender = "Female",
                     LeaveBalance = 24,
-                    AnnualLeaveBalance = 21,
+                  PaternityLeaveBalance = 12,
+                  AnnualLeaveBalance = 21,
                     MaternityLeaveBalance = 120,
                     SickLeaveBalance = 13,
                     FamilyResponsibilityBalance = 3
@@ -308,7 +331,7 @@ namespace TSAR.Migrations
                   Gender = "Male",
                   LeaveBalance = 24,
                   AnnualLeaveBalance = 21,
-                  PaternityLeaveBalance = 120,
+                  PaternityLeaveBalance = 14,
                   SickLeaveBalance = 13,
                   FamilyResponsibilityBalance = 3
               }
@@ -334,7 +357,7 @@ namespace TSAR.Migrations
               Gender = "Male",
               LeaveBalance = 24,
               AnnualLeaveBalance = 21,
-              PaternityLeaveBalance = 120,
+              PaternityLeaveBalance = 16,
               SickLeaveBalance = 13,
               FamilyResponsibilityBalance = 3
             }
@@ -360,7 +383,7 @@ namespace TSAR.Migrations
                   Gender = "Male",
                   LeaveBalance = 24,
                   AnnualLeaveBalance = 21,
-                  PaternityLeaveBalance = 120,
+                  PaternityLeaveBalance = 11,
                   SickLeaveBalance = 13,
                   FamilyResponsibilityBalance = 3
               }
@@ -441,101 +464,80 @@ namespace TSAR.Migrations
 
 
 
-            context.LeaveTypes.AddOrUpdate(
-                      c => c.LeaveTypeId,
-                      new LeaveType()
-                      {
-                          LeaveTypeId = 1,
-                          LeaveTypeName = "Annual"
+            //context.LeaveTypes.AddOrUpdate(
+            //          c => c.LeaveTypeId,
+            //          new LeaveType()
+            //          {
+            //              LeaveTypeId = 1,
+            //              LeaveTypeName = "Annual"
 
-                      });
+            //          });
 
-            context.LeaveTypes.AddOrUpdate(
-                c => c.LeaveTypeId,
-                new LeaveType()
-                {
-                    LeaveTypeId = 2,
-                    LeaveTypeName = "Maternity"
-                });
+            //context.LeaveTypes.AddOrUpdate(
+            //    c => c.LeaveTypeId,
+            //    new LeaveType()
+            //    {
+            //        LeaveTypeId = 2,
+            //        LeaveTypeName = "Maternity"
+            //    });
 
-            context.LeaveTypes.AddOrUpdate(
-                c => c.LeaveTypeId,
-                new LeaveType()
-                {
-                    LeaveTypeId = 3,
-                    LeaveTypeName = "Sick"
-                });
+            //context.LeaveTypes.AddOrUpdate(
+            //    c => c.LeaveTypeId,
+            //    new LeaveType()
+            //    {
+            //        LeaveTypeId = 3,
+            //        LeaveTypeName = "Sick"
+            //    });
 
-            context.LeaveTypes.AddOrUpdate(
-                c => c.LeaveTypeId,
-                new LeaveType()
-                {
-                    LeaveTypeId = 4,
-                    LeaveTypeName = "Family Resonsibilty"
-                });
+            //context.LeaveTypes.AddOrUpdate(
+            //    c => c.LeaveTypeId,
+            //    new LeaveType()
+            //    {
+            //        LeaveTypeId = 4,
+            //        LeaveTypeName = "Family Resonsibilty"
+            //    });
 
-            context.LeaveTypes.AddOrUpdate(
-                c => c.LeaveTypeId,
-                new LeaveType()
-                {
-                    LeaveTypeId = 5,
-                    LeaveTypeName = "Compassionate"
-                });
+            //context.LeaveTypes.AddOrUpdate(
+            //    c => c.LeaveTypeId,
+            //    new LeaveType()
+            //    {
+            //        LeaveTypeId = 5,
+            //        LeaveTypeName = "Compassionate"
+            //    });
 
-            context.LeaveTypes.AddOrUpdate(
-                c => c.LeaveTypeId,
-                new LeaveType()
-                {
-                    LeaveTypeId = 6,
-                    LeaveTypeName = "Paternity"
-                });
+            //context.LeaveTypes.AddOrUpdate(
+            //    c => c.LeaveTypeId,
+            //    new LeaveType()
+            //    {
+            //        LeaveTypeId = 6,
+            //        LeaveTypeName = "Paternity"
+            //    });
 
-            context.LeaveTypes.AddOrUpdate(
-                c => c.LeaveTypeId,
-                new LeaveType()
-                {
-                    LeaveTypeId = 7,
-                    LeaveTypeName = "Disability"
-                });
+            //context.LeaveTypes.AddOrUpdate(
+            //    c => c.LeaveTypeId,
+            //    new LeaveType()
+            //    {
+            //        LeaveTypeId = 7,
+            //        LeaveTypeName = "Disability"
+            //    });
 
-            context.LeaveTypes.AddOrUpdate(
-                c => c.LeaveTypeId,
-                new LeaveType()
-                {
-                    LeaveTypeId = 8,
-                    LeaveTypeName = "Study"
-                });
+            //context.LeaveTypes.AddOrUpdate(
+            //    c => c.LeaveTypeId,
+            //    new LeaveType()
+            //    {
+            //        LeaveTypeId = 8,
+            //        LeaveTypeName = "Study"
+            //    });
 
-            context.LeaveTypes.AddOrUpdate(
-                c => c.LeaveTypeId,
-                new LeaveType()
-                {
-                    LeaveTypeId = 9,
-                    LeaveTypeName = "Religious"
-                });
+            //context.LeaveTypes.AddOrUpdate(
+            //    c => c.LeaveTypeId,
+            //    new LeaveType()
+            //    {
+            //        LeaveTypeId = 9,
+            //        LeaveTypeName = "Religious"
+            //    });
 
-            context.Leaves.AddOrUpdate(
-       c => c.LeaveId,
-       new Leave()
-       {
-           LeaveId = 1,
-           FirstName = "Suren",
-           ApprovedBy = "Admin",
-           IsConfirmed = true,
-           LeaveDecsription = "Sick Leave",
-           LeaveDate = DateTime.Now,
-           ReturnDate = DateTime.Now,
-           ConsultantNum = 2,
-           //LeaveTypeId = 1,
-           AccumulatedLeave = 24,
-           LeaveCount = 1,
-           AllocatedLeave = 24,
-           LeaveTypeName = "Sick",
-           SickBalance = 13,
-           AnnualBalance = 21,
-           FamilyResponsibilityBalance = 3
-
-       });
+        
 
             context.Tickets.AddOrUpdate(
                 t => t.ID,

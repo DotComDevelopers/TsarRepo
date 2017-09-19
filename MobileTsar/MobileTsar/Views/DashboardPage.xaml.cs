@@ -18,7 +18,7 @@ namespace MobileTsar.Views
       MasterPage.ListView.ItemSelected += ListView_ItemSelected;
     }
 
-    private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    public void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
       var item = e.SelectedItem as DashboardPageMenuItem;
       if (item == null)

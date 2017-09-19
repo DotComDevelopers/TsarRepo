@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using MobileTsar.Helpers;
+using MobileTsar.Models;
 using MobileTsar.Services;
 using Plugin.Fingerprint;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace MobileTsar.Views
@@ -20,8 +22,8 @@ namespace MobileTsar.Views
       InitializeComponent();
       VerifyUser();
       GetClientPasswords();
-      ClientPicker.Items.Add("Please Select a Client");
-      ClientPicker.SelectedIndex = 0;
+      ClientPicker.Items.Add("All Clients");
+      ClientPicker.SelectedIndex = 0;   
       GetClientName();
     }
 
@@ -30,7 +32,7 @@ namespace MobileTsar.Views
       var result = await CrossFingerprint.Current.IsAvailableAsync(true);
       if (result)
       {
-        var auth = await CrossFingerprint.Current.AuthenticateAsync("Prove you have fingers",CancellationToken.None);
+        var auth = await CrossFingerprint.Current.AuthenticateAsync("Prove you have fingers", CancellationToken.None);
         if (auth.Authenticated)
         {
           StackLayout.IsVisible = true;
@@ -44,6 +46,7 @@ namespace MobileTsar.Views
 
     private async void GetClientPasswords()
     {
+      
       var api = new ApiServices();
       var token = Settings.AccessToken;
       var clientpasswordslist = await api.GetClientPasswordAsync(token);
@@ -66,7 +69,7 @@ namespace MobileTsar.Views
 
     private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-      
+
     }
 
     private async void ClientPicker_OnSelectedIndexChanged(object sender, EventArgs e)
@@ -76,14 +79,35 @@ namespace MobileTsar.Views
       var api = new ApiServices();
       var token = Settings.AccessToken;
       var clientpasswordslist = await api.GetClientPasswordAsync(token);
-      if (ClientPicker.SelectedIndex==0)
+      if (ClientPicker.SelectedIndex == 0)
       {
         PasswordsListView.ItemsSource = clientpasswordslist;
       }
-      var client = clientpasswordslist.Where(t => t.id == ClientPicker.SelectedIndex).Select(t => t.Client).ToList();
-      PasswordsListView.ItemsSource = client;
-      
+      else
+      {
+        var newclientpasswordslist = await api.GetClientPasswordAsync(token);
+        var client = newclientpasswordslist.Where
+          (t => t.id == ClientPicker.SelectedIndex).Select(t => t.id).FirstOrDefault();
+
+        var cv = newclientpasswordslist.Where(t => t.id == client);
+        PasswordsListView.ItemsSource = cv;
+      }
+  
+
+    }    
+    private void NewPassToolbarItem_OnClicked(object sender, EventArgs e)
+    {
+      Navigation.PushAsync(new NewClientPasswordPage());
     }
 
+    private void PasswordsListView_OnRefreshing(object sender, EventArgs e)
+    {
+      ClientPicker.Items.Clear();  
+      GetClientPasswords();
+      GetClientName();
+      ClientPicker.Items.Add("All Clients");
+      ClientPicker.SelectedIndex = 0;
+      PasswordsListView.EndRefresh();
+    }
   }
 }
