@@ -81,7 +81,7 @@ namespace TSAR.Controllers
       var stream = new MemoryStream();
    
       // write text and generate a 2-D barcode as a bitmap
-      barcodeWriter.Write($"{System.DateTime.Today:D}").Save(stream, ImageFormat.Jpeg);
+      barcodeWriter.Write($"{System.DateTime.Today:d}").Save(stream, ImageFormat.Jpeg);
       stream.Position = 0;
       MailMessage mail = new MailMessage();
       mail.From = new MailAddress("dotcomdevelopers19@gmail.com");

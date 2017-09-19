@@ -247,6 +247,7 @@
   <ItemGroup>
     <Compile Include="Api\ClientPasswordsController.cs" />
     <Compile Include="Api\MobileClientsController.cs" />
+    <Compile Include="Api\MobileConsultantRegistersController.cs" />
     <Compile Include="Api\MobileConsultantsController.cs" />
     <Compile Include="Api\MobileLocationsController.cs" />
     <Compile Include="Api\MobileTimesheetsController.cs" />

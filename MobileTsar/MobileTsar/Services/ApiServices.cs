@@ -97,8 +97,7 @@ namespace MobileTsar.Services
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/mobiletimesheets", content);
-            //add success message here using response 
-            
+            //add success message here using response             
         }
 
         public async Task<List<Client>> GetClientAsync(string accessToken)
@@ -201,8 +200,21 @@ namespace MobileTsar.Services
 
             }
 
+      public async Task PostConsultantRegisterAsync(ConsultantRegister consultantRegister, string accessToken)
+      {
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-        }
+        var json = JsonConvert.SerializeObject(consultantRegister);
+        HttpContent content = new StringContent(json);
+        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/MobileConsultantRegisters", content);
+        //add success message here using response             
+      }
+
+
+  }
     }
 
 
