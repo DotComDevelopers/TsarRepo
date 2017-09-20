@@ -56,7 +56,7 @@ namespace MobileTsar
     protected override void OnResume()
     {
       // Handle when your app resumes
-      CheckInternet();
+      //CheckInternet();
     }
 
     public bool DoIHaveInternet()
@@ -84,8 +84,8 @@ namespace MobileTsar
     {
       CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
       {
-        var page = Current.MainPage;
-        if (args.IsConnected == true)
+        
+        if (args.IsConnected)
         {  
           SetMainPage();          
         }

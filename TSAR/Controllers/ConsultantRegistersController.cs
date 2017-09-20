@@ -79,9 +79,15 @@ namespace TSAR.Controllers
         Height = 250,Width = 250
       };
       var stream = new MemoryStream();
-   
+      //var today = DateTime.Now.GetDateTimeFormats()[3];
+      //var today2 = DateTime.Now.GetDateTimeFormats();
+      var day = DateTime.Now.Day.ToString();
+      var month = DateTime.Now.Month;
+      var year = DateTime.Now.Year.ToString();
+      var jointoday = day + "-" + month + "-" + year;
+    
       // write text and generate a 2-D barcode as a bitmap
-      barcodeWriter.Write($"{System.DateTime.Today:d}").Save(stream, ImageFormat.Jpeg);
+      barcodeWriter.Write($"{jointoday}").Save(stream, ImageFormat.Jpeg);
       stream.Position = 0;
       MailMessage mail = new MailMessage();
       mail.From = new MailAddress("dotcomdevelopers19@gmail.com");
@@ -110,7 +116,7 @@ namespace TSAR.Controllers
       {
         mail.To.Add(email);
       }     
-      mail.Subject = $"Clock in for {System.DateTime.Today:D}";
+      mail.Subject = $"Clock in for {jointoday}";
 
       //set the SMTP info
       System.Net.NetworkCredential cred = new System.Net.NetworkCredential("dotcomdevelopers19@gmail.com", "P@ssword0123");

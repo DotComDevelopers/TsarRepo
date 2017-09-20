@@ -20,7 +20,8 @@ namespace TSAR.Api
         // GET: api/MobileConsultantRegisters
         public IQueryable<ConsultantRegister> GetConsultantRegisters()
         {
-            return db.ConsultantRegisters.Include(t=>t.Consultant);
+
+            return db.ConsultantRegisters.Include(t=>t.Consultant.Commission);
         }
 
         // GET: api/MobileConsultantRegisters/5

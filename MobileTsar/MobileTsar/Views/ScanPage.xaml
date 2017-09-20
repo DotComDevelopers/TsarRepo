@@ -4,10 +4,11 @@
              x:Class="MobileTsar.Views.ScanPage"
              Title="Mobile Scanner">
     <ContentPage.Content>
-        <StackLayout Padding="20,10">
-            <Label Text="Click below to scan a barcode" FontSize="25"></Label>
-            <Button x:Name="EncodeButton" Text="Encode" Clicked="EncodeButton_OnClicked"></Button>
-         <Button x:Name="ScanButton" Text="Scan Now" Clicked="ScanButton_OnClicked"></Button>
+        <StackLayout Padding="20,10" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Click to scan the barcode that was sent to you" FontSize="24"></Label>
+            <!--<Button x:Name="EncodeButton" Text="Encode" Clicked="EncodeButton_OnClicked"></Button>-->
+            <Button x:Name="ScanButton" Text="Scan Barcode" Clicked="ScanButton_OnClicked"></Button>
+            <ActivityIndicator x:Name="ActivityIndicator" IsVisible="False" IsRunning="False" Color="Red"></ActivityIndicator>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

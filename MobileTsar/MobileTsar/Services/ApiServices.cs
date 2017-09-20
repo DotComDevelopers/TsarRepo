@@ -213,6 +213,16 @@ namespace MobileTsar.Services
         //add success message here using response             
       }
 
+      public async Task<List<ConsultantRegister>> GetConsultantRegisterAsync(string accessToken)
+      {
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/MobileConsultantRegisters");
+
+        var consultantRegisters = JsonConvert.DeserializeObject<List<ConsultantRegister>>(json);
+        return consultantRegisters;
+      }
+
 
   }
     }
