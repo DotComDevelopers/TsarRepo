@@ -8,6 +8,12 @@
             <Label Text="Click to scan the barcode that was sent to you" FontSize="24"></Label>
             <!--<Button x:Name="EncodeButton" Text="Encode" Clicked="EncodeButton_OnClicked"></Button>-->
             <Button x:Name="ScanButton" Text="Scan Barcode" Clicked="ScanButton_OnClicked"></Button>
+            <Button x:Name="LocationButton" Text="GPS" Clicked="LocationButton_OnClicked"></Button>
+
+            <Label x:Name="LabelLAt"></Label>
+            <Label x:Name="LabelLong"></Label>
+            <Label x:Name="LabelAddress"></Label>
+            <Label x:Name="ReverseGeocodedOutputLabel"></Label>
             <ActivityIndicator x:Name="ActivityIndicator" IsVisible="False" IsRunning="False" Color="Red"></ActivityIndicator>
         </StackLayout>
     </ContentPage.Content>

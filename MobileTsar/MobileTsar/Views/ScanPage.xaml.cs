@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,10 @@ using MobileTsar.Helpers;
 using MobileTsar.Models;
 using MobileTsar.Services;
 using MobileTsar.ViewModels;
+using Plugin.Geolocator;
+using Plugin.Geolocator.Abstractions;
 using Xamarin.Forms;
+//using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
 
@@ -18,8 +22,8 @@ namespace MobileTsar.Views
   {
     public ScanPage()
     {
-      InitializeComponent();     
-    
+      InitializeComponent();
+
     }
     public async void GetConsultantId()
     {
@@ -65,14 +69,12 @@ namespace MobileTsar.Views
       var todaymonth = DateTime.Now.Month;
       var todayyear = DateTime.Now.Year.ToString();
       var todayjointoday = todayday + "-" + todaymonth + "-" + todayyear;
-     // var today = DateTime.Now.GetDateTimeFormats()[5];
-     // var formts = DateTime.Now.GetDateTimeFormats();
       var valid = datestocheck.Contains(todayjointoday);
       if (valid==false)
       {
         scanned=false;
       }
-     if (valid)
+      if (valid)
       {
         scanned = true;
       }
@@ -99,7 +101,7 @@ namespace MobileTsar.Views
             vm.ConsultantNum = consultantNum;
             vm.AddCommand.Execute(vm);
 
-            //var s = result.ToString();
+         
             DisplayAlert("Thank You", "Successfully clocked in", "OK");
          
           }
@@ -123,7 +125,6 @@ namespace MobileTsar.Views
       await Navigation.PushAsync(scanpage);
     }
 
-
     //below code for encoding a new barcode
 
     //private async void EncodeButton_OnClicked(object sender, EventArgs e)
@@ -139,12 +140,59 @@ namespace MobileTsar.Views
     //  barcode.BarcodeOptions.Height = 300;
     //  barcode.BarcodeOptions.Margin = 10;
     //  var value =barcode.BarcodeValue = $"{System.DateTime.Now}";
-     
+
 
     //  Content = barcode;
 
     //  await DisplayAlert("Scanned", $"{value}", "OK");
     //}
 
+    private async void LocationButton_OnClicked(object sender, EventArgs e)
+    {
+   
+      var locator = CrossGeolocator.Current;
+      //locator.DesiredAccuracy = 500;
+      var position = await locator.GetPositionAsync(TimeSpan.FromMilliseconds(10000));      
+      try
+      {
+        var addresses = await locator.GetAddressesForPositionAsync(position);
+        var address = addresses.FirstOrDefault();
+
+        if (address == null)
+        {
+          //Console.WriteLine("No address found for position.");
+          await DisplayAlert("Alert", $"No address found for position.", "OK");
+        }
+        else
+        {
+          ReverseGeocodedOutputLabel.Text =$"Addresss:{address.SubThoroughfare} {address.Thoroughfare} {address.Locality}";
+          if (ReverseGeocodedOutputLabel.Text == "Addresss:41 RICHEFOND CIRCLE")
+          {
+            await DisplayAlert("Alert", $"You're at the office", "OK");
+          }
+          if (ReverseGeocodedOutputLabel.Text == "Addresss:11 Nollsworth Crescent Umhlanga")
+          {
+            await DisplayAlert("Alert", $"You're at the  old office", "OK");
+          }
+          if (ReverseGeocodedOutputLabel.Text == "Addresss:69 Aurora Road Bluff")
+          {
+            await DisplayAlert("Alert", $"You're at Home", "OK");
+          }
+          else
+          {
+            await DisplayAlert($"Your Location",
+              $"Current Location:{address.SubThoroughfare} {address.Thoroughfare} {address.Locality} {address.CountryName}",
+              "OK");
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        await DisplayAlert("Alert", $"Unable to get address: {ex}" , "OK");
+        //Debug.WriteLine("Unable to get address: " + ex);
+      }
+    }
+
+    
   }
 }
