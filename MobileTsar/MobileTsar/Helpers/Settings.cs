@@ -91,6 +91,21 @@ namespace MobileTsar.Helpers
 	    }
 	  }
 
+	  public static string VaultPassword
+	  {
+	    get
+	    {
+	      if (CrossSettings.IsSupported)
+	        return AppSettings.GetValueOrDefault("VaultPassword", "");
+
+	      return null; // or your custom implementation 
+	    }
+	    set
+	    {
+	      AppSettings.AddOrUpdateValue("VaultPassword", value);
+	    }
+	  }
+
     //public static string AccessToken
     //{
     //  get
