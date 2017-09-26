@@ -241,6 +241,12 @@
   <ItemGroup>
     <BundleResource Include="Resources\TransTusks.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\geo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HomeElephant.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -2,18 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileTsar.Views.DashboardPageMaster"
-             Title="Master">
-  <StackLayout>
-    <ListView x:Name="MenuItemsListView"
+             Title="Master"
+            BackgroundColor="Transparent"
+             BackgroundImage="geo.jpg"             
+          >
+  
+    <StackLayout>
+        <ListView x:Name="MenuItemsListView"
               SeparatorVisibility="None"
               HasUnevenRows="true"
-              ItemsSource="{Binding MenuItems}" >
+              ItemsSource="{Binding MenuItems}" 
+                  BackgroundColor="Transparent"
+                  >
       <ListView.Header>
-        <Grid BackgroundColor="#03A9F4">
+          
+        <Grid BackgroundColor="Transparent">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="10"/>              
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -24,8 +31,10 @@
           <Label
               Grid.Column="1"
               Grid.Row="2"
-              Text="My Dashboard"
+              Text="MY DASHBOARD"
+              FontSize="35"             
               Style="{DynamicResource SubtitleStyle}"/>
+                   
         </Grid>
       </ListView.Header>
       <ListView.ItemTemplate>
