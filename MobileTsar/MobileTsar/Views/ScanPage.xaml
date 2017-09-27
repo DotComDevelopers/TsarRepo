@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileTsar.Views.ScanPage"
-             Title="Mobile Scanner">
+             Title="Mobile Scanner"
+             BackgroundImage="GeoBak.jpg"
+             BackgroundColor="Transparent">
     <ContentPage.Content>
         <StackLayout Padding="20,10" HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="Click to scan the barcode that was sent to you" FontSize="24"></Label>

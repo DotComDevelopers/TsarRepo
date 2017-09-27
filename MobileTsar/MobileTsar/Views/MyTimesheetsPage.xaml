@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileTsar.Views.MyTimesheetsPage"
             
-             Title="My Timesheets"             
+             Title="My Timesheets"   
+             BackgroundImage="GeoBak.jpg"
+             BackgroundColor="Transparent"
              >
     <StackLayout Padding="20,10">
         <ActivityIndicator x:Name="LoadingActivityIndicator"></ActivityIndicator>

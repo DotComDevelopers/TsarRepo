@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
              x:Class="MobileTsar.Views.TimesheetsPage"
-             Title="Timesheets">
+             Title="Timesheets"
+             BackgroundImage="GeoBak.jpg"
+             BackgroundColor="Transparent">
 
     <ContentPage.BindingContext>
         <viewModels:TimesheetsViewModel>
@@ -11,6 +13,7 @@
         </viewModels:TimesheetsViewModel>
     </ContentPage.BindingContext>
 
+    <ScrollView>
     <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
         <!--<Entry Text="{Binding AccessToken}"></Entry>-->
         <Label x:Name="UsernameLabel" FontSize="40" HorizontalTextAlignment="Center"></Label>
@@ -21,8 +24,8 @@
         <ListView x:Name="TimesheetListView"   ItemsSource="{Binding Timesheets}" HasUnevenRows="True" ItemTapped="SignPage">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="20,10">
+                        <ViewCell>
+                            <StackLayout>
                             <Label x:Name="msg"  Text="Tap here to sign >" HorizontalTextAlignment="End"></Label>
                             <Label FontSize="25" Text="Timesheet Id:" TextColor="DeepSkyBlue"></Label>
                             <Label FontSize="25"  Text="{Binding TimesheetId}"></Label>
@@ -58,5 +61,5 @@
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
-
+    </ScrollView>
 </ContentPage>
