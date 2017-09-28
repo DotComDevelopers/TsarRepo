@@ -166,7 +166,7 @@ namespace MobileTsar.Views
         else
         {
           ReverseGeocodedOutputLabel.Text =$"Addresss:{address.SubThoroughfare} {address.Thoroughfare} {address.Locality}";
-          if (ReverseGeocodedOutputLabel.Text == "Addresss:41 RICHEFOND CIRCLE")
+          if (ReverseGeocodedOutputLabel.Text == "Addresss:41 Richefond Circle Umhlanga")
           {
             await DisplayAlert("Alert", $"You're at the office", "OK");
           }

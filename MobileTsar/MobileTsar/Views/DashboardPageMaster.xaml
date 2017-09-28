@@ -4,15 +4,23 @@
              x:Class="MobileTsar.Views.DashboardPageMaster"
              Title="Master"
             BackgroundColor="Transparent"
-             BackgroundImage="geo.jpg"             
+             BackgroundImage="geo.jpg"          
           >
-  
-    <StackLayout>
+    
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+
+        <Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+               Source="geo.jpg" Aspect="AspectFill"/>
+        <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
         <ListView x:Name="MenuItemsListView"
               SeparatorVisibility="None"
               HasUnevenRows="true"
               ItemsSource="{Binding MenuItems}" 
-                  BackgroundColor="Transparent"
+                  BackgroundColor="Transparent" 
+                  AbsoluteLayout.LayoutFlags="All"
+                  AbsoluteLayout.LayoutBounds="0,0,1,1"  
+                  
                   >
       <ListView.Header>
           
@@ -32,6 +40,7 @@
               Grid.Column="1"
               Grid.Row="2"
               Text="MY DASHBOARD"
+              TextColor="White"
               FontSize="35"             
               Style="{DynamicResource SubtitleStyle}"/>
                    
@@ -43,7 +52,8 @@
             <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
               <Label VerticalOptions="FillAndExpand" 
                     VerticalTextAlignment="Center" 
-                    Text="{Binding Title}" 
+                    Text="{Binding Title}"
+                     TextColor="White"
                     FontSize="24" IsVisible="{Binding IsVisible}"/>
             </StackLayout>
           </ViewCell>
@@ -51,4 +61,5 @@
       </ListView.ItemTemplate>
     </ListView>
   </StackLayout>
+    </AbsoluteLayout>
 </ContentPage>
