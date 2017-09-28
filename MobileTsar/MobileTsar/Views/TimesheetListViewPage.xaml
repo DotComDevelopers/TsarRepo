@@ -20,11 +20,11 @@
                     <ViewCell >
                         <StackLayout Padding="20,10">
                             <Label x:Name="msg"  Text="Tap here to sign " HorizontalTextAlignment="End"></Label>
-                            <Label Text="Timesheet Id:" TextColor="DeepSkyBlue" FontSize="20"></Label>
+                            <Label Text="Timesheet Id:" TextColor="White" FontSize="20"></Label>
                             <Label Text="{Binding TimesheetId}" FontSize="10"></Label>
-                            <Label Text="Client Id:" TextColor="DeepSkyBlue" FontSize="20"></Label>
+                            <Label Text="Client Id:" TextColor="White" FontSize="20"></Label>
                             <Label Text="{Binding Id}" FontSize="10"></Label>
-                            <Label Text="Client:" TextColor="DeepSkyBlue" FontSize="20"></Label>
+                            <Label Text="Client:" TextColor="White" FontSize="20"></Label>
                             <Label Text="{Binding Client}" FontSize="10"></Label>
                         </StackLayout>
                     </ViewCell>

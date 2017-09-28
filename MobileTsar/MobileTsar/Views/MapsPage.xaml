@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileTsar.Views.MapsPage"
+             BackgroundImage="GeoBak.jpg"
+             BackgroundColor="Transparent"
              >
   <ScrollView>
-      <StackLayout>
-        <Label Text="Client:" TextColor="DeepSkyBlue"></Label>
+      <StackLayout Padding="20,10">
+            <Label Text="Client:" TextColor="White"></Label>
         <Picker x:Name="ClientPicker" Title="Client Name" SelectedIndexChanged="ClientPicker_OnSelectedIndexChanged"></Picker>
        
-        <Label Text="Client Address:" TextColor="DeepSkyBlue"></Label>
+        <Label Text="Client Address:" TextColor="White"></Label>
         <Picker x:Name="AddressPicker" SelectedIndexChanged="AddressPicker_OnSelectedIndexChanged"></Picker>
       
           <Button x:Name="btnNavigate" Text="Navigate to Client" Clicked="BtnNavigate_OnClicked" IsVisible="False"></Button>

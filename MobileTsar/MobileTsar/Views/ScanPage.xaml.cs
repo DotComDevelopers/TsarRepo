@@ -23,8 +23,57 @@ namespace MobileTsar.Views
     public ScanPage()
     {
       InitializeComponent();
+      CheckLocation();
 
     }
+
+    private async void CheckLocation()
+    {
+      var locator = CrossGeolocator.Current;
+      //locator.DesiredAccuracy = 500;
+      var position = await locator.GetPositionAsync(TimeSpan.FromMilliseconds(10000));
+      try
+      {
+        var addresses = await locator.GetAddressesForPositionAsync(position);
+        var address = addresses.FirstOrDefault();
+
+        if (address == null)
+        {
+          //Console.WriteLine("No address found for position.");
+          await DisplayAlert("Alert", $"No address found for position.", "OK");
+        }
+        else
+        {
+          ReverseGeocodedOutputLabel.Text = $"Addresss:{address.SubThoroughfare} {address.Thoroughfare} {address.Locality}";
+          if (ReverseGeocodedOutputLabel.Text == "Addresss:41 Richefond Circle Umhlanga")
+          {
+            await DisplayAlert("Alert", $"You're at the office", "OK");
+          }
+          else
+          if (ReverseGeocodedOutputLabel.Text == "Addresss:11 Nollsworth Crescent Umhlanga")
+          {
+            await DisplayAlert("Alert", $"You're at the  old office", "OK");
+          }
+          else
+          if (ReverseGeocodedOutputLabel.Text == "Addresss:69 Aurora Road Bluff")
+          {
+            await DisplayAlert("Alert", $"You're at Home", "OK");
+          }
+          else
+          {
+            await DisplayAlert($"Your Location",
+              $"Current Location:{address.SubThoroughfare} {address.Thoroughfare} {address.Locality} {address.CountryName}",
+              "OK");
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        await DisplayAlert("Alert", $"Unable to get address: {ex}", "OK");
+        //Debug.WriteLine("Unable to get address: " + ex);
+      }
+    }
+
     public async void GetConsultantId()
     {
       var api = new ApiServices();
@@ -53,76 +102,89 @@ namespace MobileTsar.Views
       var consultantsRegisters = register.Where(t => t.ConsultantNum == consultantNum).ToList();
       var condates = consultantsRegisters.Select(t => t.DateTime.Date);
  
-
-      var datestocheck=new List<string>();
-
-      foreach (var c in condates)
-      {
-        var d = c.Day + "-" + c.Month + "-" + c.Year;
-       datestocheck.Add(d);
-      }
-      ActivityIndicator.IsRunning = false;
-      ActivityIndicator.IsVisible = false;
-      var scanned = true;
-
-      var todayday = DateTime.Now.Day.ToString();
-      var todaymonth = DateTime.Now.Month;
-      var todayyear = DateTime.Now.Year.ToString();
-      var todayjointoday = todayday + "-" + todaymonth + "-" + todayyear;
-      var valid = datestocheck.Contains(todayjointoday);
-      if (valid==false)
-      {
-        scanned=false;
-      }
-      if (valid)
-      {
-        scanned = true;
-      }
   
-      scanpage.OnScanResult += (result) =>
-      {
-        //Stop scanning
-        scanpage.IsScanning = false;
+        var datestocheck = new List<string>();
 
-        //Pop the Page andshow the result
-        Device.BeginInvokeOnMainThread(() =>
+        foreach (var c in condates)
         {
-          var day = DateTime.Now.Day.ToString();
-          var month = DateTime.Now.Month;
-          var year = DateTime.Now.Year.ToString();
-          var jointoday = day + "-" + month + "-" + year;
-          Navigation.PopAsync();
-          var vm = new AddNewConsultantRegisterViewModel();
-          var scanneddate = result.ToString();
-          if (scanneddate == jointoday && scanned == false)
-          {
-            vm.DateTime=DateTime.Now;
-            vm.BarcodeScanned = true;
-            vm.ConsultantNum = consultantNum;
-            vm.AddCommand.Execute(vm);
+          var d = c.Day + "-" + c.Month + "-" + c.Year;
+          datestocheck.Add(d);
+        }
+        ActivityIndicator.IsRunning = false;
+        ActivityIndicator.IsVisible = false;
+        var scanned = true;
 
-         
-            DisplayAlert("Thank You", "Successfully clocked in", "OK");
-         
-          }
-            else          
+        var todayday = DateTime.Now.Day.ToString();
+        var todaymonth = DateTime.Now.Month;
+        var todayyear = DateTime.Now.Year.ToString();
+        var todayjointoday = todayday + "-" + todaymonth + "-" + todayyear;
+        var valid = datestocheck.Contains(todayjointoday);
+        if (valid == false)
+        {
+          scanned = false;
+        }
+        else
+        {
+          scanned = true;
+        }
+
+      if (scanned==true)
+      {
+        await DisplayAlert("Oops", $"You already clocked in for today", "OK");
+        Application.Current.MainPage = new DashboardPage();
+      }
+      else
+    if (ReverseGeocodedOutputLabel.Text != "Addresss:41 Richefond Circle Umhlanga")   
+      {
+        await DisplayAlert("Sorry", "You need to be at the office", "Ok");
+        Application.Current.MainPage = new DashboardPage();
+      }
+      else      
+      // check if user is at office
+      if (ReverseGeocodedOutputLabel.Text == "Addresss:41 Richefond Circle Umhlanga" && scanned == false)
+      {
+        scanpage.OnScanResult += (result) =>
+        {
+          //Stop scanning
+          scanpage.IsScanning = false;
+
+          //Pop the Page andshow the result
+          Device.BeginInvokeOnMainThread(() =>
+          {
+            var day = DateTime.Now.Day.ToString();
+            var month = DateTime.Now.Month;
+            var year = DateTime.Now.Year.ToString();
+            var jointoday = day + "-" + month + "-" + year;
+            Navigation.PopAsync();
+            var vm = new AddNewConsultantRegisterViewModel();
+            var scanneddate = result.ToString();
+            if (scanneddate == jointoday && scanned == false)
+            {
+              vm.DateTime = DateTime.Now;
+              vm.BarcodeScanned = true;
+              vm.ConsultantNum = consultantNum;
+              vm.AddCommand.Execute(vm);
+
+
+              DisplayAlert("Thank You", "Successfully clocked in", "OK");
+              Application.Current.MainPage = new DashboardPage();
+            }
+            else
             if (scanned)
             {
               DisplayAlert("Oops", $"You already scanned this barcode", "OK");
             }
-            else           
+            else
             {
               DisplayAlert("Invalid Barcode", $"The barcode you scanned was {result.Text}", "OK");
             }
-      
-             
-          
-          
-         
-        });
-      };
-      //Navigate to scanner page
-      await Navigation.PushAsync(scanpage);
+
+          });
+        };
+        //Navigate to scanner page
+        await Navigation.PushAsync(scanpage);
+      }
+
     }
 
     //below code for encoding a new barcode
@@ -192,6 +254,7 @@ namespace MobileTsar.Views
         //Debug.WriteLine("Unable to get address: " + ex);
       }
     }
+    
 
     
   }
