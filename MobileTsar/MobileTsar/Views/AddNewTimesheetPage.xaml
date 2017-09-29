@@ -33,8 +33,8 @@
             <Picker x:Name="AddressPicker" SelectedIndexChanged="AddressPicker_OnSelectedIndexChanged"></Picker>
             <Entry x:Name="AddressLabel" Text="{Binding MClientAddress}" IsVisible="False"></Entry>
             <Label x:Name="AddressLabel1" Text="Client Address:" TextColor="White"></Label>
-            <Button x:Name="ValidateBtn" Text="Validate" Clicked="ValidateBtn_OnClicked"></Button>
-            <Button x:Name="FinishBtn" Command="{Binding AddCommand}" Text="Finish" Clicked="Button_OnClicked" IsVisible="False" ></Button>
+            <Button BackgroundColor="#4D6098" TextColor="White" x:Name="ValidateBtn" Text="Validate" Clicked="ValidateBtn_OnClicked"></Button>
+            <Button BackgroundColor="#4D6098" TextColor="White" x:Name="FinishBtn" Command="{Binding AddCommand}" Text="Finish" Clicked="Button_OnClicked" IsVisible="False" ></Button>
 
     </StackLayout>
 </ScrollView>
