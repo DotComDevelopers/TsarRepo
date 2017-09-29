@@ -46,6 +46,8 @@ namespace TSAR.Models
 
         [Display(Name = "Consultant Name")]
         public int ConsultantNum { get; set; }
+        //Added FullName collumn so the names of the consultants could be pulled in the charts
+        public string FullName { get; set; }
 
         [Display(Name = "Ticket Reference")]
         public string TicketReference { get; set; }
@@ -53,10 +55,6 @@ namespace TSAR.Models
         [Display(Name = "Sign Off")]
         public bool SignOff { get; set; }
 
-
-        public string Filename { get; set; }
-
-        public byte[] Signature { get; set; }
         public virtual Travel Travel { get; set; }
         public string MClientAddress { get; set; }
         public virtual Projects Project { get; set; }

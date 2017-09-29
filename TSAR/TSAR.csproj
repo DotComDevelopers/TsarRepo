@@ -280,6 +280,7 @@
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SendMailerController.cs" />
+    <Compile Include="Controllers\TargetController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\TimeSheetHistoryController.cs" />
@@ -865,6 +866,7 @@
     <Content Include="Views\ConsultantRegisters\Details.cshtml" />
     <Content Include="Views\ConsultantRegisters\Edit.cshtml" />
     <Content Include="Views\ConsultantRegisters\Index.cshtml" />
+    <Content Include="Views\Target\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
