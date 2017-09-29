@@ -60,6 +60,11 @@ namespace MobileTsar.Views
             await DisplayAlert("Alert", $"You're at Home", "OK");
           }
           else
+          if (ReverseGeocodedOutputLabel.Text == "Addresss:7 Ritson Road Berea")
+          {
+            await DisplayAlert("Alert", $"You're at campus", "OK");
+          }
+          else
           {
             await DisplayAlert($"Your Location",
               $"Current Location:{address.SubThoroughfare} {address.Thoroughfare} {address.Locality} {address.CountryName}",
@@ -134,14 +139,14 @@ namespace MobileTsar.Views
         Application.Current.MainPage = new DashboardPage();
       }
       else
-    if (ReverseGeocodedOutputLabel.Text != "Addresss:41 Richefond Circle Umhlanga")   
+    if (ReverseGeocodedOutputLabel.Text != "Addresss:41 Richefond Circle Umhlanga" || ReverseGeocodedOutputLabel.Text != "Addresss:7 Ritson Road Berea")   
       {
         await DisplayAlert("Sorry", "You need to be at the office", "Ok");
         Application.Current.MainPage = new DashboardPage();
       }
       else      
-      // check if user is at office
-      if (ReverseGeocodedOutputLabel.Text == "Addresss:41 Richefond Circle Umhlanga" && scanned == false)
+      // check if user is at office/campus
+      if (ReverseGeocodedOutputLabel.Text == "Addresss:41 Richefond Circle Umhlanga" || ReverseGeocodedOutputLabel.Text == "Addresss:7 Ritson Road Berea" && scanned == false)
       {
         scanpage.OnScanResult += (result) =>
         {

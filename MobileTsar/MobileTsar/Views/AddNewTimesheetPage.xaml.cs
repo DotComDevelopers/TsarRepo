@@ -80,6 +80,18 @@ namespace MobileTsar.Views
       //var ret = list.Select(t => t.FirstName).ToList();
       var username = list.Where(t => t.ConsultantUserName == currentuser).Select(t => t.ConsultantNum).FirstOrDefault();
       ConsultantIdLabel.Text = username.ToString();
+      GetConsultantFullname();
+    }
+    public async void GetConsultantFullname()
+    {
+      var api = new ApiServices();
+      var token = Settings.AccessToken;
+      var list2 = await api.GetUsernameAsync(token);
+      var currentuser = list2.Email;
+      var list = await api.GetConsultantAsync(token);
+      //var ret = list.Select(t => t.FirstName).ToList();
+      var username = list.Where(t => t.ConsultantUserName == currentuser).Select(t => t.FullName).FirstOrDefault();
+      ConsultantFullNameLabel.Text = username;
     }
 
     // Uses web service to get cleint name and populate drop down
