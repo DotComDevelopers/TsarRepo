@@ -271,6 +271,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\API20170705060604.pubxml" />
+    <None Include="Properties\PublishProfiles\tsarapi - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\tsarapi - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

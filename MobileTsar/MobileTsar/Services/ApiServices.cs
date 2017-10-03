@@ -34,7 +34,7 @@ namespace MobileTsar.Services
 
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var response = await client.PostAsync("http://api20170705060604.azurewebsites.net/api/Account/Register",
+            var response = await client.PostAsync("http://tsarapi.azurewebsites.net/api/Account/Register",
                 content);
 
             return response.IsSuccessStatusCode;
@@ -49,7 +49,7 @@ namespace MobileTsar.Services
                 new KeyValuePair<string, string>("grant_type", "password")
             };
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://api20170705060604.azurewebsites.net/token");
+            var request = new HttpRequestMessage(HttpMethod.Post, "http://tsarapi.azurewebsites.net/token");
 
             request.Content = new FormUrlEncodedContent(keyValues);
 
@@ -69,7 +69,7 @@ namespace MobileTsar.Services
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/mobiletimesheets");
+            var json = await client.GetStringAsync("http://tsar2.azurewebsites.net/api/mobiletimesheets");
 
             var timesheets = JsonConvert.DeserializeObject<List<Timesheet>>(json);
             return timesheets;
@@ -79,7 +79,7 @@ namespace MobileTsar.Services
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var json = await client.GetStringAsync("http://api20170705060604.azurewebsites.net/api/Account/UserInfo");
+            var json = await client.GetStringAsync("http://tsarapi.azurewebsites.net/api/Account/UserInfo");
 
             var user = JsonConvert.DeserializeObject<User>(json);
             return user;
@@ -96,7 +96,7 @@ namespace MobileTsar.Services
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/mobiletimesheets", content);
+            var response = await client.PostAsync("http://tsar2.azurewebsites.net/api/mobiletimesheets", content);
             //add success message here using response             
         }
 
@@ -104,7 +104,7 @@ namespace MobileTsar.Services
         {
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/MobileClients");
+            var json = await client.GetStringAsync("http://tsar2.azurewebsites.net/api/MobileClients");
 
             var clients = JsonConvert.DeserializeObject<List<Client>>(json);
             return clients;
@@ -117,7 +117,7 @@ namespace MobileTsar.Services
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-            var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/MobileConsultants");
+            var json = await client.GetStringAsync("http://tsar2.azurewebsites.net/api/MobileConsultants");
 
             var consultants = JsonConvert.DeserializeObject<List<Consultant>>(json);
             return consultants;
@@ -132,7 +132,7 @@ namespace MobileTsar.Services
             var json = JsonConvert.SerializeObject(timesheet);
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var response = await client.PutAsync("http://tsar1.azurewebsites.net/api/mobiletimesheets/" + id, content);
+            var response = await client.PutAsync("http://tsar2.azurewebsites.net/api/mobiletimesheets/" + id, content);
 
         }
 
@@ -143,7 +143,7 @@ namespace MobileTsar.Services
       var client = new HttpClient();
       client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
     
-      var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/ClientPasswords");
+      var json = await client.GetStringAsync("http://tsar2.azurewebsites.net/api/ClientPasswords");
 
       var clientPasswords = JsonConvert.DeserializeObject<List<ClientPassword>>(json);
       return clientPasswords;
@@ -159,7 +159,7 @@ namespace MobileTsar.Services
         HttpContent content = new StringContent(json);
         content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-        var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/ClientPasswords", content);
+        var response = await client.PostAsync("http://tsar2.azurewebsites.net/api/ClientPasswords", content);
       
         //add success message here using response 
 
@@ -169,7 +169,7 @@ namespace MobileTsar.Services
             {
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/MobileLocations");
+                var json = await client.GetStringAsync("http://tsar2.azurewebsites.net/api/MobileLocations");
 
                 var locations = JsonConvert.DeserializeObject<List<Location>>(json);
                 return locations;
@@ -184,7 +184,7 @@ namespace MobileTsar.Services
                 HttpContent content = new StringContent(json);
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/MobileLocations", content);
+                var response = await client.PostAsync("http://tsar2.azurewebsites.net/api/MobileLocations", content);
 
 
             }
@@ -196,7 +196,7 @@ namespace MobileTsar.Services
                 var json = JsonConvert.SerializeObject(location);
                 HttpContent content = new StringContent(json);
                 content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                var response = await client.PutAsync("http://tsar1.azurewebsites.net/api/MobileLocations/" + id, content);
+                var response = await client.PutAsync("http://tsar2.azurewebsites.net/api/MobileLocations/" + id, content);
 
             }
 
@@ -209,7 +209,7 @@ namespace MobileTsar.Services
         HttpContent content = new StringContent(json);
         content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-        var response = await client.PostAsync("http://tsar1.azurewebsites.net/api/MobileConsultantRegisters", content);
+        var response = await client.PostAsync("http://tsar2.azurewebsites.net/api/MobileConsultantRegisters", content);
         //add success message here using response             
       }
 
@@ -217,7 +217,7 @@ namespace MobileTsar.Services
       {
         var client = new HttpClient();
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-        var json = await client.GetStringAsync("http://tsar1.azurewebsites.net/api/MobileConsultantRegisters");
+        var json = await client.GetStringAsync("http://tsar2.azurewebsites.net/api/MobileConsultantRegisters");
 
         var consultantRegisters = JsonConvert.DeserializeObject<List<ConsultantRegister>>(json);
         return consultantRegisters;
