@@ -48,7 +48,7 @@ namespace MobileTsar.ViewModels
 
     public byte[] Signature { get; set; }
 
-
+    public string FullName { get; set; }
 
     public ICommand AddCommand
     {    
@@ -58,7 +58,7 @@ namespace MobileTsar.ViewModels
         {
           var hour = System.Math.Round((EndTime - StartTime).TotalHours, 2);
           var tot = (700 * (EndTime - StartTime).TotalHours);
-          var roundedtot = System.Math.Round(tot, 2);
+          var roundedtot = System.Math.Round(tot, 2);          
           var timesheet = new Timesheet
           {
           
@@ -74,7 +74,9 @@ namespace MobileTsar.ViewModels
             Filename = null,
             Signature = null,
             Total = roundedtot,
-            Hours = hour
+            Hours = hour,
+            FullName = FullName
+            
           };
 
           await _apiServices.PostTimesheetAsync(timesheet, Settings.AccessToken);

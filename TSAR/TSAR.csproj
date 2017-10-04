@@ -289,6 +289,7 @@
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SendMailerController.cs" />
+    <Compile Include="Controllers\TargetController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\TimeSheetHistoryController.cs" />
@@ -374,6 +375,7 @@
     <Content Include="img\Elephant1.jpg" />
     <Content Include="img\elephant22.jpg" />
     <Content Include="img\Elephant3.jpg" />
+    <Content Include="img\GeoBak.jpg" />
     <Content Include="img\header-bg.jpg" />
     <Content Include="img\images\star_gold_16.png" />
     <Content Include="img\images\star_white_16.png" />
@@ -423,8 +425,12 @@
     <Content Include="Grid.mvc.readme" />
     <Content Include="Attach\EnergyPolicy.pdf" />
     <Content Include="Attach\pdf.pdf" />
+    <None Include="Properties\PublishProfiles\TSAR1 - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\tsar2 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\tsar2 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.css" />
@@ -879,6 +885,7 @@
     <Content Include="Views\Payslip\Details.cshtml" />
     <Content Include="Views\Payslip\Edit.cshtml" />
     <Content Include="Views\Payslip\Index.cshtml" />
+    <Content Include="Views\Target\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

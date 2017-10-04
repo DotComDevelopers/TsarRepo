@@ -48,6 +48,6 @@ namespace MobileTsar.Models
 
         public byte[] Signature { get; set; }
 
-
-    }
+        public string FullName { get; set; }
+  }
 }

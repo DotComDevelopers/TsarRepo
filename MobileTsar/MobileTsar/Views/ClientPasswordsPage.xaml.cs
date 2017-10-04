@@ -34,8 +34,7 @@ namespace MobileTsar.Views
       if (result)
       {
         
-        var auth = await CrossFingerprint.Current.AuthenticateAsync("Prove you have fingers", CancellationToken.None);        
-        
+        var auth = await CrossFingerprint.Current.AuthenticateAsync("Prove you have fingers", CancellationToken.None);                
         if (auth.Authenticated)
         {
           ValdatePasswordButton.IsVisible = false;
@@ -43,13 +42,9 @@ namespace MobileTsar.Views
           FingerprintButton.IsVisible = false;
           StackLayout2.IsVisible = true;
         }
-        if (auth.Status==FingerprintAuthenticationResultStatus.Failed)
+        else if (auth.Status == FingerprintAuthenticationResultStatus.Canceled)
         {
-          await DisplayAlert("Authentication Failed", "Try again ", "Close");
-        }
-        if (auth.Authenticated==false)
-        {
-          await DisplayAlert("Authentication Failed", "Try again ", "Close");
+          //await DisplayAlert("Authentication Failed", "Try again later", "Close");
         }
         if (auth.Status == FingerprintAuthenticationResultStatus.FallbackRequested)
         {
@@ -62,10 +57,10 @@ namespace MobileTsar.Views
             ValdatePasswordButton.IsVisible = true;
           }
         }
-        else if (auth.Status==FingerprintAuthenticationResultStatus.Canceled)
-        {
-          //await DisplayAlert("Authentication Failed", "Try again later", "Close");
-        }
+        //else if (auth.Status!=FingerprintAuthenticationResultStatus.Succeeded)
+        //{
+        //  await DisplayAlert("Authentication Failed", "Try again later", "Close");
+        //}
      
       }
       else

@@ -27,9 +27,9 @@
         StrokeWidth="2"
         StrokeColor="Maroon"
            />
-      
-        <Button Command="{Binding SignCommand}"  Clicked="Done" Text="Done"></Button>
-        <Button  Clicked="Timesheets" Text="Get Timesheets"></Button>
+
+        <Button BackgroundColor="#4D6098" TextColor="White" Command="{Binding SignCommand}"  Clicked="Done" Text="Done"></Button>
+        <Button BackgroundColor="#4D6098" TextColor="White"  Clicked="Timesheets" Text="Get Timesheets"></Button>
     </StackLayout>
 
   

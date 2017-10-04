@@ -18,6 +18,7 @@ namespace MobileTsar.Droid
     {
       TabLayoutResource = Resource.Layout.Tabbar;
       ToolbarResource = Resource.Layout.Toolbar;
+     
       CrossFingerprint.SetCurrentActivityResolver(() => CrossCurrentActivity.Current.Activity);
       base.OnCreate(bundle);
             Xamarin.FormsMaps.Init(this, bundle);
