@@ -4,7 +4,7 @@
              xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
              xmlns:widget="clr-namespace:Android.Widget;assembly=Mono.Android"
              x:Class="MobileTsar.Views.RegisterPage"
-             BackgroundImage="Background2.png"
+             BackgroundImage="GeoBak.jpg"
              Title="TSAR Mobile App"
              
              >
@@ -19,11 +19,11 @@
         <Entry x:Name="TxtPassword"  Text="{Binding Password}" Placeholder="Your Password" IsPassword="True" FontSize="15"></Entry>
         <Entry x:Name="TxtConfPassword"  Text="{Binding ConfirmPassword}" Placeholder="Confirm your password" IsPassword="True" FontSize="15"></Entry>
 
-        <Button x:Name="RegisterBtn" Command="{Binding RegisterCommand}" Text="Register" IsVisible="False"></Button>
-        <Button x:Name="ValidateButton" Clicked="ValidateButton_OnClicked" Text="Validate"></Button>
+            <Button BackgroundColor="#4D6098" TextColor="White" x:Name="RegisterBtn" Command="{Binding RegisterCommand}" Text="Register" IsVisible="False"></Button>
+            <Button BackgroundColor="#4D6098" TextColor="White" x:Name="ValidateButton" Clicked="ValidateButton_OnClicked" Text="Validate"></Button>
         <Label Text="{Binding Message}" IsVisible="False"></Label>
         <Label Text="Have an Account?" FontSize="40"></Label>
-        <Button Text="Login Instead" Clicked="LoginButton_OnClicked"></Button>
+            <Button BackgroundColor="#4D6098" TextColor="White" Text="Login Instead" Clicked="LoginButton_OnClicked"></Button>
         <!--<Button Text="Finger Print Login" Clicked="FingerButton_OnClicked"></Button>-->
     </StackLayout>
 </ScrollView>

@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using RazorPDF;
 using TSAR.Models;
 
 namespace TSAR.Controllers
@@ -36,22 +37,48 @@ namespace TSAR.Controllers
                     ViewBag.NoTimesheets = totalValue.Count();
                     var tottimesheet = totalValue.Sum(u => u.Total);
 
-                    ViewBag.Comm = (payroll.Comm = tottimesheet * 0.1).ToString("R0.00");
+                    ViewBag.Comm = (payroll.Comm = tottimesheet * 0.2).ToString("R0.00");
 
-                    ViewBag.Basic = (payroll.Basic = 5000).ToString("R0.00");
+                    ViewBag.Basic = (payroll.Basic = 7000).ToString("R0.00");
 
                     ViewBag.Totpay = (payroll.totPay = payroll.Basic + payroll.Comm).ToString("R0.00");
-                   var totpay = (payroll.totPay = payroll.Basic + payroll.Comm);
-
-                    ViewBag.Tax = (payroll.tax = payroll.totPay * 0.2).ToString("R0.00");
-                    var tax = (payroll.tax = payroll.totPay * 0.2);
-
-                    ViewBag.Net = (totpay - tax).ToString("R0.00");
+                    ViewBag.Name = User.Identity.GetUserName();
+                    var totpay = (payroll.totPay = payroll.Basic + payroll.Comm);
 
                     
+                    var tax = 0;
+                    if (totpay >= 7500 && totpay <= 15500)
+                    {
+                        tax = 2800;
+                    }
+                    else if (totpay >= 15750 && totpay <= 24700)
+                    {
+                        tax = 4700;
+                    }
+                    else if (totpay >= 24750 && totpay <= 35000)
+                    {
+                        tax = 7500;
 
+                    }
+                    //var tax = (payslip.tax = payslip.totPay * 0.2);
+
+                    ViewBag.Tax = tax;
+
+                    ViewBag.Net = (totpay - tax).ToString("R0.00");
                 }
-                return View(payroll);
+                //return View(payslip);
+
+                //return new rPdfResult(customers, "PDF");
+
+                return new RazorPDF.PdfResult(payroll, "Index");
+
+
+
+
+
+
+
+                
             }
         }
 

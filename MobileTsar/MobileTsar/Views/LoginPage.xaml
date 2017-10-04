@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
              x:Class="MobileTsar.Views.LoginPage"
+             Title="Login"
              BackgroundImage="GeoBak.jpg"
              BackgroundColor="Transparent">
     
@@ -17,8 +18,8 @@
         <Entry x:Name="PasswordLabel" Text="{Binding Password}" IsPassword="True" Placeholder="Your Password"></Entry>
         <Entry x:Name="LoadingLabel" IsVisible="False" Text="Logging in.." VerticalOptions="Center" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold"></Entry>
         <ProgressBar x:Name="ProgressBar" IsVisible="False" Progress="0"></ProgressBar>
-    <Button Command="{Binding LoginCommand}" Text="Login" Clicked="GetTimesheetsButton_OnClicked"></Button>
-    <Button Text="Sign Out" Clicked="SignOutButton_OnClicked"></Button>
+        <Button BackgroundColor="#4D6098" TextColor="White" Command="{Binding LoginCommand}" Text="Login" Clicked="GetTimesheetsButton_OnClicked"></Button>
+        <Button BackgroundColor="#4D6098" TextColor="White" Text="Sign Out" Clicked="SignOutButton_OnClicked"></Button>
     <!--<Button  Text="Get Timesheets"></Button>-->
   </StackLayout>
   

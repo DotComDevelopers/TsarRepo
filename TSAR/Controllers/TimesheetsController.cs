@@ -166,29 +166,28 @@ namespace TSAR.Controllers
             return View();
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ProjectTimeSheet([Bind(Include = "TimesheetId,CaptureDate,StartTime,EndTime,ActivityDescription,Total,Hours,Id,ConsultantNum,TicketReference,SignOff, ProjectName")] Timesheet timesheet)
+        public ActionResult ProjectTimeSheet([Bind(Include = "TimesheetId,CaptureDate,StartTime,EndTime,ActivityDescription,Total,Hours,Id,ConsultantNum,TicketReference,SignOff, ProjectName,FullName")] Timesheet timesheet)
         {
             string use = User.Identity.GetUserName();
             int con = (from Consultant c in db.Consultants
-                       where c.ConsultantUserName == use
-                       select c.ConsultantNum).FirstOrDefault();
+                where c.ConsultantUserName == use
+                select c.ConsultantNum).FirstOrDefault();
             int cli = (from Projects t in db.Projects
-                       where t.ConsultantNum == con
-                       select t.Id).FirstOrDefault();
+                where t.ConsultantNum == con
+                select t.Id).FirstOrDefault();
             int cno = (from Travel c in db.Travels
-                       where c.Id == cli
-                       select c.Id).FirstOrDefault();
+                where c.Id == cli
+                select c.Id).FirstOrDefault();
 
-       
-                        ViewBag.MClientAddress = new SelectList(db.Projects.Where(p => p.Id == cno), "TravelId", "MClientAddress", timesheet.MClientAddress);
+
+            ViewBag.MClientAddress = new SelectList(db.Projects.Where(p => p.Id == cno), "TravelId", "MClientAddress", timesheet.MClientAddress);
 
             string user = User.Identity.GetUserName();
             int cn = (from Consultant c in db.Consultants
-                      where c.ConsultantUserName == user
-                      select c.ConsultantNum).FirstOrDefault();
+                where c.ConsultantUserName == user
+                select c.ConsultantNum).FirstOrDefault();
 
             ViewBag.ProjectName = new SelectList(db.Projects.Where(p => p.ConsultantNum == cn), "ProjectName", "ProjectName", timesheet.ProjectName);
 
@@ -202,37 +201,36 @@ namespace TSAR.Controllers
                 //    timesheet.CaptureDate = System.DateTime.Now; }
                 //else
                 //{
-                    timesheet.CaptureDate = System.DateTime.Now;
-                
+                timesheet.CaptureDate = System.DateTime.Now;
+
                 //timesheet.Id = 1;
                 //timesheet.ConsultantNum = 1;
                 string username = User.Identity.GetUserName();
                 int conname = (from Consultant c in db.Consultants
-                               where c.ConsultantUserName == username
-                               select c.ConsultantNum).FirstOrDefault();
+                    where c.ConsultantUserName == username
+                    select c.ConsultantNum).FirstOrDefault();
                 int clientname = (from Projects t in db.Projects
-                                  where t.ConsultantNum == conname
-                                  select t.Id).FirstOrDefault();
+                    where t.ConsultantNum == conname
+                    select t.Id).FirstOrDefault();
                 timesheet.Id = clientname;
                 timesheet.ConsultantNum = conname;
-                
-              
+
+
                 timesheet.Hours = (timesheet.EndTime - timesheet.StartTime).TotalHours;
                 timesheet.Total = (700 * (timesheet.EndTime - timesheet.StartTime).TotalHours);
-               
+
                 db.Timesheets.Add(timesheet);
                 db.SaveChanges();
 
                 return RedirectToAction("Success");
 
             }
-            
 
 
-         //   ViewBag.ProjectName = new SelectList(db.Projects.Where(p => p.ConsultantNum == cn), "ProjectName", "ProjectName", timesheet.ProjectName);
+
+            //   ViewBag.ProjectName = new SelectList(db.Projects.Where(p => p.ConsultantNum == cn), "ProjectName", "ProjectName", timesheet.ProjectName);
             return View(timesheet);
         }
-
 
 
         // POST: Timesheets/Create
@@ -240,23 +238,33 @@ namespace TSAR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TimesheetId,CaptureDate,StartTime,EndTime,ActivityDescription,Total,Hours,Id,ConsultantNum,TicketReference,SignOff")] Timesheet timesheet, string tickRef)
+        public ActionResult Create([Bind(Include = "TimesheetId,CaptureDate,StartTime,EndTime,ActivityDescription,Total,Hours,Id,ConsultantNum,TicketReference,SignOff,FullName")] Timesheet timesheet, string tickRef)
         {
+            
+            string username = User.Identity.GetUserName();
 
             if (ModelState.IsValid)
             {
+
+                var conum = (from Consultant c in db.Consultants
+                    where c.ConsultantUserName == username
+                    select c.ConsultantNum).FirstOrDefault();
+                var fname = (from Consultant c in db.Consultants
+                    where c.ConsultantNum == conum
+                    select c.FullName).FirstOrDefault();
+                timesheet.FullName = fname;
                 timesheet.TicketReference = tickRef;
                 string clientname = (from Ticket t in db.Tickets
-                                     where t.TicketReference == tickRef
-                                     select t.ClientName).FirstOrDefault();
+                    where t.TicketReference == tickRef
+                    select t.ClientName).FirstOrDefault();
 
                 timesheet.Id = (from Client c in db.Clients
-                                where c.ClientName == clientname
-                                select c.Id).FirstOrDefault();
+                    where c.ClientName == clientname
+                    select c.Id).FirstOrDefault();
 
                 timesheet.ConsultantNum = (from Ticket t in db.Tickets
-                                           where t.TicketReference == tickRef
-                                           select t.ConsultantId).FirstOrDefault();
+                    where t.TicketReference == tickRef
+                    select t.ConsultantId).FirstOrDefault();
                 timesheet.CaptureDate = System.DateTime.Now;
                 timesheet.Hours = (timesheet.EndTime - timesheet.StartTime).TotalHours;
                 timesheet.Total = (700 * (timesheet.EndTime - timesheet.StartTime).TotalHours);
@@ -272,13 +280,13 @@ namespace TSAR.Controllers
             //                 select c.MClientAddress).ToList();
 
 
-            string username = User.Identity.GetUserName();
+            //  string username = User.Identity.GetUserName();
             string conname = (from Consultant c in db.Consultants
-                              where c.ConsultantUserName == username
-                              select c.FullName).FirstOrDefault();
+                where c.ConsultantUserName == username
+                select c.FullName).FirstOrDefault();
             string cliname = (from Ticket t in db.Tickets
-                              where t.ConsultantName == conname
-                              select t.ClientName).FirstOrDefault();
+                where t.ConsultantName == conname
+                select t.ClientName).FirstOrDefault();
             //string add1 = (from Client c in db.Clients
             //               where c.ClientName == cliname
             //               select c.ClientAddress).FirstOrDefault();
@@ -293,23 +301,6 @@ namespace TSAR.Controllers
             var o = ca.ToList();
             ViewBag.MCA = new SelectList(o);
             // ViewBag.Addresses = new SelectList(timesheet.MClientAddress);
-            ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", timesheet.ConsultantNum);
-            return View(timesheet);
-        }
-
-        // GET: Timesheets/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Timesheet timesheet = db.Timesheets.Find(id);
-            if (timesheet == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName", timesheet.Id);
             ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FullName", timesheet.ConsultantNum);
             return View(timesheet);
         }

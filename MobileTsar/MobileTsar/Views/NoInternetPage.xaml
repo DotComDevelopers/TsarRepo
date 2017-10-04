@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="No internet connection" FontSize="30"></Label>
-            <Button Clicked="Button_OnClicked" Text="Try again"></Button>
+            <Button BackgroundColor="#4D6098" TextColor="White" Clicked="Button_OnClicked" Text="Try again"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
