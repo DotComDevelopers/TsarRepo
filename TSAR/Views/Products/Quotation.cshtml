@@ -1,9 +1,72 @@
-﻿@model TSAR.Models.Product
+﻿@using TSAR.Models
+@model  IEnumerable<TSAR.Models.Product>
 
 @{
-    ViewBag.Title = "Quotation";
+    ViewBag.Title = "GetQuotation";
     Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
 <h2>Quotation</h2>
+<br />
+
+
+<p>
+    <a id="button" href="@Url.Action("GetQuotation")" class="btn btn-primary">Quotation Review</a>
+</p>
+<br />
+
+<div style="overflow-x: auto">
+    <table class="table bg-light-gray">
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.totalPrice)
+            </th>
+            
+            <th></th>
+        </tr>
+        
+        @foreach (var p in Model)
+        {
+            <tr>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => p.Description)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => p.Description)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => p.Price)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => p.totalPrice)
+                </td>
+                
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = p.ProductId })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+
 

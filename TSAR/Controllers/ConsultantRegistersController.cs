@@ -11,7 +11,7 @@ using System.Net.Mail;
 using System.Net.Mime;
 using System.Web;
 using System.Web.Mvc;
-using Windows.Graphics.Imaging;
+//using Windows.Graphics.Imaging;
 using TSAR.Models;
 using ZXing;
 using ZXing.Common;

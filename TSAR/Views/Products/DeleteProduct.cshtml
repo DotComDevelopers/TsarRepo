@@ -59,7 +59,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="button" value="Delete Product" onclick="location.href='@Url.Action("DeleteProduct", "Products")'" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

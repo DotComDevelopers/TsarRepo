@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -18,8 +19,16 @@ namespace TSAR.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Client);
-            return View(products.ToList());
+            //if (User.IsInRole("Admin, Consultant"))
+            //{
+                var products = db.Products.Include(p => p.Client);
+                return View(products.ToList());
+            //}
+            //else
+            //{
+            //    var products 
+            //}
+            
             //return View(db.Products.ToList());
         }
 
@@ -42,6 +51,8 @@ namespace TSAR.Controllers
         // GET: Products/Create
         public ActionResult CreateProduct()
         {
+            ViewBag.ProductId = new SelectList(db.Products, "ProductId", "ProductName");
+            //ViewBag.Id = new SelectList(db.Clients, "Id", "ClientName");
             return View();
         }
 
@@ -145,16 +156,9 @@ namespace TSAR.Controllers
                              where c.ClientName == clientusername
                              select c.Email).FirstOrDefault();
 
-            return View();
+            
 
-            //if (clientusername == null)
-            //{
-            //    return RedirectToAction( /*Register*/);
-            //}
-            //else
-            //{
-            //    return View(db.Products.Where(p => p.Id == cn).ToList()); //to change to Quotation View
-            //}
+            return View();
         }
 
         // POST: Products/Create
@@ -175,24 +179,51 @@ namespace TSAR.Controllers
             ViewBag.Email = (from Client c in db.Clients
                              where c.ClientName == clientusername
                              select c.Email).FirstOrDefault();
-            //double total, cost;
-            if (product.Selected)
+
+            //var ps = (from Product p in db.Products
+            //    where p.Selected = true
+            //    select p.ProductId).ToString();
+
+            if (clientusername == null)
             {
-                //foreach (var product in Product)
-                //{
-                //    double total = product.Price++;
-                //    //double total = cost++;
-                //}
-                product.totalPrice = product.Price++;
+                return RedirectToAction("Register", "Account", new { area = "" });
             }
 
-             if (clientusername == null)
-            {
-                return RedirectToAction("Register", "Account", new {area = ""});
-            }
-            //else
+
+            var s = (from Product p in db.Products
+                     where p.Selected
+                     select p.Id).ToList();
+
+            //if (product != null)
             //{
-            //    product.Email = clientusername;
+
+            //    var prod = TypeDescriptor.GetProperties(product);
+            //    var p = new Dictionary<string, >();
+
+            //}
+
+            //foreach ()
+            //{
+
+            //    if (product.Selected)
+            //    {
+            //        ViewBag.totalPrice = (product.totalPrice = product.Price++).ToString("R0.00");
+            //    }
+                
+            //}
+
+
+            //double total, cost;
+            //if (product.Selected)
+            //{
+            //    ViewBag.totalPrice = (product.totalPrice = product.Price++).ToString("R0.00");
+            //    foreach (var product in Product)
+            //    {
+            //        double total = product.Price++;
+            //        //double total = cost++;
+            //    }
+
+            //    product.totalPrice = product.Price++;
             //}
 
             if (ModelState.IsValid)
@@ -204,19 +235,61 @@ namespace TSAR.Controllers
                 return RedirectToAction("Index");
             }
 
-            //return View(product); // To change to quotation view or pdf
 
             return View(product); //to change to Quotation View 
 
-            //if (ModelState.IsValid)
-            //{
-            //    db.Products.Add(product);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //return View(product);
         }
+
+
+        //public static IDictionary<string, TVal> ToDictionary<TVal>( Product products)
+        //{
+        //    if (products != null)
+        //    {
+        //        var props = TypeDescriptor.GetProperties(products);
+        //        var d = new Dictionary<string, TVal>();
+        //        foreach (var prop in props.Cast<PropertyDescriptor>())
+        //        {
+        //            var val = prop.GetValue(products);
+        //            if (val != null)
+        //            {
+        //                d.Add(prop.Name, (TVal)val);
+        //            }
+        //        }
+        //        return d;
+        //    }
+        //    return new Dictionary<string, TVal>();
+        //}
+
+
+        public ActionResult MyQuotation()
+        {
+
+            var username = User.Identity.GetUserName();
+            var cn = (from Client c in db.Clients
+                      where c.ClientName == username
+                      select c.Id).FirstOrDefault();
+            ViewBag.ClientName = (from Client c in db.Clients
+                            where c.ClientName == username
+                            select c.ClientName).FirstOrDefault();
+
+
+            return View(db.Products.Where(p => p.Id == cn).ToList());
+
+        }
+
+        [HttpPost]
+        public ActionResult MyQuotation(string searchTerm)
+        {
+            var username = User.Identity.GetUserName();
+            var cn = (from Client c in db.Clients
+                      where c.ClientName == username
+                      select c.Id).FirstOrDefault();
+            return View(db.Products.Where(x => x.ClientName.StartsWith(searchTerm)).ToList());
+        }
+
+
+        //pdf
+
 
     }
 }
