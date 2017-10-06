@@ -8,6 +8,7 @@ using MobileTsar.Helpers;
 using MobileTsar.Models;
 using MobileTsar.Services;
 using Plugin.Fingerprint;
+using Plugin.Fingerprint.Abstractions;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -32,15 +33,46 @@ namespace MobileTsar.Views
       var result = await CrossFingerprint.Current.IsAvailableAsync(true);
       if (result)
       {
-        var auth = await CrossFingerprint.Current.AuthenticateAsync("Prove you have fingers", CancellationToken.None);
+        
+        var auth = await CrossFingerprint.Current.AuthenticateAsync("Prove you have fingers", CancellationToken.None);                
         if (auth.Authenticated)
         {
-          StackLayout.IsVisible = true;
+          ValdatePasswordButton.IsVisible = false;
+          PasswordEntry.IsVisible = false;
+          FingerprintButton.IsVisible = false;
+          StackLayout2.IsVisible = true;
         }
-        else
+        else if (auth.Status == FingerprintAuthenticationResultStatus.Canceled)
         {
-          await DisplayAlert("Authentication Failed", "Try again later", "Close");
+          //await DisplayAlert("Authentication Failed", "Try again later", "Close");
         }
+        if (auth.Status == FingerprintAuthenticationResultStatus.FallbackRequested)
+        {
+          //ask for password
+          PasswordEntry.IsVisible = true;
+          FingerprintButton.IsVisible = true;
+          PasswordEntry.Focus();
+          if (ValdatePasswordButton.Text != null)
+          {
+            ValdatePasswordButton.IsVisible = true;
+          }
+        }
+        //else if (auth.Status!=FingerprintAuthenticationResultStatus.Succeeded)
+        //{
+        //  await DisplayAlert("Authentication Failed", "Try again later", "Close");
+        //}
+     
+      }
+      else
+      {
+        //ask for password
+        PasswordEntry.IsVisible = true;
+        PasswordEntry.Focus();
+        if (ValdatePasswordButton.Text!=null)
+        {
+          ValdatePasswordButton.IsVisible = true;
+        }
+
       }
     }
 
@@ -108,6 +140,39 @@ namespace MobileTsar.Views
       ClientPicker.Items.Add("All Clients");
       ClientPicker.SelectedIndex = 0;
       PasswordsListView.EndRefresh();
+    }
+
+    private void ValdatePasswordButton_OnClicked(object sender, EventArgs e)
+    {
+      if (PasswordEntry.Text==Settings.VaultPassword)
+      {
+        StackLayout2.IsVisible = true;
+        ValdatePasswordButton.IsVisible = false;
+        PasswordEntry.IsVisible = false;
+        FingerprintButton.IsVisible = false;
+      }
+      else
+      {
+        DisplayAlert("Error", "Incorrect Password", "Ok");
+      }
+    }
+
+    private void PasswordEntry_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+      if (PasswordEntry.Text!=null)
+      {
+        ValdatePasswordButton.IsVisible = true;
+      }
+      else
+      {
+        ValdatePasswordButton.IsVisible = false;
+      }
+      
+    }
+
+    private void FingerprintButton_OnClicked(object sender, EventArgs e)
+    {
+      VerifyUser();
     }
   }
 }

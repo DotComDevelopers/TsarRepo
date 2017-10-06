@@ -16,13 +16,21 @@ namespace MobileTsar
     public App()
     {
       InitializeComponent();
+      IsConnectivitySupported();
       SetMainPage();
+      
       //MainPage = new NavigationPage(new RegisterPage());
     }
 
     protected  void SetMainPage()
     {
-      if (!string.IsNullOrEmpty(Settings.AccessToken) && CrossConnectivity.Current.IsConnected)
+      if (!string.IsNullOrEmpty(Settings.AccessToken) && IsConnectivitySupported()==false)
+      {
+        MainPage = new DashboardPage();
+        Current.MainPage.DisplayAlert("Hi", "Welcome back", "Close");
+      }
+
+      else if (!string.IsNullOrEmpty(Settings.AccessToken) && CrossConnectivity.Current.IsConnected)
       {
         MainPage = new DashboardPage();
         Current.MainPage.DisplayAlert("Hi", "Welcome back", "Close");
@@ -34,18 +42,31 @@ namespace MobileTsar
       else
       {
         MainPage = new NavigationPage(new RegisterPage());
-      }
-      if (CrossConnectivity.Current.IsConnected==false)
+      }          
+      if (CrossConnectivity.IsSupported)
       {
-        MainPage = new NoInternetPage();
+        if (CrossConnectivity.Current.IsConnected == false)
+        {
+          MainPage = new NoInternetPage();
+        }       
       }
 
     }
 
+    public bool IsConnectivitySupported()
+    {
+      return CrossConnectivity.IsSupported;
+    }
+
     protected override void OnStart()
     {
+      //var check = CrossConnectivity.Current.IsConnected;
       // Handle when your app starts
-      CheckInternet();
+
+      if (IsConnectivitySupported())
+      {
+        CheckInternet();
+      }
     }
 
     protected override void OnSleep()

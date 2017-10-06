@@ -2,18 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileTsar.Views.DashboardPageMaster"
-             Title="Master">
-  <StackLayout>
-    <ListView x:Name="MenuItemsListView"
+             Title="Master"
+            BackgroundColor="Transparent"
+             BackgroundImage="geo.jpg"          
+          >
+    
+    <AbsoluteLayout VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+
+        <Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+               Source="geo.jpg" Aspect="AspectFill"/>
+        <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+        <ListView x:Name="MenuItemsListView"
               SeparatorVisibility="None"
               HasUnevenRows="true"
-              ItemsSource="{Binding MenuItems}" >
+              ItemsSource="{Binding MenuItems}" 
+                  BackgroundColor="Transparent" 
+                  AbsoluteLayout.LayoutFlags="All"
+                  AbsoluteLayout.LayoutBounds="0,0,1,1"  
+                  
+                  >
       <ListView.Header>
-        <Grid BackgroundColor="#03A9F4">
+          
+        <Grid BackgroundColor="Transparent">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="10"/>              
           </Grid.ColumnDefinitions>
           <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -24,8 +39,11 @@
           <Label
               Grid.Column="1"
               Grid.Row="2"
-              Text="My Dashboard"
+              Text="MY DASHBOARD"
+              TextColor="White"
+              FontSize="35"             
               Style="{DynamicResource SubtitleStyle}"/>
+                   
         </Grid>
       </ListView.Header>
       <ListView.ItemTemplate>
@@ -34,7 +52,8 @@
             <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
               <Label VerticalOptions="FillAndExpand" 
                     VerticalTextAlignment="Center" 
-                    Text="{Binding Title}" 
+                    Text="{Binding Title}"
+                     TextColor="White"
                     FontSize="24" IsVisible="{Binding IsVisible}"/>
             </StackLayout>
           </ViewCell>
@@ -42,4 +61,5 @@
       </ListView.ItemTemplate>
     </ListView>
   </StackLayout>
+    </AbsoluteLayout>
 </ContentPage>

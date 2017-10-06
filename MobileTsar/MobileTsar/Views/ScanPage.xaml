@@ -2,18 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileTsar.Views.ScanPage"
-             Title="Mobile Scanner">
+             Title="Mobile Scanner"
+             BackgroundImage="GeoBak.jpg"
+             BackgroundColor="Transparent">
     <ContentPage.Content>
         <StackLayout Padding="20,10" HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="Click to scan the barcode that was sent to you" FontSize="24"></Label>
+            <Label TextColor="White" Text="Click to scan the barcode that was sent to you" FontSize="24"></Label>
             <!--<Button x:Name="EncodeButton" Text="Encode" Clicked="EncodeButton_OnClicked"></Button>-->
-            <Button x:Name="ScanButton" Text="Scan Barcode" Clicked="ScanButton_OnClicked"></Button>
-            <Button x:Name="LocationButton" Text="GPS" Clicked="LocationButton_OnClicked"></Button>
+            <Button BackgroundColor="#4D6098" TextColor="White" x:Name="ScanButton" Text="Scan Barcode" Clicked="ScanButton_OnClicked"></Button>
+            <Button BackgroundColor="#4D6098" TextColor="White" x:Name="LocationButton" Text="GPS" Clicked="LocationButton_OnClicked" IsVisible="False"></Button>
 
             <Label x:Name="LabelLAt"></Label>
             <Label x:Name="LabelLong"></Label>
             <Label x:Name="LabelAddress"></Label>
-            <Label x:Name="ReverseGeocodedOutputLabel"></Label>
+            <Label x:Name="ReverseGeocodedOutputLabel" IsVisible="False"></Label>
             <ActivityIndicator x:Name="ActivityIndicator" IsVisible="False" IsRunning="False" Color="Red"></ActivityIndicator>
         </StackLayout>
     </ContentPage.Content>

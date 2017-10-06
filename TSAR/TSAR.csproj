@@ -64,8 +64,8 @@
       <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="iTextSharp, Version=4.1.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
-      <HintPath>..\packages\iTextSharp-LGPL.4.1.6\lib\iTextSharp.dll</HintPath>
+    <Reference Include="itextsharp, Version=5.0.5.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.0.5\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -137,6 +137,18 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorPDF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorPDF.1.0.0\lib\net45\RazorPDF.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -153,6 +165,7 @@
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Spatial, Version=5.8.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.8.3\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
@@ -211,8 +224,8 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Twilio, Version=5.6.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Twilio.5.6.4\lib\net451\Twilio.dll</HintPath>
+    <Reference Include="Twilio, Version=5.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Twilio.5.6.5\lib\net451\Twilio.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -250,10 +263,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ClientPasswordsController.cs" />
+    <Compile Include="Api\MobileCategoriesController.cs" />
     <Compile Include="Api\MobileClientsController.cs" />
+    <Compile Include="Api\MobileCommentLikesController.cs" />
+    <Compile Include="Api\MobileCommentsController.cs" />
     <Compile Include="Api\MobileConsultantRegistersController.cs" />
     <Compile Include="Api\MobileConsultantsController.cs" />
+    <Compile Include="Api\MobilePostCategoriesController.cs" />
+    <Compile Include="Api\MobilePostLikesController.cs" />
+    <Compile Include="Api\MobilePostTagsController.cs" />
+    <Compile Include="Api\MobileReplyLikesController.cs" />
+    <Compile Include="Api\MobileTagsController.cs" />
     <Compile Include="Api\MobileLocationsController.cs" />
+    <Compile Include="Api\MobilePostsController.cs" />
+    <Compile Include="Api\MobileRepliesController.cs" />
     <Compile Include="Api\MobileTimesheetsController.cs" />
     <Compile Include="Api\MobileTravelController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -264,6 +287,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccomodationFilesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BudgetsController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ClientPasswordsController.cs" />
@@ -279,11 +303,13 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsletterController.cs" />
     <Compile Include="Controllers\PayrollsController.cs" />
+    <Compile Include="Controllers\PayslipController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SendMailerController.cs" />
+    <Compile Include="Controllers\TargetController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\TimeSheetHistoryController.cs" />
@@ -304,14 +330,20 @@
     <Compile Include="Models\AccomodationFiles.cs" />
     <Compile Include="Models\AccomodationFilesEmail.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AllpostsViewModel.cs" />
+    <Compile Include="Models\BlogViewModel.cs" />
     <Compile Include="Models\Budget.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ClientPassword.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CommentLike.cs" />
     <Compile Include="Models\Commission.cs" />
     <Compile Include="Models\Consultant.cs" />
     <Compile Include="Models\ConsultantRegister.cs" />
     <Compile Include="Models\ContactEmailFormModel.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\FeedResult.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Leave.cs" />
@@ -319,13 +351,20 @@
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Payroll.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostCategory.cs" />
+    <Compile Include="Models\PostLike.cs" />
+    <Compile Include="Models\PostTag.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Projects.cs" />
     <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Reply.cs" />
+    <Compile Include="Models\ReplyLike.cs" />
     <Compile Include="Models\RolesLogic.cs" />
     <Compile Include="Models\RolesView.cs" />
     <Compile Include="Models\SchedulerModel.cs" />
     <Compile Include="Models\Subscription.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Tasks.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\Timesheet.cs" />
@@ -338,6 +377,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Repository\BlogRepository.cs" />
+    <Compile Include="Repository\IBlogRepository.cs" />
     <Compile Include="SmsHelper\ITwilioSmsRestClient.cs" />
     <Compile Include="SmsHelper\TwilioSmsRestClient.cs" />
     <Compile Include="Startup.cs" />
@@ -349,8 +390,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\images\Dislike.png" />
+    <Content Include="Content\images\Like.png" />
     <Content Include="Content\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="Content\kanban.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\kanban.css" />
     <Content Include="css\agency.css" />
     <Content Include="css\agency.min.css">
@@ -369,6 +413,7 @@
     <Content Include="img\Elephant1.jpg" />
     <Content Include="img\elephant22.jpg" />
     <Content Include="img\Elephant3.jpg" />
+    <Content Include="img\GeoBak.jpg" />
     <Content Include="img\header-bg.jpg" />
     <Content Include="img\images\star_gold_16.png" />
     <Content Include="img\images\star_white_16.png" />
@@ -418,8 +463,14 @@
     <Content Include="Grid.mvc.readme" />
     <Content Include="Attach\EnergyPolicy.pdf" />
     <Content Include="Attach\pdf.pdf" />
+    <None Include="Properties\PublishProfiles\TSAR1 - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\tsar2 - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\tsar2 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\tsar2 - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\tsar2 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.css" />
@@ -636,10 +687,13 @@
     <Content Include="Scripts\gridmvc.lang.ru.js" />
     <Content Include="Scripts\gridmvc.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-3.1.1.js" />
-    <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.2.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -663,7 +717,6 @@
     <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="vendor\jquery\jquery.js" />
     <Content Include="vendor\jquery\jquery.min.js" />
-    <Content Include="Views\Products\Quotation.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -742,8 +795,6 @@
     <Content Include="vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Views\Shared\_LayoutOther.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Consultants\Create.cshtml" />
     <Content Include="Views\Consultants\Delete.cshtml" />
     <Content Include="Views\Consultants\Details.cshtml" />
@@ -860,21 +911,28 @@
     <Content Include="Views\Tasks\Edit.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Views\Tasks\ViewTasks.cshtml" />
-    <Content Include="Views\Products\CreateProduct.cshtml" />
-    <Content Include="Views\Products\DeleteProduct.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\EditProduct.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\ConsultantRegisters\Create.cshtml" />
     <Content Include="Views\ConsultantRegisters\Delete.cshtml" />
     <Content Include="Views\ConsultantRegisters\Details.cshtml" />
     <Content Include="Views\ConsultantRegisters\Edit.cshtml" />
     <Content Include="Views\ConsultantRegisters\Index.cshtml" />
-    <Content Include="Views\Products\MyQuotation.cshtml" />
+    <Content Include="Views\Payslip\Create.cshtml" />
+    <Content Include="Views\Payslip\Delete.cshtml" />
+    <Content Include="Views\Payslip\Details.cshtml" />
+    <Content Include="Views\Payslip\Edit.cshtml" />
+    <Content Include="Views\Payslip\Index.cshtml" />
+    <Content Include="Views\Target\Index.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\Posts.cshtml" />
+    <Content Include="Views\Blog\AllPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Content\themes\base\images\" />
   </ItemGroup>
   <ItemGroup>

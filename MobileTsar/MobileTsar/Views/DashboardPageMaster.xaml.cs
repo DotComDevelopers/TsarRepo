@@ -41,8 +41,9 @@ namespace MobileTsar.Views
                     new DashboardPageMenuItem { Id = 2, IsVisible = true, Title = "Timesheets List",TargetType = typeof(MyTimesheetsPage)},
                     new DashboardPageMenuItem { Id = 3, IsVisible = true, Title = "Clock In", TargetType = typeof(ScanPage)}, 
                     new DashboardPageMenuItem { Id = 4, IsVisible = true, Title = "Client Passwords", TargetType = typeof(ClientPasswordsPage)},
-                    new DashboardPageMenuItem { Id = 5, IsVisible = true, Title = "Navigate To Client", TargetType = typeof(MapsPage)},
-                    new DashboardPageMenuItem { Id = 6, IsVisible = false, Title = "New client password", TargetType = typeof(NewClientPasswordPage)},
+                    new DashboardPageMenuItem { Id = 5, IsVisible = true, Title = "Navigate To Client", TargetType = typeof(MapsPage)},                   
+                    new DashboardPageMenuItem { Id = 6, IsVisible = true, Title = "Set Password", TargetType = typeof(SetPasswordPage)},
+                    new DashboardPageMenuItem { Id = 7, IsVisible = false, Title = "New client password", TargetType = typeof(NewClientPasswordPage)},
                 });
 
         

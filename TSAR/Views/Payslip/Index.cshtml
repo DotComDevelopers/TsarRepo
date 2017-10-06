@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TSAR.Models.Payroll>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<div>
+    <h4>Payslip for @DateTime.Now.ToString("MMMM") </h4>
+
+    <table>
+        <tr>
+            <td>
+                <h4 align="left" style="color: black"> Basic Salary:</h4><a> @*R @Html.DisplayFor(model => model.Basic)*@  Viewbag.Basic </a>
+            </td>
+
+            <td>   </td>
+
+        </tr>
+        <tr>
+            @*<td style="color: white">R @Html.DisplayFor(model => model.Basic)</td>*@
+        </tr>
+        <tr>
+            <td>
+                <h4 style="color: black" align="center">Commission at 20% of @ViewBag.NoTimesheets Timesheets :</h4> <a style="text-align:end">R @ViewBag.Comm</a>
+
+            </td>
+        </tr>
+        <tr>
+            @*<td style="color: white">R @Html.DisplayFor(model => model.Comm)</td>*@
+        </tr>
+        <tr>
+            <td>
+                <h4 style="color: black" align="left">Tax :</h4><a> @ViewBag.Tax</a>
+            </td>
+        </tr>
+        <tr>
+            @*<td style="color: white">R @Html.DisplayFor(model => model.tax)</td>*@
+        </tr>
+        <tr>
+            <td>
+                <h4 style="color: black" align="left">Total due :</h4><a>@ViewBag.Net </a>
+            </td>
+        </tr>
+        <tr>
+            @*<td style="color: white"> @ViewBag.Net</td>*@
+            @*<td>@Html.DisplayFor(model => model.total) @ViewBag.Net</td>*@
+        </tr>
+    </table>
+    <a href="@Url.Action("Payslip","Payslip")"> Export to PDF</a> 
+
+</div>
