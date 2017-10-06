@@ -3642,8 +3642,26 @@ namespace MobileTsar.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
+			// aapt resource value: 0x7f02012c
+			public const int avd_hide_password_1 = 2130837804;
+			
+			// aapt resource value: 0x7f02012d
+			public const int avd_hide_password_2 = 2130837805;
+			
+			// aapt resource value: 0x7f02012e
+			public const int avd_hide_password_3 = 2130837806;
+			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
+			
+			// aapt resource value: 0x7f02012f
+			public const int avd_show_password_1 = 2130837807;
+			
+			// aapt resource value: 0x7f020130
+			public const int avd_show_password_2 = 2130837808;
+			
+			// aapt resource value: 0x7f020131
+			public const int avd_show_password_3 = 2130837809;
 			
 			// aapt resource value: 0x7f020055
 			public const int Background2 = 2130837589;
