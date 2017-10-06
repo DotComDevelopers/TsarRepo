@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Collections;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-using TSAR.Models;
 
 
 
 namespace TSAR.Models
 {
-    public class Product
+    public class Product 
     {
         [Key]
         [Required]
@@ -42,8 +37,6 @@ namespace TSAR.Models
         public string ClientName { get; set; } //check if existing client and pull name automatically from login
 
         public string Email { get; set; }   //check if existing client and pull email automatically from login
-
-
 
 
     }

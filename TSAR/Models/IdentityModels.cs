@@ -73,5 +73,17 @@ namespace TSAR.Models
         public System.Data.Entity.DbSet<TSAR.Models.Product> Products { get; set; }
 
     public System.Data.Entity.DbSet<TSAR.Models.ConsultantRegister> ConsultantRegisters { get; set; }
-  }
+
+        public DbSet<TSAR.Models.Post> Posts { get; set; }
+        public DbSet<TSAR.Models.Comment> Comments { get; set; }
+        public DbSet<TSAR.Models.Reply> Replies { get; set; }
+        public DbSet<TSAR.Models.Tag> Tags { get; set; }
+        public DbSet<TSAR.Models.PostTag> PostsTags { get; set; }
+        public DbSet<TSAR.Models.Category> Categories { get; set; }
+        public DbSet<TSAR.Models.PostLike> PostLikes { get; set; }
+        public DbSet<TSAR.Models.CommentLike> CommentLikes { get; set; }
+        public DbSet<TSAR.Models.ReplyLike> ReplyLikes { get; set; }
+        public DbSet<TSAR.Models.PostCategory> PostCategories { get; set; }
+
+    }
 }

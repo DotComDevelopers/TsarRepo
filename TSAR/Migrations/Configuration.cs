@@ -439,7 +439,7 @@ namespace TSAR.Migrations
                     EndTime = System.TimeSpan.FromHours(13),
                     Hours = 1,
                     Total = 700,
-                    TicketReference = "201761236jonn"
+                    TicketReference = "201761236jonn",
 
                 }
             );
