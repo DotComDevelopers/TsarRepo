@@ -17,26 +17,12 @@ namespace TSAR.Models
         public string ShortDescription { get; set; }
 
         public string Body { get; set; }
-
-        public string Meta { get; set; }
-
-        public string UrlSeo { get; set; }
-
-        public bool Published { get; set; }
-        [DefaultValue(0)]
-
-        public int NetLikeCount { get; set; }
-
+        
         public DateTime PostedOn { get; set; }
-
-        public DateTime? Modified { get; set; }
-
-        public ICollection<Comment> Comments { get; set; }
-
-        public ICollection<Reply> Replies { get; set; }
-        public ICollection<PostCategory> PostCategories { get; set; }
-        public ICollection<PostTag> PostTags { get; set; }
-
-        public ICollection<PostLike> PostLikes { get; set; }
+        
+      
+        public Consultant Consultant { get; set; }
+        public int ConsultantNum { get; set; }
+        public string FirstName { get; set; }
     }
 }
