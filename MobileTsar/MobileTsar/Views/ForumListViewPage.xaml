@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
+             x:Class="MobileTsar.Views.ForumListViewPage"
+             BackgroundImage="GeoBak.jpg"
+             BackgroundColor="Transparent"
+             Title="Forums">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New" x:Name="NewPostToolbarItem" Clicked="NewPostToolbarItem_OnClicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.BindingContext>
+        <viewModels:PostsViewModel>
+
+        </viewModels:PostsViewModel>
+    </ContentPage.BindingContext>
+    <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
+        <Button x:Name="GetPostsButton" Text="Click" Clicked="GetPostsButton_OnClicked" Command="{Binding GetPostsCommand}"></Button>
+   <SearchBar x:Name="SearchBar"></SearchBar>
+        <!--<Picker x:Name="ClientPicker" SelectedIndexChanged="ClientPicker_OnSelectedIndexChanged"></Picker>-->
+
+        <ListView x:Name="TimesheetListView" ItemsSource="{Binding Posts}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        <StackLayout Padding="20,10">
+                            <Label Text="Title:" TextColor="White" FontSize="25"></Label>
+                            <Label Text="{Binding Title}" FontSize="24"></Label>
+                            <Label Text="Posted On:"  TextColor="White" FontSize="25"></Label>
+                            <Label Text="{Binding PostedOn}" FontSize="24"></Label>
+                            <Label Text="Short Description:" TextColor="White" FontSize="25"></Label>
+                            <Label Text="{Binding ShortDescription}" FontSize="24"></Label>
+                            <Label Text="Body:" TextColor="White" FontSize="25"></Label>
+                            <Label Text="{Binding Body}" FontSize="24"></Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

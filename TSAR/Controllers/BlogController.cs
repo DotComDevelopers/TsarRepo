@@ -68,7 +68,7 @@ namespace TSAR.Controllers
                PostList.Add(new BlogViewModel()
                 {
                     Post = post,
-                    Modified = post.Modified,
+                
                     Title = post.Title,
                     ShortDescription = post.ShortDescription,
                     PostedOn = post.PostedOn,
@@ -77,7 +77,7 @@ namespace TSAR.Controllers
                     PostDislike = dislikes,
                     PostCategory = postCategories,
                     PostTag = postTags,
-                    UrlSlug = post.UrlSeo
+                
                 });
                 }
 
@@ -184,7 +184,7 @@ namespace TSAR.Controllers
                     Title = post.Title,
                     PostCategories = postCategories,
                     PostTags = postTags,
-                    UrlSlug = post.UrlSeo
+                  
                 }); 
             }
 

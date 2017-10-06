@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MobileTsar.ViewModels;assembly=MobileTsar"
+             x:Class="MobileTsar.Views.NewPostPage"
+             BackgroundImage="GeoBak.jpg"
+             BackgroundColor="Transparent"
+             Title="New Post">
+    <ContentPage.BindingContext>
+        <viewModels:NewPostViewModel>
+        </viewModels:NewPostViewModel>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout  Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center" >
+            <Label x:Name="UsernameLabel" IsVisible="False"></Label>
+            <Label Text="Consultant" TextColor="White"></Label>
+            <Label Text="{Binding Source={x:Reference UsernameLabel},Path=Text}"></Label>
+            <!--<Picker x:Name="ConsultantPicker" SelectedIndexChanged="ConsultantPicker_OnSelectedIndexChanged"></Picker>-->
+            <Entry x:Name="ConsultantIdLabel" Text="{Binding ConsultantNum}" IsVisible="False"></Entry>
+            <Entry x:Name="ConsultantFullNameLabel" Text="{Binding FullName}" IsVisible="False"></Entry>
+            
+            <Label Text="Title:" TextColor="White"></Label>
+            <Entry x:Name="TitleEntry" Text="{Binding Title}"></Entry>
+
+            <Label Text="Short Description:" TextColor="White"></Label>
+            <Entry x:Name="ShortDescriptionEntry" Text="{Binding ShortDescription}"></Entry>
+
+            <Label Text="Body:" TextColor="White"></Label>
+            <Entry x:Name="BodyEntry" Text="{Binding Body}"></Entry>
+
+
+            <Button BackgroundColor="#4D6098" TextColor="White" x:Name="ValidateBtn" Text="Validate" Clicked="ValidateBtn_OnClicked"></Button>
+            <Button BackgroundColor="#4D6098" TextColor="White" x:Name="FinishBtn" Command="{Binding AddCommand}" Text="Finish" Clicked="FinishBtn_OnClicked" IsVisible="False" ></Button>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

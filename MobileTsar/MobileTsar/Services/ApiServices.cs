@@ -223,6 +223,31 @@ namespace MobileTsar.Services
         return consultantRegisters;
       }
 
+    //get posts
+      public async Task<List<Post>> GetPostsAsync(string accessToken)
+      {
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        var json = await client.GetStringAsync("http://tsar2.azurewebsites.net/api/MobilePosts");
+
+        var posts = JsonConvert.DeserializeObject<List<Post>>(json);
+        return posts;
+      }
+
+    //post posts
+      public async Task PostPostAsync(Post post, string accessToken)
+      {
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+        var json = JsonConvert.SerializeObject(post);
+        HttpContent content = new StringContent(json);
+        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        var response = await client.PostAsync("http://tsar2.azurewebsites.net/api/MobilePosts", content);
+        //add success message here using response             
+      }
+
 
   }
     }
