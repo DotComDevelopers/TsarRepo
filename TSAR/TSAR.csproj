@@ -137,8 +137,8 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RazorPDF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RazorPDF.1.0.0\lib\net45\RazorPDF.dll</HintPath>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.6.3\lib\net40\Rotativa.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -409,6 +409,7 @@
     <Content Include="js\contact_me.js" />
     <Content Include="js\jqBootstrapValidation.js" />
     <Content Include="mail\contact_me.php" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="less\agency.less" />
@@ -425,6 +426,7 @@
     <Content Include="Grid.mvc.readme" />
     <Content Include="Attach\EnergyPolicy.pdf" />
     <Content Include="Attach\pdf.pdf" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy %282%29.pubxml" />

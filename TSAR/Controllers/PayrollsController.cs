@@ -8,7 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using RazorPDF;
+
 using TSAR.Models;
 
 namespace TSAR.Controllers
@@ -66,11 +66,11 @@ namespace TSAR.Controllers
 
                     ViewBag.Net = (totpay - tax).ToString("R0.00");
                 }
-                //return View(payslip);
+                return View(payroll);
 
                 //return new rPdfResult(customers, "PDF");
 
-                return new RazorPDF.PdfResult(payroll, "Index");
+                //return new RazorPDF.PdfResult(payroll, "Index");
 
 
 

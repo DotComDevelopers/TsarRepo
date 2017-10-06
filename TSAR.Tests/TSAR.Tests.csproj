@@ -51,8 +51,8 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RazorPDF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RazorPDF.1.0.0\lib\net45\RazorPDF.dll</HintPath>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.6.3\lib\net40\Rotativa.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\jquery-3.1.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -125,6 +126,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Browsers\qt.browser" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Scripts\jquery-3.1.1.slim.min.map" />

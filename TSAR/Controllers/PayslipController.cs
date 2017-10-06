@@ -8,7 +8,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using RazorPDF;
+
+
+
 using TSAR.Models;
 
 
@@ -23,55 +25,74 @@ namespace TSAR.Controllers
         public ActionResult Index()
         {
             Payroll payslip = new Payroll();
-            { 
             {
-                string email = User.Identity.GetUserName();
+                {
+                    string email = User.Identity.GetUserName();
 
-                var consultant = (from Consultant c in db.Consultants
-                                  where c.ConsultantUserName == email
-                                  select c.ConsultantNum).FirstOrDefault();
+                    var consultant = (from Consultant c in db.Consultants
+                                      where c.ConsultantUserName == email
+                                      select c.ConsultantNum).FirstOrDefault();
 
-                var totalValue = db.Timesheets.Where(p => p.ConsultantNum == consultant);
-                ViewBag.NoTimesheets = totalValue.Count();
-                var tottimesheet = totalValue.Sum(u => u.Total);
+                    var totalValue = db.Timesheets.Where(p => p.ConsultantNum == consultant);
+                    ViewBag.NoTimesheets = totalValue.Count();
+                    var tottimesheet = totalValue.Sum(u => u.Total);
 
-                ViewBag.Comm = (payslip.Comm = tottimesheet * 0.2).ToString("R0.00");
+                    ViewBag.Comm = (payslip.Comm = tottimesheet * 0.2).ToString("R0.00");
 
-                ViewBag.Basic = (payslip.Basic = 7000).ToString("R0.00");
+                    ViewBag.Basic = (payslip.Basic = 7000).ToString("R0.00");
 
-                ViewBag.Totpay = (payslip.totPay = payslip.Basic + payslip.Comm).ToString("R0.00");
-                ViewBag.Name = User.Identity.GetUserName();
-                var totpay = (payslip.totPay = payslip.Basic + payslip.Comm);
+                    ViewBag.Totpay = (payslip.totPay = payslip.Basic + payslip.Comm).ToString("R0.00");
+                    ViewBag.Name = User.Identity.GetUserName();
+                    var totpay = (payslip.totPay = payslip.Basic + payslip.Comm);
 
                     //ViewBag.Tax = (payslip.tax = payslip.totPay * 0.2).ToString("R0.00");
                     var tax = 0;
-                if(totpay >= 7500 && totpay <= 15500)
+                    if (totpay >= 7500 && totpay <= 15500)
                     {
-                        tax = 2800;    
+                        tax = 2800;
                     }
-                else if (totpay >= 15750 && totpay<= 24700)
+                    else if (totpay >= 15750 && totpay <= 24700)
                     {
                         tax = 4700;
                     }
-                else if(totpay >= 24750 && totpay <= 35000) 
+                    else if (totpay >= 24750 && totpay <= 35000)
                     {
                         tax = 7500;
 
                     }
-                //var tax = (payslip.tax = payslip.totPay * 0.2);
+                    //var tax = (payslip.tax = payslip.totPay * 0.2);
 
-                ViewBag.Net = (totpay - tax).ToString("R0.00");
-            }
-                //return View(payslip);
+                    ViewBag.Net = (totpay - tax).ToString("R0.00");
+                }
+                return View(payslip);
 
                 //return new rPdfResult(customers, "PDF");
 
+
+                //return new RazorPDF.PdfResult(payslip, "Index");
+
                 
-                return new RazorPDF.PdfResult(payslip, "Index");
-
-
             }
         }
+        
+        public ActionResult GeneratePDF()
+        {
+            return new Rotativa.ActionAsPdf("Index");
+        }
+            
+       
+
+
+
+            
+        
+
+        //public ActionResult GeneratePDF()
+        //{
+            
+        //        //.ActionAsPdf("GetPersons");
+        //}
+
 
         // GET: Payslip/Details/5
         public ActionResult Details(int? id)
