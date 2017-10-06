@@ -63,9 +63,11 @@ namespace TSAR.Models
 
 
 
+      public string Filename { get; set; }
+
+      public byte[] Signature { get; set; } 
 
 
 
-
-    }
+  }
 }
