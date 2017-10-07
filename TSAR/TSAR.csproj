@@ -145,7 +145,6 @@
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-
     <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rotativa.1.6.3\lib\net40\Rotativa.dll</HintPath>
       <Private>True</Private>
@@ -319,13 +318,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709172111108_Reset.cs" />
-    <Compile Include="Migrations\201709172111108_Reset.Designer.cs">
-      <DependentUpon>201709172111108_Reset.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709172233398_project.cs" />
-    <Compile Include="Migrations\201709172233398_project.Designer.cs">
-      <DependentUpon>201709172233398_project.cs</DependentUpon>
+    <Compile Include="Migrations\201710071719489_Reset.cs" />
+    <Compile Include="Migrations\201710071719489_Reset.Designer.cs">
+      <DependentUpon>201710071719489_Reset.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccomodationFiles.cs" />
@@ -377,6 +372,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Repository\BlogRepository.cs" />
     <Compile Include="Repository\IBlogRepository.cs" />
@@ -474,6 +474,10 @@
     <None Include="Properties\PublishProfiles\tsar2 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\tsar2 - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\tsar2 - Web Deploy.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\dhtmlxScheduler\dhtmlxscheduler.css" />
@@ -943,11 +947,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709172111108_Reset.resx">
-      <DependentUpon>201709172111108_Reset.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709172233398_project.resx">
-      <DependentUpon>201709172233398_project.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710071719489_Reset.resx">
+      <DependentUpon>201710071719489_Reset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

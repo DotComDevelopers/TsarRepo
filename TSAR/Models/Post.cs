@@ -18,8 +18,7 @@ namespace TSAR.Models
 
         public string Body { get; set; }
         
-        public DateTime PostedOn { get; set; }
-        
+        public DateTime PostedOn { get; set; }        
       
         public Consultant Consultant { get; set; }
         public int ConsultantNum { get; set; }

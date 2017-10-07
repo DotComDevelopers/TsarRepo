@@ -188,8 +188,24 @@ namespace TSAR.Migrations
       //Create default Travel
       context.Travels.AddOrUpdate(
               t => t.TravelId,
-              new Travel() { TravelId = 1, Distance = "1 km", TravelRate = 2, TravelFee = 2, Id = 1, MClientAddress = " 15 Narbada Road " },
-              new Travel() { TravelId = 2, Distance = "10 km", TravelRate = 2, TravelFee = 20, Id = 1, MClientAddress = " 16 Narbada Road " }
+              new Travel()
+              {
+                TravelId = 1,
+                Distance = "1 km",
+                TravelRate = 2,
+                TravelFee = 2,
+                Id = 1,
+                MClientAddress = " 15 Narbada Road "
+              },
+              new Travel()
+              {
+                TravelId = 2,
+                Distance = "10 km",
+                TravelRate = 2,
+                TravelFee = 20,
+                Id = 1,
+                MClientAddress = " 16 Narbada Road "
+              }
 
                  //new ManageTravel() { TravelCode = "CPT",distance = 20, rate =2 , TravelFee =40 },
                  );
@@ -214,7 +230,7 @@ namespace TSAR.Migrations
             c => c.Id,
             new Client()
             {
-              Id = 1,
+              Id = 2,
               ClientAddress = "13 Ronald Avenue, Durban South",
               ClientAddress2 = "11 Romford Road, Durban South",
               ClientName = "FoodPro",
@@ -287,7 +303,7 @@ namespace TSAR.Migrations
                 c => c.ConsultantNum,
                 new Consultant()
                 {
-                    ConsultantNum = 1,
+                    ConsultantNum = 2,
                     CommissionId = 1,
                     ConsultantAddress = "143 Warrangal Road",
                     ConsultantType = "Finance",
@@ -315,7 +331,7 @@ namespace TSAR.Migrations
               c => c.ConsultantNum,
               new Consultant()
               {
-                  ConsultantNum = 2,
+                  ConsultantNum = 3,
                   CommissionId = 1,
                   ConsultantAddress = "12 Narbada Road",
                   ConsultantType = "Finance",
@@ -341,7 +357,7 @@ namespace TSAR.Migrations
             c => c.ConsultantNum,
             new Consultant()
             {
-              ConsultantNum = 2,
+              ConsultantNum = 4,
               CommissionId = 1,
               ConsultantAddress = "4 Hyder Road, Berea",
               ConsultantType = "Finance",
@@ -367,7 +383,7 @@ namespace TSAR.Migrations
               c => c.ConsultantNum,
               new Consultant()
               {
-                  ConsultantNum = 3,
+                  ConsultantNum = 5,
                   CommissionId = 1,
                   ConsultantAddress = "72 Aurora Road",
                   ConsultantType = "Finance",
