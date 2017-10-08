@@ -15,10 +15,9 @@
         </viewModels:PostsViewModel>
     </ContentPage.BindingContext>
     <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
-        <Button x:Name="GetPostsButton" Text="Click" Clicked="GetPostsButton_OnClicked" Command="{Binding GetPostsCommand}"></Button>
-   <SearchBar x:Name="SearchBar"></SearchBar>
+        <SearchBar x:Name="SearchBar" TextChanged="SearchBar_OnTextChanged" HeightRequest="50" Placeholder="Search" PlaceholderColor="Lime"></SearchBar>
+        <!--<Button x:Name="GetPostsButton" Text="Click" Clicked="GetPostsButton_OnClicked" Command="{Binding GetPostsCommand}"></Button>-->
         <!--<Picker x:Name="ClientPicker" SelectedIndexChanged="ClientPicker_OnSelectedIndexChanged"></Picker>-->
-
         <ListView x:Name="TimesheetListView" ItemsSource="{Binding Posts}" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>

@@ -17,7 +17,7 @@
             <Label Text="{Binding Source={x:Reference UsernameLabel},Path=Text}"></Label>
             <!--<Picker x:Name="ConsultantPicker" SelectedIndexChanged="ConsultantPicker_OnSelectedIndexChanged"></Picker>-->
             <Entry x:Name="ConsultantIdLabel" Text="{Binding ConsultantNum}" IsVisible="False"></Entry>
-            <Entry x:Name="ConsultantFullNameLabel" Text="{Binding FullName}" IsVisible="False"></Entry>
+            <Entry x:Name="ConsultantFullNameLabel" Text="{Binding FirstName}" IsVisible="False"></Entry>
             
             <Label Text="Title:" TextColor="White"></Label>
             <Entry x:Name="TitleEntry" Text="{Binding Title}"></Entry>

@@ -25,7 +25,7 @@ namespace TSAR.Api
 
         // GET: api/MobilePosts/5
         [ResponseType(typeof(Post))]
-        public async Task<IHttpActionResult> GetPost(string id)
+        public async Task<IHttpActionResult> GetPost(int id)
         {
             Post post = await db.Posts.FindAsync(id);
             if (post == null)
@@ -38,7 +38,7 @@ namespace TSAR.Api
 
         // PUT: api/MobilePosts/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutPost(string id, Post post)
+        public async Task<IHttpActionResult> PutPost(int id, Post post)
         {
             if (!ModelState.IsValid)
             {
@@ -81,29 +81,14 @@ namespace TSAR.Api
             }
 
             db.Posts.Add(post);
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (PostExists(post.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = post.Id }, post);
         }
 
         // DELETE: api/MobilePosts/5
         [ResponseType(typeof(Post))]
-        public async Task<IHttpActionResult> DeletePost(string id)
+        public async Task<IHttpActionResult> DeletePost(int id)
         {
             Post post = await db.Posts.FindAsync(id);
             if (post == null)
@@ -126,7 +111,7 @@ namespace TSAR.Api
             base.Dispose(disposing);
         }
 
-        private bool PostExists(string id)
+        private bool PostExists(int id)
         {
             return db.Posts.Count(e => e.Id == id) > 0;
         }

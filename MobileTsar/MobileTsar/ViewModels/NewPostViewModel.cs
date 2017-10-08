@@ -15,15 +15,13 @@ namespace MobileTsar.ViewModels
   {
     ApiServices _apiServices = new ApiServices();
 
+
     public string Title { get; set; }
-
     public string ShortDescription { get; set; }
-
     public string Body { get; set; }
-
     public DateTime PostedOn { get; set; }
     public int ConsultantNum { get; set; }
-    public string FullName { get; set; }
+    public string FirstName { get; set; }
 
     public ICommand AddCommand
     {
@@ -32,15 +30,15 @@ namespace MobileTsar.ViewModels
         return new Command(async () =>
         {
 
-          var post = new Post()
+           var post = new Post()
           {
 
             Title = Title,
             Body = Body,
             ShortDescription = ShortDescription,
             PostedOn = DateTime.Now,
-            FullName = FullName,
-            ConsultantNum = ConsultantNum
+            FirstName = FirstName,
+            ConsultantNum = ConsultantNum,
           };
 
           await _apiServices.PostPostAsync(post, Settings.AccessToken);
