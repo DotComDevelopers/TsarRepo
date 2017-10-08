@@ -263,20 +263,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ClientPasswordsController.cs" />
-    <Compile Include="Api\MobileCategoriesController.cs" />
     <Compile Include="Api\MobileClientsController.cs" />
-    <Compile Include="Api\MobileCommentLikesController.cs" />
-    <Compile Include="Api\MobileCommentsController.cs" />
     <Compile Include="Api\MobileConsultantRegistersController.cs" />
     <Compile Include="Api\MobileConsultantsController.cs" />
-    <Compile Include="Api\MobilePostCategoriesController.cs" />
-    <Compile Include="Api\MobilePostLikesController.cs" />
-    <Compile Include="Api\MobilePostTagsController.cs" />
-    <Compile Include="Api\MobileReplyLikesController.cs" />
-    <Compile Include="Api\MobileTagsController.cs" />
     <Compile Include="Api\MobileLocationsController.cs" />
     <Compile Include="Api\MobilePostsController.cs" />
-    <Compile Include="Api\MobileRepliesController.cs" />
     <Compile Include="Api\MobileTimesheetsController.cs" />
     <Compile Include="Api\MobileTravelController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -287,7 +278,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccomodationFilesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BudgetsController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ClientPasswordsController.cs" />
@@ -378,7 +368,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Repository\BlogRepository.cs" />
     <Compile Include="Repository\IBlogRepository.cs" />
     <Compile Include="SmsHelper\ITwilioSmsRestClient.cs" />
     <Compile Include="SmsHelper\TwilioSmsRestClient.cs" />
@@ -448,7 +437,6 @@
     <Content Include="js\contact_me.js" />
     <Content Include="js\jqBootstrapValidation.js" />
     <Content Include="mail\contact_me.php" />
-    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="less\agency.less" />
@@ -465,14 +453,17 @@
     <Content Include="Grid.mvc.readme" />
     <Content Include="Attach\EnergyPolicy.pdf" />
     <Content Include="Attach\pdf.pdf" />
-    <Content Include="App_Browsers\qt.browser" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\TSAR1 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\tsar2 - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\tsar2 - FTP %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\tsar2 - FTP %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\tsar2 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\tsar2 - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\tsar2 - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\tsar2 - Web Deploy %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\tsar2 - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -724,6 +715,8 @@
     <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="vendor\jquery\jquery.js" />
     <Content Include="vendor\jquery\jquery.min.js" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -918,11 +911,6 @@
     <Content Include="Views\Tasks\Edit.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Views\Tasks\ViewTasks.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\ConsultantRegisters\Create.cshtml" />
     <Content Include="Views\ConsultantRegisters\Delete.cshtml" />
     <Content Include="Views\ConsultantRegisters\Details.cshtml" />
@@ -937,10 +925,17 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Posts.cshtml" />
     <Content Include="Views\Blog\AllPosts.cshtml" />
+    <Content Include="Views\Products\CreateProduct.cshtml" />
+    <Content Include="Views\Products\DeleteProduct.cshtml" />
+    <Content Include="Views\Products\EditProduct.cshtml" />
+    <Content Include="Views\Products\MyQuotation.cshtml" />
+    <Content Include="Views\Products\Quotation.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Browsers\" />
     <Folder Include="App_Data\" />
     <Folder Include="Content\themes\base\images\" />
+    <Folder Include="Rotativa\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -40,7 +40,7 @@ namespace MobileTsar.Views
       var currentuser = list2.Email;
       var list = await api.GetConsultantAsync(token);
       //var ret = list.Select(t => t.FirstName).ToList();
-      var username = list.Where(t => t.ConsultantUserName == currentuser).Select(t => t.FullName).FirstOrDefault();
+      var username = list.Where(t => t.ConsultantUserName == currentuser).Select(t => t.FirstName).FirstOrDefault();
       ConsultantFullNameLabel.Text = username;
     }
 
@@ -57,7 +57,7 @@ namespace MobileTsar.Views
     private async void FinishBtn_OnClicked(object sender, EventArgs e)
     {
       await DisplayAlert("Done", "New Timesheet added!", "Close");
-      await Navigation.PushAsync(new ForumListViewPage());
+      await Navigation.PopAsync();
     }
 
     private async void ValidateBtn_OnClicked(object sender, EventArgs e)
