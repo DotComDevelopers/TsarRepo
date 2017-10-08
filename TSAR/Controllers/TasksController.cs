@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Collections;
-
+using Microsoft.AspNet.Identity;
 using TSAR.Models;
 
 namespace TSAR.Controllers
@@ -26,8 +26,13 @@ namespace TSAR.Controllers
         // GET: ViewTasks
         public ActionResult ViewTasks()
         {
-            var tasks = db.Tasks.Include(t => t.Consultant);
-            return View(tasks.ToList());
+            //var tasks = db.Tasks.Include(t => t.Consultant);
+          var username = User.Identity.GetUserName();
+          var consultantnum = (from Consultant c in db.Consultants
+            where c.ConsultantUserName == username
+            select c.ConsultantNum).FirstOrDefault();
+      var consultanttasklist = db.Tasks.Where(x => x.ConsultantNum == consultantnum);
+            return View(consultanttasklist);
         }
 
         // GET: Tasks/Details/5

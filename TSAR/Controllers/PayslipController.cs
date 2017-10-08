@@ -9,9 +9,7 @@ using System.Net;
 using System.Web;
 
 using System.Web.Mvc;
-
-
-
+using Rotativa;
 using TSAR.Models;
 
 
@@ -25,28 +23,33 @@ namespace TSAR.Controllers
         // GET: Payslip
         public ActionResult Index()
         {
-            Payroll payslip = new Payroll();
-            {
-                {
-                    string email = User.Identity.GetUserName();
 
-                    var consultant = (from Consultant c in db.Consultants
-                                      where c.ConsultantUserName == email
+
+      Payroll payslip = new Payroll();
+            {
+                    string username = User.Identity.GetUserName();
+
+                    var consultantnum = (from Consultant c in db.Consultants
+                                      where c.ConsultantUserName == username
                                       select c.ConsultantNum).FirstOrDefault();
 
-                    var totalValue = db.Timesheets.Where(p => p.ConsultantNum == consultant);
+                    var totalValue = db.Timesheets.Where(p => p.ConsultantNum == consultantnum);
+    
+
                     ViewBag.NoTimesheets = totalValue.Count();
+
                     var tottimesheet = totalValue.Sum(u => u.Total);
 
                     ViewBag.Comm = (payslip.Comm = tottimesheet * 0.2).ToString("R0.00");
 
                     ViewBag.Basic = (payslip.Basic = 7000).ToString("R0.00");
+              payslip.Basic = (payslip.Basic = 7000);
 
                     ViewBag.Totpay = (payslip.totPay = payslip.Basic + payslip.Comm).ToString("R0.00");
                     ViewBag.Name = User.Identity.GetUserName();
                     var totpay = (payslip.totPay = payslip.Basic + payslip.Comm);
 
-                    //ViewBag.Tax = (payslip.tax = payslip.totPay * 0.2).ToString("R0.00");
+                
                     var tax = 0;
                     if (totpay >= 7500 && totpay <= 15500)
                     {
@@ -59,39 +62,21 @@ namespace TSAR.Controllers
                     else if (totpay >= 24750 && totpay <= 35000)
                     {
                         tax = 7500;
-
                     }
-                    //var tax = (payslip.tax = payslip.totPay * 0.2);
+
+                    ViewBag.Tax = tax;
 
                     ViewBag.Net = (totpay - tax).ToString("R0.00");
-                }
-                return View(payslip);
+                
 
             }
-        }
 
+          return new ViewAsPdf("Index", payslip);
+     
+    }
 
-
-
-        public ActionResult GeneratePDF()
-        {
-            return new Rotativa.ActionAsPdf("Index");
-
-        }
-
-    
-            
-       
-
-
-
-            
-        
-
-
-
-        // GET: Payslip/Details/5
-        public ActionResult Details(int? id)
+    // GET: Payslip/Details/5
+    public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -197,5 +182,7 @@ namespace TSAR.Controllers
             }
             base.Dispose(disposing);
         }
+
+   
     }
 }

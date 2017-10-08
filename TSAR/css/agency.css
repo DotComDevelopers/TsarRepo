@@ -246,6 +246,22 @@ header {
     height: auto;
     width: auto\9;
 }
+
+header .Payslip {
+    background-image: url('../img/elephant22.jpg');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    color: white;
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+}
 header .Other {
   background-image: url('../img/Elephant1.jpg');
   background-repeat: no-repeat;

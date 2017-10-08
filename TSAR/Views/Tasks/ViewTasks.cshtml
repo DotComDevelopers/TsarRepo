@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TSAR.Models.Tasks>
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<TSAR.Models.Tasks>
 @Styles.Render("~/Content/kanban.css")
 @{
     ViewBag.Title = "ViewTasks";
@@ -409,17 +410,17 @@
                     <div id="TODO" class="kanban-centered">
                         @foreach (var i in Model)
                         {
-                            if (Convert.ToString(i.Status) == "TODO")
+                            if (Convert.ToString(i.Status) == "ToDo")
                             {
                                 <article class="kanban-entry grab" id="item1" draggable="true">
                                     <div class="kanban-entry-inner">
                                         <div class="kanban-label">
                                             <h2>
                                                 <a href="#">
-                                                    @Html.DisplayFor(modeli => i.Consultant.FirstName)
-                                                </a> <span>Created a task</span> @Html.DisplayFor(modeli => i.ConsultantNum)
+                                                    @Html.DisplayFor(modeli => i.Description)
+                                                </a> 
                                             </h2>
-                                            <p>@Html.DisplayFor(modeli => i.Description)</p>
+                                            <p></p>
 
                                         </div>
                                     </div>
