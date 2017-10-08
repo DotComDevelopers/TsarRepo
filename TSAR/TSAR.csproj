@@ -294,7 +294,6 @@
     <Compile Include="Controllers\NewsletterController.cs" />
     <Compile Include="Controllers\PayrollsController.cs" />
     <Compile Include="Controllers\PayslipController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
@@ -341,7 +340,6 @@
     <Compile Include="Models\PostCategory.cs" />
     <Compile Include="Models\PostLike.cs" />
     <Compile Include="Models\PostTag.cs" />
-    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Projects.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Reply.cs" />
@@ -715,8 +713,6 @@
     <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="vendor\jquery\jquery.js" />
     <Content Include="vendor\jquery\jquery.min.js" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -925,11 +921,6 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Posts.cshtml" />
     <Content Include="Views\Blog\AllPosts.cshtml" />
-    <Content Include="Views\Products\CreateProduct.cshtml" />
-    <Content Include="Views\Products\DeleteProduct.cshtml" />
-    <Content Include="Views\Products\EditProduct.cshtml" />
-    <Content Include="Views\Products\MyQuotation.cshtml" />
-    <Content Include="Views\Products\Quotation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Browsers\" />
