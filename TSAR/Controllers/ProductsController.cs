@@ -5,9 +5,11 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Rotativa;
 using TSAR.Models;
 
 namespace TSAR.Controllers
@@ -63,7 +65,7 @@ namespace TSAR.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateProduct([Bind(Include = "ProductId,ProductName,Description,Price,totalPrice,Selected,Id,ClientName,Email")] Product product)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 db.Products.Add(product);
                 db.SaveChanges();
@@ -73,7 +75,7 @@ namespace TSAR.Controllers
             return View(product);
         }
 
-        [Authorize(Roles = "Admin, Consultant")]
+        [Authorize(Roles = "Admin, Consultant, Client")]
         // GET: Products/Edit/5
         public ActionResult EditProduct(int? id)
         {
@@ -141,6 +143,26 @@ namespace TSAR.Controllers
             base.Dispose(disposing);
         }
 
+
+        //pdf code
+
+        //Generates View as PDF ----> might not populate dynamically 
+        public ActionResult GenerateQuotationPDF()
+        {
+            return new Rotativa.ActionAsPdf("GetQuotation");
+        }
+
+        //ActionAsPDF - Useful, when we want to generate the PDF using another action method
+        //public ActionResult ExportPDF()
+        //{
+        //    return new ActionAsPdf("GetQuotation")
+        //    {
+        //        FileName = Server.MapPath("~/Content/Relato.pdf"),
+        //        PageOrientation = Rotativa.Options.Orientation.Landscape,
+        //        PageSize = Rotativa.Options.Size.A4
+        //    };
+        //}
+
         [Authorize(Roles = "Client")]
         // GET: Products/Create
         public ActionResult GetQuotation()
@@ -155,9 +177,6 @@ namespace TSAR.Controllers
             ViewBag.Email = (from Client c in db.Clients
                              where c.ClientName == clientusername
                              select c.Email).FirstOrDefault();
-
-            
-
             return View();
         }
 
@@ -176,55 +195,59 @@ namespace TSAR.Controllers
             ViewBag.ClientName = (from Client c in db.Clients
                                   where c.ClientName == clientusername
                                   select c.Id).FirstOrDefault();
-            ViewBag.Email = (from Client c in db.Clients
+            var email = (from Client c in db.Clients
                              where c.ClientName == clientusername
                              select c.Email).FirstOrDefault();
 
-            //var ps = (from Product p in db.Products
-            //    where p.Selected = true
-            //    select p.ProductId).ToString();
+            var tp = (from Product p in db.Products
+                where p.Selected
+                select p.totalPrice).FirstOrDefault();
 
+            var price = (from Product p in db.Products
+                where p.Selected
+                select p.Price).FirstOrDefault();
+
+
+            var selected = (from Product p in db.Products
+                     where p.Selected
+                     select p.Id).ToList();
+
+            //Calculates total price of selected items
+            foreach (var s in selected)
+            {
+
+                product.totalPrice = Convert.ToDouble((tp + price).ToString("R0.00"));
+                //ViewBag.totalPrice = (tp + price).ToString("R0.00");
+                //ViewBag.totalPrice = (product.totalPrice + price).ToString("R0.00");   
+            }
+
+            //Checks if Client is registered or not
             if (clientusername == null)
             {
                 return RedirectToAction("Register", "Account", new { area = "" });
             }
 
+            //Sends quotation as pdf to Client via email
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("dotcomdevelopers19@gmail.com");
+            mail.To.Add(product.Email);
+            mail.Subject = "Quotation";
+            string htmlBody = "Please find your quotation attached as a PDF File!";
+            mail.IsBodyHtml = true;
+            mail.Body = htmlBody;
+            mail.From = new MailAddress("dotcomdevelopers19@gmail.com", "Secretary");
+            foreach (var e in email)
+            {
+                mail.To.Add(email);
+            }
+            System.Net.NetworkCredential cred = new System.Net.NetworkCredential("dotcomdevelopers19@gmail.com", "P@ssword0123");
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = cred;
+            smtp.Send(mail);
 
-            var s = (from Product p in db.Products
-                     where p.Selected
-                     select p.Id).ToList();
-
-            //if (product != null)
-            //{
-
-            //    var prod = TypeDescriptor.GetProperties(product);
-            //    var p = new Dictionary<string, >();
-
-            //}
-
-            //foreach ()
-            //{
-
-            //    if (product.Selected)
-            //    {
-            //        ViewBag.totalPrice = (product.totalPrice = product.Price++).ToString("R0.00");
-            //    }
-                
-            //}
-
-
-            //double total, cost;
-            //if (product.Selected)
-            //{
-            //    ViewBag.totalPrice = (product.totalPrice = product.Price++).ToString("R0.00");
-            //    foreach (var product in Product)
-            //    {
-            //        double total = product.Price++;
-            //        //double total = cost++;
-            //    }
-
-            //    product.totalPrice = product.Price++;
-            //}
 
             if (ModelState.IsValid)
             {
@@ -236,29 +259,10 @@ namespace TSAR.Controllers
             }
 
 
-            return View(product); //to change to Quotation View 
+            return View((IEnumerable<Product>) product); 
 
         }
 
-
-        //public static IDictionary<string, TVal> ToDictionary<TVal>( Product products)
-        //{
-        //    if (products != null)
-        //    {
-        //        var props = TypeDescriptor.GetProperties(products);
-        //        var d = new Dictionary<string, TVal>();
-        //        foreach (var prop in props.Cast<PropertyDescriptor>())
-        //        {
-        //            var val = prop.GetValue(products);
-        //            if (val != null)
-        //            {
-        //                d.Add(prop.Name, (TVal)val);
-        //            }
-        //        }
-        //        return d;
-        //    }
-        //    return new Dictionary<string, TVal>();
-        //}
 
 
         public ActionResult MyQuotation()
@@ -286,10 +290,6 @@ namespace TSAR.Controllers
                       select c.Id).FirstOrDefault();
             return View(db.Products.Where(x => x.ClientName.StartsWith(searchTerm)).ToList());
         }
-
-
-        //pdf
-
 
     }
 }

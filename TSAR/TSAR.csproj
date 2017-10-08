@@ -232,9 +232,6 @@
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Windows">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Windows Phone Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd</HintPath>
-    </Reference>
     <Reference Include="zxing, Version=0.16.2.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
       <HintPath>..\packages\ZXing.Net.0.16.2\lib\net45\zxing.dll</HintPath>
       <Private>True</Private>
@@ -263,20 +260,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ClientPasswordsController.cs" />
-    <Compile Include="Api\MobileCategoriesController.cs" />
     <Compile Include="Api\MobileClientsController.cs" />
-    <Compile Include="Api\MobileCommentLikesController.cs" />
-    <Compile Include="Api\MobileCommentsController.cs" />
     <Compile Include="Api\MobileConsultantRegistersController.cs" />
     <Compile Include="Api\MobileConsultantsController.cs" />
-    <Compile Include="Api\MobilePostCategoriesController.cs" />
-    <Compile Include="Api\MobilePostLikesController.cs" />
-    <Compile Include="Api\MobilePostTagsController.cs" />
-    <Compile Include="Api\MobileReplyLikesController.cs" />
-    <Compile Include="Api\MobileTagsController.cs" />
     <Compile Include="Api\MobileLocationsController.cs" />
-    <Compile Include="Api\MobilePostsController.cs" />
-    <Compile Include="Api\MobileRepliesController.cs" />
     <Compile Include="Api\MobileTimesheetsController.cs" />
     <Compile Include="Api\MobileTravelController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -287,7 +274,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccomodationFilesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BudgetsController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ClientPasswordsController.cs" />
@@ -378,7 +364,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Repository\BlogRepository.cs" />
     <Compile Include="Repository\IBlogRepository.cs" />
     <Compile Include="SmsHelper\ITwilioSmsRestClient.cs" />
     <Compile Include="SmsHelper\TwilioSmsRestClient.cs" />
@@ -724,6 +709,8 @@
     <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="vendor\jquery\jquery.js" />
     <Content Include="vendor\jquery\jquery.min.js" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -918,11 +905,6 @@
     <Content Include="Views\Tasks\Edit.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Views\Tasks\ViewTasks.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\ConsultantRegisters\Create.cshtml" />
     <Content Include="Views\ConsultantRegisters\Delete.cshtml" />
     <Content Include="Views\ConsultantRegisters\Details.cshtml" />
@@ -937,6 +919,11 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Posts.cshtml" />
     <Content Include="Views\Blog\AllPosts.cshtml" />
+    <Content Include="Views\Products\CreateProduct.cshtml" />
+    <Content Include="Views\Products\DeleteProduct.cshtml" />
+    <Content Include="Views\Products\EditProduct.cshtml" />
+    <Content Include="Views\Products\MyQuotation.cshtml" />
+    <Content Include="Views\Products\GetQuotation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

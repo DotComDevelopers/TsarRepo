@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TSAR.Models
 {
-    public class Product 
+    public class Product : IEnumerable
     {
         [Key]
         [Required]
@@ -39,5 +39,9 @@ namespace TSAR.Models
         public string Email { get; set; }   //check if existing client and pull email automatically from login
 
 
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
