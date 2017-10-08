@@ -23,15 +23,15 @@ namespace TSAR.Controllers
             return View(tasks.ToList());
         }
 
-    //Get Custom View tasks
-      public ActionResult ViewTasks()
-      {
-        var tasks = db.Tasks.Include(t => t.Consultant);
-        return View(tasks.ToList());
-      }
+        // GET: ViewTasks
+        public ActionResult ViewTasks()
+        {
+            var tasks = db.Tasks.Include(t => t.Consultant);
+            return View(tasks.ToList());
+        }
 
-    // GET: Tasks/Details/5
-    public ActionResult Details(int? id)
+        // GET: Tasks/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {

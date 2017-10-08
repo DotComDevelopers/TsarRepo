@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<TSAR.Models.Tasks>
+@using TSAR.Models;
+
 
 @{
     ViewBag.Title = "Index";
@@ -10,49 +12,26 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Consultant.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th></th>
-    </tr>
+<div style="font-family:Arial">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Consultant.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TaskID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TaskID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TaskID })
-        </td>
-    </tr>
-}
+    <ul>
+        @foreach (Tasks task in Model)
+        {
+            <li>
+                @Html.ActionLink(task.Description, "Details", new { id = task.TaskID })
+            </li>
+            <dv>
+                @Html.ActionLink("Remove", "Delete", new { id = task.TaskID }, new { @class = "btn btn-primary" })
+            </dv>
+        }
+   </ul>
 
-</table>
+</div>
+
+<div>
+    @Html.ActionLink("Begin your task", "ViewTasks")
+    @Html.ActionLink("Consultant Menu","ConsultantMenu","Manage")
+</div>
+
+
+
