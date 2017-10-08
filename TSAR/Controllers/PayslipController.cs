@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Net;
 using System.Web;
+
 using System.Web.Mvc;
 
 
@@ -66,19 +67,19 @@ namespace TSAR.Controllers
                 }
                 return View(payslip);
 
-                //return new rPdfResult(customers, "PDF");
-
-
-                //return new RazorPDF.PdfResult(payslip, "Index");
-
-                
             }
         }
-        
+
+
+
+
         public ActionResult GeneratePDF()
         {
             return new Rotativa.ActionAsPdf("Index");
+
         }
+
+    
             
        
 
@@ -87,11 +88,6 @@ namespace TSAR.Controllers
             
         
 
-        //public ActionResult GeneratePDF()
-        //{
-            
-        //        //.ActionAsPdf("GetPersons");
-        //}
 
 
         // GET: Payslip/Details/5
