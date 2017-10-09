@@ -924,6 +924,7 @@
     <Content Include="Views\Blog\Posts.cshtml" />
     <Content Include="Views\Blog\AllPosts.cshtml" />
     <Content Include="Views\Shared\_Payslip.cshtml" />
+    <Content Include="Views\Target\TargetChart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

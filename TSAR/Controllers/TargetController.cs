@@ -14,7 +14,7 @@ namespace TSAR.Controllers
     {
         // GET: Target
         private ApplicationDbContext db = new ApplicationDbContext();
-        public ActionResult Index()
+        public ActionResult TargetChart()
         {
             ViewBag.Status = (from r in db.Timesheets
                 select r.FullName).Distinct();
@@ -22,7 +22,9 @@ namespace TSAR.Controllers
 
             return View();
         }
-        
+
+
+        //This controller returns an jpeg image you can use bmp.
         public ActionResult Chart(string Status)
         {
             WebImage image;
@@ -49,19 +51,28 @@ namespace TSAR.Controllers
 
 
             ArrayList xValue = new ArrayList(monthNames);
+
             ArrayList yValue = new ArrayList(hoursPerMonth);
+
+
             if (Status != null)
             {
 
                 image = new Chart(width: 800, height: 400, theme: ChartTheme.Blue)
-                    .AddTitle("Column chart showing the hours worked by the Consultant")
+                    .AddTitle("Chart")
+
                     .AddSeries("Default", chartType: "Column", xValue: xValue, yValues: yValue)
+                    //adding default line chart
+                    .AddSeries(chartType: "line",
+
+                        yValues: new[] { 110, 110, 110, 110, 110 })
+
                     .ToWebImage("jpeg");
             }
 
             else
             {
-                //Creates default empty chart
+
                 image = new Chart(width: 800, height: 400, theme: ChartTheme.Blue)
                     .AddTitle("Chart")
                     .AddSeries("Default", chartType: "Column", xValue: new[] { "Jan", "Feb", "May" }, yValues: new[] { 20, 40, 90 })
