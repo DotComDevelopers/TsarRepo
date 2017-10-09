@@ -6,9 +6,11 @@
 
 <h2></h2>
 <b>Search by Full Name:</b>
-<font color="black">
-    @Html.DropDownList("Status", new SelectList(ViewBag.Status), new { id = "dropdown", onchange = "updateChart()" })
-</font>
+<div align="center">
+    <font color="black">
+        @Html.DropDownList("Status", new SelectList(ViewBag.Status), new { id = "dropdown", onchange = "updateChart()" })
+    </font>
+</div>
 <img id="chart" src="Chart?status=@ViewBag.Status" />
 <script>
     function updateChart()
@@ -18,4 +20,9 @@
         document.getElementById('chart').setAttribute('src', 'Chart?status=' + value);
     }
 </script>
+<p> </p>
+<div>
+    <img src="@Url.Action("Chart1")" alt="Chart1" />
+</div>
+
 
