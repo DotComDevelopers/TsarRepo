@@ -92,7 +92,7 @@ namespace TSAR.Controllers
             var timesheets = db.Timesheets.Include(t => t.Client).Include(t => t.Consultant);
             string username = User.Identity.GetUserName();
             int clientid = (from Client c in db.Clients
-                            where c.Email == username
+                            where c.ClientName == username
                             select c.Id).FirstOrDefault();
             return View(db.Timesheets.Where(p => p.Id == clientid).ToList());
         }

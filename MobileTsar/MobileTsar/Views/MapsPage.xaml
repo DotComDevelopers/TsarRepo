@@ -8,7 +8,7 @@
   <ScrollView>
       <StackLayout Padding="20,10">
             <Label Text="Client:" TextColor="White"></Label>
-        <Picker x:Name="ClientPicker" Title="Client Name" SelectedIndexChanged="ClientPicker_OnSelectedIndexChanged"></Picker>
+        <Picker x:Name="ClientPicker" Title="Client Name"  SelectedIndexChanged="ClientPicker_OnSelectedIndexChanged"></Picker>
        
         <Label Text="Client Address:" TextColor="White"></Label>
         <Picker x:Name="AddressPicker" SelectedIndexChanged="AddressPicker_OnSelectedIndexChanged"></Picker>

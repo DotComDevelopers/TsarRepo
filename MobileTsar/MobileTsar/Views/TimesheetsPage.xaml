@@ -14,53 +14,55 @@
         </viewModels:TimesheetsViewModel>
     </ContentPage.BindingContext>
 
-    <ScrollView>
-    <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
-        <!--<Entry Text="{Binding AccessToken}"></Entry>-->
-        <Label x:Name="UsernameLabel" TextColor="White" FontSize="40" HorizontalTextAlignment="Center"></Label>
+ 
+        <StackLayout Orientation="Vertical" Spacing="30" Padding="30" VerticalOptions="Center">
+            <!--<Entry Text="{Binding AccessToken}"></Entry>-->
+            <Label x:Name="UsernameLabel" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"></Label>
             <Button BackgroundColor="#4D6098" TextColor="White" Text="Log Off" Clicked="LogOffButton_OnClicked"></Button>
             <Button BackgroundColor="#4D6098" TextColor="White"  x:Name="GetTimesheetsButton" Clicked="GetTimesheetsButton_OnClicked"  Command="{Binding GetTimesheetsCommand}" Text="Get Timesheets"></Button>
             <Button BackgroundColor="#4D6098" TextColor="White"  x:Name="AddnewTimesheetBtn" Text="Add new timesheet" Clicked="Button_OnClicked"></Button>
             <Button BackgroundColor="#4D6098" TextColor="White"  Text="Timesheet List" Clicked="TimesheetsList" IsVisible="False"></Button>
+
         <ListView x:Name="TimesheetListView"   ItemsSource="{Binding Timesheets}" HasUnevenRows="True" ItemTapped="SignPage">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                            <Label x:Name="msg"  Text="Tap here to sign >" HorizontalTextAlignment="End"></Label>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label x:Name="msg" TextColor="Aquamarine"  Text="Tap here to sign >" HorizontalTextAlignment="End"></Label>
                             <Label FontSize="25" Text="Timesheet Id:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding TimesheetId}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding TimesheetId}"></Label>
                             <Label FontSize="25"  Text="Client Id:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding Id}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding Id}"></Label>
                             <Label FontSize="25"  Text="Client:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding Client}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding Client}"></Label>
                             <Label FontSize="25"  Text="Consultant:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding ConsultantNum}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding ConsultantNum}"></Label>
                             <Label FontSize="25"  Text="Activity:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding ActivityDescription}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding ActivityDescription}"></Label>
                             <Label FontSize="25"  Text="Date Captured:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding CaptureDate}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding CaptureDate}"></Label>
                             <Label FontSize="25"  Text="Start Time:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding StartTime,StringFormat='{}{0:hh\\:mm}'}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding StartTime,StringFormat='{}{0:hh\\:mm}'}"></Label>
                             <Label FontSize="25"  Text="End Time:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding EndTime,StringFormat='{}{0:hh\\:mm}'}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding EndTime,StringFormat='{}{0:hh\\:mm}'}"></Label>
                             <Label FontSize="25"  Text="Hours:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding Hours}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding Hours}"></Label>
                             <Label FontSize="25"  Text="Client Address:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding MClientAddress}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding MClientAddress}"></Label>
                             <Label FontSize="25"  Text="Signed Off? :" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding SignOff}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding SignOff}"></Label>
                             <Label FontSize="25"  Text="Ticket Reference:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding TicketReference}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding TicketReference}"></Label>
                             <Label FontSize="25"  Text="Total:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding Total}"></Label>
+                            <Label FontSize="25"  TextColor="White" Text="{Binding Total}"></Label>
                             <Label FontSize="25"  Text="Signed on:" TextColor="DeepSkyBlue"></Label>
-                            <Label FontSize="25"  Text="{Binding Filename}"></Label>
+                            <Label FontSize="25" TextColor="White" Text="{Binding Filename}"></Label>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+            
     </StackLayout>
-    </ScrollView>
+    
 </ContentPage>
