@@ -59,7 +59,7 @@ namespace TSAR.Controllers
             {
 
                 image = new Chart(width: 800, height: 400, theme: ChartTheme.Blue)
-                    .AddTitle("Chart")
+                    .AddTitle("Consultant targets for the month")
 
                     .AddSeries("Default", chartType: "Column", xValue: xValue, yValues: yValue)
                     //adding default line chart
@@ -85,6 +85,51 @@ namespace TSAR.Controllers
         }
 
 
+        public ActionResult Chart1()
+        {
+            WebImage image;
+            var results = (from c in db.Timesheets select c);
 
+
+            // gets the records grouped based on Year and Month. 
+
+            var groupedByMonth = results
+
+                .OrderByDescending(x => x.FullName)
+                .GroupBy(x => new { x.FullName }).ToList();
+
+
+            // gets the months names in a list
+            List<string> monthNames = groupedByMonth
+
+                .Select(a => a.FirstOrDefault().FullName)
+                .ToList();
+            // gets the total hours per month
+            List<double> hoursPerMonth = groupedByMonth
+                .Select(a => a.Sum(p => p.Hours))
+                .ToList();
+
+
+            ArrayList xValue = new ArrayList(monthNames);
+
+            ArrayList yValue = new ArrayList(hoursPerMonth);
+
+
+
+
+
+            image = new Chart(width: 800, height: 400, theme: ChartTheme.Green)
+                .AddTitle("Total hours worked by each consultant")
+
+                .AddSeries("Default", chartType: "line", xValue: xValue, yValues: yValue)
+
+
+
+                .ToWebImage("jpeg");
+
+
+            return File(image.GetBytes(), "image/jpeg");
+
+        }
     }
 }
