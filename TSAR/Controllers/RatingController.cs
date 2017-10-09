@@ -53,12 +53,12 @@ namespace TSAR.Controllers
         public ActionResult Create([Bind(Include = "RatingId,ConsultantName,Rate,Comment,ClientName")] Rating rating)
         {
             if (ModelState.IsValid)
-            { string email = User.Identity.GetUserName();
+            { string name = User.Identity.GetUserName();
                 //For this to work a client must be created with the same email as the email registered to login as a client
                 rating.ConsultantName = (from Ticket t in db.Tickets
-                    where t.Email == email
+                    where t.ClientName == name
                     select t.ConsultantName).Max();
-                rating.ClientUsername = email;
+                rating.ClientUsername = name;
                 db.Ratings.Add(rating);
                 db.SaveChanges();
                 return RedirectToAction("Done");
