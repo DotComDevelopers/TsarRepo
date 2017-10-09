@@ -94,7 +94,7 @@ namespace TSAR.Controllers
             // gets the records grouped based on Year and Month. 
 
             var groupedByMonth = results
-
+                .Where(p => p.CaptureDate.Month == DateTime.Today.Month)
                 .OrderByDescending(x => x.FullName)
                 .GroupBy(x => new { x.FullName }).ToList();
 
@@ -106,6 +106,7 @@ namespace TSAR.Controllers
                 .ToList();
             // gets the total hours per month
             List<double> hoursPerMonth = groupedByMonth
+
                 .Select(a => a.Sum(p => p.Hours))
                 .ToList();
 
