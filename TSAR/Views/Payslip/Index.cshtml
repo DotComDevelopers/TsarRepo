@@ -50,6 +50,24 @@
             @*<td style="color: white"> @ViewBag.Net</td>*@
             @*<td>@Html.DisplayFor(model => model.total) @ViewBag.Net</td>*@
         </tr>
+        <tr>
+        @using (Html.BeginForm("Export", "Manage", FormMethod.Post))
+        {
+           
+        }
+            @*<input type="hidden" name="GridHtml" />
+        <input type="submit" id="btnSubmit" value="Download Payslip" />*@@*<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>*@
+        @*<script type="text/javascript">
+                    $(function () {
+                        $("#btnSubmit").click(function () {
+                            $("input[name='GridHtml']").val($("#Grid").html());
+                        });
+                    });
+         </script>
+         </tr>
+
+
+        </tr>*@
     </table>
 
 </div>
