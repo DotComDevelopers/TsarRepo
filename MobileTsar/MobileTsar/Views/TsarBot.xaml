@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileTsar.Views.TsarBot"
+             Title="Tsar Bot Here to Help">
+    <ContentPage.Content>
+        <StackLayout>
+            <WebView x:Name="Webview" Source="https://webchat.botframework.com/embed/Tsarbs-bot?s=zX8rpYGpaDY.cwA.9NU.KMUJAX9s9vS1dLCUgAHXsOENrTZgsw5lUH1tjfzxQiM"
+ 
+                     WidthRequest="300" HeightRequest=" 300"></WebView>
+<!--Old secret key-->
+            <!--<iframe src='https://webchat.botframework.com/embed/Tsarbs-bot?s=YOUR_SECRET_HERE'></iframe>-->
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

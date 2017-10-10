@@ -56,7 +56,7 @@ namespace MobileTsar.Views
 
     private async void FinishBtn_OnClicked(object sender, EventArgs e)
     {
-      await DisplayAlert("Done", "New Timesheet added!", "Close");
+      await DisplayAlert("Done", "New Post added!", "Close");
       await Navigation.PopAsync();
     }
 
@@ -71,7 +71,7 @@ namespace MobileTsar.Views
       if (TitleEntry.Text == "")
       {
         isvalid = false;
-        await DisplayAlert("Please select a client", "Client is Required", "OK");
+        await DisplayAlert("Please Enter a Title", "Title is Required", "OK");
         TitleEntry.Focus();
       }
       else
