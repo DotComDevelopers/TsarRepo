@@ -45,6 +45,7 @@ namespace MobileTsar.Views
                     new DashboardPageMenuItem { Id = 6, IsVisible = true, Title = "Set Password", TargetType = typeof(SetPasswordPage)},
                     new DashboardPageMenuItem { Id = 8, IsVisible = true, Title = "Forums", TargetType = typeof(ForumListViewPage)},
                     new DashboardPageMenuItem { Id = 7, IsVisible = false, Title = "New client password", TargetType = typeof(NewClientPasswordPage)},
+                     new DashboardPageMenuItem { Id = 8, IsVisible = true, Title = "Tsar Bot", TargetType = typeof(TsarBot)},
                 });
 
         

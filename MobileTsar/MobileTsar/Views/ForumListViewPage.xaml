@@ -27,9 +27,9 @@
                             <Label Text="{Binding Title}" FontSize="24"></Label>
                             <Label Text="Posted On:"  TextColor="White" FontSize="25"></Label>
                             <Label Text="{Binding PostedOn}" FontSize="24"></Label>
-                            <Label Text="Short Description:" TextColor="White" FontSize="25"></Label>
+                            <Label Text="Problem Description:" TextColor="White" FontSize="25"></Label>
                             <Label Text="{Binding ShortDescription}" FontSize="24"></Label>
-                            <Label Text="Body:" TextColor="White" FontSize="25"></Label>
+                            <Label Text="Solution:" TextColor="White" FontSize="25"></Label>
                             <Label Text="{Binding Body}" FontSize="24"></Label>
                         </StackLayout>
                     </ViewCell>
