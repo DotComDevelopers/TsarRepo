@@ -7,11 +7,14 @@
     Layout = "~/Views/Shared/_LayoutOther.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
+
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
+<div align="center">
+    <a id="button" href="@Url.Action("Create")" class="btn btn-primary">Create new</a>
+</div>
 <div style="font-family:Arial">
 
     <ul>
@@ -29,8 +32,16 @@
 </div>
 
 <div>
-    @Html.ActionLink("Begin your task", "ViewTasks")
-    @Html.ActionLink("Consultant Menu","ConsultantMenu","Manage")
+    <div align="center">
+        <a id="button" href="@Url.Action("ViewTasks")" class="btn btn-primary">Begin your task</a>
+    </div>
+    <p></p>
+    <div align="center">
+        <a id="button" href="@Url.Action("ConsultantMenu","Manage")" class="btn btn-primary">Back To List</a>
+    </div>
+    
+    @*@Html.ActionLink("Begin your task", "ViewTasks")
+    @Html.ActionLink("Consultant Menu", "ConsultantMenu", "Manage")*@
 </div>
 
 

@@ -10,6 +10,7 @@ using System.Collections;
 using Microsoft.AspNet.Identity;
 using TSAR.Models;
 
+
 namespace TSAR.Controllers
 {
     public class TasksController : Controller
@@ -33,6 +34,9 @@ namespace TSAR.Controllers
             select c.ConsultantNum).FirstOrDefault();
       var consultanttasklist = db.Tasks.Where(x => x.ConsultantNum == consultantnum);
             return View(consultanttasklist);
+
+            
+
         }
 
         // GET: Tasks/Details/5
@@ -68,11 +72,22 @@ namespace TSAR.Controllers
             {
                 db.Tasks.Add(tasks);
                 db.SaveChanges();
+
+                
+
+
                 return RedirectToAction("Index");
             }
 
+            
+
             ViewBag.ConsultantNum = new SelectList(db.Consultants, "ConsultantNum", "FirstName", tasks.ConsultantNum);
             return View(tasks);
+        }
+
+        private ActionResult View(Func<ActionResult> viewTasks)
+        {
+            throw new NotImplementedException();
         }
 
         // GET: Tasks/Edit/5

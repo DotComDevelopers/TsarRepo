@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using TSAR.Models;
@@ -108,35 +110,43 @@ namespace TSAR.Controllers
                 $"{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Second}{User.Identity.GetUserName().Substring(0, 4)}";
             if (ModelState.IsValid)
             {
+
                 //created ticket ID should be returned as a reference
                 
-                string email = User.Identity.GetUserName();
+                    //string email = User.Identity.GetUserName();
+
+                string name = User.Identity.Name;
                 //For this to work a client must be created with the same email as the email registered to login as a client
                 ticket.ClientName = (from Client c in db.Clients
-                                     where c.Email == email
-                                     select c.ClientName).FirstOrDefault();
+                        where c.ClientName == name
+                        select c.ClientName).FirstOrDefault();
+                string email = (from Client c in db.Clients
+                                where c.ClientName == name
+                                select c.Email).FirstOrDefault();
                 ticket.Email = email;
-                ticket.Date = DateTime.Now;
-                ticket.TicketReference = tickRef;
-                if (ticket.Category == "Email" )
-                {
-                    ticket.Priority = "Low";
-                }
-                else if (ticket.Category == "Printer" || ticket.Category == "Other")
-                {
-                    ticket.Priority = "Medium";
-                }
-                else if (ticket.Category == "Hardware"|| ticket.Category == "Maintenance" || ticket.Category == "Network" || ticket.Category == "Software"  )
-                {
-                    ticket.Priority = "High";
-                }
-                if (ticket.Status == null)
-                {
-                    ticket.Status = "Open Ticket";
-                }
-                db.Tickets.Add(ticket);
+                    ticket.Date = DateTime.Now;
+                    ticket.TicketReference = tickRef;
+                    if (ticket.Category == "Email")
+                    {
+                        ticket.Priority = "Low";
+                    }
+                    else if (ticket.Category == "Printer" || ticket.Category == "Other")
+                    {
+                        ticket.Priority = "Medium";
+                    }
+                    else if (ticket.Category == "Hardware" || ticket.Category == "Maintenance" ||
+                             ticket.Category == "Network" || ticket.Category == "Software")
+                    {
+                        ticket.Priority = "High";
+                    }
+                    if (ticket.Status == null)
+                    {
+                        ticket.Status = "Open Ticket";
+                    }
 
-                var textforevent = "Reference Number:    " + ticket.TicketReference + "      " + "Fault Description:    " + ticket.FaultDescription;
+
+                var textforevent = "Reference Number:    " + ticket.TicketReference + "      " +
+                                   "Fault Description:    " + ticket.FaultDescription;
                 var calendarevent = new Event()
                 {
                     start_date = ticket.Date,
@@ -146,20 +156,37 @@ namespace TSAR.Controllers
 
                 };
                 db.Events.Add(calendarevent);
-                db.SaveChanges();
-
-                var twilioSmsClient = new TwilioSmsRestClient();
-                var smsStatusResult = twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
-
-                if (smsStatusResult.IsCompleted)
+                try {
+                    db.Tickets.Add(ticket);
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
                 {
-                   return RedirectToAction("Done");
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            Response.Write("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                        }
+                    }
                 }
-                else
-                {//an appropriate message stating sms failed error, either try again it
-                   return View(ticket);
-                }
+            
+                var twilioSmsClient = new TwilioSmsRestClient();
+                    var smsStatusResult =
+                        twilioSmsClient.SendMessage($"Ticket Created Successfully. Client Ticket Reference {ticket.ID}");
 
+                    if (smsStatusResult.IsCompleted)
+                    {
+                        return RedirectToAction("Done");
+                    }
+                    else
+                    {
+//an appropriate message stating sms failed error, either try again it
+                        return View(ticket);
+                    }
+
+             
+                
             }
 
 

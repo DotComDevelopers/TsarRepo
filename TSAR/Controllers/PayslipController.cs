@@ -7,9 +7,12 @@ using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Net;
 using System.Web;
-
+using System.IO;
 using System.Web.Mvc;
 using Rotativa;
+
+
+
 using TSAR.Models;
 
 
@@ -43,7 +46,7 @@ namespace TSAR.Controllers
                     ViewBag.Comm = (payslip.Comm = tottimesheet * 0.2).ToString("R0.00");
 
                     ViewBag.Basic = (payslip.Basic = 7000).ToString("R0.00");
-              payslip.Basic = (payslip.Basic = 7000);
+                payslip.Basic = (payslip.Basic = 7000);
 
                     ViewBag.Totpay = (payslip.totPay = payslip.Basic + payslip.Comm).ToString("R0.00");
                     ViewBag.Name = User.Identity.GetUserName();
@@ -73,6 +76,7 @@ namespace TSAR.Controllers
 
           return new ViewAsPdf("Index", payslip);
      
+        
     }
 
     // GET: Payslip/Details/5
@@ -183,6 +187,7 @@ namespace TSAR.Controllers
             base.Dispose(disposing);
         }
 
-   
+        
+
     }
 }
