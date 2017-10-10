@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model TSAR.ViewModels.QuoteViewModel
+
+@{
+    Layout = null;
+}
+
+<div class="row">
+    @foreach (var product in Model.PreferredProducts)
+    {
+        @Html.Partial("ProductsSummary",product)
+    }
+</div>
