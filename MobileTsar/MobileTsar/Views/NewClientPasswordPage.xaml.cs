@@ -19,6 +19,7 @@ namespace MobileTsar.Views
       InitializeComponent();
       GetClientName();
       ClientPicker.Items.Add("Please Select a Client");
+      ClientPicker.Items.Clear();
       ClientPicker.SelectedIndex = 0;  
     }
 

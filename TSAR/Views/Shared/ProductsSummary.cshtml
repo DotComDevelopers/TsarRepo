@@ -1,0 +1,32 @@
+﻿@model TSAR.Models.Product
+  @{
+      Layout = "~/Views/Shared/_LayoutOther.cshtml";
+  }
+<link href="~/CartCss/Site.css" rel="stylesheet" />
+<div>
+    <h4>Product Description : @Model.ProductDescription</h4>
+    <p>Price : @Model.ProductPrice.ToString("c")</p>
+</div>
+
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <img src="~/img/comp1.jpg" alt=""/>
+        <div class="caption">
+            <h3 class="pull-right">@Model.ProductPrice.ToString("c")</h3>
+            <h3>
+                <a>@Model.ProductDescription</a>
+            </h3>
+            <p>@Model.ProductDescription</p>
+        </div>
+        <div class="addToCart text-right">
+            <p class="button">
+                <a class="btn btn-success" id="cartButton"
+                   asp-controller="ShoppingCart"
+                   asp-action="AddToShoppingCart"
+                   asp-route-productId="@Model.ProductId">
+                    Add to cart
+                </a>
+            </p>
+        </div>
+    </div>
+</div>

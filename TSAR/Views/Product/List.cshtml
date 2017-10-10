@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@using TSAR.Models
+@using TSAR.ViewModels
+@model ProductListViewModel
+  @{
+      Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+  }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+      @foreach (Product product in Model.Products)
+      {
+         @Html.Partial("ProductsSummary",product)
+      }
+</div>
+</body>
+</html>

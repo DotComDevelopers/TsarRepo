@@ -70,7 +70,7 @@ namespace TSAR.Models
 
         public System.Data.Entity.DbSet<TSAR.Models.Tasks> Tasks { get; set; }
 
-        //public System.Data.Entity.DbSet<TSAR.Models.Product> Products { get; set; }
+        public System.Data.Entity.DbSet<TSAR.Models.Product> Products { get; set; }
 
     public System.Data.Entity.DbSet<TSAR.Models.ConsultantRegister> ConsultantRegisters { get; set; }
 
@@ -84,6 +84,9 @@ namespace TSAR.Models
         public DbSet<TSAR.Models.CommentLike> CommentLikes { get; set; }
         public DbSet<TSAR.Models.ReplyLike> ReplyLikes { get; set; }
         public DbSet<TSAR.Models.PostCategory> PostCategories { get; set; }
+        public DbSet<TSAR.Models.ShoppingCartItem> ShoppingCartItems { get; set; }
+        public DbSet<TSAR.Models.Order> Orders { get; set; }  
+        public DbSet<TSAR.Models.OrderDetail> OrderDetails { get; set; }
 
     }
 }
